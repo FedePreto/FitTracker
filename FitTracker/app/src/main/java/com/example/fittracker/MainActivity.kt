@@ -533,4 +533,6 @@ class MainActivity : AppCompatActivity() {
     private fun updateUI(user: FirebaseUser?) {
         // No-op
     }
+
+
 }

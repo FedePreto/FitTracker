@@ -1,12 +1,13 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
-    id'com.google.gms.google-services'
+    id 'com.google.gms.google-services'
     id 'androidx.navigation.safeargs.kotlin'
+    id 'kotlin-kapt'
 }
 
 android {
-    compileSdk 32
+    compileSdk 31
 
     defaultConfig {
         applicationId "com.example.fittracker"
@@ -51,7 +52,16 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.4.1'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1'
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.0"
+    implementation "androidx.activity:activity-ktx:1.5.0"
+    implementation "androidx.room:room-runtime:2.4.3"
+    kapt "androidx.room:room-compiler:2.4.3"
+    implementation "androidx.room:room-ktx:2.4.3"
+    testImplementation "androidx.room:room-testing:2.4.3"
     testImplementation 'junit:junit:4.+'
+    // Use this dependency to bundle the model with your app
+    implementation 'com.google.mlkit:barcode-scanning:17.0.2'
+
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
