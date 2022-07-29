@@ -1,10 +1,15 @@
 <resources>
     <string name="app_name">FitTracker</string>
-    <string name="title_activity_main2">MainActivity2</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="title_activity_homepage">Homepage</string>
+    <string name="registration">Registrazione</string>
+    <string name="lastname">Cognome</string>
+    <string name="name">Nome</string>
+    <string name="username">Username</string>
+    <string name="ho_account">Ho già un account!</string>
+    <string name="register">Registrati</string>
 
 
 </resources>
