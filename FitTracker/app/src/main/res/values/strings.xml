@@ -10,6 +10,10 @@
     <string name="username">Username</string>
     <string name="ho_account">Ho già un account!</string>
     <string name="register">Registrati</string>
-
+    <string name="login_page">Login</string>
+    <string name="login">Accedi</string>
+    <string name="non_ho_account">Non hai un account? Registrati!</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
 
 </resources>
