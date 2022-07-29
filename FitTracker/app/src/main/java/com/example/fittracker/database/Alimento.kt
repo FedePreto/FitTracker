@@ -14,5 +14,4 @@ data class Alimento(
     val quantita:Int,
     val categoria:String
 
-
 )
