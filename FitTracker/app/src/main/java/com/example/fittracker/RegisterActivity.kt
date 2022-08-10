@@ -25,6 +25,9 @@ class RegisterActivity : AppCompatActivity() {
 
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        binding.HoGiaAccount.setOnClickListener(){
+            startActivity(Intent(this, LoginActivity::class.java))
+        }
         binding.btnRegister.setOnClickListener{ registrationFunction()}
 
 

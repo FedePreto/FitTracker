@@ -16,6 +16,8 @@
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="forgotPass">Password dimenticata?</string>
-    <string name="caricamento">Il tuo benessere fisico e mentale è la nostra priorità</string>
+    <string name="caricamento">Caricamento...</string>
+    <string name="invia">Invia</string>
+    <string name="indietro">Indietro</string>
 
 </resources>
