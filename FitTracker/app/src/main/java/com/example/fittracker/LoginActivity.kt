@@ -52,7 +52,7 @@ class LoginActivity : AppCompatActivity() {
                     finish()
                 }
                 else{
-                    Toast.makeText(this, "Non sei ancora registrato o email e password non sono corretti!", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this, "Non sei ancora registrato o email/password non sono corretti!", Toast.LENGTH_LONG).show()
                     updateUI(null)
                 }
             }

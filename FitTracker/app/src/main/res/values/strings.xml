@@ -19,5 +19,7 @@
     <string name="caricamento">Caricamento...</string>
     <string name="invia">Invia</string>
     <string name="indietro">Indietro</string>
+    <string name="info1">Recupero Password</string>
+    <string name="info2">Immetti il tuo indirizzo email per cambiare la password.</string>
 
 </resources>

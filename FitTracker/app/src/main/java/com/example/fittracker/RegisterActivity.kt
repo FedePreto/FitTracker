@@ -26,7 +26,8 @@ class RegisterActivity : AppCompatActivity() {
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.HoGiaAccount.setOnClickListener(){
-            startActivity(Intent(this, LoginActivity::class.java))
+            //startActivity(Intent(this, LoginActivity::class.java))
+            finish()
         }
         binding.btnRegister.setOnClickListener{ registrationFunction()}
 
@@ -48,12 +49,12 @@ class RegisterActivity : AppCompatActivity() {
                 if (it.isSuccessful) {
                     val firebaseUser: FirebaseUser = it.result!!.user!!
                     database.child(firebaseUser.uid).setValue(user)
-                    Toast.makeText(this, "You've been succesfully registred!", Toast.LENGTH_LONG).show()
-                    startActivity(Intent(this, LoginActivity::class.java))
+                    Toast.makeText(this, "Ti sei registrato con successo!", Toast.LENGTH_LONG).show()
+                    startActivity(Intent(this, DatiPersonaliActivity::class.java))
                     finish()
                 }
                 else{
-                    Toast.makeText(this, "Sorry", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this, "Qualcosa è andato storto, riprova!", Toast.LENGTH_LONG).show()
 
                 }
             }
@@ -79,7 +80,7 @@ class RegisterActivity : AppCompatActivity() {
         }
 
         if (!Patterns.EMAIL_ADDRESS.matcher(Email).matches()) {
-            binding.InputEmail.setError("Email missing @!")
+            binding.InputEmail.setError("Il formato dell'Email è errato!")
             binding.InputEmail.requestFocus()
             return false
         }
