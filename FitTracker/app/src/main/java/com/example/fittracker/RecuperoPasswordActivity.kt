@@ -38,13 +38,13 @@ class RecuperoPasswordActivity : AppCompatActivity() {
             auth.sendPasswordResetEmail(email).addOnCompleteListener(this) {
                 if (it.isSuccessful) {
                     Toast.makeText(
-                        this, "Email inviata con successo!", Toast.LENGTH_LONG
+                        this, "Email inviata con successo all'indirizzo indicato!", Toast.LENGTH_LONG
                     ).show()
                     finish()
                 } else {
                     Toast.makeText(
                         this,
-                        "Non sei ancora registrato o l'email non è corretta!",
+                        "Email non registrata o non corretta!",
                         Toast.LENGTH_LONG
                     ).show()
                 }

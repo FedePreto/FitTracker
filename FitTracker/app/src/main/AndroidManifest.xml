@@ -19,15 +19,23 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity
                 android:name=".DatiPersonaliActivity"
+                android:screenOrientation="portrait"
+                android:exported="false"/>
+        <activity
+                android:name=".HomeActivity"
+                android:screenOrientation="portrait"
                 android:exported="false"/>
         <activity
                 android:name=".LoginActivity"
+                android:screenOrientation="portrait"
                 android:exported="true"/>
         <activity
                 android:name=".RegisterActivity"
+                android:screenOrientation="portrait"
                 android:exported="true"/>
         <activity
                 android:name=".MainActivity"
+                android:screenOrientation="portrait"
                 android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -37,6 +45,7 @@
         </activity>
         <activity
                 android:name=".RecuperoPasswordActivity"
+                android:screenOrientation="portrait"
                 android:exported="true">
         </activity>
     </application>
