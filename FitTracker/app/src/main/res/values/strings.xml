@@ -21,5 +21,6 @@
     <string name="indietro">Indietro</string>
     <string name="info1">Recupero Password</string>
     <string name="info2">Immetti il tuo indirizzo email per cambiare la password.</string>
+    <string name="completa">Completa con i tuoi dati...</string>
 
 </resources>

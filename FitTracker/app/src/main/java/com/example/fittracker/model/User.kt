@@ -9,8 +9,8 @@ class User(Username: String, Name: String, Lastname: String, Email: String, Conf
     var altezza: Double? = null
     var peso: Double? = null
     var petto: Double? = null
-    var braccia: Double? = null
-    var gambe: Double? = null
+    var braccio: Double? = null
+    var gamba: Double? = null
     var fianchi: Double? = null
 
 }

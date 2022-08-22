@@ -17,6 +17,18 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+
+        <activity
+                android:name=".MainActivity"
+                android:label="FitTracker"
+                android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
         <activity
                 android:name=".DatiPersonaliActivity"
                 android:screenOrientation="portrait"
@@ -28,26 +40,17 @@
         <activity
                 android:name=".LoginActivity"
                 android:screenOrientation="portrait"
-                android:exported="true"/>
+                android:exported="false"/>
         <activity
                 android:name=".RegisterActivity"
                 android:screenOrientation="portrait"
-                android:exported="true"/>
-        <activity
-                android:name=".MainActivity"
-                android:screenOrientation="portrait"
-                android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
-        </activity>
+                android:exported="false"/>
         <activity
                 android:name=".RecuperoPasswordActivity"
                 android:screenOrientation="portrait"
-                android:exported="true">
+                android:exported="false">
         </activity>
+
     </application>
 
 </manifest>
