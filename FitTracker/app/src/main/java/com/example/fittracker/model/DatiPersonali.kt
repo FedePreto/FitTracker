@@ -1,6 +1,5 @@
 package com.example.fittracker.model
 
-import android.widget.EditText
 
 data class DatiPersonali(
     var eta: String? = null,

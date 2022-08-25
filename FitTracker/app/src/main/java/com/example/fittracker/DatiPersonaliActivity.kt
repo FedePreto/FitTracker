@@ -16,7 +16,6 @@ import com.google.firebase.firestore.ktx.firestore
 
 class DatiPersonaliActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDatiPersonaliBinding
-    private lateinit var auth: FirebaseAuth
     private lateinit var db : FirebaseFirestore
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -62,7 +61,6 @@ class DatiPersonaliActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-        Toast.makeText(this, "Impossibile tornare indietro, completa i dati personali.", Toast.LENGTH_LONG).show()
     }
 
     private fun checkFields(Eta : String,Altezza:String,Peso:String,Torace:String,Bicipite:String,Quadricipite:String,Fianchi:String): Boolean {
@@ -106,13 +104,13 @@ class DatiPersonaliActivity : AppCompatActivity() {
             binding.eta.requestFocus()
             return false
         }
-        if (Altezza.toShort()<50){
-            binding.altezza.setError("Altezza non valida!")
+        if (Altezza.toShort() in 301..129){
+            binding.altezza.setError("Altezza non valida! (min. 130 cm - max 300 cm)")
             binding.altezza.requestFocus()
             return false
         }
-        if (Peso.toShort()<20){
-            binding.peso.setError("Peso non valido!")
+        if (Peso.toShort()<35){
+            binding.peso.setError("Peso non valido! (min. 35 kg)")
             binding.peso.requestFocus()
             return false
         }
