@@ -7,13 +7,11 @@ import android.util.Patterns
 import android.widget.Toast
 import com.example.fittracker.databinding.ActivityRegisterBinding
 import com.example.fittracker.model.User
-import com.google.firebase.*
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.ktx.Firebase
-import java.util.*
 
 class RegisterActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRegisterBinding
@@ -26,7 +24,6 @@ class RegisterActivity : AppCompatActivity() {
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.HoGiaAccount.setOnClickListener(){
-            //startActivity(Intent(this, LoginActivity::class.java))
             finish()
         }
         binding.btnRegister.setOnClickListener{ registrationFunction()}
@@ -43,7 +40,7 @@ class RegisterActivity : AppCompatActivity() {
         val check = checkFields(Username, Name, Lastname, Email, Pass, ConfPass)
         auth = Firebase.auth
 
-        if (check == true) {
+        if (check) {
             val user = User(Username, Name, Lastname, Email, Pass)
             auth.createUserWithEmailAndPassword(Email, Pass).addOnCompleteListener(this) {
                 if (it.isSuccessful) {

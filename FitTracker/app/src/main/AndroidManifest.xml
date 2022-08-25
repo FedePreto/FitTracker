@@ -30,7 +30,7 @@
         </activity>
 
         <activity
-                android:name=".DatiPersonaliActivity"
+                android:name=".RegisterActivity"
                 android:screenOrientation="portrait"
                 android:exported="false"
         />
@@ -43,11 +43,17 @@
                 android:screenOrientation="portrait"
                 android:exported="false"/>
         <activity
-                android:name=".RegisterActivity"
+                android:name=".DatiPersonaliActivity"
                 android:screenOrientation="portrait"
                 android:exported="false"/>
         <activity
                 android:name=".RecuperoPasswordActivity"
+                android:screenOrientation="portrait"
+                android:exported="false">
+        </activity>
+
+        <activity
+                android:name=".ObbiettivoActivity"
                 android:screenOrientation="portrait"
                 android:exported="false">
         </activity>
