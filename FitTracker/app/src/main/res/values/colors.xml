@@ -72,4 +72,5 @@
     <color name="red_wasi_nort">#b7302a </color>
     <color name="green">#06CF67</color>
     <color name="green_accent">#0CA355</color>
+    <color name="green_bg">#228925</color>
 </resources>
