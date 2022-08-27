@@ -1,4 +1,4 @@
-package com.example.fittracker.fragments
+package com.example.fittracker.ViewModel
 
 import androidx.lifecycle.ViewModel
 

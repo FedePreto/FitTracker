@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.fittracker.R
+import com.example.fittracker.ViewModel.DieteViewModel
 
 class DieteFragment : Fragment() {
 
