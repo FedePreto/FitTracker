@@ -1,6 +1,5 @@
-package com.example.fittracker
+package com.example.fittracker.autenticazione
 
-import android.content.Intent
 import android.os.Bundle
 import android.util.Patterns
 import android.widget.Toast

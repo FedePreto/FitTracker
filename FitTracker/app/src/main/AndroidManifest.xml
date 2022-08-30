@@ -31,30 +31,30 @@
         </activity>
 
         <activity
-                android:name=".RegisterActivity"
+                android:name=".autenticazione.RegisterActivity"
                 android:screenOrientation="portrait"
                 android:exported="false"
         />
         <activity
-                android:name=".HomeActivity"
+                android:name=".home.HomeActivity"
                 android:screenOrientation="portrait"
                 android:exported="false"/>
         <activity
-                android:name=".LoginActivity"
+                android:name=".autenticazione.LoginActivity"
                 android:screenOrientation="portrait"
                 android:exported="false"/>
         <activity
-                android:name=".DatiPersonaliActivity"
+                android:name=".autenticazione.DatiPersonaliActivity"
                 android:screenOrientation="portrait"
                 android:exported="false"/>
         <activity
-                android:name=".RecuperoPasswordActivity"
+                android:name=".autenticazione.RecuperoPasswordActivity"
                 android:screenOrientation="portrait"
                 android:exported="false">
         </activity>
 
         <activity
-                android:name=".ObbiettivoActivity"
+                android:name=".autenticazione.ObbiettivoActivity"
                 android:screenOrientation="portrait"
                 android:exported="false">
         </activity>

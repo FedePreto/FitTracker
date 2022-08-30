@@ -1,10 +1,11 @@
-package com.example.fittracker
+package com.example.fittracker.autenticazione
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Patterns
 import android.widget.Toast
+import com.example.fittracker.home.HomeActivity
 import com.example.fittracker.databinding.ActivityLoginBinding
 import com.google.firebase.auth.*
 import com.google.firebase.database.FirebaseDatabase

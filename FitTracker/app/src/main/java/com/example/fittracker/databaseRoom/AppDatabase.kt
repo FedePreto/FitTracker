@@ -1,4 +1,4 @@
-package com.example.fittracker.database
+package com.example.fittracker.databaseRoom
 
 import android.content.Context
 import androidx.room.*

@@ -1,4 +1,4 @@
-package com.example.fittracker
+package com.example.fittracker.autenticazione
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -7,7 +7,6 @@ import java.time.LocalDate
 import android.widget.Toast
 import com.example.fittracker.databinding.ActivityDatiPersonaliBinding
 import com.example.fittracker.model.DatiPersonali
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.firestore.FirebaseFirestore

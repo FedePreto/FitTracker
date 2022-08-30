@@ -1,15 +1,12 @@
-package com.example.fittracker
+package com.example.fittracker.autenticazione
 
 import android.content.Intent
 import android.os.Bundle
-import android.provider.MediaStore.Audio.Radio
-import android.text.Editable
-import android.view.View
 import android.widget.RadioButton
-import android.widget.RadioGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.fittracker.databinding.ActivityDatiPersonaliBinding
+import com.example.fittracker.home.HomeActivity
+import com.example.fittracker.R
 import com.example.fittracker.databinding.ActivityObbiettivoBinding
 import com.example.fittracker.model.ObbPeso
 import com.google.firebase.auth.ktx.auth

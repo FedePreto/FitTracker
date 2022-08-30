@@ -1,19 +1,16 @@
-package com.example.fittracker
+package com.example.fittracker.home
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.replace
+import com.example.fittracker.R
+import com.example.fittracker.autenticazione.LoginActivity
 import com.example.fittracker.databinding.ActivityHomeBinding
-import com.example.fittracker.databinding.ActivityLoginBinding
-import com.example.fittracker.fragments.DiarioFragment
-import com.example.fittracker.fragments.DieteFragment
-import com.example.fittracker.fragments.FunzioniFragment
-import com.example.fittracker.fragments.IoFragment
-import com.google.android.material.bottomnavigation.BottomNavigationItemView
-import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.firebase.auth.FirebaseAuth
+import com.example.fittracker.diario.DiarioFragment
+import com.example.fittracker.diete.DieteFragment
+import com.example.fittracker.funzioni.FunzioniFragment
+import com.example.fittracker.io.IoFragment
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 

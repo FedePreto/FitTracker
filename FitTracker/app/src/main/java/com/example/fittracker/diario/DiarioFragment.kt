@@ -1,4 +1,4 @@
-package com.example.fittracker.fragments
+package com.example.fittracker.diario
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
@@ -7,26 +7,25 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.fittracker.R
-import com.example.fittracker.ViewModel.IoViewModel
 
-class IoFragment : Fragment() {
+class DiarioFragment : Fragment() {
 
     companion object {
-        fun newInstance() = IoFragment()
+        fun newInstance() = DiarioFragment()
     }
 
-    private lateinit var viewModel: IoViewModel
+    private lateinit var viewModel: DiarioViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_io, container, false)
+        return inflater.inflate(R.layout.fragment_diario, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(IoViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(DiarioViewModel::class.java)
         // TODO: Use the ViewModel
     }
 

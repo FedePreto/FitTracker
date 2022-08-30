@@ -1,4 +1,4 @@
-package com.example.fittracker
+package com.example.fittracker.autenticazione
 
 object RegistrationUtil {
 
