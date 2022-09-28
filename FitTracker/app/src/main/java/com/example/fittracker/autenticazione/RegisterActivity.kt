@@ -5,8 +5,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Patterns
 import android.widget.Toast
+import androidx.lifecycle.lifecycleScope
 import com.example.fittracker.databinding.ActivityRegisterBinding
+import com.example.fittracker.home.HomeActivity
 import com.example.fittracker.model.User
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
@@ -14,12 +17,15 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-
+import kotlinx.coroutines.launch
 class RegisterActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRegisterBinding
-    private var database = FirebaseDatabase.getInstance().getReference("Users")
+    private val model= AuthViewModel()
+
+    /*private var database = FirebaseDatabase.getInstance().getReference("Users")
     private lateinit var auth: FirebaseAuth
     private lateinit var db: FirebaseFirestore
+    */
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,7 +36,7 @@ class RegisterActivity : AppCompatActivity() {
             finish()
         }
         binding.btnRegister.setOnClickListener { registrationFunction() }
-        db = Firebase.firestore
+
 
     }
 
@@ -41,11 +47,30 @@ class RegisterActivity : AppCompatActivity() {
         val Email = binding.InputEmail.text.toString()
         val Pass = binding.InputPassword.text.toString()
         val ConfPass = binding.InputCorrectPassword.text.toString().trim()
-        val check = checkFields(Username, Name, Lastname, Email, Pass, ConfPass)
-        auth = Firebase.auth
+        //val check = checkFields(Username, Name, Lastname, Email, Pass, ConfPass)
 
-        if (check) {
-            val user = User(Username, Name, Lastname)
+
+        lifecycleScope.launch {
+            if (model.singUp(Email, Pass) == null) {
+                MaterialAlertDialogBuilder(this@RegisterActivity)
+                    .setTitle("Attenzione!")
+                    .setMessage("Riempi tutti i campi richiesti per continuare")
+                    .setPositiveButton("OK") { dialog, which ->
+                        dialog.dismiss()
+                    }
+                    .show()
+            } else {
+                model.addAuthUtenteOnDB(Username, Name, Lastname, Email, this@RegisterActivity)
+                val intent = Intent(this@RegisterActivity, HomeActivity::class.java)
+                startActivity(intent)
+                finish()
+            }
+
+        }
+    }
+
+        /*if (check) {
+            val user = User(Username, Name, Lastname,Email)
             auth.createUserWithEmailAndPassword(Email, Pass).addOnCompleteListener(this) {
                 if (it.isSuccessful) {
                     val currentUser = Firebase.auth.currentUser
@@ -129,6 +154,6 @@ class RegisterActivity : AppCompatActivity() {
         } else
             return true
     }
-
+*/
 
 }

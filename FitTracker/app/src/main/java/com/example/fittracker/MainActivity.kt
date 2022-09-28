@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity() {
         val updateHandler = Handler()
 
         val runnable = Runnable {
-            val intent = Intent(this, LoginActivity::class.java)
+            val intent = Intent(this, HomeActivity::class.java)
             startActivity(intent)
             finish()
         }

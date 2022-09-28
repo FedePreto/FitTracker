@@ -2,7 +2,11 @@ package com.example.fittracker.home
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.ActionMenuView
+import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import com.example.fittracker.R
 import com.example.fittracker.autenticazione.LoginActivity
@@ -20,6 +24,13 @@ class HomeActivity : AppCompatActivity() {
     private val ioFragment = IoFragment()
     private val dieteFragment = DieteFragment()
     private val funzioniFragment = FunzioniFragment()
+
+
+    private var user  = Firebase.auth.currentUser
+
+
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
@@ -39,6 +50,38 @@ class HomeActivity : AppCompatActivity() {
             true
         }
 
+
+        var myToolbar = findViewById<View>(R.id.my_toolbar) as Toolbar
+
+        myToolbar.setNavigationOnClickListener {
+            Log.v("ok","ok")
+        }
+
+        var logoutIcon = findViewById<ActionMenuView>(R.id.ic_logout)
+        if(user==null)
+            logoutIcon.visibility = View.GONE
+        else
+            logoutIcon.visibility = View.VISIBLE
+
+        var loginIcon = findViewById<ActionMenuView>(R.id.ic_login)
+        if(user!=null)
+            loginIcon.visibility = View.GONE
+        else
+            loginIcon.visibility = View.VISIBLE
+
+        myToolbar.setOnMenuItemClickListener { menuItem ->
+         when (menuItem.itemId) {
+             R.id.ic_settings -> openSettings()
+             R.id.ic_guida -> openGuida()
+             R.id.ic_login ->{
+
+             }
+         }
+            true
+        }
+
+
+        /*
         binding.myToolbar.setOnMenuItemClickListener{
             when(it.itemId){
                 R.id.ic_settings -> openSettings()
@@ -46,7 +89,7 @@ class HomeActivity : AppCompatActivity() {
                 R.id.ic_logout -> logout()
             }
             true
-        }
+        }*/
     }
 
 
