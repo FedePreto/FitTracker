@@ -4,8 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.content.Intent
-import com.example.fittracker.autenticazione.LoginActivity
-import com.example.fittracker.home.HomeActivity
+import com.example.fittracker.autenticazione.InizioActivity
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -16,7 +15,7 @@ class MainActivity : AppCompatActivity() {
         val updateHandler = Handler()
 
         val runnable = Runnable {
-            val intent = Intent(this, LoginActivity::class.java)
+            val intent = Intent(this, InizioActivity::class.java)
             startActivity(intent)
             finish()
         }

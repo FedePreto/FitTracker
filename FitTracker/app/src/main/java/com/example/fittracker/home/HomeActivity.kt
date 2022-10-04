@@ -58,7 +58,7 @@ class HomeActivity : AppCompatActivity() {
             true
         }*/
 
-        val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragment_conteiner)
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         navController = navHostFragment.navController
 
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
@@ -118,7 +118,7 @@ class HomeActivity : AppCompatActivity() {
     private fun replaceFragment(fragment: Fragment){
         if(fragment != null){
             val transaction = supportFragmentManager.beginTransaction()
-            transaction.replace(R.id.fragment_conteiner, fragment)
+            transaction.replace(R.id.nav_host_fragment, fragment)
             transaction.commit()
         }
     }
