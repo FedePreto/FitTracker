@@ -27,7 +27,7 @@ class HomeActivity : AppCompatActivity() {
 
 
     private var user  = Firebase.auth.currentUser
-
+    lateinit var logIntent: Intent
 
 
 
@@ -73,8 +73,16 @@ class HomeActivity : AppCompatActivity() {
          when (menuItem.itemId) {
              R.id.ic_settings -> openSettings()
              R.id.ic_guida -> openGuida()
-             R.id.ic_login ->{
-
+             R.id.ic_login -> {
+                if(user == null){
+                    logIntent = Intent(this,LoginActivity::class.java)
+                    startActivity(logIntent)
+                }
+             }
+             R.id.ic_logout -> {
+                 if (user != null){
+                     logout()
+                 }
              }
          }
             true
