@@ -8,6 +8,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.ActionMenuView
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
+import androidx.navigation.NavController
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.setupWithNavController
 import com.example.fittracker.R
 import com.example.fittracker.autenticazione.LoginActivity
 import com.example.fittracker.databinding.ActivityHomeBinding
@@ -15,16 +19,19 @@ import com.example.fittracker.diario.DiarioFragment
 import com.example.fittracker.diete.DieteFragment
 import com.example.fittracker.funzioni.FunzioniFragment
 import com.example.fittracker.io.IoFragment
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
 class HomeActivity : AppCompatActivity() {
+    /*
     private lateinit var binding: ActivityHomeBinding
     private val diarioFragment = DiarioFragment()
     private val ioFragment = IoFragment()
     private val dieteFragment = DieteFragment()
     private val funzioniFragment = FunzioniFragment()
-
+*/
+    private lateinit var navController: NavController
 
     private var user  = Firebase.auth.currentUser
     lateinit var logIntent: Intent
@@ -34,13 +41,14 @@ class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
-        replaceFragment(diarioFragment)
-
-        binding = ActivityHomeBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        //replaceFragment(diarioFragment)
 
 
-        binding.bottomNavigation.setOnItemSelectedListener {
+        //binding = ActivityHomeBinding.inflate(layoutInflater)
+        //setContentView(binding.root)
+
+
+        /*binding.bottomNavigation.setOnItemSelectedListener {
             when(it.itemId){
                 R.id.ic_diary -> replaceFragment(diarioFragment)
                 R.id.ic_io -> replaceFragment(ioFragment)
@@ -48,7 +56,13 @@ class HomeActivity : AppCompatActivity() {
                 R.id.ic_funzioni -> replaceFragment(funzioniFragment)
             }
             true
-        }
+        }*/
+
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragment_conteiner)
+        navController = navHostFragment.navController
+
+        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
+        bottomNavigationView.setupWithNavController(navController)
 
 
         var myToolbar = findViewById<View>(R.id.my_toolbar) as Toolbar

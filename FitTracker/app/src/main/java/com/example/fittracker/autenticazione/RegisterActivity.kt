@@ -3,20 +3,10 @@ package com.example.fittracker.autenticazione
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Patterns
-import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
 import com.example.fittracker.databinding.ActivityRegisterBinding
 import com.example.fittracker.home.HomeActivity
-import com.example.fittracker.model.User
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.launch
 class RegisterActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRegisterBinding
