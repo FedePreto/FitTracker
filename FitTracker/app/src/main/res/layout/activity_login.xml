@@ -62,23 +62,14 @@
             app:layout_constraintEnd_toEndOf="@+id/InputPasswordLogin" android:textSize="20sp"
             android:background="@drawable/btn_bg" app:layout_constraintHorizontal_bias="0.0" android:textStyle="bold"
             app:layout_constraintTop_toBottomOf="@+id/InputPasswordLogin" android:layout_marginTop="44dp"
-    />
-    <TextView
-            android:text="@string/non_ho_account"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:id="@+id/NonHoAccount"
-            app:layout_constraintStart_toStartOf="@+id/btnLogin" app:layout_constraintEnd_toEndOf="@+id/btnLogin"
-            android:textSize="20sp" android:textStyle="bold"
-            android:clickable="true" app:layout_constraintHorizontal_bias="0.484"
-            app:layout_constraintTop_toBottomOf="@+id/btnLogin" android:layout_marginTop="20dp"
-            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintVertical_bias="0.014"/>
+            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintVertical_bias="0.286"/>
     <TextView
             android:text="@string/forgotPass"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:id="@+id/forgotPass"
+            android:layout_width="201dp"
+            android:layout_height="25dp" android:id="@+id/forgotPass"
             app:layout_constraintBottom_toBottomOf="@+id/InputPasswordLogin"
             app:layout_constraintEnd_toEndOf="@+id/InputPasswordLogin"
-            android:layout_marginBottom="-30dp" android:textStyle="bold" android:textSize="16sp"
-            android:clickable="true"/>
+            android:layout_marginBottom="-30dp" android:textStyle="bold" android:textSize="18sp"
+            android:clickable="true" android:textAlignment="textEnd"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

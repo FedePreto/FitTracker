@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.lifecycleScope
+import com.example.fittracker.databinding.ActivityInizioBinding
 import com.example.fittracker.databinding.ActivityRegisterBinding
 import com.example.fittracker.home.HomeActivity
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -23,9 +24,11 @@ class RegisterActivity : AppCompatActivity() {
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.HoGiaAccount.setOnClickListener() {
+            startActivity(Intent(this, InizioActivity::class.java))
             finish()
         }
         binding.btnRegister.setOnClickListener { registrationFunction() }
+
 
 
     }
@@ -55,38 +58,18 @@ class RegisterActivity : AppCompatActivity() {
                 startActivity(intent)
                 finish()
             }
-
         }
     }
 
-        /*if (check) {
-            val user = User(Username, Name, Lastname,Email)
-            auth.createUserWithEmailAndPassword(Email, Pass).addOnCompleteListener(this) {
-                if (it.isSuccessful) {
-                    val currentUser = Firebase.auth.currentUser
-                    val uid = currentUser?.uid.toString()
-                    val firebaseUser: FirebaseUser = it.result!!.user!!
-                    database.child(firebaseUser.uid).setValue(user)
-                    db.collection("DatiUtente").document("$uid").collection("Profilo").document("Anagrafiche").set(user)
-                        .addOnCompleteListener(this) {
-                            if (it.isSuccessful) {
-                                Toast.makeText(this, "Ti sei registrato con successo!", Toast.LENGTH_LONG).show()
-                                startActivity(Intent(this, DatiPersonaliActivity::class.java))
-                                finish()
-                            } else {
-
-                                Toast.makeText(this, "Qualcosa è andato storto!", Toast.LENGTH_LONG).show()
-                            }
-                        }
-
-                } else {
-                    Toast.makeText(this, "Qualcosa è andato storto, riprova!", Toast.LENGTH_LONG).show()
-
-                }
-            }
-        }
+    override fun onBackPressed() {
+        startActivity(Intent(this, InizioActivity::class.java))
     }
 
+
+
+
+
+    /*
     private fun checkFields(
         Username: String,
         Name: String,

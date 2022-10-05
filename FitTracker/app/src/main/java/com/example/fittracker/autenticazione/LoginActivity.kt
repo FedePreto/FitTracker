@@ -10,6 +10,8 @@ import com.example.fittracker.databinding.ActivityLoginBinding
 import com.google.firebase.auth.*
 import com.google.firebase.database.FirebaseDatabase
 
+
+
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
     private lateinit var auth: FirebaseAuth
@@ -20,9 +22,7 @@ class LoginActivity : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.NonHoAccount.setOnClickListener(){
-            startActivity(Intent(this, RegisterActivity::class.java))
-        }
+
 
         binding.forgotPass.setOnClickListener(){
             startActivity(Intent(this, RecuperoPasswordActivity::class.java))
@@ -87,6 +87,10 @@ class LoginActivity : AppCompatActivity() {
 
     private fun reload() {
 
+    }
+
+    override fun onBackPressed() {
+        startActivity(Intent(this, InizioActivity::class.java))
     }
 
 

@@ -37,7 +37,6 @@ class ObbiettivoActivity : AppCompatActivity(){
                 selezione = "aumenta"
             }
         }
-        onBackPressed()
         db = Firebase.firestore
 
     }
@@ -46,11 +45,11 @@ class ObbiettivoActivity : AppCompatActivity(){
         val rb_Diminuisci = binding.rBDiminuisci
         val rb_Mantieni = binding.rBMantieni
         val rb_Aumenta = binding.rBAumenta
-        val PesoIdeale = binding.kgObb.text.toString()
-        val check = checkFields(rb_Aumenta, rb_Diminuisci, rb_Mantieni, PesoIdeale)
+
+        val check = checkFields(rb_Aumenta, rb_Diminuisci, rb_Mantieni)
         val currentUser = Firebase.auth.currentUser
         val uid = currentUser?.uid.toString()
-        val obbUser = ObbPeso(selezione,PesoIdeale)
+        val obbUser = ObbPeso(selezione)
 
         if(check){
             db.collection("DatiUtente").document("$uid").collection("ObbiettivoPeso").document("ObbiettivoIniziale").set(obbUser)
@@ -71,26 +70,17 @@ class ObbiettivoActivity : AppCompatActivity(){
     }
 
     override fun onBackPressed() {
+        startActivity(Intent(this, InizioActivity::class.java))
+        finish()
     }
 
 
-    private fun checkFields( rb_Aumenta : RadioButton, rb_Diminuisci : RadioButton, rb_Mantieni: RadioButton, PesoIdeale: String) : Boolean{
+    private fun checkFields( rb_Aumenta : RadioButton, rb_Diminuisci : RadioButton, rb_Mantieni: RadioButton) : Boolean{
         if(!rb_Aumenta.isChecked && !rb_Diminuisci.isChecked && !rb_Mantieni.isChecked){
             binding.rBMantieni.setError("Selezionare una tipologia di obbiettivo!")
             binding.GruppoRadio.requestFocus()
             return false
         }
-        if (PesoIdeale.isEmpty()){
-            binding.kgObb.setError("Inserire il peso che si desidera raggiungere.")
-            binding.kgObb.requestFocus()
-            return false
-        }
-        if (PesoIdeale.toShort()<35){
-            binding.kgObb.setError("Peso troppo basso, aumentare i chili. (min. 35 kg)")
-            binding.kgObb.requestFocus()
-            return false
-        }
-
 
         else
             return true

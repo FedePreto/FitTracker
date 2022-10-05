@@ -24,11 +24,12 @@ class InizioActivity : AppCompatActivity() {
         startVideo()
 
         binding.BtInizia.setOnClickListener(){
-            startActivity(Intent(this, RegisterActivity::class.java))
+            startActivity(Intent(this, ObbiettivoActivity::class.java))
             finish()
         }
         binding.btAccesso.setOnClickListener(){
             startActivity(Intent(this, LoginActivity::class.java))
+            finish()
         }
 
 
@@ -42,4 +43,6 @@ class InizioActivity : AppCompatActivity() {
         mVideoView.start()
         mVideoView.setOnCompletionListener { mVideoView.start() }
     }
+
+
 }
