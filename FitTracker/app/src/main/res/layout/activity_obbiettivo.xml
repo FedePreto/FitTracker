@@ -8,37 +8,23 @@
         android:background="@color/green_bg"
         tools:context=".autenticazione.ObbiettivoActivity"
 >
-    <SeekBar
-            android:id="@+id/seekbar"
-            style="@style/Widget.AppCompat.SeekBar.Discrete"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:enabled="false"
-            android:max="8" app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/textView4" app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintVertical_bias="0.152" app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            android:thumb="@android:drawable/presence_online" android:background="@drawable/btn_bg"
-            android:clickable="false" android:contextClickable="false" android:focusable="false" android:min="0"
-            android:overScrollMode="never" android:scrollbarAlwaysDrawHorizontalTrack="false"
-            android:scrollbarAlwaysDrawVerticalTrack="false"/>
     <TextView
             android:text="Quale obbiettivo vuoi raggiungere?"
             android:layout_width="330dp"
             android:layout_height="80dp" android:id="@+id/textView4"
             android:textSize="30sp" android:textAlignment="center"
-            android:textStyle="bold" android:textColor="@color/white"
+            android:textStyle="bold|italic" android:textColor="@color/white"
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toTopOf="@+id/GruppoRadio"
             app:layout_constraintHorizontal_bias="0.493"
             android:layout_marginBottom="8dp"/>
 
     <RadioGroup
-            android:layout_width="313dp"
-            android:layout_height="245dp"
+            android:layout_width="328dp"
+            android:layout_height="281dp"
             android:id="@+id/GruppoRadio" app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toTopOf="@+id/btnObbiettivo"
-            android:layout_marginBottom="52dp" app:layout_constraintHorizontal_bias="0.489"
+            app:layout_constraintHorizontal_bias="0.489"
             android:background="@color/transparent">
         <RadioButton
                 android:text="Diminuisci peso-forma"
@@ -63,9 +49,9 @@
                 android:background="@drawable/btn_bg"/>
     </RadioGroup>
     <Button
-            android:text="Conferma"
-            android:layout_width="226dp"
-            android:layout_height="64dp" android:id="@+id/btnObbiettivo"
+            android:text="AVANTI"
+            android:layout_width="225dp"
+            android:layout_height="65dp" android:id="@+id/btnObbiettivo"
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintHorizontal_bias="0.497"
             android:layout_marginBottom="56dp" android:textStyle="bold" android:background="@drawable/btn_bg"
@@ -74,8 +60,9 @@
             android:orientation="horizontal"
             android:layout_width="316dp"
             android:layout_height="86dp"
-            app:layout_constraintTop_toBottomOf="@+id/seekbar" app:layout_constraintBottom_toTopOf="@+id/textView4"
-            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent">
+            app:layout_constraintBottom_toTopOf="@+id/textView4" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.77" android:id="@+id/linearLayout2">
         <ImageView
                 android:layout_width="94dp"
                 android:layout_height="84dp" app:srcCompat="@drawable/logo_small_icon_only_inverted"
@@ -84,6 +71,47 @@
                 android:text="Conosciamoci meglio!"
                 android:layout_width="219dp"
                 android:layout_height="match_parent" android:id="@+id/textView13" android:layout_weight="1"
-                android:textStyle="bold" android:textAlignment="center" android:textSize="32sp"/>
+                android:textStyle="bold" android:textAlignment="center" android:textSize="32sp"
+        />
+    </LinearLayout>
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            app:layout_constraintBottom_toTopOf="@+id/linearLayout2" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" android:background="@drawable/btn_bg">
+        <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" app:srcCompat="@drawable/rounded_rectangle"
+                android:id="@+id/imageView10" android:layout_weight="1"/>
+        <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" app:srcCompat="@drawable/rounded_rectangle_vuoto"
+                android:id="@+id/imageView7" android:layout_weight="1"/>
+        <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" app:srcCompat="@drawable/rounded_rectangle_vuoto"
+                android:id="@+id/imageView11" android:layout_weight="1"/>
+        <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" app:srcCompat="@drawable/rounded_rectangle_vuoto"
+                android:id="@+id/imageView12" android:layout_weight="1"/>
+        <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" app:srcCompat="@drawable/rounded_rectangle_vuoto"
+                android:id="@+id/imageView13" android:layout_weight="1"/>
+        <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" app:srcCompat="@drawable/rounded_rectangle_vuoto"
+                android:id="@+id/imageView14" android:layout_weight="1"/>
+        <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" app:srcCompat="@drawable/rounded_rectangle_vuoto"
+                android:id="@+id/imageView15" android:layout_weight="1"/>
+        <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" app:srcCompat="@drawable/rounded_rectangle_vuoto"
+                android:id="@+id/imageView16" android:layout_weight="1"/>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

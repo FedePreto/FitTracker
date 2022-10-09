@@ -23,4 +23,5 @@
     <string name="info2">Immetti il tuo indirizzo email per cambiare la password.</string>
     <string name="completa">Completa con i tuoi dati...</string>
     <string name="inizio">La tua applicazione per la nutrizione e una vita più sana.</string>
+    <string name="sesso">Uomo o Donna?</string>
 </resources>
