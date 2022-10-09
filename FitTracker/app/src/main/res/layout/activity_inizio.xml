@@ -27,7 +27,7 @@
     <Button
             android:text="INIZIA"
             android:layout_width="245dp"
-            android:layout_height="50dp" android:id="@+id/BtInizia"
+            android:layout_height="50dp" android:id="@+id/btInizia"
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView9"
             android:background="@drawable/btn_bg_2" android:textStyle="bold"

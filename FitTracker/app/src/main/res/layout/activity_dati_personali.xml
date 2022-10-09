@@ -90,13 +90,13 @@
             android:layout_width="295dp"
             android:layout_height="40dp" android:id="@+id/tE_surname"
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/bt_Avanti"
+            app:layout_constraintBottom_toTopOf="@+id/bt_AvantiDati"
             android:layout_marginBottom="84dp" android:textSize="25sp" android:hint="Cognome"
             android:background="@drawable/btn_bg" android:textAlignment="center"/>
     <Button
             android:text="AVANTI"
             android:layout_width="225dp"
-            android:layout_height="65dp" android:id="@+id/bt_Avanti"
+            android:layout_height="65dp" android:id="@+id/bt_AvantiDati"
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginBottom="68dp" android:background="@drawable/btn_bg" android:textSize="25sp"

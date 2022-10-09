@@ -14,7 +14,8 @@
         <entry key="..\:/Users/aless/Documents/Progetto_Mobile/Progetto_Programmazione_Mobile/FitTracker/app/src/main/res/drawable/ic_notifications_black_24dp.xml" value="0.26145833333333335" />
         <entry key="..\:/Users/aless/Documents/Progetto_Mobile/Progetto_Programmazione_Mobile/FitTracker/app/src/main/res/drawable/input_bg.xml" value="0.16203703703703703" />
         <entry key="..\:/Users/aless/Documents/Progetto_Mobile/Progetto_Programmazione_Mobile/FitTracker/app/src/main/res/drawable/redprogress.xml" value="0.36354166666666665" />
-        <entry key="..\:/Users/aless/Documents/Progetto_Mobile/Progetto_Programmazione_Mobile/FitTracker/app/src/main/res/layout/activity_dati_personali.xml" value="0.3625" />
+        <entry key="..\:/Users/aless/Documents/Progetto_Mobile/Progetto_Programmazione_Mobile/FitTracker/app/src/main/res/layout/activity_altezza.xml" value="0.26145833333333335" />
+        <entry key="..\:/Users/aless/Documents/Progetto_Mobile/Progetto_Programmazione_Mobile/FitTracker/app/src/main/res/layout/activity_dati_personali.xml" value="0.25" />
         <entry key="..\:/Users/aless/Documents/Progetto_Mobile/Progetto_Programmazione_Mobile/FitTracker/app/src/main/res/layout/activity_home.xml" value="0.33" />
         <entry key="..\:/Users/aless/Documents/Progetto_Mobile/Progetto_Programmazione_Mobile/FitTracker/app/src/main/res/layout/activity_inizio.xml" value="0.22" />
         <entry key="..\:/Users/aless/Documents/Progetto_Mobile/Progetto_Programmazione_Mobile/FitTracker/app/src/main/res/layout/activity_login.xml" value="0.33" />
@@ -22,6 +23,8 @@
         <entry key="..\:/Users/aless/Documents/Progetto_Mobile/Progetto_Programmazione_Mobile/FitTracker/app/src/main/res/layout/activity_main2.xml" value="0.33" />
         <entry key="..\:/Users/aless/Documents/Progetto_Mobile/Progetto_Programmazione_Mobile/FitTracker/app/src/main/res/layout/activity_main5.xml" value="0.22" />
         <entry key="..\:/Users/aless/Documents/Progetto_Mobile/Progetto_Programmazione_Mobile/FitTracker/app/src/main/res/layout/activity_obbiettivo.xml" value="0.33" />
+        <entry key="..\:/Users/aless/Documents/Progetto_Mobile/Progetto_Programmazione_Mobile/FitTracker/app/src/main/res/layout/activity_peso_attuale.xml" value="0.26145833333333335" />
+        <entry key="..\:/Users/aless/Documents/Progetto_Mobile/Progetto_Programmazione_Mobile/FitTracker/app/src/main/res/layout/activity_peso_obb.xml" value="0.26145833333333335" />
         <entry key="..\:/Users/aless/Documents/Progetto_Mobile/Progetto_Programmazione_Mobile/FitTracker/app/src/main/res/layout/activity_rec_password.xml" value="0.25" />
         <entry key="..\:/Users/aless/Documents/Progetto_Mobile/Progetto_Programmazione_Mobile/FitTracker/app/src/main/res/layout/activity_register.xml" value="0.18" />
         <entry key="..\:/Users/aless/Documents/Progetto_Mobile/Progetto_Programmazione_Mobile/FitTracker/app/src/main/res/layout/activity_sesso.xml" value="0.25" />

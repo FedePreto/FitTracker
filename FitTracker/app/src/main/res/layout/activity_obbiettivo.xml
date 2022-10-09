@@ -23,7 +23,7 @@
             android:layout_width="328dp"
             android:layout_height="281dp"
             android:id="@+id/GruppoRadio" app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toTopOf="@+id/btnObbiettivo"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toTopOf="@+id/bt_AvantiObb"
             app:layout_constraintHorizontal_bias="0.489"
             android:background="@color/transparent">
         <RadioButton
@@ -51,7 +51,7 @@
     <Button
             android:text="AVANTI"
             android:layout_width="225dp"
-            android:layout_height="65dp" android:id="@+id/btnObbiettivo"
+            android:layout_height="65dp" android:id="@+id/bt_AvantiObb"
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintHorizontal_bias="0.497"
             android:layout_marginBottom="56dp" android:textStyle="bold" android:background="@drawable/btn_bg"

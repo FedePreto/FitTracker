@@ -19,6 +19,15 @@
             android:supportsRtl="true"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity
+                android:name=".PesoObbActivity"
+                android:exported="false"/>
+        <activity
+                android:name=".PesoAttualeActivity"
+                android:exported="false"/>
+        <activity
+                android:name=".AltezzaActivity"
+                android:exported="false"/>
+        <activity
                 android:name=".DatiPersonali"
                 android:exported="false"/>
         <activity
