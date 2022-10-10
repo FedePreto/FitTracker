@@ -19,6 +19,9 @@
             android:supportsRtl="true"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity
+                android:name=".SliderActivity"
+                android:exported="false"/>
+        <activity
                 android:name=".PesoObbActivity"
                 android:exported="false"/>
         <activity

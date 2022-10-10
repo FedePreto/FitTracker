@@ -68,9 +68,9 @@
                 android:layout_height="match_parent"
                 android:inputType="numberDecimal"
                 android:ems="10"
-                android:layout_marginLeft="30dp"
+                android:layout_marginStart="30dp"
                 android:id="@+id/eT_PesoObb" android:layout_weight="1" android:textSize="50sp"
-                android:textAlignment="center"/>
+                android:textAlignment="center" android:autofillHints=""/>
         <TextView
                 android:text="Kg"
                 android:layout_marginRight="10dp"
