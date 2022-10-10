@@ -118,7 +118,7 @@
             tools:layout_editor_absoluteY="457dp"
             app:layout_constraintEnd_toEndOf="@+id/seekBar" android:textStyle="bold" android:textSize="21sp"
             android:textColor="@color/black" android:hint="0.3 Kg/Settimana"
-            app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.953"/>
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="1.0"/>
     <Button
             android:text="AVANTI"
             android:layout_width="225dp"
