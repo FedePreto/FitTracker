@@ -2,9 +2,7 @@ package com.example.fittracker.databaseFB
 
 import android.content.Context
 import android.widget.Toast
-import com.example.fittracker.model.User
 import kotlinx.coroutines.*
-import com.google.firebase.firestore.ktx.toObjects
 import kotlinx.coroutines.tasks.await
 
 class UtenteDB : FirebaseDB() {
@@ -14,16 +12,11 @@ class UtenteDB : FirebaseDB() {
     var status = false
 
     suspend fun addUtente(
-        username: String,
-        name: String,
-        lastname: String,
         email: String,
         contesto: Context
     ): Boolean {
         val utente = hashMapOf<String, Any>(
-            "username" to username,
-            "name" to name,
-            "lastname" to lastname,
+
             "email" to email
         )
 

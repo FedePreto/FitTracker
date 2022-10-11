@@ -42,18 +42,20 @@ class AuthViewModel : ViewModel() {
     }
 
 
-    suspend fun addAuthUtenteOnDB(username: String, name: String, lastname: String, email: String, contesto: Context) {
+    suspend fun addAuthUtenteOnDB(email: String, contesto: Context) {
         try {
             val user = auth.currentUser
             val profileUpdates = userProfileChangeRequest {
-                displayName = username
+                displayName = email
             }
             user!!.updateProfile(profileUpdates)
-            UtenteDB.addUtente(username, name, lastname, email, contesto)
+            UtenteDB.addUtente(email, contesto)
 
         } catch (e: Exception) {
         }
     }
+
+
 
 
 }

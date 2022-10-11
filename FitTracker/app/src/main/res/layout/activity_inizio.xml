@@ -17,25 +17,24 @@
     <Button
             android:text="ACCEDI"
             android:layout_width="245dp"
-            android:layout_height="50dp" android:id="@+id/btAccesso"
+            android:layout_height="65dp" android:id="@+id/btAccesso"
             app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:background="@drawable/btn_bg" android:textSize="28sp"
             android:textStyle="bold" android:textAlignment="center" android:textAppearance="@style/EditTextyTextViews"
             android:fontFamily="sans-serif-medium"
-            android:layout_marginBottom="52dp"/>
+            android:layout_marginBottom="50dp"/>
     <Button
             android:text="INIZIA"
             android:layout_width="245dp"
-            android:layout_height="50dp" android:id="@+id/btInizia"
+            android:layout_height="65dp" android:id="@+id/btInizia"
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView9"
             android:background="@drawable/btn_bg_2" android:textStyle="bold"
-            android:textColor="@color/white" android:textSize="28sp"
+            android:textColor="@color/white" android:textSize="45sp"
             android:textAppearance="@style/EditTextyTextViews"
-            android:fontFamily="sans-serif-medium"
-            app:layout_constraintBottom_toTopOf="@+id/btAccesso" app:layout_constraintVertical_bias="1.0"
-            android:layout_marginBottom="35dp"/>
+            android:fontFamily="cursive"
+            app:layout_constraintBottom_toTopOf="@+id/btAccesso"
+            android:layout_marginBottom="50dp"/>
     <TextView
             android:layout_width="365dp"
             android:layout_height="114dp" android:id="@+id/textView9"
@@ -44,12 +43,13 @@
             android:textSize="28sp" app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:textColor="@color/white"
-            app:layout_constraintTop_toBottomOf="@+id/imageView5" android:layout_marginTop="100dp"/>
+            app:layout_constraintBottom_toTopOf="@+id/btInizia" android:layout_marginBottom="120dp"/>
     <ImageView
             android:src="@drawable/logo_white_large"
             android:layout_width="296dp"
             android:layout_height="101dp" android:id="@+id/imageView5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="44dp" app:layout_constraintHorizontal_bias="0.495"/>
+            android:layout_marginTop="25dp" app:layout_constraintHorizontal_bias="0.495"
+            app:layout_constraintBottom_toTopOf="@+id/textView9" app:layout_constraintVertical_bias="0.07"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

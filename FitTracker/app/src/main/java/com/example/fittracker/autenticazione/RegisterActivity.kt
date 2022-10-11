@@ -4,7 +4,6 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.lifecycleScope
-import com.example.fittracker.databinding.ActivityInizioBinding
 import com.example.fittracker.databinding.ActivityRegisterBinding
 import com.example.fittracker.home.HomeActivity
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -23,10 +22,7 @@ class RegisterActivity : AppCompatActivity() {
 
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        binding.HoGiaAccount.setOnClickListener() {
-            startActivity(Intent(this, InizioActivity::class.java))
-            finish()
-        }
+
         binding.btnRegister.setOnClickListener { registrationFunction() }
 
 
@@ -34,9 +30,7 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun registrationFunction() {
-        val Username = binding.InputUsername.text.toString().trim()
-        val Name = binding.InputName.text.toString().trim()
-        val Lastname = binding.InputLastname.text.toString().trim()
+
         val Email = binding.InputEmail.text.toString()
         val Pass = binding.InputPassword.text.toString()
         val ConfPass = binding.InputCorrectPassword.text.toString().trim()
@@ -53,7 +47,7 @@ class RegisterActivity : AppCompatActivity() {
                     }
                     .show()
             } else {
-                model.addAuthUtenteOnDB(Username, Name, Lastname, Email, this@RegisterActivity)
+                model.addAuthUtenteOnDB(Email, this@RegisterActivity)
                 val intent = Intent(this@RegisterActivity, HomeActivity::class.java)
                 startActivity(intent)
                 finish()
