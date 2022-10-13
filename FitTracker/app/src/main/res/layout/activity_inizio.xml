@@ -12,7 +12,7 @@
             android:layout_height="wrap_content" android:id="@+id/videoView"
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintHorizontal_bias="0.0" app:layout_constraintVertical_bias="0.0" android:scaleX="1.4"
+            app:layout_constraintHorizontal_bias="0.0" app:layout_constraintVertical_bias="1.0" android:scaleX="1.4"
             android:scaleY="1.5" android:background="@color/black_overlay"/>
     <Button
             android:text="ACCEDI"
@@ -20,36 +20,44 @@
             android:layout_height="65dp" android:id="@+id/btAccesso"
             app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:background="@drawable/btn_bg" android:textSize="28sp"
+            android:textSize="28sp"
             android:textStyle="bold" android:textAlignment="center" android:textAppearance="@style/EditTextyTextViews"
             android:fontFamily="sans-serif-medium"
-            android:layout_marginBottom="50dp"/>
+            android:backgroundTint="@color/transparent" android:textColor="#FFFFFF"
+            android:background="@drawable/input_bg" android:layout_marginBottom="15dp"/>
     <Button
             android:text="INIZIA"
             android:layout_width="245dp"
             android:layout_height="65dp" android:id="@+id/btInizia"
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
-            android:background="@drawable/btn_bg_2" android:textStyle="bold"
-            android:textColor="@color/white" android:textSize="45sp"
-            android:textAppearance="@style/EditTextyTextViews"
-            android:fontFamily="cursive"
+            android:background="@drawable/btn_bg_2" android:textStyle="bold|italic"
+            android:textColor="@color/white" android:textSize="28sp"
+            android:textAppearance="@style/Sub_Sub_Titulos"
+            android:fontFamily="sans-serif"
             app:layout_constraintBottom_toTopOf="@+id/btAccesso"
-            android:layout_marginBottom="50dp"/>
+            android:layout_marginBottom="20dp"/>
     <TextView
-            android:layout_width="365dp"
-            android:layout_height="114dp" android:id="@+id/textView9"
+            android:layout_width="377dp"
+            android:layout_height="79dp" android:id="@+id/textView9"
             android:text="@string/inizio" android:textStyle="bold|italic"
             android:textAlignment="center" android:textAppearance="@style/TextoOlvidasteyRegistro"
-            android:textSize="28sp" app:layout_constraintStart_toStartOf="parent"
+            android:textSize="24sp" app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:textColor="@color/white"
-            app:layout_constraintBottom_toTopOf="@+id/btInizia" android:layout_marginBottom="120dp"/>
+            app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="220dp"
+            app:layout_constraintHorizontal_bias="0.529"/>
     <ImageView
-            android:src="@drawable/logo_white_large"
-            android:layout_width="296dp"
-            android:layout_height="101dp" android:id="@+id/imageView5"
+            android:src="@drawable/color_logo_no_background_logo"
+            android:layout_width="247dp"
+            android:layout_height="124dp" android:id="@+id/imageView5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="25dp" app:layout_constraintHorizontal_bias="0.495"
-            app:layout_constraintBottom_toTopOf="@+id/textView9" app:layout_constraintVertical_bias="0.07"/>
+            android:layout_marginTop="20dp" app:layout_constraintBottom_toTopOf="@+id/imageView70"
+            app:layout_constraintVertical_bias="0.222" app:layout_constraintHorizontal_bias="0.493"/>
+    <ImageView
+            android:layout_width="369dp"
+            android:layout_height="121dp" app:srcCompat="@drawable/color_logo_no_background_solo_scritta"
+            android:id="@+id/imageView70"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/textView9"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,11 +1,14 @@
 package com.example.fittracker.autenticazione
 
+import android.annotation.SuppressLint
 import android.content.Intent
+import android.graphics.PorterDuff
 import android.media.MediaPlayer
 import android.media.MediaPlayer.OnPreparedListener
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MotionEvent
 import android.view.View
 import android.widget.VideoView
 import com.example.fittracker.R
@@ -21,7 +24,8 @@ class InizioActivity : AppCompatActivity() {
         setContentView(R.layout.activity_inizio)
         binding = ActivityInizioBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        buttonEffect(binding.btInizia)
+        buttonEffect(binding.btAccesso)
         avvioVideo()
 
 
@@ -29,6 +33,7 @@ class InizioActivity : AppCompatActivity() {
             var a = Intent(this, ObbiettivoActivity::class.java)
             a.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
             startActivity(a)
+
         }
 
 
@@ -67,6 +72,23 @@ class InizioActivity : AppCompatActivity() {
     override fun onDestroy() {
         binding.videoView.stopPlayback()
         super.onDestroy()
+    }
+
+    @SuppressLint("ClickableViewAccessibility")
+    fun buttonEffect(button: View) {
+        button.setOnTouchListener { v, event ->
+            when (event.action) {
+                MotionEvent.ACTION_DOWN -> {
+                    v.background.setColorFilter(0x66000000, PorterDuff.Mode.SRC_ATOP)
+                    v.invalidate()
+                }
+                MotionEvent.ACTION_UP -> {
+                    v.background.clearColorFilter()
+                    v.invalidate()
+                }
+            }
+            false
+        }
     }
 
 
