@@ -89,9 +89,6 @@ class LoginActivity : AppCompatActivity() {
 
     }
 
-    override fun onBackPressed() {
-        startActivity(Intent(this, InizioActivity::class.java))
-    }
 
 
 

@@ -12,8 +12,8 @@ import android.view.MotionEvent
 import android.view.View
 import android.widget.VideoView
 import com.example.fittracker.R
-import com.example.fittracker.databinding.ActivityInizioBinding
-import com.example.fittracker.databinding.ActivityLoginBinding
+import com.example.fittracker.databinding.*
+
 
 class InizioActivity : AppCompatActivity() {
     private lateinit var binding: ActivityInizioBinding
