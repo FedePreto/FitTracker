@@ -30,7 +30,7 @@ class InizioActivity : AppCompatActivity() {
 
 
         binding.btInizia.setOnClickListener {
-            var a = Intent(this, ObbiettivoActivity::class.java)
+            var a = Intent(this, ConosciamociActivity::class.java)
             a.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
             startActivity(a)
 

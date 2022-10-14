@@ -66,8 +66,7 @@
             android:layout_height="67dp"
             app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
             android:id="@+id/linearLayout7"
-            app:layout_constraintBottom_toTopOf="@+id/textView17" android:layout_marginBottom="28dp"
-    >
+            app:layout_constraintBottom_toTopOf="@+id/linearLayout10" android:layout_marginBottom="56dp">
         <TextView
                 android:layout_marginRight="30dp"
                 android:text="Da"
@@ -90,20 +89,21 @@
                 android:textStyle="bold" android:textColor="@color/black" android:textAlignment="viewStart"
                 android:textSize="35sp"/>
     </LinearLayout>
-    <TextView
-            android:text="A"
-            android:layout_width="40dp"
-            android:layout_height="65dp" android:id="@+id/textView17"
-            android:textAlignment="center" android:textStyle="bold|italic"
-            android:textColor="@color/black" android:textSize="50sp" app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toTopOf="@+id/linearLayout10"
-            app:layout_constraintHorizontal_bias="0.498" android:layout_marginBottom="15dp"/>
     <LinearLayout
             android:orientation="horizontal"
-            android:layout_width="220dp"
-            android:layout_height="55dp" tools:layout_editor_absoluteX="95dp"
-            app:layout_constraintBottom_toTopOf="@+id/linearLayout8" android:layout_marginBottom="50dp"
-            android:id="@+id/linearLayout10">
+            android:layout_width="344dp"
+            android:layout_height="70dp"
+            app:layout_constraintBottom_toTopOf="@+id/linearLayout8" android:layout_marginBottom="52dp"
+            android:id="@+id/linearLayout10" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.515">
+        <TextView
+                android:layout_marginRight="30dp"
+                android:text="A"
+                android:layout_width="40dp"
+                android:layout_height="65dp" android:id="@+id/textView17"
+                android:textAlignment="center" android:textStyle="bold|italic"
+                android:textColor="@color/black" android:textSize="50sp"
+        />
         <TextView
                 android:layout_width="160dp"
                 android:layout_height="55dp" android:id="@+id/tV_APeso" android:layout_weight="1"
@@ -120,10 +120,10 @@
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:id="@+id/kg_per_settimana"
-            tools:layout_editor_absoluteY="462dp"
             app:layout_constraintEnd_toEndOf="@+id/seekBar" android:textStyle="bold" android:textSize="21sp"
             android:textColor="@color/black" android:hint="0.3 Kg/Settimana"
-            app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="1.0"/>
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="1.0"
+            android:layout_marginBottom="8dp" app:layout_constraintBottom_toTopOf="@+id/seekBar"/>
     <Button
             android:text="AVANTI"
             android:layout_width="225dp"
@@ -138,7 +138,7 @@
             android:layout_height="66dp"
             app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
             android:id="@+id/linearLayout8" app:layout_constraintBottom_toTopOf="@+id/kg_per_settimana"
-            android:layout_marginBottom="20dp">
+            android:layout_marginBottom="44dp" app:layout_constraintHorizontal_bias="1.0">
         <TextView
                 android:text="Otterrai tale risultato il:"
                 android:layout_marginLeft="15dp"
