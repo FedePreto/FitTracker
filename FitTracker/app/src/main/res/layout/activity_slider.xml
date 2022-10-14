@@ -5,51 +5,52 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".autenticazione.SliderActivity" android:background="@color/green_bg">
+        tools:context=".autenticazione.SliderActivity" android:background="@color/white">
 
     <LinearLayout
             android:orientation="horizontal"
-            android:layout_width="0dp"
-            android:layout_height="35dp"
+            android:gravity="center"
+            android:layout_width="365dp"
+            android:layout_height="60dp"
             android:background="@drawable/btn_bg" app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/textView14" app:layout_constraintVertical_bias="0.0">
+            app:layout_constraintBottom_toTopOf="@+id/linearLayout7" app:layout_constraintVertical_bias="0.0">
         <ImageView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" app:srcCompat="@drawable/rounded_rectangle"
+                android:layout_height="wrap_content" app:srcCompat="@drawable/linietta"
                 android:id="@+id/imageView51" android:layout_weight="1"/>
         <ImageView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" app:srcCompat="@drawable/rounded_rectangle"
+                android:layout_height="wrap_content" app:srcCompat="@drawable/linietta"
                 android:id="@+id/imageView58" android:layout_weight="1"/>
         <ImageView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" app:srcCompat="@drawable/rounded_rectangle"
+                android:layout_height="wrap_content" app:srcCompat="@drawable/linietta"
                 android:id="@+id/imageView57" android:layout_weight="1"/>
         <ImageView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" app:srcCompat="@drawable/rounded_rectangle"
+                android:layout_height="wrap_content" app:srcCompat="@drawable/linietta"
                 android:id="@+id/imageView52" android:layout_weight="1"/>
         <ImageView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" app:srcCompat="@drawable/rounded_rectangle"
+                android:layout_height="wrap_content" app:srcCompat="@drawable/linietta"
                 android:id="@+id/imageView56" android:layout_weight="1"/>
         <ImageView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" app:srcCompat="@drawable/rounded_rectangle"
+                android:layout_height="wrap_content" app:srcCompat="@drawable/linietta"
                 android:id="@+id/imageView59" android:layout_weight="1"/>
         <ImageView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" app:srcCompat="@drawable/rounded_rectangle"
+                android:layout_height="wrap_content" app:srcCompat="@drawable/linietta"
                 android:id="@+id/imageView60" android:layout_weight="1"/>
         <ImageView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" app:srcCompat="@drawable/rounded_rectangle_vuoto"
+                android:layout_height="wrap_content" app:srcCompat="@drawable/linietta_grigia"
                 android:id="@+id/imageView61" android:layout_weight="1"/>
     </LinearLayout>
     <SeekBar
             style="@android:style/Widget.Material.SeekBar.Discrete"
-            android:layout_width="348dp"
+            android:layout_width="373dp"
             android:layout_height="32dp"
             android:max="4"
             android:progress="2"
@@ -59,30 +60,31 @@
             android:background="@drawable/btn_bg" android:thumb="@android:drawable/presence_online"
             android:progressTint="@color/green_bg" app:layout_constraintBottom_toTopOf="@+id/button"
             android:layout_marginBottom="36dp"/>
-    <TextView
-            android:text="Da"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:id="@+id/textView14"
-            android:textSize="50sp" android:textStyle="bold|italic"
-            android:textAlignment="center" app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.498"
-            android:textColor="@color/white"
-            app:layout_constraintBottom_toTopOf="@+id/linearLayout7" android:layout_marginBottom="12dp"/>
     <LinearLayout
             android:orientation="horizontal"
-            android:layout_width="220dp"
-            android:layout_height="55dp"
+            android:layout_width="357dp"
+            android:layout_height="67dp"
             app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
-            android:id="@+id/linearLayout7" app:layout_constraintHorizontal_bias="0.497"
-            app:layout_constraintBottom_toTopOf="@+id/textView17" android:layout_marginBottom="24dp">
+            android:id="@+id/linearLayout7"
+            app:layout_constraintBottom_toTopOf="@+id/textView17" android:layout_marginBottom="28dp"
+    >
         <TextView
-                android:layout_width="160dp"
-                android:layout_height="55dp" android:id="@+id/tV_DaPeso"
+                android:layout_marginRight="30dp"
+                android:text="Da"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent" android:id="@+id/textView14"
+                android:textSize="50sp" android:textStyle="bold|italic"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:layout_marginBottom="8dp"/>
+        <TextView
+                android:layout_width="163dp"
+                android:layout_height="match_parent" android:id="@+id/tV_DaPeso"
                 android:textSize="40sp" android:textAlignment="center"
-                android:background="@drawable/btn_bg" android:hint="DaPeso" android:editable="false"/>
+                android:background="@drawable/input_bg_green" android:hint="DaPeso" android:editable="false"/>
         <TextView
                 android:text="Kg"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="30dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" android:id="@+id/textView16" android:layout_weight="1"
                 android:textStyle="bold" android:textColor="@color/black" android:textAlignment="viewStart"
@@ -91,18 +93,21 @@
     <TextView
             android:text="A"
             android:layout_width="40dp"
-            android:layout_height="65dp" android:id="@+id/textView17" tools:layout_editor_absoluteY="196dp"
-            tools:layout_editor_absoluteX="185dp" android:textAlignment="center" android:textStyle="bold|italic"
-            android:textColor="@color/white" android:textSize="50sp"/>
+            android:layout_height="65dp" android:id="@+id/textView17"
+            android:textAlignment="center" android:textStyle="bold|italic"
+            android:textColor="@color/black" android:textSize="50sp" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toTopOf="@+id/linearLayout10"
+            app:layout_constraintHorizontal_bias="0.498" android:layout_marginBottom="15dp"/>
     <LinearLayout
             android:orientation="horizontal"
             android:layout_width="220dp"
-            android:layout_height="55dp" tools:layout_editor_absoluteX="100dp"
-            app:layout_constraintBottom_toTopOf="@+id/linearLayout8" android:layout_marginBottom="24dp">
+            android:layout_height="55dp" tools:layout_editor_absoluteX="95dp"
+            app:layout_constraintBottom_toTopOf="@+id/linearLayout8" android:layout_marginBottom="50dp"
+            android:id="@+id/linearLayout10">
         <TextView
                 android:layout_width="160dp"
                 android:layout_height="55dp" android:id="@+id/tV_APeso" android:layout_weight="1"
-                android:textAlignment="center" android:textSize="40sp" android:background="@drawable/btn_bg"
+                android:textAlignment="center" android:textSize="40sp" android:background="@drawable/input_bg_green"
                 android:hint="APeso"/>
         <TextView
                 android:text="Kg"
@@ -115,7 +120,7 @@
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:id="@+id/kg_per_settimana"
-            tools:layout_editor_absoluteY="457dp"
+            tools:layout_editor_absoluteY="462dp"
             app:layout_constraintEnd_toEndOf="@+id/seekBar" android:textStyle="bold" android:textSize="21sp"
             android:textColor="@color/black" android:hint="0.3 Kg/Settimana"
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="1.0"/>
@@ -124,9 +129,9 @@
             android:layout_width="225dp"
             android:layout_height="65dp" android:id="@+id/button"
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498" app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginBottom="40dp" android:textSize="25sp" android:textStyle="bold"
-            android:textAlignment="center" android:background="@drawable/btn_bg"/>
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="28dp" android:textSize="25sp" android:textStyle="bold"
+            android:textAlignment="center" android:background="@drawable/btn_bg_2"/>
     <LinearLayout
             android:orientation="horizontal"
             android:layout_width="403dp"
@@ -147,7 +152,7 @@
                 android:layout_height="match_parent"
                 android:inputType="date"
                 android:ems="10"
-                android:id="@+id/editTextDate" android:layout_weight="1" android:textSize="20sp"
-                android:textAlignment="center" android:editable="false"/>
+                android:id="@+id/editTextDate" android:layout_weight="1" android:textSize="30sp"
+                android:textAlignment="center" android:editable="false" android:hint="Data"/>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

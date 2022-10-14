@@ -2,8 +2,8 @@ package com.example.fittracker.autenticazione
 
 import android.content.Context
 import androidx.lifecycle.ViewModel
-import com.google.firebase.auth.FirebaseAuth
 import com.example.fittracker.databaseFB.UtenteDB
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.userProfileChangeRequest
 import kotlinx.coroutines.tasks.await
@@ -13,16 +13,11 @@ class AuthViewModel : ViewModel() {
     private val UtenteDB = UtenteDB()
 
 
-
-
-
-
-
     suspend fun singUp(email: String, password: String): FirebaseUser? {
         return try {
             val response = auth.createUserWithEmailAndPassword(email, password).await()
             response.user
-        } catch (e: Exception){
+        } catch (e: Exception) {
             null
         }
     }
@@ -54,8 +49,6 @@ class AuthViewModel : ViewModel() {
         } catch (e: Exception) {
         }
     }
-
-
 
 
 }

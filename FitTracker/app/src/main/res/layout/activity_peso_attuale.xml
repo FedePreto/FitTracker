@@ -5,46 +5,48 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".autenticazione.PesoAttualeActivity" android:background="@color/green_bg">
+        tools:context=".autenticazione.PesoAttualeActivity" android:background="@color/white">
 
     <LinearLayout
+            android:gravity="center"
             android:orientation="horizontal"
-            android:layout_width="409dp"
-            android:layout_height="35dp"
+            android:layout_width="365dp"
+            android:layout_height="60dp"
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent"
             android:background="@drawable/btn_bg" app:layout_constraintBottom_toTopOf="@+id/textView8"
-            app:layout_constraintVertical_bias="0.0">
+            app:layout_constraintVertical_bias="0.0"
+            app:layout_constraintEnd_toEndOf="parent">
         <ImageView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" app:srcCompat="@drawable/rounded_rectangle"
+                android:layout_height="wrap_content" app:srcCompat="@drawable/linietta"
                 android:id="@+id/imageView38" android:layout_weight="1"/>
         <ImageView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" app:srcCompat="@drawable/rounded_rectangle"
+                android:layout_height="wrap_content" app:srcCompat="@drawable/linietta"
                 android:id="@+id/imageView39" android:layout_weight="1"/>
         <ImageView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" app:srcCompat="@drawable/rounded_rectangle"
+                android:layout_height="wrap_content" app:srcCompat="@drawable/linietta"
                 android:id="@+id/imageView40" android:layout_weight="1"/>
         <ImageView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" app:srcCompat="@drawable/rounded_rectangle"
+                android:layout_height="wrap_content" app:srcCompat="@drawable/linietta"
                 android:id="@+id/imageView41" android:layout_weight="1"/>
         <ImageView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" app:srcCompat="@drawable/rounded_rectangle"
+                android:layout_height="wrap_content" app:srcCompat="@drawable/linietta"
                 android:id="@+id/imageView42" android:layout_weight="1"/>
         <ImageView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" app:srcCompat="@drawable/rounded_rectangle_vuoto"
+                android:layout_height="wrap_content" app:srcCompat="@drawable/linietta_grigia"
                 android:id="@+id/imageView43" android:layout_weight="1"/>
         <ImageView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" app:srcCompat="@drawable/rounded_rectangle_vuoto"
+                android:layout_height="wrap_content" app:srcCompat="@drawable/linietta_grigia"
                 android:id="@+id/imageView44" android:layout_weight="1"/>
         <ImageView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" app:srcCompat="@drawable/rounded_rectangle_vuoto"
+                android:layout_height="wrap_content" app:srcCompat="@drawable/linietta_grigia"
                 android:id="@+id/imageView45" android:layout_weight="1"/>
     </LinearLayout>
     <TextView
@@ -52,7 +54,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:id="@+id/textView8"
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0" android:textColor="@color/white"
+            app:layout_constraintHorizontal_bias="0.0" android:textColor="@color/black"
             android:textStyle="bold|italic" android:textAlignment="center" android:textSize="50sp"
             app:layout_constraintBottom_toTopOf="@+id/linearLayout5" android:layout_marginBottom="56dp"/>
     <LinearLayout
@@ -60,7 +62,7 @@
             android:layout_width="383dp"
             android:layout_height="87dp"
             app:layout_constraintStart_toStartOf="parent" android:id="@+id/linearLayout5"
-            app:layout_constraintEnd_toEndOf="parent" android:background="@drawable/btn_bg"
+            app:layout_constraintEnd_toEndOf="parent" android:background="@drawable/input_bg_green"
             app:layout_constraintBottom_toTopOf="@+id/bt_AvantiPesoAttuale"
             android:layout_marginBottom="176dp">
         <EditText
@@ -86,5 +88,5 @@
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginBottom="80dp" android:textSize="25sp" android:textStyle="bold"
-            android:textAlignment="center" android:background="@drawable/btn_bg"/>
+            android:textAlignment="center" android:background="@drawable/btn_bg_2"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
