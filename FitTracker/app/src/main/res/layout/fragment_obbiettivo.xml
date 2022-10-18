@@ -6,7 +6,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/white"
-        tools:context=".autenticazione.ObbiettivoActivity"
 >
 
     <TextView
@@ -49,6 +48,7 @@
                 android:textSize="25sp" android:textStyle="bold"
                 android:background="@drawable/input_bg_green"/>
     </RadioGroup>
+
     <Button
             android:text="AVANTI"
             android:layout_width="225dp"

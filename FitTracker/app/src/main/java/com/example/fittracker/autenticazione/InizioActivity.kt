@@ -21,7 +21,6 @@ class InizioActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_inizio)
         binding = ActivityInizioBinding.inflate(layoutInflater)
         setContentView(binding.root)
         buttonEffect(binding.btInizia)
@@ -31,8 +30,8 @@ class InizioActivity : AppCompatActivity() {
 
         binding.btInizia.setOnClickListener {
             var a = Intent(this, ConosciamociActivity::class.java)
-          //  a.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
-            startActivity(a)
+            a.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+            startActivity(Intent(this, ConosciamociActivity::class.java))
 
         }
 

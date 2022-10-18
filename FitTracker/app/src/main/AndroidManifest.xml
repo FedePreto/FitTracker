@@ -18,27 +18,9 @@
             android:roundIcon="@drawable/color_logo_no_background_logo"
             android:supportsRtl="true"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity
-                android:name=".SliderActivity"
-                android:exported="false"/>
-        <activity
-                android:name=".PesoObbActivity"
-                android:exported="false"/>
-        <activity
-                android:name=".PesoAttualeActivity"
-                android:exported="false"/>
-        <activity
-                android:name=".AltezzaActivity"
-                android:exported="false"/>
-        <activity
-                android:name=".DatiPersonali"
-                android:exported="false"/>
-        <activity
-                android:name=".SessoActivity"
-                android:exported="false"/>
-        <activity
-                android:name=".autenticazione.InizioActivity"
-                android:exported="false"/>
+
+
+
         <activity
                 android:name=".MainActivity"
                 android:exported="true"
@@ -61,20 +43,18 @@
                 android:name=".autenticazione.LoginActivity"
                 android:exported="false"
                 android:screenOrientation="portrait"/>
-        <activity
-                android:name=".autenticazione.DatiPersonaliActivity"
-                android:exported="false"
-                android:screenOrientation="portrait"/>
+
         <activity
                 android:name=".autenticazione.RecuperoPasswordActivity"
                 android:exported="false"
                 android:screenOrientation="portrait">
         </activity>
         <activity
-                android:name=".autenticazione.ObbiettivoActivity"
-                android:exported="false"
-                android:screenOrientation="portrait">
-        </activity>
+            android:name=".autenticazione.InizioActivity"
+            android:exported="false"/>
+        <activity
+                android:name=".autenticazione.ConosciamociActivity"
+                android:exported="false"/>
     </application>
 
 </manifest>

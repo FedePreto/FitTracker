@@ -11,13 +11,10 @@ import android.view.ViewGroup
 import android.widget.RadioGroup
 import android.widget.Toast
 import androidx.core.view.isVisible
+import androidx.navigation.Navigation
 import com.example.fittracker.R
 import com.example.fittracker.databinding.FragmentObbiettivoBinding
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
@@ -25,17 +22,19 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 class ObbiettivoFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
     private lateinit var binding: FragmentObbiettivoBinding
+    private var bt_avanti = binding.btAvantiObb
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+
+
+    }
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
 
         buttonEffect(binding.btAvantiObb)
         binding.liniette.isVisible = false
@@ -68,39 +67,13 @@ class ObbiettivoFragment : Fragment() {
                 Toast.makeText(context, "Per favore, seleziona un'opzione",Toast.LENGTH_SHORT).show()
             }
         }
-
-
-
-
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+        val view = inflater.inflate(R.layout.fragment_obbiettivo, container, false)
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_obbiettivo, container, false)
+        bt_avanti.setOnClickListener{ Navigation.findNavController(view).navigate(R.id.action_obbiettivoFragment_to_sessoFragment)}
+
+        return view
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment ObbiettivoFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            ObbiettivoFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
-    }
 
 
     @SuppressLint("ClickableViewAccessibility")

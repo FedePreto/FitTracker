@@ -17,7 +17,7 @@ android:background="@drawable/app_bg">
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:menu="@menu/bottom_menu"
-            android:background="@color/green_bg"
+            android:background="@color/green_primary"
             app:itemTextColor="@color/white"
 
     />
@@ -27,7 +27,7 @@ android:background="@drawable/app_bg">
             android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
             android:id="@+id/my_toolbar"
             app:title="Benvenuto in FitTracker"
-            android:background="@color/green_bg"
+            android:background="@color/green_primary"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
