@@ -23,9 +23,6 @@ class InizioActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this,R.layout.activity_inizio)
-        //setContentView(binding.root)
-        buttonEffect(binding.btInizia)
-        buttonEffect(binding.btAccesso)
         avvioVideo()
 
 
@@ -74,22 +71,8 @@ class InizioActivity : AppCompatActivity() {
         super.onDestroy()
     }
 
-    @SuppressLint("ClickableViewAccessibility")
-    fun buttonEffect(button: View) {
-        button.setOnTouchListener { v, event ->
-            when (event.action) {
-                MotionEvent.ACTION_DOWN -> {
-                    v.background.setColorFilter(0x66000000, PorterDuff.Mode.SRC_ATOP)
-                    v.invalidate()
-                }
-                MotionEvent.ACTION_UP -> {
-                    v.background.clearColorFilter()
-                    v.invalidate()
-                }
-            }
-            false
-        }
-    }
+
+
 
 
 

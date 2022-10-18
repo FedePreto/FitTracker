@@ -17,12 +17,14 @@
               android:label="DatiPersonaliFragment" tools:layout="@layout/fragment_dati_personali">
         <action android:id="@+id/action_datiPersonaliFragment_to_altezzaFragment"
                 app:destination="@id/altezzaFragment"/>
-        <action android:id="@+id/action_datiPersonaliFragment_to_sessoFragment" app:popUpTo="@id/sessoFragment"/>
     </fragment>
     <fragment android:id="@+id/obbiettivoFragment"
               android:name="com.example.fittracker.autenticazione.ObbiettivoFragment"
               android:label="ObbiettivoFragment" tools:layout="@layout/fragment_obbiettivo">
-        <action android:id="@+id/action_obbiettivoFragment_to_sessoFragment" app:destination="@id/sessoFragment"/>
+        <action android:id="@+id/action_obbiettivoFragment_to_sessoFragment" app:destination="@id/sessoFragment"
+                app:enterAnim="@anim/nav_default_enter_anim" app:exitAnim="@anim/nav_default_exit_anim">
+            <argument android:name="obbiettivo" android:defaultValue="-1"/>
+        </action>
     </fragment>
     <fragment android:id="@+id/pesoAttualeFragment"
               android:name="com.example.fittracker.autenticazione.PesoAttualeFragment"
@@ -35,10 +37,12 @@
               android:label="SessoFragment" tools:layout="@layout/fragment_sesso">
         <action android:id="@+id/action_sessoFragment_to_datiPersonaliFragment"
                 app:destination="@id/datiPersonaliFragment"/>
-        <action android:id="@+id/action_sessoFragment_to_obbiettivoFragment2" app:popUpTo="@id/obbiettivoFragment"/>
+        <argument android:name="obbiettivo" app:argType="integer"/>
     </fragment>
     <fragment android:id="@+id/sliderFragment" android:name="com.example.fittracker.autenticazione.SliderFragment"
-              android:label="SliderFragment" tools:layout="@layout/fragment_slider"/>
+              android:label="SliderFragment" tools:layout="@layout/fragment_slider">
+        <action android:id="@+id/action_sliderFragment_to_registerActivity" app:destination="@id/registerActivity"/>
+    </fragment>
     <activity android:id="@+id/registerActivity" android:name="com.example.fittracker.autenticazione.RegisterActivity"
               android:label="activity_register" tools:layout="@layout/activity_register"/>
 </navigation>

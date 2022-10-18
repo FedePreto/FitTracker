@@ -24,14 +24,14 @@
             android:textSize="28sp"
             android:textStyle="bold" android:textAlignment="center" android:textAppearance="@style/EditTextyTextViews"
             android:fontFamily="sans-serif-medium"
-            android:backgroundTint="@color/transparent" android:textColor="#FFFFFF"
-            android:background="@drawable/input_bg" android:layout_marginBottom="15dp"/>
+             android:textColor="#FFFFFF"
+            android:background="@drawable/animazione_2" android:layout_marginBottom="15dp"/>
     <Button
             android:text="INIZIA"
             android:layout_width="245dp"
             android:layout_height="65dp" android:id="@+id/btInizia"
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
-            android:background="@drawable/btn_bg_2" android:textStyle="bold|italic"
+            android:background="@drawable/animazione_1" android:textStyle="bold|italic"
             android:textColor="@color/white" android:textSize="28sp"
             android:textAppearance="@style/Sub_Sub_Titulos"
             android:fontFamily="sans-serif"
