@@ -11,6 +11,7 @@ import android.os.Bundle
 import android.view.MotionEvent
 import android.view.View
 import android.widget.VideoView
+import androidx.databinding.DataBindingUtil
 import com.example.fittracker.R
 import com.example.fittracker.databinding.*
 
@@ -21,8 +22,8 @@ class InizioActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityInizioBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        binding = DataBindingUtil.setContentView(this,R.layout.activity_inizio)
+        //setContentView(binding.root)
         buttonEffect(binding.btInizia)
         buttonEffect(binding.btAccesso)
         avvioVideo()
@@ -31,7 +32,7 @@ class InizioActivity : AppCompatActivity() {
         binding.btInizia.setOnClickListener {
             var a = Intent(this, ConosciamociActivity::class.java)
             a.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
-            startActivity(Intent(this, ConosciamociActivity::class.java))
+            startActivity(a)
 
         }
 
@@ -89,7 +90,6 @@ class InizioActivity : AppCompatActivity() {
             false
         }
     }
-
 
 
 

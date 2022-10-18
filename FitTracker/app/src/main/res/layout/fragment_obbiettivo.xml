@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<layout>
 <androidx.constraintlayout.widget.ConstraintLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
@@ -6,7 +7,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/white"
->
+        tools:context=".autenticazione.ObbiettivoActivity">
 
     <TextView
             android:text="Quale obbiettivo vuoi raggiungere?"
@@ -120,4 +121,6 @@
                 android:layout_height="wrap_content" app:srcCompat="@drawable/linietta_grigia"
                 android:id="@+id/imageView71" android:layout_weight="1"/>
     </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
