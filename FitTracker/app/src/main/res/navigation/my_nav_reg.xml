@@ -17,6 +17,8 @@
               android:label="DatiPersonaliFragment" tools:layout="@layout/fragment_dati_personali">
         <action android:id="@+id/action_datiPersonaliFragment_to_altezzaFragment"
                 app:destination="@id/altezzaFragment"/>
+        <argument android:name="sesso" app:argType="string"/>
+        <argument android:name="obbiettivo" app:argType="integer"/>
     </fragment>
     <fragment android:id="@+id/obbiettivoFragment"
               android:name="com.example.fittracker.autenticazione.ObbiettivoFragment"

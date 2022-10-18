@@ -29,7 +29,8 @@
     <RadioGroup
             android:layout_width="285dp"
             android:layout_height="164dp"
-            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            android:id="@+id/GruppoRadio_Sesso" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView2"
             app:layout_constraintBottom_toTopOf="@+id/bt_AvantiSesso"
             app:layout_constraintHorizontal_bias="0.496" app:layout_constraintVertical_bias="0.45">

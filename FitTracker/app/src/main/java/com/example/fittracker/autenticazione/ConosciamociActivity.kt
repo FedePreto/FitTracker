@@ -23,8 +23,4 @@ class ConosciamociActivity : AppCompatActivity(){
 
 
     }
-
-
-
-
 }

@@ -17,6 +17,7 @@ import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import com.example.fittracker.R
 import com.example.fittracker.databinding.FragmentObbiettivoBinding
+import kotlin.properties.Delegates
 
 
 /**
@@ -26,7 +27,6 @@ import com.example.fittracker.databinding.FragmentObbiettivoBinding
  */
 class ObbiettivoFragment : Fragment() {
     lateinit var binding: FragmentObbiettivoBinding
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -36,48 +36,29 @@ class ObbiettivoFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle? ): View? {
         binding = DataBindingUtil.inflate(inflater,R.layout.fragment_obbiettivo, container, false)
         binding.liniette.isVisible = false
-
-
-
-
-
         return binding.root
     }
 
    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+       var index = -1
+       var listener = View.OnClickListener { v ->
+           when(v.id){
+               R.id.rB_Diminuisci -> {
+                   index = 0
+                   setStep(false)
 
-       // Get radio group selected status and text using button click event
-       binding.btAvantiObb.setOnClickListener { view : View->
-           // Get the checked radio button id from radio group
-           var id: Int = binding.GruppoRadio.checkedRadioButtonId
-           if (id != -1) {
-               val action = ObbiettivoFragmentDirections.actionObbiettivoFragmentToSessoFragment(id)
-               view.findNavController().navigate(action) //navigazione da obiettivo a sesso
+               }
 
-           } else {
-               // If no radio button checked in this radio group
-               Toast.makeText(context, "Per favore, seleziona un'opzione",Toast.LENGTH_SHORT).show()
-           }
-       }
+               R.id.rB_Mantieni -> {
+                   index = 1
+                   setStep(true)
+               }
 
-       var listener = object: View.OnClickListener{
-           override fun onClick(v: View) {
-               var index = 0
-               when(v.id){
-                   R.id.rB_Diminuisci -> {
-                       index = 0
-                       setStep(false)
-                   }
+               R.id.rB_Aumenta -> {
+                   index = 2
+                   setStep(false)
 
-                   R.id.rB_Mantieni -> {
-                       index = 1
-                       setStep(true)
-                   }
-                   R.id.rB_Aumenta -> {
-                       index = 2
-                       setStep(false)
-                   }
                }
            }
        }
@@ -86,11 +67,26 @@ class ObbiettivoFragment : Fragment() {
        binding.rBDiminuisci.setOnClickListener(listener)
        binding.rBMantieni.setOnClickListener(listener)
 
+       // Get radio group selected status and text using button click event
+       binding.btAvantiObb.setOnClickListener { view : View->
+           // Get the checked radio button id from radio group
+           if (index != -1) {
+               val action = ObbiettivoFragmentDirections.actionObbiettivoFragmentToSessoFragment(index)
+               view.findNavController().navigate(action) //navigazione da obiettivo a sesso
 
 
+           } else {
+               // If no radio button checked in this radio group
+               Toast.makeText(context, "Per favore, seleziona un'opzione",Toast.LENGTH_SHORT).show()
+           }
+       }
    }
+
+    override fun onStop() {
+        super.onStop()
+        binding.GruppoRadioObbiettivo.clearCheck()
+    }
     fun setStep(isMantieni: Boolean) {
-        binding.GruppoRadio.setOnCheckedChangeListener { Gruppo: RadioGroup, Radio: Int ->
             if (!isMantieni) {
                 binding.liniette.isVisible = true
                 binding.imageView16.isVisible = true
@@ -100,10 +96,9 @@ class ObbiettivoFragment : Fragment() {
                 binding.liniette.isVisible = true
                 binding.imageView16.isVisible = false
                 binding.imageView71.isVisible = false
-            }
-        }
-    }
 
+            }
+    }
 
 }
 
