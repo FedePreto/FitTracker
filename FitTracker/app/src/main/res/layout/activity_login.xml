@@ -34,7 +34,7 @@
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
             android:hint="@string/email"
             android:textColorHint="@color/white" android:textColor="@color/white"
-            android:background="@drawable/input_bg_green_dark" android:paddingLeft="20dp" android:paddingTop="10dp"
+            android:background="@drawable/input_bg_green" android:paddingLeft="20dp" android:paddingTop="10dp"
             android:paddingRight="20dp" android:paddingBottom="10dp"
             android:drawableLeft="@drawable/ic_email" android:drawablePadding="10dp"
             app:layout_constraintBottom_toTopOf="@+id/InputPasswordLogin" android:layout_marginBottom="32dp"

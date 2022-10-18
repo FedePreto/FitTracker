@@ -1,46 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:app="http://schemas.android.com/apk/res-auto"
-            xmlns:tools="http://schemas.android.com/tools" android:id="@+id/nav_graph"
->
+            android:id="@+id/auth_graph" app:startDestination="@id/obbiettivoFragment">
+
+    <fragment android:id="@+id/obbiettivoFragment"
+              android:name="com.example.fittracker.autenticazione.ObbiettivoFragment"
+              android:label="ObbiettivoFragment">
+        <action android:id="@+id/action_obbiettivoFragment_to_sessoFragment" app:destination="@id/sessoFragment"/>
+    </fragment>
     <fragment android:id="@+id/altezzaFragment" android:name="com.example.fittracker.autenticazione.AltezzaFragment"
               android:label="AltezzaFragment">
         <action android:id="@+id/action_altezzaFragment_to_pesoAttualeFragment"
                 app:destination="@id/pesoAttualeFragment"/>
-        <action android:id="@+id/action_altezzaFragment_to_datiPersonaliFragment"
-                app:popUpTo="@id/datiPersonaliFragment"/>
     </fragment>
     <fragment android:id="@+id/datiPersonaliFragment"
               android:name="com.example.fittracker.autenticazione.DatiPersonaliFragment"
               android:label="DatiPersonaliFragment">
         <action android:id="@+id/action_datiPersonaliFragment_to_altezzaFragment"
                 app:destination="@id/altezzaFragment"/>
-        <action android:id="@+id/action_datiPersonaliFragment_to_sessoFragment" app:popUpTo="@id/sessoFragment"/>
-    </fragment>
-    <fragment android:id="@+id/obbiettivoFragment"
-              android:name="com.example.fittracker.autenticazione.ObbiettivoFragment"
-              android:label="ObbiettivoFragment">
-        <action android:id="@+id/action_obbiettivoFragment_to_sessoFragment" app:destination="@id/sessoFragment"/>
     </fragment>
     <fragment android:id="@+id/pesoAttualeFragment"
               android:name="com.example.fittracker.autenticazione.PesoAttualeFragment"
               android:label="PesoAttualeFragment">
         <action android:id="@+id/action_pesoAttualeFragment_to_pesoObbFragment" app:destination="@id/pesoObbFragment"/>
-        <action android:id="@+id/action_pesoAttualeFragment_to_altezzaFragment" app:popUpTo="@id/altezzaFragment"/>
     </fragment>
     <fragment android:id="@+id/pesoObbFragment" android:name="com.example.fittracker.autenticazione.PesoObbFragment"
               android:label="PesoObbFragment">
         <action android:id="@+id/action_pesoObbFragment_to_sliderFragment" app:destination="@id/sliderFragment"/>
-        <action android:id="@+id/action_pesoObbFragment_to_pesoAttualeFragment" app:popUpTo="@id/pesoAttualeFragment"/>
     </fragment>
     <fragment android:id="@+id/sessoFragment" android:name="com.example.fittracker.autenticazione.SessoFragment"
               android:label="SessoFragment">
-        <action android:id="@+id/action_sessoFragment_to_datiPersonaliFragment2"
+        <action android:id="@+id/action_sessoFragment_to_datiPersonaliFragment"
                 app:destination="@id/datiPersonaliFragment"/>
-        <action android:id="@+id/action_sessoFragment_to_obbiettivoFragment" app:popUpTo="@id/obbiettivoFragment"/>
     </fragment>
     <fragment android:id="@+id/sliderFragment" android:name="com.example.fittracker.autenticazione.SliderFragment"
-              android:label="SliderFragment">
-        <action android:id="@+id/action_sliderFragment_to_pesoObbFragment" app:popUpTo="@id/pesoObbFragment"/>
-    </fragment>
+              android:label="SliderFragment"/>
 </navigation>

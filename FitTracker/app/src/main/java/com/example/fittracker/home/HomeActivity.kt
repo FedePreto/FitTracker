@@ -116,11 +116,9 @@ class HomeActivity : AppCompatActivity() {
 
 
     private fun replaceFragment(fragment: Fragment){
-        if(fragment != null){
-            val transaction = supportFragmentManager.beginTransaction()
-            transaction.replace(R.id.nav_host_fragment, fragment)
-            transaction.commit()
-        }
+        val transaction = supportFragmentManager.beginTransaction()
+        transaction.replace(R.id.nav_host_fragment, fragment)
+        transaction.commit()
     }
 
     private fun openSettings(){
