@@ -63,7 +63,7 @@
             android:background="@drawable/animazione_1" android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
-            android:textColor="@color/white" android:layout_marginBottom="80dp"/>
+            android:textColor="@color/black" android:layout_marginBottom="80dp"/>
     <TextView
             android:text="@string/forgotPass"
             android:layout_width="201dp"
