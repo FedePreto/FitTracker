@@ -62,11 +62,14 @@
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toTopOf="@+id/tE_surname"
             android:layout_marginBottom="24dp" android:background="@drawable/input_bg_green" android:textSize="28sp"
-            android:textAlignment="center" android:hint="Nome" android:textColor="@color/black"
+            android:textAlignment="center"
+            android:inputType="textPersonName"
+            android:hint="Nome" android:textColor="@color/black"
             app:layout_constraintHorizontal_bias="0.504"/>
     <EditText
             android:gravity="center"
             android:layout_width="300dp"
+            android:inputType="textPersonName"
             android:layout_height="50dp" android:id="@+id/tE_surname"
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toTopOf="@+id/bt_AvantiDati"

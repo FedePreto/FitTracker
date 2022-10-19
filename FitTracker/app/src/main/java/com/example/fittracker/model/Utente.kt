@@ -8,13 +8,13 @@ data class Utente(
     val sesso: String,
     val data_nascita: String,
     val altezza: Int,
-    val peso_attuale: Int,
-    val peso_obbiettivo: Int?,
-    val kg_settimanali: Int?,
+    val peso_attuale: Double,
+    val peso_obbiettivo: Double?,
+    val kg_settimanali: Double?,
     val data_raggiungimento: String?
 
     ){
 
-    constructor(): this("","","",-1,"","",0,0,0,0,"")
+    constructor(): this("","","",-1,"","",0,0.0,0.0,0.0,"")
 
 }
