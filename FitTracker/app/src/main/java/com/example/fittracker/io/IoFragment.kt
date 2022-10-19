@@ -21,18 +21,7 @@ class IoFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding.progressCalorie.apply {
-            progressMax = calorie_giornaliere.toFloat()
-            setProgressWithAnimation(65f, 1500)
-            progressBarWidth = 7f
-            backgroundProgressBarWidth = 5f
-            backgroundProgressBarColor = Color.WHITE
-            progressBarColor = Color.GREEN
-            roundBorder = true
-            startAngle= 90f
-            progressDirection = CircularProgressBar.ProgressDirection.TO_RIGHT
 
-        }
 
         return inflater.inflate(R.layout.fragment_io, container, false)
     }
