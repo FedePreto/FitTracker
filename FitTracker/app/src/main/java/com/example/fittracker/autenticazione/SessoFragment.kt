@@ -35,13 +35,12 @@ class SessoFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        var sex = ""
-        var obbiettivo = args.obbiettivo
-        setStep(obbiettivo)
+        var utente = args.utente
+        setStep(utente.obbiettivo)
         var listener = View.OnClickListener { v ->
             when(v.id){
-                R.id.rB_uomo -> sex = "uomo"
-                R.id.rB_donna -> sex = "donna"
+                R.id.rB_uomo -> utente.sesso = "uomo"
+                R.id.rB_donna -> utente.sesso = "donna"
             }
         }
 
@@ -51,8 +50,8 @@ class SessoFragment : Fragment() {
         // Get radio group selected status and text using button click event
         binding.btAvantiSesso.setOnClickListener { view : View->
             // Get the checked radio button id from radio group
-            if (sex != "") {
-                val action = SessoFragmentDirections.actionSessoFragmentToDatiPersonaliFragment(sex,obbiettivo)
+            if (utente.sesso != "") {
+                val action = SessoFragmentDirections.actionSessoFragmentToDatiPersonaliFragment(utente)
                 view.findNavController().navigate(action) //navigazione da obiettivo a sesso
 
 

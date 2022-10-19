@@ -47,7 +47,7 @@ class RegisterActivity : AppCompatActivity() {
                     }
                     .show()
             } else {
-                model.addAuthUtenteOnDB(Email, this@RegisterActivity)
+                //model.addAuthUtenteOnDB(Email, this@RegisterActivity) //Commentato per far partire codice, da decommentare
                 val intent = Intent(this@RegisterActivity, HomeActivity::class.java)
                 startActivity(intent)
                 finish()

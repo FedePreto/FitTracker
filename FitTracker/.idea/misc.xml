@@ -4,6 +4,11 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Msi/OneDrive/Documenti/GitHub/Progetto_Programmazione_Mobile/FitTracker/app/src/main/res/layout/activity_home.xml" value="0.264" />
+        <entry key="..\:/Users/Msi/OneDrive/Documenti/GitHub/Progetto_Programmazione_Mobile/FitTracker/app/src/main/res/layout/activity_register.xml" value="0.536" />
+        <entry key="..\:/Users/Msi/OneDrive/Documenti/GitHub/Progetto_Programmazione_Mobile/FitTracker/app/src/main/res/layout/fragment_altezza.xml" value="0.15260416666666668" />
+        <entry key="..\:/Users/Msi/OneDrive/Documenti/GitHub/Progetto_Programmazione_Mobile/FitTracker/app/src/main/res/layout/fragment_dati_personali.xml" value="0.2359375" />
+        <entry key="..\:/Users/Msi/OneDrive/Documenti/GitHub/Progetto_Programmazione_Mobile/FitTracker/app/src/main/res/layout/fragment_peso_attuale.xml" value="0.4" />
+        <entry key="..\:/Users/Msi/OneDrive/Documenti/GitHub/Progetto_Programmazione_Mobile/FitTracker/app/src/main/res/layout/fragment_slider.xml" value="0.25" />
         <entry key="..\:/Users/aless/Documents/Progetto_Mobile/Progetto_Programmazione_Mobile/FitTracker/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.214" />
         <entry key="..\:/Users/aless/Documents/Progetto_Mobile/Progetto_Programmazione_Mobile/FitTracker/app/src/main/res/drawable/animazione_1.xml" value="0.1675" />
         <entry key="..\:/Users/aless/Documents/Progetto_Mobile/Progetto_Programmazione_Mobile/FitTracker/app/src/main/res/drawable/animazione_2.xml" value="0.1675" />

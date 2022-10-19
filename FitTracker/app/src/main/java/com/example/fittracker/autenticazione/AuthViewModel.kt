@@ -1,14 +1,17 @@
 package com.example.fittracker.autenticazione
 
 import android.content.Context
+import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.fittracker.databaseFB.UtenteDB
 import com.example.fittracker.model.Utente
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.userProfileChangeRequest
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 
 class AuthViewModel : ViewModel() {
@@ -42,18 +45,58 @@ class AuthViewModel : ViewModel() {
     }
 
 
-    suspend fun addAuthUtenteOnDB(email: String, contesto: Context) {
+    suspend fun addAuthUtenteOnDB(nome:String, cognome:String, email:String, obbiettivo:Int,
+                                  sesso:String, data_nascita:String, altezza:Int, peso_attuale:Double,
+                                  peso_obbiettivo:Double?, kg_settimanali:Double?, data_raggiungimento:String?,
+                                  contesto: Context) {
         try {
             val user = auth.currentUser
             val profileUpdates = userProfileChangeRequest {
-                displayName = email
+                displayName = nome + ' ' + cognome
             }
+            Toast.makeText(contesto,profileUpdates.toString(),Toast.LENGTH_SHORT).show()
             user!!.updateProfile(profileUpdates)
-            //UtenteDB.addUtente(email, contesto)
+            utenteDB.addUtente(nome, cognome, email, obbiettivo,sesso, data_nascita, altezza,
+                                peso_attuale, peso_obbiettivo, kg_settimanali, data_raggiungimento, contesto)
 
         } catch (e: Exception) {
         }
     }
+
+    fun getUtente(email: String){
+        viewModelScope.launch {
+            _utente.value = utenteDB.getUtente(email)
+        }
+    }
+
+    fun setObiettivo(obiettivo: Int){
+        _utente.value?.obbiettivo = obiettivo
+    }
+    fun setSesso(sesso: String){
+        _utente.value?.sesso = sesso
+    }
+    fun setDataNascita(data: String){
+        _utente.value?.data_nascita = data
+    }
+    fun setNome(nome: String){
+        _utente.value?.nome = nome
+    }
+    fun setCognome(cognome: String){
+        _utente.value?.cognome = cognome
+    }
+    fun setAltezza(altezza: Int){
+        _utente.value?.altezza = altezza
+    }
+    fun setPeso(peso_attuale: Double){
+        _utente.value?.peso_attuale = peso_attuale
+    }
+    fun setPesoOb(peso_obiettivo: Double){
+        _utente.value?.peso_obbiettivo = peso_obiettivo
+    }
+    fun setKgSettimanali(kg_settimanali: Double){
+        _utente.value?.kg_settimanali = kg_settimanali
+    }
+
 
 
 }

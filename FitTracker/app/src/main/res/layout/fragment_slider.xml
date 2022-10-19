@@ -120,7 +120,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" android:id="@+id/kg_per_settimana"
             app:layout_constraintEnd_toEndOf="@+id/seekBar" android:textStyle="bold" android:textSize="21sp"
-            android:textColor="@color/black" android:hint="0.3 Kg/Settimana"
+            android:textColor="@color/black" android:text="0.5 Kg/Settimana"
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="1.0"
             android:layout_marginBottom="8dp" app:layout_constraintBottom_toTopOf="@+id/seekBar"/>
     <Button

@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
@@ -34,11 +35,14 @@ class DatiPersonaliFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = DataBindingUtil.inflate(inflater,R.layout.fragment_dati_personali, container, false)
         return binding.root
+
     }
 
-    @SuppressLint("SetTextI18n")
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        var utente = args.utente
+        setStep(utente.obbiettivo)
         //calendario
         val c = Calendar.getInstance()
         val year = c.get(Calendar.YEAR)
@@ -54,12 +58,37 @@ class DatiPersonaliFragment : Fragment() {
         }
 
         binding.btAvantiDati.setOnClickListener{
-            val action = DatiPersonaliFragmentDirections.actionDatiPersonaliFragmentToAltezzaFragment()
-            view.findNavController().navigate(action)
+            utente.data_nascita = binding.tvDataNascita.text.toString()
+            utente.nome = binding.tEName.text.toString()
+            utente.cognome = binding.tESurname.text.toString()
+            if(utente.data_nascita != "" && utente.nome != "" && utente.cognome != ""){
+                val action = DatiPersonaliFragmentDirections.actionDatiPersonaliFragmentToAltezzaFragment(utente)
+                view.findNavController().navigate(action)
+            }
+            else
+                Toast.makeText(context, "Per favore, completa tutti i campi",Toast.LENGTH_SHORT).show()
+
         }
 
 
 
+    }
+
+    fun setStep(obbietivo: Int) {
+        when(obbietivo){
+            0 -> {
+                binding.imageView28.isVisible = true
+                binding.imageView29.isVisible = true
+            }
+            1 ->{
+                binding.imageView28.isVisible = false
+                binding.imageView29.isVisible = false
+            }
+            2 ->{
+                binding.imageView28.isVisible = true
+                binding.imageView29.isVisible = true
+            }
+        }
     }
 
 

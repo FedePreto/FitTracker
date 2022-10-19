@@ -10,5 +10,5 @@ import com.google.firebase.firestore.FirebaseFirestore
 
 
 open class FirebaseDB {
-    var db = FirebaseFirestore.getInstance()
+   protected var db = FirebaseFirestore.getInstance()
 }

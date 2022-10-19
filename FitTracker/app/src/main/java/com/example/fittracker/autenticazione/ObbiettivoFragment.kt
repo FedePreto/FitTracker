@@ -17,6 +17,7 @@ import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import com.example.fittracker.R
 import com.example.fittracker.databinding.FragmentObbiettivoBinding
+import com.example.fittracker.model.Utente
 import kotlin.properties.Delegates
 
 
@@ -27,6 +28,8 @@ import kotlin.properties.Delegates
  */
 class ObbiettivoFragment : Fragment() {
     lateinit var binding: FragmentObbiettivoBinding
+    private  val model = AuthViewModel()
+    lateinit var utente : Utente
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -36,27 +39,29 @@ class ObbiettivoFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle? ): View? {
         binding = DataBindingUtil.inflate(inflater,R.layout.fragment_obbiettivo, container, false)
         binding.liniette.isVisible = false
+        model.getUtente("")
+        utente = model.utente.value!!  //prendo un utente non parametrizzato da valorizzare di fragment in fragment, alla fine lo registro
         return binding.root
     }
 
    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-       var index = -1
+       super.onViewCreated(view, savedInstanceState)
+       utente.obbiettivo = -1
        var listener = View.OnClickListener { v ->
            when(v.id){
                R.id.rB_Diminuisci -> {
-                   index = 0
+                   utente.obbiettivo = 0
                    setStep(false)
 
                }
 
                R.id.rB_Mantieni -> {
-                   index = 1
+                   utente.obbiettivo = 1
                    setStep(true)
                }
 
                R.id.rB_Aumenta -> {
-                   index = 2
+                   utente.obbiettivo = 2
                    setStep(false)
 
                }
@@ -70,8 +75,8 @@ class ObbiettivoFragment : Fragment() {
        // Get radio group selected status and text using button click event
        binding.btAvantiObb.setOnClickListener { view : View->
            // Get the checked radio button id from radio group
-           if (index != -1) {
-               val action = ObbiettivoFragmentDirections.actionObbiettivoFragmentToSessoFragment(index)
+           if (utente.obbiettivo != -1) {
+               val action = ObbiettivoFragmentDirections.actionObbiettivoFragmentToSessoFragment(utente)
                view.findNavController().navigate(action) //navigazione da obiettivo a sesso
 
 
