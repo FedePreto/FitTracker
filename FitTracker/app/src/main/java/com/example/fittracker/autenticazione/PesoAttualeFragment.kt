@@ -50,8 +50,9 @@ class PesoAttualeFragment : Fragment() {
         setStep(utente.obbiettivo)
         val action = setNavigation(utente.obbiettivo)
             binding.btAvantiPesoAttuale.setOnClickListener {
-                utente.peso_attuale = binding.eTPesoAttuale.text.toString().toDouble()
-                if (utente.peso_attuale != 0.0) {
+                var pesoAttuale = binding.eTPesoAttuale.text.toString()
+                if (pesoAttuale != "") {
+                    utente.peso_attuale = pesoAttuale.toDouble()
                     view.findNavController().navigate(action!!)
                 } else
                     Toast.makeText(context, "Per favore, completa il campo", Toast.LENGTH_SHORT).show()

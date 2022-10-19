@@ -24,13 +24,13 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
 class HomeActivity : AppCompatActivity() {
-    /*
+
     private lateinit var binding: ActivityHomeBinding
     private val diarioFragment = DiarioFragment()
     private val ioFragment = IoFragment()
     private val dieteFragment = DieteFragment()
     private val funzioniFragment = FunzioniFragment()
-*/
+
     private lateinit var navController: NavController
 
     private var user  = Firebase.auth.currentUser
@@ -41,14 +41,14 @@ class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
-        //replaceFragment(diarioFragment)
+        replaceFragment(diarioFragment)
 
 
-        //binding = ActivityHomeBinding.inflate(layoutInflater)
-        //setContentView(binding.root)
+        binding = ActivityHomeBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
 
-        /*binding.bottomNavigation.setOnItemSelectedListener {
+        binding.bottomNavigation.setOnItemSelectedListener {
             when(it.itemId){
                 R.id.ic_diary -> replaceFragment(diarioFragment)
                 R.id.ic_io -> replaceFragment(ioFragment)
@@ -56,7 +56,7 @@ class HomeActivity : AppCompatActivity() {
                 R.id.ic_funzioni -> replaceFragment(funzioniFragment)
             }
             true
-        }*/
+        }
 
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         navController = navHostFragment.navController
@@ -103,7 +103,7 @@ class HomeActivity : AppCompatActivity() {
         }
 
 
-        /*
+
         binding.myToolbar.setOnMenuItemClickListener{
             when(it.itemId){
                 R.id.ic_settings -> openSettings()
@@ -111,7 +111,7 @@ class HomeActivity : AppCompatActivity() {
                 R.id.ic_logout -> logout()
             }
             true
-        }*/
+        }
     }
 
 

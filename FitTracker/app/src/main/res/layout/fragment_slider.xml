@@ -145,12 +145,12 @@
                 android:layout_height="match_parent" android:id="@+id/textView21" android:layout_weight="1"
                 android:textStyle="bold" android:textSize="25sp" android:textAlignment="center"
                 android:textColor="@color/black"/>
-        <EditText
+        <TextView
                 android:layout_width="211dp"
                 android:layout_marginRight="30dp"
                 android:layout_height="match_parent"
                 android:ems="10"
-                android:id="@+id/editTextDate" android:layout_weight="1" android:textSize="30sp"
+                android:id="@+id/tvDateRaggiungimento" android:layout_weight="1" android:textSize="30sp"
                 android:textAlignment="center"  android:hint="Data"/>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

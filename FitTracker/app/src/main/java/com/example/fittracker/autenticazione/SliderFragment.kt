@@ -15,6 +15,9 @@ import com.example.fittracker.databinding.FragmentObbiettivoBinding
 import com.example.fittracker.databinding.FragmentPesoObbBinding
 import com.example.fittracker.databinding.FragmentSliderBinding
 import com.example.fittracker.model.Utente
+import kotlinx.android.synthetic.main.fragment_slider.*
+import java.time.LocalDate
+import java.util.Calendar
 
 
 class SliderFragment : Fragment() {
@@ -37,18 +40,21 @@ class SliderFragment : Fragment() {
         utente = args.utente
         binding.tVDaPeso.text = utente.peso_attuale.toString()
         binding.tVAPeso.text = utente.peso_obbiettivo.toString()
+        var kg_settimanali = 0.5
+        binding.tvDateRaggiungimento.text = setData(utente.peso_attuale, utente.peso_obbiettivo!!, kg_settimanali)
         binding.seekBar.setOnSeekBarChangeListener(object :
             SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seek: SeekBar, progress: Int, fromUser: Boolean) {
                 when(seek.progress){
-                    0 -> utente.kg_settimanali = 0.3
-                    1 -> utente.kg_settimanali = 0.4
-                    2 -> utente.kg_settimanali = 0.5
-                    3 -> utente.kg_settimanali = 0.6
-                    4 -> utente.kg_settimanali = 0.7
-                    else -> utente.kg_settimanali = 0.0
+                    0 -> kg_settimanali = 0.3
+                    1 -> kg_settimanali = 0.4
+                    2 -> kg_settimanali = 0.5
+                    3 -> kg_settimanali = 0.6
+                    4 -> kg_settimanali = 0.7
+                    else -> kg_settimanali = 0.0
                 }
-                binding.kgPerSettimana.text = utente.kg_settimanali.toString() + " Kg/Settimanali"
+                binding.kgPerSettimana.text = kg_settimanali.toString() + " Kg/Settimanali"
+                binding.tvDateRaggiungimento.text = setData(utente.peso_attuale, utente.peso_obbiettivo!!, kg_settimanali)
             }
             override fun onStartTrackingTouch(seek: SeekBar) {}
             override fun onStopTrackingTouch(seek: SeekBar) {}
@@ -56,18 +62,26 @@ class SliderFragment : Fragment() {
         })
 
         binding.button.setOnClickListener {
-
-            if (utente.peso_obbiettivo != 0.0) {
-                val action = PesoObbFragmentDirections.actionPesoObbFragmentToSliderFragment(utente)
+            utente.kg_settimanali = kg_settimanali
+            utente.data_raggiungimento = binding.tvDateRaggiungimento.text.toString()
+            if (utente.kg_settimanali != 0.0 && utente.data_raggiungimento != "") {
+                val action = SliderFragmentDirections.actionSliderFragmentToRegisterActivity(utente)
                 view.findNavController().navigate(action!!)
+                activity?.finish()
             } else
-                Toast.makeText(context, "Per favore, completa il campo", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Per favore, completa i campi", Toast.LENGTH_SHORT).show()
         }
     }
 
-    fun setData(p_attuale: Double, p_obiettivo: Double){
+    fun setData(p_attuale: Double, p_obiettivo: Double, kg_settimanali : Double) : String{
+        var delta = 0.0
+        if(p_obiettivo < p_attuale)
+            delta = p_attuale - p_obiettivo
+        else
+            delta = p_obiettivo - p_attuale
 
-
+        val n_settimane = delta / kg_settimanali
+        return LocalDate.now().plusDays(n_settimane.toLong()).toString()
     }
 
 

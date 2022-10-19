@@ -29,7 +29,7 @@ class PesoObbFragment : Fragment() {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_peso_obb, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_peso_obb, container, false)
         return binding.root
     }
 
@@ -37,12 +37,37 @@ class PesoObbFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         utente = args.utente
         binding.btAvantiPesoObb.setOnClickListener {
-            utente.peso_obbiettivo = binding.eTPesoObb.text.toString().toDouble()
-            if (utente.peso_obbiettivo != 0.0) {
-                val action = PesoObbFragmentDirections.actionPesoObbFragmentToSliderFragment(utente)
-                view.findNavController().navigate(action!!)
+            var peso_obiettivo = binding.eTPesoObb.text.toString()
+            if (peso_obiettivo != "") {
+                var isCorrect = checkPesi(peso_obiettivo.toDouble(), utente.peso_attuale, utente.obbiettivo)
+                if (isCorrect!!) {
+                    utente.peso_obbiettivo = peso_obiettivo.toDouble()
+                    val action = PesoObbFragmentDirections.actionPesoObbFragmentToSliderFragment(utente)
+                    view.findNavController().navigate(action!!)
+                }
             } else
                 Toast.makeText(context, "Per favore, completa il campo", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    fun checkPesi(pOb: Double, pAt: Double, ob: Int): Boolean? {
+        when (ob) {
+            0 -> {
+                if (pAt < pOb) {
+                    binding.eTPesoObb.setError("Inserisci un obiettivo di peso minore di ${utente.peso_attuale}")
+                    return false
+                } else
+                    return true
+            }
+
+            2 -> {
+                if (pOb < pAt) {
+                    binding.eTPesoObb.setError("Inserisci un obiettivo di peso maggiore di ${utente.peso_attuale}")
+                    return false
+                } else
+                    return true
+            }
+            else-> return null
         }
     }
 }

@@ -40,8 +40,9 @@ class AltezzaFragment : Fragment() {
         var utente = args.utente
         setStep(utente.obbiettivo)
         binding.btAvantiAltezza.setOnClickListener {
-            utente.altezza = binding.eTAltezza.text.toString().toInt()
-            if(utente.altezza != 0){
+            var altezza = binding.eTAltezza.text.toString()
+            if(altezza != ""){
+                utente.altezza = altezza.toInt()
                 val action =AltezzaFragmentDirections.actionAltezzaFragmentToPesoAttualeFragment(utente)
                 view.findNavController().navigate(action)
             }else
