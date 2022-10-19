@@ -6,52 +6,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".io.IoFragment">
-    <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="374dp"
-            android:layout_height="185dp"
-            tools:layout_editor_absoluteY="26dp">
-        <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="122dp"
-                android:gravity="center"
-                android:layout_height="match_parent">
-            <TextView
-                    android:text=""
-                    android:hint="0"
-                    android:textAlignment="center"
-                    android:gravity="center"
-                    android:textSize="25sp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" android:id="@+id/calAssunte"/>
-            <TextView
-                    android:text="ASSUNTE"
 
-                    android:layout_width="match_parent"
-                    android:layout_height="37dp" android:id="@+id/textView18"/>
-        </LinearLayout>
-        <com.mikhaellopez.circularprogressbar.CircularProgressBar
-                android:id="@+id/progress_calorie"
 
-                android:layout_width="185dp"
-                android:layout_height="183dp"
-        />
-    </LinearLayout>
-    <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="409dp"
-            android:layout_height="446dp" tools:layout_editor_absoluteY="212dp" tools:layout_editor_absoluteX="1dp">
-        <TextView
-                android:text="TextView"
-                android:textAlignment="center"
-                android:gravity="center"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" android:id="@+id/textView20"/>
-        <TextView
-                android:text="BRUCIATE"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" android:id="@+id/textView22"/>
-    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

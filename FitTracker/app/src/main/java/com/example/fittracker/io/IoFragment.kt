@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.fittracker.R
 import com.example.fittracker.databinding.FragmentIoBinding
+import com.mikhaellopez.circularprogressbar.CircularProgressBar
 
 class IoFragment : Fragment() {
 
@@ -22,19 +23,19 @@ class IoFragment : Fragment() {
     ): View? {
         binding.progressCalorie.apply {
             progressMax = calorie_giornaliere.toFloat()
-            setProgressWithAnimation(50f, 1000)
-            progressBarWidth = 5f
-            backgroundProgressBarWidth = 7f
+            setProgressWithAnimation(65f, 1500)
+            progressBarWidth = 7f
+            backgroundProgressBarWidth = 5f
+            backgroundProgressBarColor = Color.WHITE
             progressBarColor = Color.GREEN
+            roundBorder = true
+            startAngle= 90f
+            progressDirection = CircularProgressBar.ProgressDirection.TO_RIGHT
+
         }
 
         return inflater.inflate(R.layout.fragment_io, container, false)
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(IoViewModel::class.java)
-        // TODO: Use the ViewModel
-    }
 
 }
