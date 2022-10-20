@@ -4,14 +4,15 @@ import android.os.Bundle
 import android.util.Patterns
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import com.example.fittracker.databinding.ActivityRecPasswordBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
+import kotlinx.coroutines.launch
 
 class RecuperoPasswordActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRecPasswordBinding
-    private lateinit var auth: FirebaseAuth
-    private var database = FirebaseDatabase.getInstance().getReference("Users")
+    private val model = AuthViewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,32 +21,21 @@ class RecuperoPasswordActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.btnIndietro.setOnClickListener(){
-            //startActivity(Intent(this, LoginActivity::class.java))
             finish()
         }
-        binding.btnInvia.setOnClickListener { recuperoPassword()}
-
-    }
-
-
-
-    private fun recuperoPassword(){
-        val email = binding.InputRecupero.text.toString().trim { it <= ' '}
-        val check = checkFields(email)
-        auth = FirebaseAuth.getInstance()
-        if(check) {
-            auth.sendPasswordResetEmail(email).addOnCompleteListener(this) {
-                if (it.isSuccessful) {
-                    Toast.makeText(
-                        this, "Email inviata con successo all'indirizzo indicato!", Toast.LENGTH_LONG
-                    ).show()
-                    finish()
-                } else {
-                    Toast.makeText(
-                        this,
-                        "Email non registrata o non corretta!",
-                        Toast.LENGTH_LONG
-                    ).show()
+        binding.btnInvia.setOnClickListener {
+            val email = binding.InputRecupero.text.toString().trim { it <= ' '}
+            if(checkFields(email)){
+                lifecycleScope.launch {
+                    val task = model.resetPassword(email)
+                    task.addOnCompleteListener{
+                        if (it.isSuccessful) {
+                            Toast.makeText(this@RecuperoPasswordActivity, "Email inviata con successo all'indirizzo indicato!", Toast.LENGTH_LONG).show()
+                            finish()
+                        } else {
+                            Toast.makeText(this@RecuperoPasswordActivity,"Email non registrata o non corretta!",Toast.LENGTH_LONG).show()
+                        }
+                    }
                 }
             }
         }
@@ -53,7 +43,7 @@ class RecuperoPasswordActivity : AppCompatActivity() {
     private fun checkFields(TextEmailInfo: String): Boolean {
 
         if(TextEmailInfo.isEmpty()) {
-            binding.InputRecupero.setError("Email field is empty")
+            binding.InputRecupero.setError("Per favore completa il campo")
             binding.InputRecupero.requestFocus()
             return false
         }

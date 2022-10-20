@@ -9,8 +9,6 @@ import androidx.lifecycle.lifecycleScope
 import com.example.fittracker.home.HomeActivity
 import com.example.fittracker.databinding.ActivityLoginBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.google.firebase.auth.*
-import com.google.firebase.database.FirebaseDatabase
 import kotlinx.coroutines.launch
 
 
@@ -23,114 +21,61 @@ class LoginActivity : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        lifecycleScope.launch {
-            val email = binding.InputEmailLogin.text.toString()
-            val password = binding.InputPasswordLogin.text.toString()
-
-            if(model.checkUtenteisLoggato()){
-                val intent = Intent(this@LoginActivity, HomeActivity::class.java)
-                startActivity(intent)
-                finish()
-            }
-
-            if (email.isNotEmpty() && password.isNotEmpty()) {
-                lifecycleScope.launch {
-                    if (model.signIn(email, password) == null) {
-                        MaterialAlertDialogBuilder(this@LoginActivity)
-                            .setTitle("Attenzione!")
-                            .setMessage("Ops, qualcosa è andato storto...")
-                            .setPositiveButton("OK") { dialog, which ->
-                                dialog.dismiss()
-                            }
-                            .show()
-                    } else {
-                        val intent = Intent(this@LoginActivity, HomeActivity::class.java)
-                        startActivity(intent)
-                        finish()
-                    }
-                }
-            }
-        }
-    }
-
-        //Controllo se l'utente è già loggato
-
-/*
-        if(auth.currentUser != null) {
+        if(model.checkUtenteisLoggato()){
             val intent = Intent(this@LoginActivity, HomeActivity::class.java)
             startActivity(intent)
             finish()
         }
 
+        binding.btnLogin.setOnClickListener {
+            lifecycleScope.launch {
+                val email = binding.InputEmailLogin.text.toString()
+                val password = binding.InputPasswordLogin.text.toString()
+
+
+                if (checkFields(email, password)) {
+                    lifecycleScope.launch {
+                        if (model.signIn(email, password) == null) {
+                            binding.InputEmailLogin.setError("Email o Password errate")
+                            binding.InputPasswordLogin.setError("Email o Password errate")
+                        } else {
+                            val intent = Intent(this@LoginActivity, HomeActivity::class.java)
+                            startActivity(intent)
+                            finish()
+                        }
+                    }
+                }
+
+            }
+        }
 
         binding.forgotPass.setOnClickListener {
             val intent = Intent(this@LoginActivity, RecuperoPasswordActivity::class.java)
             startActivity(intent)
         }
 
-
     }
 
-
-
-        binding.btnLogin.setOnClickListener { loginFunction() }
-        // KEEP USER LOGG
-
-        val currentUser = auth.currentUser
-        if (currentUser != null) {
-            startActivity()
-            finish()
+    private fun checkFields(email : String , password: String) : Boolean{
+        if(email.isEmpty()){
+            binding.InputEmailLogin.setError("Per favore completa il campo per effettuare l'accesso")
+            binding.InputEmailLogin.requestFocus()
+            return false
         }
-
-
-
-    private fun loginFunction() {
-        val email = binding.InputEmailLogin.text.toString()
-        val password = binding.InputPasswordLogin.text.toString().trim()
-        val check = checkFields(email, password)
-
-        auth = FirebaseAuth.getInstance()
-
-        if (check == true) {
-            auth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this) {
-                if (it.isSuccessful) {
-                    val user = auth.currentUser
-                    val userReference = database?.child(user?.uid!!)
-                    //updateUI(user)
-                    startActivity(Intent(this, HomeActivity::class.java))
-                    finish()
-                } else {
-                    Toast.makeText(
-                        this,
-                        "Non sei ancora registrato o email/password non sono corretti!",
-                        Toast.LENGTH_LONG
-                    ).show()
-                    //updateUI(null)
-                }
-            }
-        }
-    }
-
-    private fun checkFields(textEmailInfo: String, pass: String): Boolean {
-        if (textEmailInfo.isEmpty()) {
-            binding.InputEmailLogin.setError("Email field is empty")
+        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            binding.InputEmailLogin.setError("Per favore inserisci un formato email valido")
             binding.InputEmailLogin.requestFocus()
             return false
         }
 
-        if (!Patterns.EMAIL_ADDRESS.matcher(textEmailInfo).matches()) {
-            binding.InputEmailLogin.setError("Email format is incorrect!")
-            binding.InputEmailLogin.requestFocus()
-            return false
-        }
-
-        if (pass.isEmpty()) {
-            binding.InputPasswordLogin.setError("Password field is empty")
+        if(password.isEmpty()){
+            binding.InputPasswordLogin.setError("Per favore completa il campo per effettuare l'accesso")
             binding.InputPasswordLogin.requestFocus()
             return false
-        } else
-            return true
+        }
+
+        return true
+
     }
 
-*/
 }

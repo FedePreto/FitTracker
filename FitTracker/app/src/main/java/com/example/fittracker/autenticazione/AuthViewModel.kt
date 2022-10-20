@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.fittracker.databaseFB.UtenteDB
 import com.example.fittracker.model.Utente
+import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.userProfileChangeRequest
@@ -73,5 +74,9 @@ class AuthViewModel : ViewModel() {
         if(auth.currentUser != null)
             return true
         return false
+    }
+
+    fun resetPassword(email : String) : Task<Void>{
+        return auth.sendPasswordResetEmail(email)
     }
 }

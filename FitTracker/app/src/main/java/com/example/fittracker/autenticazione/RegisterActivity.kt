@@ -35,23 +35,15 @@ class RegisterActivity : AppCompatActivity() {
         setStep(utente.obbiettivo)
 
         binding.btnRegister.setOnClickListener {
-
             val email = binding.InputEmail.text.toString().trim()
             val pass = binding.InputPassword.text.toString().trim()
             val confPass = binding.InputCorrectPassword.text.toString().trim()
             val check = checkFields(email, pass, confPass)
 
             lifecycleScope.launch {
-                Toast.makeText(this@RegisterActivity, "sono nel launch", Toast.LENGTH_LONG).show()
                 if (check) {
                     if (model.singUp(email, pass) == null) {
-                        MaterialAlertDialogBuilder(this@RegisterActivity)
-                            .setTitle("Attenzione!")
-                            .setMessage("La registrazione non è andata a buon fine")
-                            .setPositiveButton("OK") { dialog, which ->
-                                dialog.dismiss()
-                            }
-                            .show()
+                        Toast.makeText(this@RegisterActivity,"Ops, la registrazione non è andata a buon fine",Toast.LENGTH_SHORT).show()
                     } else {
 
 
@@ -122,75 +114,4 @@ class RegisterActivity : AppCompatActivity() {
             }
         }
     }
-
-/*
-    private fun registrationFunction() {
-
-        val email = binding.InputEmail.text.toString()
-        val pass = binding.InputPassword.text.toString()
-        val confPass = binding.InputCorrectPassword.text.toString().trim()
-        val check = checkFields(email, pass, confPass)
-
-
-        lifecycleScope.launch {
-            if (check) {
-                if (model.singUp(email, pass) == null) {
-                    MaterialAlertDialogBuilder(this@RegisterActivity)
-                        .setTitle("Attenzione!")
-                        .setMessage("La registrazione non è andata a buon fine")
-                        .setPositiveButton("OK") { dialog, which ->
-                            dialog.dismiss()
-                        }
-                        .show()
-                } else {
-
-
-                    model.addAuthUtenteOnDB(utente.nome, utente.cognome, email, utente.obbiettivo, utente.sesso,
-                                            utente.data_nascita,utente.altezza,utente.peso_attuale,
-                                            utente.peso_obbiettivo,utente.kg_settimanali,
-                                            utente.data_raggiungimento, this@RegisterActivity)
-                    val intent = Intent(this@RegisterActivity, MainActivity::class.java)
-                    startActivity(intent)
-                    finish()
-                }
-            }
-        }
-    }
-    private fun checkFields(email: String, pass: String, confPass: String): Boolean {
-
-        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            binding.InputEmail.setError("Il formato dell'Email è errato!")
-            binding.InputEmail.requestFocus()
-            return false
-        }
-
-        if (pass.isEmpty()) {
-            binding.InputPassword.setError("La password è richiesta")
-            binding.InputPassword.requestFocus()
-            return false
-        }
-
-
-        if (pass.length < 6) {
-            binding.InputPassword.setError("La password deve essere di almeno 6 caratteri")
-            binding.InputPassword.requestFocus()
-            return false
-        }
-
-        if (confPass.isEmpty()) {
-            binding.InputCorrectPassword.setError("Conferma la tua password per favore")
-            binding.InputCorrectPassword.requestFocus()
-            return false
-        }
-
-        if (!pass.equals(confPass)) {
-            binding.InputCorrectPassword.setError("Le password non corrispondono!")
-            binding.InputCorrectPassword.setText(" ")
-            return false
-        }
-        else
-            return true
-    }
-
-*/
 }
