@@ -7,6 +7,51 @@
         android:layout_height="match_parent"
         tools:context=".diario.DiarioFragment">
     <LinearLayout
+            android:id="@+id/linearLayout"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_width="371dp"
+            android:layout_height="70dp"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout13" app:layout_constraintBottom_toBottomOf="parent">
+
+
+        <ImageView
+                android:src="@drawable/empty_glass_plus"
+                android:gravity="left"
+                android:layout_width="45dp"
+                android:background="@drawable/filling_animation"
+                android:layout_height="match_parent" android:id="@+id/glass_1" android:layout_weight="0"/>
+        <ImageView
+                android:src="@drawable/empty_glass_plus"
+                android:layout_width="45dp"
+                android:layout_height="match_parent" android:id="@+id/glass_2" android:layout_weight="0"/>
+        <ImageView
+                android:src="@drawable/empty_glass_plus"
+                android:layout_width="45dp"
+                android:layout_height="match_parent" android:id="@+id/glass_3" android:layout_weight="0"/>
+        <ImageView
+                android:src="@drawable/empty_glass_plus"
+                android:layout_width="45dp"
+                android:layout_height="match_parent" android:id="@+id/glass_4" android:layout_weight="0"/>
+        <ImageView
+                android:src="@drawable/empty_glass_plus"
+                android:layout_width="45dp"
+                android:layout_height="match_parent" android:id="@+id/glass_5" android:layout_weight="0"/>
+        <ImageView
+                android:src="@drawable/empty_glass_plus"
+                android:layout_width="45dp"
+                android:layout_height="match_parent" android:id="@+id/glass_6" android:layout_weight="0"/>
+        <ImageView
+                android:src="@drawable/empty_glass_plus"
+                android:layout_width="45dp"
+                android:layout_height="match_parent" android:id="@+id/glass_7" android:layout_weight="0"/>
+        <ImageView
+                android:src="@drawable/empty_glass_plus"
+                android:layout_width="45dp"
+                android:layout_height="match_parent" android:id="@+id/glass_8" android:layout_weight="0"/>
+    </LinearLayout>
+    <LinearLayout
             android:orientation="horizontal"
             android:gravity="center"
             android:layout_width="385dp"
@@ -169,50 +214,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" android:id="@+id/qnt_grs"/>
         </LinearLayout>
-    </LinearLayout>
-    <LinearLayout
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:layout_width="371dp"
-            android:layout_height="70dp"
-            tools:layout_editor_absoluteY="351dp"
-            tools:layout_editor_absoluteX="16dp">
-
-
-        <ImageView
-                android:src="@drawable/empty_glass_plus"
-                android:gravity="left"
-                android:layout_width="45dp"
-                android:background="@drawable/filling_animation"
-                android:layout_height="match_parent" android:id="@+id/glass_1" android:layout_weight="0"/>
-        <ImageView
-                android:src="@drawable/empty_glass_plus"
-                android:layout_width="45dp"
-                android:layout_height="match_parent" android:id="@+id/glass_2" android:layout_weight="0"/>
-        <ImageView
-                android:src="@drawable/empty_glass_plus"
-                android:layout_width="45dp"
-                android:layout_height="match_parent" android:id="@+id/glass_3" android:layout_weight="0"/>
-        <ImageView
-                android:src="@drawable/empty_glass_plus"
-                android:layout_width="45dp"
-                android:layout_height="match_parent" android:id="@+id/glass_4" android:layout_weight="0"/>
-        <ImageView
-                android:src="@drawable/empty_glass_plus"
-                android:layout_width="45dp"
-                android:layout_height="match_parent" android:id="@+id/glass_5" android:layout_weight="0"/>
-        <ImageView
-                android:src="@drawable/empty_glass_plus"
-                android:layout_width="45dp"
-                android:layout_height="match_parent" android:id="@+id/glass_6" android:layout_weight="0"/>
-        <ImageView
-                android:src="@drawable/empty_glass_plus"
-                android:layout_width="45dp"
-                android:layout_height="match_parent" android:id="@+id/glass_7" android:layout_weight="0"/>
-        <ImageView
-                android:src="@drawable/empty_glass_plus"
-                android:layout_width="45dp"
-                android:layout_height="match_parent" android:id="@+id/glass_8" android:layout_weight="0"/>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

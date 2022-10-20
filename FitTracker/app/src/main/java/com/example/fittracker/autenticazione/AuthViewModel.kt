@@ -68,35 +68,4 @@ class AuthViewModel : ViewModel() {
             _utente.value = utenteDB.getUtente(email)
         }
     }
-
-    fun setObiettivo(obiettivo: Int){
-        _utente.value?.obbiettivo = obiettivo
-    }
-    fun setSesso(sesso: String){
-        _utente.value?.sesso = sesso
-    }
-    fun setDataNascita(data: String){
-        _utente.value?.data_nascita = data
-    }
-    fun setNome(nome: String){
-        _utente.value?.nome = nome
-    }
-    fun setCognome(cognome: String){
-        _utente.value?.cognome = cognome
-    }
-    fun setAltezza(altezza: Int){
-        _utente.value?.altezza = altezza
-    }
-    fun setPeso(peso_attuale: Double){
-        _utente.value?.peso_attuale = peso_attuale
-    }
-    fun setPesoOb(peso_obiettivo: Double){
-        _utente.value?.peso_obbiettivo = peso_obiettivo
-    }
-    fun setKgSettimanali(kg_settimanali: Double){
-        _utente.value?.kg_settimanali = kg_settimanali
-    }
-
-
-
 }

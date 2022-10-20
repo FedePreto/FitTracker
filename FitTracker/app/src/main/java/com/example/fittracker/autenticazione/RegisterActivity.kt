@@ -11,6 +11,7 @@ import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
 import androidx.navigation.navArgs
+import com.example.fittracker.MainActivity
 import com.example.fittracker.databinding.ActivityRegisterBinding
 import com.example.fittracker.databinding.FragmentSliderBinding
 import com.example.fittracker.home.HomeActivity
@@ -20,14 +21,8 @@ import kotlinx.coroutines.launch
 class RegisterActivity : AppCompatActivity() {
     private lateinit var utente: Utente
     val args: RegisterActivityArgs by navArgs()
-
     private lateinit var binding: ActivityRegisterBinding
     private val model= AuthViewModel()
-
-    /*private var database = FirebaseDatabase.getInstance().getReference("Users")
-    private lateinit var auth: FirebaseAuth
-    private lateinit var db: FirebaseFirestore
-    */
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -64,8 +59,9 @@ class RegisterActivity : AppCompatActivity() {
                                             utente.data_nascita,utente.altezza,utente.peso_attuale,
                                             utente.peso_obbiettivo,utente.kg_settimanali,
                                             utente.data_raggiungimento, this@RegisterActivity)
-                    val intent = Intent(this@RegisterActivity, HomeActivity::class.java)
+                    val intent = Intent(this@RegisterActivity, MainActivity::class.java)
                     startActivity(intent)
+                    finish()
                 }
             }
         }
@@ -78,29 +74,38 @@ class RegisterActivity : AppCompatActivity() {
             return false
         }
 
+        model.getUtente(email)
+        Toast.makeText(this@RegisterActivity, email + model.utente.value!!.email,Toast.LENGTH_LONG).show()
+        if(model.utente.value?.email != ""){
+            binding.InputEmail.setError("La mail è già registrata")
+            binding.InputEmail.requestFocus()
+            return false
+        }
+
         if (pass.isEmpty()) {
-            binding.InputPassword.setError("Password is required")
+            binding.InputPassword.setError("La password è richiesta")
             binding.InputPassword.requestFocus()
             return false
         }
 
         if (pass.length < 6) {
-            binding.InputPassword.setError("Password MUST BE AT LEAST 6 CHARACTERS")
+            binding.InputPassword.setError("La password deve essere di almeno 6 caratteri")
             binding.InputPassword.requestFocus()
+            return false
         }
 
         if (confPass.isEmpty()) {
-            binding.InputCorrectPassword.setError("Confirm your password please")
+            binding.InputCorrectPassword.setError("Conferma la tua password per favore")
             binding.InputCorrectPassword.requestFocus()
             return false
-
         }
 
         if (!pass.equals(confPass)) {
-            binding.InputCorrectPassword.setError("Passwords don't match!")
+            binding.InputCorrectPassword.setError("Le password non corrispondono!")
             binding.InputCorrectPassword.setText(" ")
             return false
-        } else
+        }
+        else
             return true
     }
 
