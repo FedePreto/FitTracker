@@ -4,16 +4,16 @@
         <item
                 android:duration="50"
                 android:drawable="@drawable/empty_glass"/>
+        <item
+                android:duration="50"
+                android:drawable="@drawable/glass_1"/>
 
         <item
                 android:duration="50"
-                android:drawable="@drawable/empty_glass_plus"/>
+                android:drawable="@drawable/glass_2" />
 
         <item
                 android:duration="50"
-                android:drawable="@drawable/empty_glass"/>
+                android:drawable="@drawable/glass_3" />
 
-        <item
-                android:duration="50"
-                android:drawable="@drawable/empty_glass"/>
 </animation-list>
