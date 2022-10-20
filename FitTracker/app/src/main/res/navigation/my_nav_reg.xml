@@ -32,10 +32,10 @@
     <fragment android:id="@+id/pesoAttualeFragment"
               android:name="com.example.fittracker.autenticazione.PesoAttualeFragment"
               android:label="PesoAttualeFragment" tools:layout="@layout/fragment_peso_attuale">
+        <argument android:name="utente" app:argType="com.example.fittracker.model.Utente"/>
         <action android:id="@+id/action_pesoAttualeFragment_to_pesoObbFragment" app:destination="@id/pesoObbFragment"/>
         <action android:id="@+id/action_pesoAttualeFragment_to_registerActivity"
                 app:destination="@id/registerActivity"/>
-        <argument android:name="utente" app:argType="com.example.fittracker.model.Utente"/>
     </fragment>
     <fragment android:id="@+id/sessoFragment" android:name="com.example.fittracker.autenticazione.SessoFragment"
               android:label="SessoFragment" tools:layout="@layout/fragment_sesso">
@@ -45,8 +45,8 @@
     </fragment>
     <fragment android:id="@+id/sliderFragment" android:name="com.example.fittracker.autenticazione.SliderFragment"
               android:label="SliderFragment" tools:layout="@layout/fragment_slider">
-        <action android:id="@+id/action_sliderFragment_to_registerActivity" app:destination="@id/registerActivity"/>
         <argument android:name="utente" app:argType="com.example.fittracker.model.Utente"/>
+        <action android:id="@+id/action_sliderFragment_to_registerActivity" app:destination="@id/registerActivity"/>
     </fragment>
     <activity android:id="@+id/registerActivity" android:name="com.example.fittracker.autenticazione.RegisterActivity"
               android:label="activity_register" tools:layout="@layout/activity_register">

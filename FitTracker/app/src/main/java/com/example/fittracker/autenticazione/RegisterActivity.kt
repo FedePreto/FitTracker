@@ -8,6 +8,8 @@ import android.util.AttributeSet
 import android.util.Patterns
 import android.view.View
 import android.widget.Toast
+import androidx.annotation.RequiresApi
+import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
 import androidx.navigation.navArgs
@@ -20,22 +22,23 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.coroutines.launch
 class RegisterActivity : AppCompatActivity() {
     private lateinit var utente: Utente
-    val args: RegisterActivityArgs by navArgs()
     private lateinit var binding: ActivityRegisterBinding
     private val model= AuthViewModel()
+    val args: RegisterActivityArgs by navArgs()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        utente = args.utente
+   /*
+
         binding.btnRegister.setOnClickListener {
             registrationFunction()
         }
-
+*/
     }
 
-
+/*
     private fun registrationFunction() {
 
         val email = binding.InputEmail.text.toString()
@@ -49,12 +52,14 @@ class RegisterActivity : AppCompatActivity() {
                 if (model.singUp(email, pass) == null) {
                     MaterialAlertDialogBuilder(this@RegisterActivity)
                         .setTitle("Attenzione!")
-                        .setMessage("Riempi tutti i campi richiesti per continuare")
+                        .setMessage("La registrazione non è andata a buon fine")
                         .setPositiveButton("OK") { dialog, which ->
                             dialog.dismiss()
                         }
                         .show()
                 } else {
+
+
                     model.addAuthUtenteOnDB(utente.nome, utente.cognome, email, utente.obbiettivo, utente.sesso,
                                             utente.data_nascita,utente.altezza,utente.peso_attuale,
                                             utente.peso_obbiettivo,utente.kg_settimanali,
@@ -74,19 +79,12 @@ class RegisterActivity : AppCompatActivity() {
             return false
         }
 
-        model.getUtente(email)
-        Toast.makeText(this@RegisterActivity, email + model.utente.value!!.email,Toast.LENGTH_LONG).show()
-        if(model.utente.value?.email != ""){
-            binding.InputEmail.setError("La mail è già registrata")
-            binding.InputEmail.requestFocus()
-            return false
-        }
-
         if (pass.isEmpty()) {
             binding.InputPassword.setError("La password è richiesta")
             binding.InputPassword.requestFocus()
             return false
         }
+
 
         if (pass.length < 6) {
             binding.InputPassword.setError("La password deve essere di almeno 6 caratteri")
@@ -109,5 +107,5 @@ class RegisterActivity : AppCompatActivity() {
             return true
     }
 
-
+*/
 }

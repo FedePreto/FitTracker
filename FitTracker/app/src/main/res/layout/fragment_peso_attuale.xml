@@ -4,7 +4,8 @@
 <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".autenticazione.PesoAttualeActivity" android:background="@color/white">
+        tools:context=".autenticazione.ConosciamociActivity"
+        android:background="@color/white">
 
     <LinearLayout
             android:gravity="center"

@@ -1,5 +1,6 @@
 package com.example.fittracker.autenticazione
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -65,9 +66,11 @@ class SliderFragment : Fragment() {
             utente.kg_settimanali = kg_settimanali
             utente.data_raggiungimento = binding.tvDateRaggiungimento.text.toString()
             if (utente.kg_settimanali != 0.0 && utente.data_raggiungimento != "") {
-                val action = SliderFragmentDirections.actionSliderFragmentToRegisterActivity(utente)
-                view.findNavController().navigate(action!!)
-                activity?.finish()
+                val intent = Intent(requireContext(), RegisterActivity::class.java)
+                intent.putExtra("utente",utente)
+                startActivity(intent)
+                requireActivity().finish()
+
             } else
                 Toast.makeText(context, "Per favore, completa i campi", Toast.LENGTH_SHORT).show()
         }

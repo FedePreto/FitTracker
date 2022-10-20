@@ -26,17 +26,16 @@ class InizioActivity : AppCompatActivity() {
         avvioVideo()
 
 
-        binding.btInizia.setOnClickListener {
+        binding.btInizia.setOnClickListener(){
             var a = Intent(this, ConosciamociActivity::class.java)
-            a.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+            //a.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
             startActivity(a)
-
         }
 
 
         binding.btAccesso.setOnClickListener(){
             var a = Intent(this, LoginActivity::class.java)
-            a.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+            //a.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
             startActivity(a)
         }
 

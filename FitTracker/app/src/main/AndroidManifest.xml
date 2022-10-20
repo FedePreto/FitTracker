@@ -51,10 +51,12 @@
         </activity>
         <activity
             android:name=".autenticazione.InizioActivity"
-            android:exported="false"/>
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
                 android:name=".autenticazione.ConosciamociActivity"
-                android:exported="false"/>
+                android:exported="false"
+                android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

@@ -1,5 +1,6 @@
 package com.example.fittracker.autenticazione
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -17,6 +18,7 @@ import com.example.fittracker.R
 import com.example.fittracker.databinding.FragmentAltezzaBinding
 import com.example.fittracker.databinding.FragmentObbiettivoBinding
 import com.example.fittracker.databinding.FragmentPesoAttualeBinding
+import com.example.fittracker.home.HomeActivity
 import com.example.fittracker.model.Utente
 
 // TODO: Rename parameter arguments, choose names that match
@@ -52,8 +54,8 @@ class PesoAttualeFragment : Fragment() {
             binding.btAvantiPesoAttuale.setOnClickListener {
                 var pesoAttuale = binding.eTPesoAttuale.text.toString()
                 if (pesoAttuale != "") {
-                    utente.peso_attuale = pesoAttuale.toDouble()
-                    view.findNavController().navigate(action!!)
+                        utente.peso_attuale = pesoAttuale.toDouble()
+                        view.findNavController().navigate(action!!)
                 } else
                     Toast.makeText(context, "Per favore, completa il campo", Toast.LENGTH_SHORT).show()
             }
@@ -77,7 +79,21 @@ class PesoAttualeFragment : Fragment() {
             }
         }
     }
+    /*fun setNavigation(obbietivo: Int): NavDirections? {
+        when (obbietivo) {
+            0 -> return PesoAttualeFragmentDirections.actionPesoAttualeFragmentToPesoObbFragment(utente)
+            1 ->{
+                val intent = Intent(this@PesoAttualeFragment.context, RegisterActivity::class.java)
+                intent.putExtra("utente",utente)
+                this@PesoAttualeFragment.startActivity(intent)
+                return null
+                }
+            2 -> return PesoAttualeFragmentDirections.actionPesoAttualeFragmentToPesoObbFragment(utente)
+            else -> return null
+        }
+    }
 
+     */
     fun setNavigation(obbietivo: Int): NavDirections? {
         when (obbietivo) {
             0 -> return PesoAttualeFragmentDirections.actionPesoAttualeFragmentToPesoObbFragment(utente)
@@ -86,4 +102,5 @@ class PesoAttualeFragment : Fragment() {
             else -> return null
         }
     }
+
 }

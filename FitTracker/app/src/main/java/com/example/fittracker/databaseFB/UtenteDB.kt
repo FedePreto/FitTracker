@@ -6,6 +6,8 @@ import com.example.fittracker.model.Utente
 import com.google.firebase.firestore.ktx.toObjects
 import kotlinx.coroutines.*
 import kotlinx.coroutines.tasks.await
+import okhttp3.internal.notify
+import okhttp3.internal.notifyAll
 
 class UtenteDB : FirebaseDB() {
     // Riferimento alla collection Utente
@@ -74,12 +76,4 @@ class UtenteDB : FirebaseDB() {
         return Utente()
 
     }
-
-
-
-
-
-
-
-
 }

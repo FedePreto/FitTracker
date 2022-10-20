@@ -23,19 +23,22 @@ class LoginActivity : AppCompatActivity() {
         setContentView(binding.root)
 
 
-
-        binding.forgotPass.setOnClickListener(){
+/*
+        binding.forgotPass.setOnClickListener() {
             startActivity(Intent(this, RecuperoPasswordActivity::class.java))
         }
-        binding.btnLogin.setOnClickListener{ loginFunction()}
+        binding.btnLogin.setOnClickListener { loginFunction() }
         // KEEP USER LOGG
         auth = FirebaseAuth.getInstance()
         val currentUser = auth.currentUser
-        if (currentUser !=null){
+        if (currentUser != null) {
             startActivity(Intent(this, HomeActivity::class.java))
             finish()
         }
+        */
+
     }
+/*
     private fun loginFunction() {
         val email = binding.InputEmailLogin.text.toString()
         val password = binding.InputPasswordLogin.text.toString().trim()
@@ -43,24 +46,28 @@ class LoginActivity : AppCompatActivity() {
 
         auth = FirebaseAuth.getInstance()
 
-        if(check == true){
-            auth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this){
-                if(it.isSuccessful){
+        if (check == true) {
+            auth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this) {
+                if (it.isSuccessful) {
                     val user = auth.currentUser
                     val userReference = database?.child(user?.uid!!)
-                    updateUI(user)
+                    //updateUI(user)
                     startActivity(Intent(this, HomeActivity::class.java))
                     finish()
-                }
-                else{
-                    Toast.makeText(this, "Non sei ancora registrato o email/password non sono corretti!", Toast.LENGTH_LONG).show()
-                    updateUI(null)
+                } else {
+                    Toast.makeText(
+                        this,
+                        "Non sei ancora registrato o email/password non sono corretti!",
+                        Toast.LENGTH_LONG
+                    ).show()
+                    //updateUI(null)
                 }
             }
         }
     }
-    private fun checkFields(textEmailInfo: String, pass:String): Boolean {
-        if(textEmailInfo.isEmpty()) {
+
+    private fun checkFields(textEmailInfo: String, pass: String): Boolean {
+        if (textEmailInfo.isEmpty()) {
             binding.InputEmailLogin.setError("Email field is empty")
             binding.InputEmailLogin.requestFocus()
             return false
@@ -72,25 +79,13 @@ class LoginActivity : AppCompatActivity() {
             return false
         }
 
-        if(pass.isEmpty()){
+        if (pass.isEmpty()) {
             binding.InputPasswordLogin.setError("Password field is empty")
             binding.InputPasswordLogin.requestFocus()
             return false
-        }
-        else
+        } else
             return true
     }
+    */
 
-    private fun updateUI(user: FirebaseUser?) {
-
-    }
-
-    private fun reload() {
-
-    }
-
-
-
-
-
-    }
+}
