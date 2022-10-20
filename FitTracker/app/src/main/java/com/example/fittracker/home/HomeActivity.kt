@@ -33,14 +33,19 @@ class HomeActivity : AppCompatActivity() {
 
     private lateinit var navController: NavController
 
-    private var user  = Firebase.auth.currentUser
+    private var user = Firebase.auth.currentUser
     lateinit var logIntent: Intent
-
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
+
+
+        //Logout
+        Firebase.auth.signOut()
+
+        /*
         replaceFragment(diarioFragment)
 
 
@@ -129,7 +134,10 @@ class HomeActivity : AppCompatActivity() {
 
 
     }
+*/
 
+
+    }
     private fun logout(){
         Firebase.auth.signOut()
         startActivity(Intent(this, LoginActivity::class.java))

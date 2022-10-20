@@ -68,4 +68,10 @@ class AuthViewModel : ViewModel() {
             _utente.value = utenteDB.getUtente(email)
         }
     }
+
+    fun checkUtenteisLoggato() : Boolean{
+        if(auth.currentUser != null)
+            return true
+        return false
+    }
 }

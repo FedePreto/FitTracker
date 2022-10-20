@@ -5,40 +5,85 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Patterns
 import android.widget.Toast
+import androidx.lifecycle.lifecycleScope
 import com.example.fittracker.home.HomeActivity
 import com.example.fittracker.databinding.ActivityLoginBinding
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.firebase.auth.*
 import com.google.firebase.database.FirebaseDatabase
-
+import kotlinx.coroutines.launch
 
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
-    private lateinit var auth: FirebaseAuth
-    private var database = FirebaseDatabase.getInstance().getReference("Users")
+    private val model = AuthViewModel()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //remeber that we are gonna initializa biding before settinf the content view
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        lifecycleScope.launch {
+            val email = binding.InputEmailLogin.text.toString()
+            val password = binding.InputPasswordLogin.text.toString()
+
+            if(model.checkUtenteisLoggato()){
+                val intent = Intent(this@LoginActivity, HomeActivity::class.java)
+                startActivity(intent)
+                finish()
+            }
+
+            if (email.isNotEmpty() && password.isNotEmpty()) {
+                lifecycleScope.launch {
+                    if (model.signIn(email, password) == null) {
+                        MaterialAlertDialogBuilder(this@LoginActivity)
+                            .setTitle("Attenzione!")
+                            .setMessage("Ops, qualcosa è andato storto...")
+                            .setPositiveButton("OK") { dialog, which ->
+                                dialog.dismiss()
+                            }
+                            .show()
+                    } else {
+                        val intent = Intent(this@LoginActivity, HomeActivity::class.java)
+                        startActivity(intent)
+                        finish()
+                    }
+                }
+            }
+        }
+    }
+
+        //Controllo se l'utente è già loggato
 
 /*
-        binding.forgotPass.setOnClickListener() {
-            startActivity(Intent(this, RecuperoPasswordActivity::class.java))
-        }
-        binding.btnLogin.setOnClickListener { loginFunction() }
-        // KEEP USER LOGG
-        auth = FirebaseAuth.getInstance()
-        val currentUser = auth.currentUser
-        if (currentUser != null) {
-            startActivity(Intent(this, HomeActivity::class.java))
+        if(auth.currentUser != null) {
+            val intent = Intent(this@LoginActivity, HomeActivity::class.java)
+            startActivity(intent)
             finish()
         }
-        */
+
+
+        binding.forgotPass.setOnClickListener {
+            val intent = Intent(this@LoginActivity, RecuperoPasswordActivity::class.java)
+            startActivity(intent)
+        }
+
 
     }
-/*
+
+
+
+        binding.btnLogin.setOnClickListener { loginFunction() }
+        // KEEP USER LOGG
+
+        val currentUser = auth.currentUser
+        if (currentUser != null) {
+            startActivity()
+            finish()
+        }
+
+
+
     private fun loginFunction() {
         val email = binding.InputEmailLogin.text.toString()
         val password = binding.InputPasswordLogin.text.toString().trim()
@@ -86,6 +131,6 @@ class LoginActivity : AppCompatActivity() {
         } else
             return true
     }
-    */
 
+*/
 }
