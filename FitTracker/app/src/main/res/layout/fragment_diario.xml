@@ -6,283 +6,296 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".diario.DiarioFragment">
-    <LinearLayout
-            android:background="@drawable/bg_card"
-            android:layout_marginTop="10dp"
-            android:orientation="vertical"
+    <ScrollView
             android:layout_width="0dp"
-            android:gravity="center"
-            android:layout_height="236dp" app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginStart="10dp" android:layout_marginEnd="10dp" android:id="@+id/linearLayout14">
-        <LinearLayout
-                android:orientation="horizontal"
-                android:gravity="center"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/linearLayout12"
-        >
+            android:layout_height="0dp" app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintVertical_bias="1.0">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent"
+                      android:orientation="vertical">
             <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="wrap_content"
-                    android:gravity="center"
-                    android:layout_height="wrap_content">
-                <TextView
-                        android:text="0"
-                        android:hint="0"
-                        android:textAlignment="center"
-                        android:textColor="@color/grey_primary_dark"
-                        android:gravity="center"
-                        android:textSize="18sp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" android:id="@+id/calAssunte"/>
-                <TextView
-                        android:text="ASSUNTE"
-                        android:textAlignment="center"
-                        android:gravity="center"
-                        android:textColor="@color/black"
-                        android:textSize="12sp"
-                        android:textStyle="bold"
-                        android:layout_width="70dp"
-                        android:layout_height="30dp" android:id="@+id/textView18"/>
-            </LinearLayout>
-            <FrameLayout
-                    android:layout_width="150dp"
-                    android:layout_height="150dp" tools:layout_editor_absoluteY="217dp"
-                    tools:layout_editor_absoluteX="78dp">
-
-                <com.mikhaellopez.circularprogressbar.CircularProgressBar
-                        android:id="@+id/progress_calorie"
-
-                        android:layout_width="150dp"
-                        android:layout_height="150dp"
-                />
-                <TextView
-                        android:text="2500 kcal\n RIMANENTI"
-                        android:textSize="18sp"
-                        android:textColor="@color/black"
-                        android:textStyle="bold"
-                        android:textAlignment="center"
-                        android:gravity="center"
-                        android:layout_width="150dp"
-                        android:layout_height="150dp" android:id="@+id/calorie_rimanenti"
-                />
-            </FrameLayout>
-            <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="wrap_content"
-                    android:gravity="center"
-                    android:layout_height="wrap_content">
-                <TextView
-                        android:text="0"
-                        android:hint="0"
-                        android:textColor="@color/grey_primary_dark"
-                        android:textAlignment="center"
-                        android:gravity="center"
-                        android:textSize="18sp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" android:id="@+id/calBruciate"/>
-                <TextView
-                        android:text="BRUCIATE"
-                        android:textAlignment="center"
-                        android:textColor="@color/black"
-                        android:gravity="center"
-                        android:textSize="12sp"
-                        android:textStyle="bold"
-                        android:layout_width="70dp"
-                        android:layout_height="30dp" android:id="@+id/textView22"/>
-            </LinearLayout>
-        </LinearLayout>
-        <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="355dp"
-                android:gravity="center"
-                android:layout_height="wrap_content"
-                android:id="@+id/linearLayout13"
-        >
-            <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_marginRight="20dp"
+                    android:name="Contenitore calorie"
+                    android:id="@+id/contenitore_calorie"
+                    android:background="@drawable/bg_card"
                     android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_width="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
                     android:gravity="center"
-                    android:layout_height="match_parent">
-                <TextView
-                        android:text="CARBOIDRATI"
-                        android:textAlignment="center"
-                        android:textSize="14sp"
-                        android:textColor="@color/black"
-                        android:textStyle="bold"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="10dp" android:layout_marginEnd="10dp">
+                <LinearLayout
+                        android:orientation="horizontal"
+                        android:gravity="center"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" android:id="@+id/textView15"/>
-                <ProgressBar
-                        style="?android:attr/progressBarStyleHorizontal"
-                        android:layout_width="91dp"
-                        android:progressTint="@color/deep_orange_primary"
-                        android:progress="50"
                         android:layout_height="wrap_content"
-                        android:id="@+id/pgBar_carboidrati"/>
-                <TextView
-                        android:text="0/230g"
-                        android:textAlignment="center"
-                        android:textSize="15sp"
-                        android:textStyle="bold"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" android:id="@+id/qnt_carbo"/>
+                        android:id="@+id/linearLayout12"
+                >
+                    <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="wrap_content"
+                            android:gravity="center"
+                            android:layout_height="wrap_content">
+                        <TextView
+                                android:text="0"
+                                android:hint="0"
+                                android:textAlignment="center"
+                                android:textColor="@color/grey_primary_dark"
+                                android:gravity="center"
+                                android:textSize="18sp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content" android:id="@+id/calAssunte"/>
+                        <TextView
+                                android:text="ASSUNTE"
+                                android:textAlignment="center"
+                                android:gravity="center"
+                                android:textColor="@color/black"
+                                android:textSize="12sp"
+                                android:textStyle="bold"
+                                android:layout_width="70dp"
+                                android:layout_height="30dp" android:id="@+id/textView18"/>
+                    </LinearLayout>
+                    <FrameLayout
+                            android:layout_width="150dp"
+                            android:layout_height="150dp" tools:layout_editor_absoluteY="217dp"
+                            tools:layout_editor_absoluteX="78dp">
+
+                        <com.mikhaellopez.circularprogressbar.CircularProgressBar
+                                android:id="@+id/progress_calorie"
+
+                                android:layout_width="150dp"
+                                android:layout_height="150dp"
+                        />
+                        <TextView
+                                android:text="2500 kcal\n RIMANENTI"
+                                android:textSize="18sp"
+                                android:textColor="@color/black"
+                                android:textStyle="bold"
+                                android:textAlignment="center"
+                                android:gravity="center"
+                                android:layout_width="150dp"
+                                android:layout_height="150dp" android:id="@+id/calorie_rimanenti"
+                        />
+                    </FrameLayout>
+                    <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="wrap_content"
+                            android:gravity="center"
+                            android:layout_height="wrap_content">
+                        <TextView
+                                android:text="0"
+                                android:hint="0"
+                                android:textColor="@color/grey_primary_dark"
+                                android:textAlignment="center"
+                                android:gravity="center"
+                                android:textSize="18sp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content" android:id="@+id/calBruciate"/>
+                        <TextView
+                                android:text="BRUCIATE"
+                                android:textAlignment="center"
+                                android:textColor="@color/black"
+                                android:gravity="center"
+                                android:textSize="12sp"
+                                android:textStyle="bold"
+                                android:layout_width="70dp"
+                                android:layout_height="30dp" android:id="@+id/textView22"/>
+                    </LinearLayout>
+                </LinearLayout>
+                <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="355dp"
+                        android:gravity="center"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/linearLayout13"
+                >
+                    <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_marginRight="20dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_width="wrap_content"
+                            android:gravity="center"
+                            android:layout_height="match_parent">
+                        <TextView
+                                android:text="CARBOIDRATI"
+                                android:textAlignment="center"
+                                android:textSize="14sp"
+                                android:textColor="@color/black"
+                                android:textStyle="bold"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" android:id="@+id/textView15"/>
+                        <ProgressBar
+                                style="?android:attr/progressBarStyleHorizontal"
+                                android:layout_width="91dp"
+                                android:progressTint="@color/deep_orange_primary"
+                                android:progress="50"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/pgBar_carboidrati"/>
+                        <TextView
+                                android:text="0/230g"
+                                android:textAlignment="center"
+                                android:textSize="15sp"
+                                android:textStyle="bold"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content" android:id="@+id/qnt_carbo"/>
+                    </LinearLayout>
+                    <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_marginRight="20dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:gravity="center"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent">
+                        <TextView
+                                android:text="PROTEINE"
+                                android:textAlignment="center"
+                                android:textColor="@color/black"
+                                android:textSize="14sp"
+                                android:textStyle="bold"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" android:id="@+id/textView24"/>
+                        <ProgressBar
+                                style="?android:attr/progressBarStyleHorizontal"
+                                android:layout_width="80dp"
+                                android:progressTint="@color/yellow_primary"
+                                android:progress="50"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/pgBar_proteine"/>
+                        <TextView
+                                android:text="0/250g"
+                                android:textAlignment="center"
+                                android:textSize="15sp"
+                                android:textStyle="bold"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content" android:id="@+id/qnt_pro"/>
+                    </LinearLayout>
+                    <LinearLayout
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent">
+                        <TextView
+                                android:text="GRASSI"
+                                android:textAlignment="center"
+                                android:textColor="@color/black"
+                                android:textSize="14sp"
+                                android:textStyle="bold"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" android:id="@+id/textView26"/>
+                        <ProgressBar
+                                style="?android:attr/progressBarStyleHorizontal"
+                                android:layout_width="80dp"
+                                android:progressTint="@color/google_blue"
+                                android:progress="50"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/pgBar_grassi"/>
+                        <TextView
+                                android:text="0/250g"
+                                android:textAlignment="center"
+                                android:textSize="15sp"
+                                android:textStyle="bold"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content" android:id="@+id/qnt_grs"/>
+                    </LinearLayout>
+                </LinearLayout>
             </LinearLayout>
             <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_marginRight="20dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
+                    android:id="@+id/contenitore_acqua"
+                    android:name="Contenitore d'Acqua"
                     android:gravity="center"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent">
-                <TextView
-                        android:text="PROTEINE"
-                        android:textAlignment="center"
-                        android:textColor="@color/black"
-                        android:textSize="14sp"
-                        android:textStyle="bold"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" android:id="@+id/textView24"/>
-                <ProgressBar
-                        style="?android:attr/progressBarStyleHorizontal"
-                        android:layout_width="80dp"
-                        android:progressTint="@color/yellow_primary"
-                        android:progress="50"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/pgBar_proteine"/>
-                <TextView
-                        android:text="0/250g"
-                        android:textAlignment="center"
-                        android:textSize="15sp"
-                        android:textStyle="bold"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" android:id="@+id/qnt_pro"/>
-            </LinearLayout>
-            <LinearLayout
                     android:orientation="vertical"
-                    android:gravity="center"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent">
-                <TextView
-                        android:text="GRASSI"
-                        android:textAlignment="center"
-                        android:textColor="@color/black"
-                        android:textSize="14sp"
-                        android:textStyle="bold"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" android:id="@+id/textView26"/>
-                <ProgressBar
-                        style="?android:attr/progressBarStyleHorizontal"
-                        android:layout_width="80dp"
-                        android:progressTint="@color/google_blue"
-                        android:progress="50"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/pgBar_grassi"/>
-                <TextView
-                        android:text="0/250g"
-                        android:textAlignment="center"
-                        android:textSize="15sp"
-                        android:textStyle="bold"
+                    android:background="@drawable/bg_card"
+                    android:layout_width="match_parent"
+                    android:layout_height="95dp"
+                    android:layout_marginTop="20dp" android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp">
+                <LinearLayout
+                        android:layout_marginLeft="25dp"
+                        android:layout_marginRight="25dp"
+                        android:orientation="horizontal"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" android:id="@+id/qnt_grs"/>
+                        android:layout_height="31dp">
+                    <TextView
+                            android:text="Acqua"
+                            android:gravity="left"
+                            android:textSize="23sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/black"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent" android:id="@+id/textView23" android:layout_weight="1"
+                    />
+                    <TextView
+                            android:text="0 L"
+                            android:textSize="23sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/black"
+                            android:gravity="right"
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent" android:id="@+id/textView25"
+                            android:layout_weight="1"/>
+                </LinearLayout>
+                <LinearLayout
+                        android:id="@+id/linearLayout"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp">
+                    <ImageView
+                            android:background="@drawable/empty_glass_plus"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginLeft="3dp"
+                            android:gravity="left"
+                            android:layout_width="36dp"
+                            android:layout_height="55dp" android:id="@+id/glass_1" android:layout_weight="0"/>
+                    <ImageView
+                            android:background="@drawable/empty_glass"
+                            android:layout_width="36dp"
+
+                            android:layout_marginRight="5dp"
+                            android:layout_height="55dp" android:id="@+id/glass_2" android:layout_weight="0"/>
+                    <ImageView
+                            android:background="@drawable/empty_glass"
+
+                            android:layout_marginRight="5dp"
+                            android:layout_width="36dp"
+                            android:layout_height="55dp" android:id="@+id/glass_3" android:layout_weight="0"/>
+                    <ImageView
+                            android:background="@drawable/empty_glass"
+                            android:layout_marginRight="5dp"
+                            android:layout_width="36dp"
+                            android:layout_height="55dp" android:id="@+id/glass_4" android:layout_weight="0"/>
+                    <ImageView
+                            android:background="@drawable/empty_glass"
+                            android:layout_marginRight="5dp"
+                            android:layout_width="36dp"
+                            android:layout_height="55dp" android:id="@+id/glass_5" android:layout_weight="0"/>
+                    <ImageView
+                            android:background="@drawable/empty_glass"
+                            android:layout_marginRight="5dp"
+                            android:layout_width="36dp"
+                            android:layout_height="55dp" android:id="@+id/glass_6" android:layout_weight="0"/>
+                    <ImageView
+                            android:background="@drawable/empty_glass"
+                            android:layout_marginRight="5dp"
+                            android:layout_width="36dp"
+                            android:layout_height="55dp" android:id="@+id/glass_7" android:layout_weight="0"/>
+                    <ImageView
+                            android:background="@drawable/empty_glass"
+                            android:layout_marginRight="3dp"
+                            android:layout_width="36dp"
+                            android:layout_height="55dp" android:id="@+id/glass_8" android:layout_weight="0"/>
+                </LinearLayout>
             </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
-    <LinearLayout
-            android:gravity="center"
-            android:orientation="vertical"
-            android:background="@drawable/bg_card"
-            android:layout_width="0dp"
-            android:layout_height="95dp"
-            app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/linearLayout14"
-            app:layout_constraintEnd_toEndOf="parent" android:layout_marginTop="20dp" android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp" app:layout_constraintHorizontal_bias="0.473">
-        <LinearLayout
-                android:layout_marginLeft="25dp"
-                android:layout_marginRight="25dp"
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="31dp">
-            <TextView
-                    android:text="Acqua"
-                    android:gravity="left"
-                    android:textSize="23sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/black"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent" android:id="@+id/textView23" android:layout_weight="1"
-            />
-            <TextView
-                    android:text="0 L"
-                    android:textSize="23sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/black"
-                    android:gravity="right"
-
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent" android:id="@+id/textView25" android:layout_weight="1"/>
-        </LinearLayout>
-        <LinearLayout
-                android:id="@+id/linearLayout"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:gravity="center"
-                android:orientation="horizontal"
-                android:layout_width="wrap_content"
-                android:layout_height="60dp">
-            <ImageView
-                    android:background="@drawable/empty_glass_plus"
-                    android:layout_marginRight="5dp"
-                    android:layout_marginLeft="3dp"
-                    android:gravity="left"
-                    android:layout_width="36dp"
-                    android:layout_height="55dp" android:id="@+id/glass_1" android:layout_weight="0"/>
-            <ImageView
-                    android:background="@drawable/empty_glass"
-                    android:layout_width="36dp"
-
-                    android:layout_marginRight="5dp"
-                    android:layout_height="55dp" android:id="@+id/glass_2" android:layout_weight="0"/>
-            <ImageView
-                    android:background="@drawable/empty_glass"
-
-                    android:layout_marginRight="5dp"
-                    android:layout_width="36dp"
-                    android:layout_height="55dp" android:id="@+id/glass_3" android:layout_weight="0"/>
-            <ImageView
-                    android:background="@drawable/empty_glass"
-                    android:layout_marginRight="5dp"
-                    android:layout_width="36dp"
-                    android:layout_height="55dp" android:id="@+id/glass_4" android:layout_weight="0"/>
-            <ImageView
-                    android:background="@drawable/empty_glass"
-                    android:layout_marginRight="5dp"
-                    android:layout_width="36dp"
-                    android:layout_height="55dp" android:id="@+id/glass_5" android:layout_weight="0"/>
-            <ImageView
-                    android:background="@drawable/empty_glass"
-                    android:layout_marginRight="5dp"
-                    android:layout_width="36dp"
-                    android:layout_height="55dp" android:id="@+id/glass_6" android:layout_weight="0"/>
-            <ImageView
-                    android:background="@drawable/empty_glass"
-                    android:layout_marginRight="5dp"
-                    android:layout_width="36dp"
-                    android:layout_height="55dp" android:id="@+id/glass_7" android:layout_weight="0"/>
-            <ImageView
-                    android:background="@drawable/empty_glass"
-                    android:layout_marginRight="3dp"
-                    android:layout_width="36dp"
-                    android:layout_height="55dp" android:id="@+id/glass_8" android:layout_weight="0"/>
-        </LinearLayout>
-    </LinearLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
