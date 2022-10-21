@@ -39,6 +39,7 @@ class DatiPersonaliFragment : Fragment() {
     }
 
 
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         var utente = args.utente
@@ -52,7 +53,7 @@ class DatiPersonaliFragment : Fragment() {
         //selezione data
         binding.tvDataNascita.setOnClickListener{
             val dpd = DatePickerDialog(requireContext(), { view, mYear, mMonth, mDay ->
-                binding.tvDataNascita.text = "$mDay-$mMonth-$mYear"
+                binding.tvDataNascita.text = "$mDay-"+(mMonth +1)+"-$mYear"
             }, year, month, day)
             dpd.show()
         }
