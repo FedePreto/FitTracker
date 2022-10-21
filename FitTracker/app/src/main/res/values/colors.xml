@@ -11,7 +11,9 @@
     <color name="gray">#999989</color>
     <color name="gray_deep">#666666</color>
     <color name="black_overlay">#66000000</color>
+    <color name="gray_overlay">#43000000</color>
     <color name="white_overlay">#CCFFFFFF</color>
+    <color name="white_pressed">#FFFFFFFF</color>
     <color name="transparent">#00000000</color>
     <color name="red_primary">#F44336</color>
     <color name="red_primary_dark">#D32F2F</color>

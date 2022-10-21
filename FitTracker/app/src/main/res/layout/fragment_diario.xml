@@ -10,15 +10,16 @@
             android:layout_width="0dp"
             android:layout_height="0dp" app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintVertical_bias="1.0">
+            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintVertical_bias="0.0">
         <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent"
-                      android:orientation="vertical">
+                      android:orientation="vertical" android:gravity="center">
             <LinearLayout
                     android:name="Contenitore calorie"
                     android:id="@+id/contenitore_calorie"
                     android:background="@drawable/bg_card"
                     android:layout_marginTop="10dp"
+                    android:layout_marginBottom="15dp"
                     android:orientation="vertical"
                     android:layout_width="match_parent"
                     android:gravity="center"
@@ -26,6 +27,7 @@
                     android:layout_marginStart="10dp" android:layout_marginEnd="10dp">
                 <LinearLayout
                         android:orientation="horizontal"
+                        android:layout_marginTop="10dp"
                         android:gravity="center"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -208,16 +210,17 @@
             <LinearLayout
                     android:id="@+id/contenitore_acqua"
                     android:name="Contenitore d'Acqua"
+
                     android:gravity="center"
                     android:orientation="vertical"
                     android:background="@drawable/bg_card"
                     android:layout_width="match_parent"
-                    android:layout_height="95dp"
+                    android:layout_height="115dp"
                     android:layout_marginTop="20dp" android:layout_marginStart="10dp"
                     android:layout_marginEnd="10dp">
                 <LinearLayout
-                        android:layout_marginLeft="25dp"
-                        android:layout_marginRight="25dp"
+                        android:layout_marginLeft="30dp"
+                        android:layout_marginRight="40dp"
                         android:orientation="horizontal"
                         android:layout_width="match_parent"
                         android:layout_height="31dp">
@@ -227,7 +230,7 @@
                             android:textSize="23sp"
                             android:textStyle="bold"
                             android:textColor="@color/black"
-                            android:layout_width="wrap_content"
+                            android:layout_width="250dp"
                             android:layout_height="match_parent" android:id="@+id/textView23" android:layout_weight="1"
                     />
                     <TextView
@@ -237,10 +240,14 @@
                             android:textColor="@color/black"
                             android:gravity="right"
 
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="match_parent" android:id="@+id/textView25"
                             android:layout_weight="1"/>
                 </LinearLayout>
+                <ImageView
+                        android:src="@drawable/separatore_piccolo"
+                        android:layout_width="412dp"
+                        android:layout_height="wrap_content" android:id="@+id/imageView72"/>
                 <LinearLayout
                         android:id="@+id/linearLayout"
                         android:layout_marginLeft="5dp"
@@ -294,6 +301,191 @@
                             android:layout_width="36dp"
                             android:layout_height="55dp" android:id="@+id/glass_8" android:layout_weight="0"/>
                 </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                    android:clickable="true"
+                    android:orientation="horizontal"
+                    android:layout_width="370dp"
+                    android:layout_height="65dp"
+                    android:name="Contenitore colazione"
+                    android:layout_marginTop="35dp"
+                    android:layout_marginBottom="15dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/animazione_card"
+                    android:id="@+id/colazione">
+
+
+                <ImageView
+                        android:src="@drawable/breakfast"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_width="52dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_height="match_parent" android:id="@+id/imageView73" android:layout_weight="1"/>
+                <TextView
+                        android:text="Colazione:"
+                        android:gravity="center"
+                        android:textColor="@color/black"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        android:layout_width="117dp"
+                        android:layout_height="match_parent" android:id="@+id/textView32" android:layout_weight="1"/>
+                <TextView
+                        android:text="0 kcal"
+                        android:textColor="@color/grey_primary_dark"
+                        android:layout_width="97dp"
+                        android:textSize="25sp"
+                        android:textStyle="bold"
+                        android:gravity="center"
+                        android:layout_height="match_parent" android:id="@+id/kcal_colazione" android:layout_weight="1"/>
+            </LinearLayout>
+            <LinearLayout
+                    android:clickable="true"
+                    android:orientation="horizontal"
+                    android:layout_width="370dp"
+                    android:layout_height="65dp"
+                    android:name="Contenitore pranzo"
+                    android:layout_marginBottom="15dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/animazione_card"
+                    android:id="@+id/pranzo">
+
+
+                <ImageView
+                        android:src="@drawable/lunch_time"
+                        android:layout_width="52dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_height="match_parent" android:id="@+id/imageView74" android:layout_weight="1"/>
+                <TextView
+                        android:text="Pranzo:"
+                        android:gravity="center"
+                        android:textColor="@color/black"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        android:layout_width="117dp"
+                        android:layout_height="match_parent" android:id="@+id/textView33" android:layout_weight="1"/>
+                <TextView
+                        android:text="0 kcal"
+                        android:textColor="@color/grey_primary_dark"
+                        android:layout_width="97dp"
+                        android:textSize="25sp"
+                        android:textStyle="bold"
+                        android:gravity="center"
+                        android:layout_height="match_parent" android:id="@+id/kcal_pranzo" android:layout_weight="1"/>
+            </LinearLayout>
+            <LinearLayout
+                    android:clickable="true"
+                    android:orientation="horizontal"
+                    android:layout_width="370dp"
+                    android:layout_height="65dp"
+                    android:name="Contenitore cena"
+                    android:layout_marginBottom="15dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/animazione_card"
+                    android:id="@+id/cena">
+
+
+                <ImageView
+                        android:src="@drawable/turkey"
+                        android:layout_width="52dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_height="match_parent" android:id="@+id/imageView76" android:layout_weight="1"/>
+                <TextView
+                        android:text="Cena:"
+                        android:gravity="center"
+                        android:textColor="@color/black"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        android:layout_width="117dp"
+                        android:layout_height="match_parent" android:id="@+id/textView36" android:layout_weight="1"/>
+                <TextView
+                        android:text="0 kcal"
+                        android:textColor="@color/grey_primary_dark"
+                        android:layout_width="97dp"
+                        android:textSize="25sp"
+                        android:textStyle="bold"
+                        android:gravity="center"
+                        android:layout_height="match_parent" android:id="@+id/kcal_cena" android:layout_weight="1"/>
+            </LinearLayout>
+            <LinearLayout
+                    android:clickable="true"
+                    android:orientation="horizontal"
+                    android:layout_width="370dp"
+                    android:layout_height="65dp"
+                    android:name="Contenitore spuntino"
+                    android:layout_marginBottom="15dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/animazione_card"
+                    android:id="@+id/spuntino">
+
+
+                <ImageView
+                        android:src="@drawable/energy_bar"
+                        android:layout_width="52dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_height="match_parent" android:id="@+id/imageView79" android:layout_weight="1"/>
+                <TextView
+                        android:text="Spuntino:"
+                        android:gravity="center"
+                        android:textColor="@color/black"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        android:layout_width="117dp"
+                        android:layout_height="match_parent" android:id="@+id/textView38" android:layout_weight="1"/>
+                <TextView
+                        android:text="0 kcal"
+                        android:textColor="@color/grey_primary_dark"
+                        android:layout_width="97dp"
+                        android:textSize="25sp"
+                        android:textStyle="bold"
+                        android:gravity="center"
+                        android:layout_height="match_parent" android:id="@+id/kcal_spuntino" android:layout_weight="1"/>
+            </LinearLayout>
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="370dp"
+                    android:layout_height="65dp"
+                    android:name="Contenitore esercizio"
+                    android:layout_marginBottom="15dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:clickable="true"
+                    android:background="@drawable/animazione_card"
+                    android:id="@+id/esercizio">
+
+
+                <ImageView
+                        android:src="@drawable/sport"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_width="52dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_height="match_parent" android:id="@+id/imageView80" android:layout_weight="1"/>
+                <TextView
+                        android:text="Esercizio:"
+                        android:gravity="center"
+                        android:textColor="@color/black"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        android:layout_width="117dp"
+                        android:layout_height="match_parent" android:id="@+id/textView40" android:layout_weight="1"/>
+                <TextView
+                        android:text="0 kcal"
+                        android:layout_width="97dp"
+                        android:textSize="25sp"
+                        android:textStyle="bold"
+                        android:gravity="center"
+                        android:layout_height="match_parent" android:id="@+id/kcal_esercizio" android:layout_weight="1"/>
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
