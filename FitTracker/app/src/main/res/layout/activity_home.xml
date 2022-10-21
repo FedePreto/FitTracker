@@ -29,7 +29,7 @@
             app:abb_indicatorHeight="5dp"
             app:abb_indicatorAppearance="round"
             app:abb_indicatorLocation="top"
-            app:abb_iconSize="28dp"
+            app:abb_iconSize="27dp"
 
 
     />
