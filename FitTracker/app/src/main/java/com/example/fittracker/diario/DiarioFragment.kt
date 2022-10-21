@@ -16,11 +16,8 @@ class DiarioFragment : Fragment() {
     private lateinit var viewModel: DiarioViewModel
     private var calorie_giornaliere = 2000
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+/*
         binding.progressCalorie.apply {
             progressMax = calorie_giornaliere.toFloat()
             setProgressWithAnimation(65f, 1500)
@@ -33,6 +30,7 @@ class DiarioFragment : Fragment() {
             progressDirection = CircularProgressBar.ProgressDirection.TO_RIGHT
 
         }
+        */
         return inflater.inflate(R.layout.fragment_diario, container, false)
     }
 

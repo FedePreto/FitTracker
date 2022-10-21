@@ -13,6 +13,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.example.fittracker.R
+import com.example.fittracker.autenticazione.AuthViewModel
 import com.example.fittracker.autenticazione.LoginActivity
 import com.example.fittracker.databinding.ActivityHomeBinding
 import com.example.fittracker.diario.DiarioFragment
@@ -22,6 +23,7 @@ import com.example.fittracker.io.IoFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import kotlinx.android.synthetic.main.activity_home.*
 
 class HomeActivity : AppCompatActivity() {
 
@@ -33,28 +35,19 @@ class HomeActivity : AppCompatActivity() {
 
     private lateinit var navController: NavController
 
-    private var user = Firebase.auth.currentUser
-    lateinit var logIntent: Intent
+    private val model = AuthViewModel()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_home)
-
-
-        //Logout
-        Firebase.auth.signOut()
-
-        /*
-        replaceFragment(diarioFragment)
-
-
         binding = ActivityHomeBinding.inflate(layoutInflater)
+        var bottomNav = binding.bottomNavigation
         setContentView(binding.root)
 
+        replaceFragment(diarioFragment) // La home si aprirà sul fragment del diario
 
-        binding.bottomNavigation.setOnItemSelectedListener {
-            when(it.itemId){
+        bottomNav.setOnItemSelectedListener {
+            when (it.itemId) {
                 R.id.ic_diary -> replaceFragment(diarioFragment)
                 R.id.ic_io -> replaceFragment(ioFragment)
                 R.id.ic_diete -> replaceFragment(dieteFragment)
@@ -63,69 +56,28 @@ class HomeActivity : AppCompatActivity() {
             true
         }
 
-        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
-        navController = navHostFragment.navController
-
-        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
-        bottomNavigationView.setupWithNavController(navController)
 
 
-        var myToolbar = findViewById<View>(R.id.my_toolbar) as Toolbar
-
-        myToolbar.setNavigationOnClickListener {
-            Log.v("ok","ok")
-        }
-
-        var logoutIcon = findViewById<ActionMenuView>(R.id.ic_logout)
-        if(user==null)
-            logoutIcon.visibility = View.GONE
-        else
-            logoutIcon.visibility = View.VISIBLE
-
-        var loginIcon = findViewById<ActionMenuView>(R.id.ic_login)
-        if(user!=null)
-            loginIcon.visibility = View.GONE
-        else
-            loginIcon.visibility = View.VISIBLE
-
-        myToolbar.setOnMenuItemClickListener { menuItem ->
-         when (menuItem.itemId) {
-             R.id.ic_settings -> openSettings()
-             R.id.ic_guida -> openGuida()
-             R.id.ic_login -> {
-                if(user == null){
-                    logIntent = Intent(this,LoginActivity::class.java)
-                    startActivity(logIntent)
-                }
-             }
-             R.id.ic_logout -> {
-                 if (user != null){
-                     logout()
-                 }
-             }
-         }
-            true
-        }
-
-
-
-        binding.myToolbar.setOnMenuItemClickListener{
-            when(it.itemId){
+        binding.myToolbar.setOnMenuItemClickListener {
+            when (it.itemId) {
                 R.id.ic_settings -> openSettings()
                 R.id.ic_guida -> openGuida()
-                R.id.ic_logout -> logout()
+                R.id.ic_logout -> {
+                    model.logOut()
+                    finish()
+                }
             }
             true
         }
-    }
 
+
+    }
 
     private fun replaceFragment(fragment: Fragment){
         val transaction = supportFragmentManager.beginTransaction()
         transaction.replace(R.id.nav_host_fragment, fragment)
         transaction.commit()
     }
-
     private fun openSettings(){
 
     }
@@ -133,15 +85,6 @@ class HomeActivity : AppCompatActivity() {
     private fun openGuida(){
 
 
-    }
-*/
-
-
-    }
-    private fun logout(){
-        Firebase.auth.signOut()
-        startActivity(Intent(this, LoginActivity::class.java))
-        finish()
     }
 }
 

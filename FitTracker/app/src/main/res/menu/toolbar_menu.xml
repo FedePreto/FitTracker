@@ -14,10 +14,4 @@
             android:id="@+id/ic_logout"
             android:icon="@mipmap/ic_logout"
             android:title="Logout"/>
-
-    <item
-            android:id="@+id/ic_login"
-            android:icon="@mipmap/ic_logout"
-            android:title="Login"/>
-
 </menu>
