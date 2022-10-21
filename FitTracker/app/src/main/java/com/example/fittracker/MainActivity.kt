@@ -11,11 +11,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_main)
-        val intent = Intent(this@MainActivity, InizioActivity::class.java)
+        /*val intent = Intent(this@MainActivity, InizioActivity::class.java)
         startActivity(intent)
         finish()
     }
-/*
+*/
         val updateHandler = Handler()
 
         val runnable = Runnable {
@@ -23,8 +23,8 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
-        updateHandler.postDelayed(runnable, 2000)
+        updateHandler.postDelayed(runnable, 1000)
     }
-*/
+
 
 }

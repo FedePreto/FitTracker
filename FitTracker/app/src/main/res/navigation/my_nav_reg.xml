@@ -5,20 +5,23 @@
             app:startDestination="@id/obbiettivoFragment">
     <fragment android:id="@+id/pesoObbFragment" android:name="com.example.fittracker.autenticazione.PesoObbFragment"
               android:label="PesoObbFragment" tools:layout="@layout/fragment_peso_obb">
-        <action android:id="@+id/action_pesoObbFragment_to_sliderFragment" app:destination="@id/sliderFragment"/>
+        <action android:id="@+id/action_pesoObbFragment_to_sliderFragment" app:destination="@id/sliderFragment"
+                app:enterAnim="@anim/nav_default_enter_anim" app:exitAnim="@anim/nav_default_exit_anim"/>
         <argument android:name="utente" app:argType="com.example.fittracker.model.Utente"/>
     </fragment>
     <fragment android:id="@+id/altezzaFragment" android:name="com.example.fittracker.autenticazione.AltezzaFragment"
               android:label="AltezzaFragment" tools:layout="@layout/fragment_altezza">
         <action android:id="@+id/action_altezzaFragment_to_pesoAttualeFragment"
-                app:destination="@id/pesoAttualeFragment"/>
+                app:destination="@id/pesoAttualeFragment" app:enterAnim="@anim/nav_default_enter_anim"
+                app:exitAnim="@anim/nav_default_exit_anim"/>
         <argument android:name="utente" app:argType="com.example.fittracker.model.Utente"/>
     </fragment>
     <fragment android:id="@+id/datiPersonaliFragment"
               android:name="com.example.fittracker.autenticazione.DatiPersonaliFragment"
               android:label="DatiPersonaliFragment" tools:layout="@layout/fragment_dati_personali">
         <action android:id="@+id/action_datiPersonaliFragment_to_altezzaFragment"
-                app:destination="@id/altezzaFragment"/>
+                app:destination="@id/altezzaFragment" app:enterAnim="@anim/nav_default_enter_anim"
+                app:exitAnim="@anim/nav_default_exit_anim"/>
         <argument android:name="utente" app:argType="com.example.fittracker.model.Utente"/>
     </fragment>
     <fragment android:id="@+id/obbiettivoFragment"
@@ -33,20 +36,24 @@
               android:name="com.example.fittracker.autenticazione.PesoAttualeFragment"
               android:label="PesoAttualeFragment" tools:layout="@layout/fragment_peso_attuale">
         <argument android:name="utente" app:argType="com.example.fittracker.model.Utente"/>
-        <action android:id="@+id/action_pesoAttualeFragment_to_pesoObbFragment" app:destination="@id/pesoObbFragment"/>
+        <action android:id="@+id/action_pesoAttualeFragment_to_pesoObbFragment" app:destination="@id/pesoObbFragment"
+                app:enterAnim="@anim/nav_default_enter_anim" app:exitAnim="@anim/nav_default_exit_anim"/>
         <action android:id="@+id/action_pesoAttualeFragment_to_registerActivity"
-                app:destination="@id/registerActivity"/>
+                app:destination="@id/registerActivity" app:enterAnim="@anim/nav_default_enter_anim"
+                app:exitAnim="@anim/nav_default_exit_anim"/>
     </fragment>
     <fragment android:id="@+id/sessoFragment" android:name="com.example.fittracker.autenticazione.SessoFragment"
               android:label="SessoFragment" tools:layout="@layout/fragment_sesso">
         <action android:id="@+id/action_sessoFragment_to_datiPersonaliFragment"
-                app:destination="@id/datiPersonaliFragment"/>
+                app:destination="@id/datiPersonaliFragment" app:enterAnim="@anim/nav_default_enter_anim"
+                app:exitAnim="@anim/nav_default_exit_anim"/>
         <argument android:name="utente" app:argType="com.example.fittracker.model.Utente"/>
     </fragment>
     <fragment android:id="@+id/sliderFragment" android:name="com.example.fittracker.autenticazione.SliderFragment"
               android:label="SliderFragment" tools:layout="@layout/fragment_slider">
         <argument android:name="utente" app:argType="com.example.fittracker.model.Utente"/>
-        <action android:id="@+id/action_sliderFragment_to_registerActivity" app:destination="@id/registerActivity"/>
+        <action android:id="@+id/action_sliderFragment_to_registerActivity" app:destination="@id/registerActivity"
+                app:enterAnim="@anim/nav_default_enter_anim" app:exitAnim="@anim/nav_default_exit_anim"/>
     </fragment>
     <activity android:id="@+id/registerActivity" android:name="com.example.fittracker.autenticazione.RegisterActivity"
               android:label="activity_register" tools:layout="@layout/activity_register">

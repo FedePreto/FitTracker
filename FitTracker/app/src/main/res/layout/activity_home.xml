@@ -9,30 +9,43 @@
         android:background="@drawable/app_bg">
 
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
+    <nl.joery.animatedbottombar.AnimatedBottomBar
             android:id="@+id/bottom_navigation"
             android:layout_width="match_parent"
-            android:layout_height="56dp"
+            android:layout_height="60dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:menu="@menu/bottom_menu"
+            app:abb_tabs="@menu/bottom_menu"
             android:background="@color/green_primary"
             app:itemTextColor="@color/white"
+            app:abb_selectedTabType="text"
+            app:abb_tabColor="@color/black_overlay"
+            app:abb_textStyle="bold"
+            app:abb_textSize="16sp"
+            app:abb_rippleEnabled="true"
+            app:abb_tabAnimation="slide"
+            app:abb_tabAnimationSelected="fade"
+            app:abb_indicatorHeight="5dp"
+            app:abb_indicatorAppearance="round"
+            app:abb_indicatorLocation="top"
+            app:abb_iconSize="28dp"
+
 
     />
     <androidx.appcompat.widget.Toolbar
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="60dp"
             android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
             android:id="@+id/my_toolbar"
-            app:title="Benvenuto in FitTracker"
+            app:title="Benvenuto in FitTracker!"
             android:background="@color/green_primary"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:menu="@menu/toolbar_menu"
             app:layout_constraintEnd_toEndOf="parent"
+
 
     />
     <androidx.fragment.app.FragmentContainerView
