@@ -28,8 +28,10 @@ import kotlin.properties.Delegates
  */
 class ObbiettivoFragment : Fragment() {
     lateinit var binding: FragmentObbiettivoBinding
-    private  val model = AuthViewModel()
-    lateinit var utente : Utente
+    //private  val model = AuthViewModel()
+    //lateinit var utente : Utente
+    val utente = Utente()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -39,8 +41,8 @@ class ObbiettivoFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle? ): View? {
         binding = DataBindingUtil.inflate(inflater,R.layout.fragment_obbiettivo, container, false)
         binding.liniette.isVisible = false
-        model.getUtente("")
-        utente = model.utente.value!!  //prendo un utente non parametrizzato da valorizzare di fragment in fragment, alla fine lo registro
+        //model.getUtente("")
+        //utente = model.utente.value!!  //prendo un utente non parametrizzato da valorizzare di fragment in fragment, alla fine lo registro
         return binding.root
     }
 

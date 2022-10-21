@@ -53,7 +53,10 @@ class LoginActivity : AppCompatActivity() {
             val intent = Intent(this@LoginActivity, RecuperoPasswordActivity::class.java)
             startActivity(intent)
         }
+    }
 
+    override fun onBackPressed(){
+        finish()
     }
 
     private fun checkFields(email : String , password: String) : Boolean{
