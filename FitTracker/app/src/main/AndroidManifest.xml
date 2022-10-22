@@ -18,9 +18,9 @@
             android:roundIcon="@drawable/color_logo_no_background_logo"
             android:supportsRtl="true"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-
-
-
+        <activity
+                android:name=".AggiungiActivity"
+                android:exported="false"/>
         <activity
                 android:name=".MainActivity"
                 android:exported="true"
@@ -43,16 +43,15 @@
                 android:name=".autenticazione.LoginActivity"
                 android:exported="false"
                 android:screenOrientation="portrait"/>
-
         <activity
                 android:name=".autenticazione.RecuperoPasswordActivity"
                 android:exported="false"
                 android:screenOrientation="portrait">
         </activity>
         <activity
-            android:name=".autenticazione.InizioActivity"
-            android:exported="false"
-            android:screenOrientation="portrait"/>
+                android:name=".autenticazione.InizioActivity"
+                android:exported="false"
+                android:screenOrientation="portrait"/>
         <activity
                 android:name=".autenticazione.ConosciamociActivity"
                 android:exported="false"
