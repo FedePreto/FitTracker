@@ -14,16 +14,18 @@
             android:id="@+id/imageView2"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toBottomOf="@+id/linearLayout11"
-            android:layout_marginTop="20dp" app:layout_constraintHorizontal_bias="0.498"/>
+            android:layout_marginTop="20dp" app:layout_constraintHorizontal_bias="0.498"
+            android:layout_marginStart="30dp" android:layout_marginEnd="30dp"/>
     <TextView
             android:text="OK! Siamo arrivati all'ultimo passaggio"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content" android:id="@+id/TitleReg"
-            android:textSize="37sp" android:textStyle="bold|italic" android:textAlignment="center"
+            android:textSize="30sp" android:textStyle="bold|italic" android:textAlignment="center"
             android:textColor="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.0"
-            android:layout_marginTop="20dp" app:layout_constraintTop_toBottomOf="@+id/imageView2"/>
+            android:layout_marginTop="20dp" app:layout_constraintTop_toBottomOf="@+id/imageView2"
+            android:layout_marginStart="30dp" android:layout_marginEnd="30dp"/>
     <EditText
             android:layout_width="250dp"
             android:layout_height="50dp"
@@ -38,8 +40,9 @@
             android:background="@drawable/input_bg_green" android:paddingLeft="20dp" android:paddingTop="10dp"
             android:paddingRight="10dp" android:paddingBottom="10dp" android:backgroundTint="@color/green_primary"
             android:drawablePadding="10dp" android:layout_marginTop="15dp"
-            app:endIconMode = "password_toggle"
-            app:layout_constraintTop_toBottomOf="@+id/InputEmail"/>
+            app:endIconMode="password_toggle"
+            app:layout_constraintTop_toBottomOf="@+id/InputEmail" android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"/>
     <EditText
             android:layout_width="250dp"
             android:layout_height="50dp"
@@ -53,7 +56,8 @@
             android:paddingTop="10dp" android:paddingRight="10dp" android:paddingBottom="10dp"
             android:drawableLeft="@drawable/ic_email" android:drawablePadding="10dp"
             app:layout_constraintHorizontal_bias="0.496"
-            android:layout_marginTop="45dp" app:layout_constraintTop_toBottomOf="@+id/TitleReg"/>
+            android:layout_marginTop="45dp" app:layout_constraintTop_toBottomOf="@+id/TitleReg"
+            android:layout_marginStart="30dp" android:layout_marginEnd="30dp"/>
     <EditText
             android:layout_width="250dp"
             android:layout_height="50dp"
@@ -68,7 +72,8 @@
             android:textColor="@color/white" android:background="@drawable/input_bg_green" android:paddingLeft="20dp"
             android:paddingTop="10dp" android:paddingRight="10dp" android:paddingBottom="10dp"
             android:drawablePadding="10dp" android:layout_marginTop="15dp"
-            app:layout_constraintTop_toBottomOf="@+id/InputPassword"/>
+            app:layout_constraintTop_toBottomOf="@+id/InputPassword" android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"/>
     <Button
             android:text="@string/register"
             android:layout_width="225dp"
@@ -78,16 +83,17 @@
             android:textSize="25sp"
             android:textColor="@color/black"
             android:textStyle="bold" android:fontFamily="sans-serif" android:background="@drawable/animazione_1"
-            app:layout_constraintHorizontal_bias="0.52" app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginBottom="40dp" android:layout_marginTop="70dp"
-            app:layout_constraintTop_toBottomOf="@+id/InputCorrectPassword"/>
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="40dp"
+            app:layout_constraintTop_toBottomOf="@+id/InputCorrectPassword" app:layout_constraintVertical_bias="1.0"/>
     <LinearLayout
             android:orientation="horizontal"
             android:gravity="center"
-            android:layout_width="409dp"
-            android:layout_height="35dp"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
             app:layout_constraintTop_toTopOf="parent" android:id="@+id/linearLayout11"
-            app:layout_constraintEnd_toEndOf="parent">
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="10dp" android:layout_marginStart="30dp" android:layout_marginEnd="30dp">
         <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" app:srcCompat="@drawable/linietta"

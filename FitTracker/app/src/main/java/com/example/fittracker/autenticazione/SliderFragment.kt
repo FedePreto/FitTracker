@@ -12,8 +12,6 @@ import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.fittracker.R
-import com.example.fittracker.databinding.FragmentObbiettivoBinding
-import com.example.fittracker.databinding.FragmentPesoObbBinding
 import com.example.fittracker.databinding.FragmentSliderBinding
 import com.example.fittracker.model.Utente
 import kotlinx.android.synthetic.main.fragment_slider.*
