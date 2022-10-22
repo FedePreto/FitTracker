@@ -20,7 +20,8 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity
                 android:name=".AggiungiActivity"
-                android:exported="false"/>
+                android:exported="false"
+                android:parentActivityName=".home.HomeActivity"/>
         <activity
                 android:name=".MainActivity"
                 android:exported="true"

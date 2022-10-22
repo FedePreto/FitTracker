@@ -9,10 +9,17 @@
 
     <androidx.appcompat.widget.Toolbar
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:background="?attr/colorPrimary"
-            android:theme="?attr/actionBarTheme"
-            android:minHeight="?attr/actionBarSize" android:id="@+id/toolbar"
-            app:layout_constraintTop_toTopOf="parent" app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
+            android:layout_height="50dp"
+            android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+            android:id="@+id/my_toolbar"
+            app:titleTextColor="@color/white"
+            app:title="Aggiungi selezionato"
+            android:background="@color/green_primary"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:menu="@menu/toolbar_aggiungi"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
