@@ -67,7 +67,6 @@ class SliderFragment : Fragment() {
                 val intent = Intent(requireContext(), RegisterActivity::class.java)
                 intent.putExtra("utente",utente)
                 startActivity(intent)
-                requireActivity().finish()
 
             } else
                 Toast.makeText(context, "Per favore, completa i campi", Toast.LENGTH_SHORT).show()

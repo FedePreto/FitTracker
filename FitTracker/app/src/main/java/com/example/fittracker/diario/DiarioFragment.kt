@@ -41,7 +41,7 @@ class DiarioFragment : Fragment() {
             id = view.id
             Toast.makeText(context,id.toString(),Toast.LENGTH_LONG).show()
         }
-
+/*
         val glass1 = binding.glass1
         val glass2 = binding.glass2
         glass1.setImageResource(R.drawable.empty_glass_plus)
@@ -54,6 +54,8 @@ class DiarioFragment : Fragment() {
 
 
         }
+
+ */
     }
 
 
@@ -71,4 +73,15 @@ class DiarioFragment : Fragment() {
 
         }
         */
+
+    private fun addGlassImage(){
+        val img = ImageView(context)
+        img.setImageResource(R.drawable.filling_animation)
+        binding.linearLayoutGlass.addView(img)
+    }
+    private fun startAnimation(glass : ImageView){
+        val frameAnimation: AnimationDrawable = glass.background as AnimationDrawable
+        frameAnimation.start()
+
+    }
     }
