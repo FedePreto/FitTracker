@@ -19,7 +19,7 @@
             android:supportsRtl="true"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity
-                android:name=".AggiungiActivity"
+                android:name=".aggiungi.AggiungiActivity"
                 android:exported="false"
                 android:parentActivityName=".home.HomeActivity"/>
         <activity

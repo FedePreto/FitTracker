@@ -53,6 +53,7 @@ dependencies {
 
     // Feature module Support
     implementation("androidx.navigation:navigation-dynamic-features-fragment:2.5.2")
+    implementation 'androidx.recyclerview:recyclerview:1.2.1'
 
     // Testing Navigation
     androidTestImplementation("androidx.navigation:navigation-testing:2.5.2")
