@@ -19,7 +19,7 @@
             android:layout_marginEnd="30dp" android:layout_marginTop="70dp"
             app:layout_constraintTop_toBottomOf="@+id/liniette"/>
     <RadioGroup
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:id="@+id/GruppoRadio_Obbiettivo" app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toTopOf="@+id/bt_AvantiObb"

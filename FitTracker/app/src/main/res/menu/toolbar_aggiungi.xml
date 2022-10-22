@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+
+        <item
+                android:id="@+id/frequente"
+                android:drawableLeft="@drawable/circle"
+                android:title="Frequente"/>
+
+        <item
+                android:id="@+id/reg_rapida"
+                android:icon="@drawable/add"
+                android:title="Registr. rapida"/>
+
+        <item
+                android:id="@+id/ic_alimento"
+                android:icon="@drawable/logout"
+                android:title="Crea alimenti"/>
+        <item
+                android:id="@+id/ic_pasto"
+                android:icon="@drawable/setting"
+                android:title="Crea pasto"/>
+
+        <item
+                android:id="@+id/ic_ricetta"
+                android:drawableLeft="@drawable/information"
+                android:title="Crea ricetta"/>
+
+</menu>
