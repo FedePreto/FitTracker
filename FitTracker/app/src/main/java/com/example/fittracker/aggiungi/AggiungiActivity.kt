@@ -9,19 +9,18 @@ import com.google.android.material.tabs.TabLayoutMediator
 class AggiungiActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityAggiungiBinding
-    var tabTitle = arrayOf("recenti","preferiti","selezionati")
+    var tabTitle = arrayOf(R.drawable.ricerca,R.drawable.add_to_playlist,R.drawable.heart)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_aggiungi)
-        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+        binding = ActivityAggiungiBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         var pager = binding.tabContainer
         var tab = binding.tabLayout
         pager.adapter = MyAdapterTab(supportFragmentManager, lifecycle)
 
-
         TabLayoutMediator(tab, pager){
-            tab, position -> tab.text = tabTitle[position]
+            tab, position -> tab.setIcon(tabTitle[position])
 
         }.attach()
 

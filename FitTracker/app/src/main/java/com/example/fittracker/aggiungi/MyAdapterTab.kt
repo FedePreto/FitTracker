@@ -12,10 +12,10 @@ class MyAdapterTab(fragmentManager: FragmentManager, lifecycle: Lifecycle) : Fra
 
     override fun createFragment(position: Int): Fragment {
         when(position){
-            0 -> return RecentiFragment()
+            0 -> return RicercaFragment()
             1-> return PreferitiFragment()
             2-> return  SelezionatiFragment()
-            else -> return RecentiFragment()
+            else -> return RicercaFragment()
         }
     }
 }

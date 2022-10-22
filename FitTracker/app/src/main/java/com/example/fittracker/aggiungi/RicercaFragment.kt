@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import com.example.fittracker.R
 
 
-class RecentiFragment : Fragment() {
+class RicercaFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,7 +20,7 @@ class RecentiFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_recenti, container, false)
+        return inflater.inflate(R.layout.fragment_ricerca, container, false)
     }
 
 

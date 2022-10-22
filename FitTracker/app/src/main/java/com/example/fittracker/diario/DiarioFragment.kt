@@ -1,5 +1,6 @@
 package com.example.fittracker.diario
 
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.AnimationDrawable
 import androidx.lifecycle.ViewModelProvider
@@ -13,6 +14,7 @@ import android.widget.ImageView
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import com.example.fittracker.R
+import com.example.fittracker.aggiungi.AggiungiActivity
 import com.example.fittracker.databinding.FragmentDiarioBinding
 import com.mikhaellopez.circularprogressbar.CircularProgressBar
 import kotlinx.android.synthetic.main.activity_main.*
@@ -41,6 +43,12 @@ class DiarioFragment : Fragment() {
             id = view.id
             Toast.makeText(context,id.toString(),Toast.LENGTH_LONG).show()
         }
+
+        binding.colazione.setOnClickListener{
+            startActivity(Intent(context, AggiungiActivity::class.java))
+        }
+
+
 /*
         val glass1 = binding.glass1
         val glass2 = binding.glass2

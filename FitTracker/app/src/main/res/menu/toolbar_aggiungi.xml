@@ -2,14 +2,15 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
 
         <item
+                android:id="@+id/reg_rapida"
+                android:icon="@drawable/add"
+                android:title="Registr. rapida"/>
+
+        <item
                 android:id="@+id/frequente"
                 android:drawableLeft="@drawable/circle"
                 android:title="Frequente"/>
 
-        <item
-                android:id="@+id/reg_rapida"
-                android:icon="@drawable/add"
-                android:title="Registr. rapida"/>
 
         <item
                 android:id="@+id/ic_alimento"
