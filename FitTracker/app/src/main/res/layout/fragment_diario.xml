@@ -257,63 +257,60 @@
                         android:orientation="horizontal"
                         android:layout_width="wrap_content"
                         android:layout_height="60dp">
-                   <ImageView
+                    <ImageView
                             android:id="@+id/glass_1"
                             android:background="@drawable/filling_animation"
-                            android:layout_marginRight="5dp"
-                            android:layout_marginLeft="3dp"
-                            android:gravity="left"
                             android:layout_width="36dp"
                             android:layout_height="55dp"
                             android:layout_weight="0"/>
                     <ImageView
-                            android:background="@drawable/empty_glass"
-                            android:layout_width="36dp"
-                            android:layout_marginRight="5dp"
-                            android:layout_height="55dp"
                             android:id="@+id/glass_2"
-                            android:layout_weight="0"/>
-                    <ImageView
-                            android:background="@drawable/empty_glass"
-                            android:layout_marginRight="5dp"
+                            android:background="@drawable/filling_animation"
+                            android:layout_marginLeft="5dp"
                             android:layout_width="36dp"
                             android:layout_height="55dp"
+                            android:layout_weight="0"/>
+                    <ImageView
                             android:id="@+id/glass_3"
-                            android:layout_weight="0"/>
-                    <ImageView
-                            android:background="@drawable/empty_glass"
-                            android:layout_marginRight="5dp"
+                            android:background="@drawable/filling_animation"
+                            android:layout_marginLeft="5dp"
                             android:layout_width="36dp"
                             android:layout_height="55dp"
+                            android:layout_weight="0"/>
+                    <ImageView
                             android:id="@+id/glass_4"
-                            android:layout_weight="0"/>
-                    <ImageView
-                            android:background="@drawable/empty_glass"
-                            android:layout_marginRight="5dp"
+                            android:background="@drawable/filling_animation"
+                            android:layout_marginLeft="5dp"
                             android:layout_width="36dp"
                             android:layout_height="55dp"
+                            android:layout_weight="0"/>
+                    <ImageView
                             android:id="@+id/glass_5"
-                            android:layout_weight="0"/>
-                    <ImageView
-                            android:background="@drawable/empty_glass"
-                            android:layout_marginRight="5dp"
+                            android:background="@drawable/filling_animation"
+                            android:layout_marginLeft="5dp"
                             android:layout_width="36dp"
                             android:layout_height="55dp"
+                            android:layout_weight="0"/>
+                    <ImageView
                             android:id="@+id/glass_6"
-                            android:layout_weight="0"/>
-                    <ImageView
-                            android:background="@drawable/empty_glass"
-                            android:layout_marginRight="5dp"
+                            android:background="@drawable/filling_animation"
+                            android:layout_marginLeft="5dp"
                             android:layout_width="36dp"
                             android:layout_height="55dp"
+                            android:layout_weight="0"/>
+                    <ImageView
                             android:id="@+id/glass_7"
-                            android:layout_weight="0"/>
-                    <ImageView
-                            android:background="@drawable/empty_glass"
-                            android:layout_marginRight="3dp"
+                            android:background="@drawable/filling_animation"
+                            android:layout_marginLeft="5dp"
                             android:layout_width="36dp"
                             android:layout_height="55dp"
+                            android:layout_weight="0"/>
+                    <ImageView
                             android:id="@+id/glass_8"
+                            android:background="@drawable/filling_animation"
+                            android:layout_marginLeft="5dp"
+                            android:layout_width="36dp"
+                            android:layout_height="55dp"
                             android:layout_weight="0"/>
 
 

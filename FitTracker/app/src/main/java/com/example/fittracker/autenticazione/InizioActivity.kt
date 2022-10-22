@@ -10,10 +10,13 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MotionEvent
 import android.view.View
+import android.widget.ProgressBar
 import android.widget.VideoView
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.lifecycleScope
 import com.example.fittracker.R
 import com.example.fittracker.databinding.*
+import kotlinx.coroutines.launch
 
 
 class InizioActivity : AppCompatActivity() {
@@ -24,19 +27,31 @@ class InizioActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this,R.layout.activity_inizio)
         avvioVideo()
+        val progresBar = binding.ProgressBar01
+        progresBar.visibility = ProgressBar.INVISIBLE
+
 
 
         binding.btInizia.setOnClickListener(){
-            var a = Intent(this, ConosciamociActivity::class.java)
-            //a.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
-            startActivity(a)
+            progresBar.visibility = ProgressBar.VISIBLE
+            lifecycleScope.launch {
+                var a = Intent(this@InizioActivity, ConosciamociActivity::class.java)
+                //a.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+                startActivity(a)
+                finish()
+            }
         }
 
 
         binding.btAccesso.setOnClickListener(){
-            var a = Intent(this, LoginActivity::class.java)
-            //a.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
-            startActivity(a)
+            progresBar.visibility = ProgressBar.VISIBLE
+            lifecycleScope.launch {
+                var a = Intent(this@InizioActivity, LoginActivity::class.java)
+                //a.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+                startActivity(a)
+                finish()
+            }
+
         }
 
 

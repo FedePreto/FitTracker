@@ -1,11 +1,13 @@
 package com.example.fittracker.home
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import com.example.fittracker.R
 import com.example.fittracker.autenticazione.AuthViewModel
+import com.example.fittracker.autenticazione.InizioActivity
 import com.example.fittracker.databinding.ActivityHomeBinding
 import com.example.fittracker.diario.DiarioFragment
 import com.example.fittracker.diete.DieteFragment
@@ -21,7 +23,7 @@ class HomeActivity : AppCompatActivity() {
      val dieteFragment = DieteFragment()
      val funzioniFragment = FunzioniFragment()
 
-    private lateinit var navController: NavController
+
 
     private val model = AuthViewModel()
 
@@ -68,6 +70,7 @@ class HomeActivity : AppCompatActivity() {
                     R.id.ic_guida -> openGuida()
                     R.id.ic_logout -> {
                         model.logOut()
+                        startActivity(Intent(this,InizioActivity::class.java))
                         finish()
                     }
                 }
