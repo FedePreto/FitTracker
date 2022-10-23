@@ -113,24 +113,26 @@ class DiarioFragment : Fragment() {
 
     }
     private fun setOnclick(){
+        intent =  Intent(context, AggiungiActivity::class.java)
         binding.colazione.setOnClickListener {
-            intent =  Intent(context, AggiungiActivity::class.java)
             intent.putExtra("bottone","COLAZIONE")
             startActivity(intent)
         }
         binding.pranzo.setOnClickListener {
-            startActivity(Intent(context, AggiungiActivity::class.java))
             intent.putExtra("bottone","PRANZO")
             startActivity(intent)
         }
         binding.cena.setOnClickListener {
-            startActivity(Intent(context, AggiungiActivity::class.java))
             intent.putExtra("bottone","CENA")
             startActivity(intent)
         }
 
+        binding.spuntino.setOnClickListener {
+            intent.putExtra("bottone","SPUNTINO")
+            startActivity(intent)
+        }
+
         binding.esercizio.setOnClickListener {
-            startActivity(Intent(context, AggiungiActivity::class.java))
             intent.putExtra("bottone","ESERCIZIO")
             startActivity(intent)
         }

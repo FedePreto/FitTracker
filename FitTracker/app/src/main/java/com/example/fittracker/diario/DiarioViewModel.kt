@@ -18,7 +18,7 @@ class DiarioViewModel : ViewModel() {
 
     var isFull = arrayOf(false,false,false,false,false,false,false,false)
 
-
+/*
     suspend fun addDiarioOnDB(nome:String, cognome:String, email:String, obbiettivo:Int,
                                   sesso:String, data_nascita:String, altezza:Int, peso_attuale:Double,
                                   peso_obbiettivo:Double?, kg_settimanali:Double?, data_raggiungimento:String?,
@@ -36,6 +36,8 @@ class DiarioViewModel : ViewModel() {
         } catch (e: Exception) {
         }
     }
+
+ */
 
 
 
