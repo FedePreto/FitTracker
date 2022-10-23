@@ -70,7 +70,7 @@ class HomeActivity : AppCompatActivity() {
 
 
 
-        binding.myToolbar.setOnMenuItemClickListener {
+        binding.aggToolbar.setOnMenuItemClickListener {
                 when (it.itemId) {
                     R.id.ic_settings -> openSettings()
                     R.id.ic_guida -> openGuida()
