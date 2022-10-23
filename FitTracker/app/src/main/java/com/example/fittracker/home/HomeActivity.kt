@@ -67,9 +67,6 @@ class HomeActivity : AppCompatActivity() {
 
 
 
-
-
-
         binding.aggToolbar.setOnMenuItemClickListener {
                 when (it.itemId) {
                     R.id.ic_settings -> openSettings()
