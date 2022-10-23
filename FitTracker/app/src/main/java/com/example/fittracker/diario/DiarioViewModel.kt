@@ -4,13 +4,18 @@ import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.fittracker.databaseFB.DiarioDB
+import com.example.fittracker.databaseFB.FirebaseDB
 import com.example.fittracker.model.Diario
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.userProfileChangeRequest
+import kotlinx.coroutines.launch
 
 class DiarioViewModel : ViewModel() {
 
     private val diarioDB = DiarioDB()
+    private val auth = FirebaseAuth.getInstance()
 
     private var _diario = MutableLiveData(Diario())
     val diario: LiveData<Diario>
@@ -18,26 +23,24 @@ class DiarioViewModel : ViewModel() {
 
     var isFull = arrayOf(false,false,false,false,false,false,false,false)
 
-/*
-    suspend fun addDiarioOnDB(nome:String, cognome:String, email:String, obbiettivo:Int,
-                                  sesso:String, data_nascita:String, altezza:Int, peso_attuale:Double,
-                                  peso_obbiettivo:Double?, kg_settimanali:Double?, data_raggiungimento:String?,
-                                  contesto: Context
-    ) {
-        try {
-            val user = auth.currentUser
-            val profileUpdates = userProfileChangeRequest {
-                displayName = nome + ' ' + cognome
-            }
-            user!!.updateProfile(profileUpdates)
-            utenteDB.addUtente(nome, cognome, email, obbiettivo,sesso, data_nascita, altezza,
-                peso_attuale, peso_obbiettivo, kg_settimanali, data_raggiungimento, contesto)
 
-        } catch (e: Exception) {
+    fun setDiarioOnDB(data:String, grassiTot:Int, proteineTot:Int, carboidratiTot:Int,
+                              chiloCalorieEsercizio:Int, chiloCalorieColazione:Int, chiloCaloriePranzo:Int,
+                              chiloCalorieCena:Int, chiloCalorieSpuntino:Int,acqua:ArrayList<Boolean>){
+        viewModelScope.launch {
+            diarioDB.setDiario(auth.currentUser?.email!!,data, grassiTot, proteineTot, carboidratiTot, chiloCalorieEsercizio,
+                                chiloCalorieColazione, chiloCaloriePranzo, chiloCalorieCena, chiloCalorieSpuntino,acqua)
         }
     }
 
- */
+   fun getUserDiarioDB(){
+       viewModelScope.launch {
+           _diario.value = diarioDB.getUserDiario(auth.currentUser?.email!!)
+       }
+    }
+
+
+
 
 
 

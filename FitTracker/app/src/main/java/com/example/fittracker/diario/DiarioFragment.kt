@@ -6,6 +6,7 @@ import android.graphics.drawable.AnimationDrawable
 import android.os.Build
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -18,24 +19,28 @@ import androidx.compose.ui.layout.Layout
 import androidx.core.view.marginLeft
 import androidx.core.view.marginRight
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.lifecycle.asFlow
+import androidx.lifecycle.lifecycleScope
 import com.example.fittracker.R
 import com.example.fittracker.aggiungi.AggiungiActivity
 import com.example.fittracker.databinding.FragmentDiarioBinding
+import com.example.fittracker.model.Diario
 import com.mikhaellopez.circularprogressbar.CircularProgressBar
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_diario.*
 
 class DiarioFragment : Fragment() {
     private lateinit var binding: FragmentDiarioBinding
-    private var calorie_giornaliere = 2000
     private val model = DiarioViewModel()
 
     private lateinit var intent : Intent
-
+    private lateinit var diario : Diario
+    private var contatore = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        model.getUserDiarioDB()
     }
 
 
@@ -52,6 +57,18 @@ class DiarioFragment : Fragment() {
         setUpAllGlasses()
         setOnClickAllGlasses()
         setOnclick()
+
+        val diarioObserver = Observer<Diario>{
+            Log.e("msg","Sono dentro l'observer")
+            if(model.diario.value != null && contatore >= 1)
+                Toast.makeText(context, model.diario.value!!.utente.toString(), Toast.LENGTH_LONG).show()
+            else
+                Toast.makeText(context, "Non è ancora stato creato un diario", Toast.LENGTH_LONG).show()
+            contatore+=1
+        }
+        model.diario.observe(viewLifecycleOwner,diarioObserver)
+
+
 
 
     }
