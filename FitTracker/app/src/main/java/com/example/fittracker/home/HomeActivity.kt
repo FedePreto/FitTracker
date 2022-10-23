@@ -2,6 +2,9 @@ package com.example.fittracker.home
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
@@ -14,6 +17,7 @@ import com.example.fittracker.diete.DieteFragment
 import com.example.fittracker.funzioni.FunzioniFragment
 import com.example.fittracker.statistiche.StatisticheFragment
 import nl.joery.animatedbottombar.AnimatedBottomBar
+import kotlin.system.exitProcess
 
 class HomeActivity : AppCompatActivity() {
 
@@ -23,18 +27,21 @@ class HomeActivity : AppCompatActivity() {
      val dieteFragment = DieteFragment()
      val funzioniFragment = FunzioniFragment()
 
-
-
-    private val model = AuthViewModel()
+    private val model = HomeViewModel()
+    private var doubleBackToExitPressedOnce = false
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityHomeBinding.inflate(layoutInflater)
+
+
         var bottomNav = binding.bottomNavigation
         setContentView(binding.root)
-
+        binding.bottomNavigation.selectTabById(R.id.ic_diary,true)
         replaceFragment(diarioFragment) // La home si aprirà sul fragment del diario
+
+
 
         bottomNav.setOnTabSelectListener(object : AnimatedBottomBar.OnTabSelectListener {
             override fun onTabSelected(
@@ -43,7 +50,6 @@ class HomeActivity : AppCompatActivity() {
                 newIndex: Int,
                 newTab: AnimatedBottomBar.Tab
             ) {
-
                 //redirecting fragment
                 when(newIndex){
                     0 -> replaceFragment(diarioFragment);
@@ -78,6 +84,15 @@ class HomeActivity : AppCompatActivity() {
             }
 
 
+    }
+
+    override fun onBackPressed() {
+        if (doubleBackToExitPressedOnce) {
+            finish()
+        }
+        this.doubleBackToExitPressedOnce = true
+        Toast.makeText(this, "Premi due volte indietro per uscire", Toast.LENGTH_SHORT).show()
+        Handler(Looper.getMainLooper()).postDelayed(Runnable { doubleBackToExitPressedOnce = false }, 2000)
     }
 
     private fun replaceFragment(fragment: Fragment){

@@ -14,5 +14,10 @@ class ConosciamociActivity : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         binding = ActivityConosciamociBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        if (intent.getBooleanExtra("EXIT", false)) {
+            finish()
+        }
+
     }
 }

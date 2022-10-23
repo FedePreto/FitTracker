@@ -16,18 +16,20 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.lifecycleScope
 import com.example.fittracker.R
 import com.example.fittracker.databinding.*
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.launch
 
 
 class InizioActivity : AppCompatActivity() {
     private lateinit var binding: ActivityInizioBinding
     private lateinit var uri: Uri
+    private lateinit var progresBar : ProgressBar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this,R.layout.activity_inizio)
         avvioVideo()
-        val progresBar = binding.ProgressBar01
+        progresBar = binding.ProgressBar01
         progresBar.visibility = ProgressBar.INVISIBLE
 
 
@@ -36,9 +38,7 @@ class InizioActivity : AppCompatActivity() {
             progresBar.visibility = ProgressBar.VISIBLE
             lifecycleScope.launch {
                 var a = Intent(this@InizioActivity, ConosciamociActivity::class.java)
-                //a.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
                 startActivity(a)
-                finish()
             }
         }
 
@@ -47,7 +47,6 @@ class InizioActivity : AppCompatActivity() {
             progresBar.visibility = ProgressBar.VISIBLE
             lifecycleScope.launch {
                 var a = Intent(this@InizioActivity, LoginActivity::class.java)
-                //a.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
                 startActivity(a)
                 finish()
             }
@@ -71,8 +70,9 @@ class InizioActivity : AppCompatActivity() {
 
 
     override fun onResume(){
-        binding.videoView.resume()
         super.onResume()
+        binding.videoView.resume()
+        progresBar.visibility = ProgressBar.INVISIBLE
     }
 
     override fun onPause() {
@@ -81,8 +81,9 @@ class InizioActivity : AppCompatActivity() {
     }
 
     override fun onDestroy() {
-        binding.videoView.stopPlayback()
         super.onDestroy()
+        binding.videoView.stopPlayback()
+        progresBar.visibility = ProgressBar.INVISIBLE
     }
 
 

@@ -2,21 +2,21 @@ package com.example.fittracker.autenticazione
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.SeekBar
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
-import androidx.navigation.findNavController
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import androidx.navigation.fragment.navArgs
 import com.example.fittracker.R
 import com.example.fittracker.databinding.FragmentSliderBinding
 import com.example.fittracker.model.Utente
+import com.google.firebase.database.core.utilities.Utilities
 import kotlinx.android.synthetic.main.fragment_slider.*
 import java.time.LocalDate
-import java.util.Calendar
 
 
 class SliderFragment : Fragment() {
@@ -64,6 +64,7 @@ class SliderFragment : Fragment() {
             utente.kg_settimanali = kg_settimanali
             utente.data_raggiungimento = binding.tvDateRaggiungimento.text.toString()
             if (utente.kg_settimanali != 0.0 && utente.data_raggiungimento != "") {
+
                 val intent = Intent(requireContext(), RegisterActivity::class.java)
                 intent.putExtra("utente",utente)
                 startActivity(intent)
@@ -73,7 +74,7 @@ class SliderFragment : Fragment() {
         }
     }
 
-    fun setData(p_attuale: Double, p_obiettivo: Double, kg_settimanali : Double) : String{
+    private fun setData(p_attuale: Double, p_obiettivo: Double, kg_settimanali : Double) : String{
         var delta = 0.0
         if(p_obiettivo < p_attuale)
             delta = p_attuale - p_obiettivo
@@ -83,6 +84,5 @@ class SliderFragment : Fragment() {
         val n_settimane = delta / kg_settimanali
         return LocalDate.now().plusDays(n_settimane.toLong()).toString()
     }
-
 
 }
