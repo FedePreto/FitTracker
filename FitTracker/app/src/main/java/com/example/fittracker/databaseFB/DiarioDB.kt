@@ -28,7 +28,7 @@ class DiarioDB : FirebaseDB() {
         chiloCaloriePranzo : Int,
         chiloCalorieCena : Int,
         chiloCalorieSpuntino : Int,
-        acqua : List<Boolean>
+        acqua : ArrayList<Boolean>
     ): Boolean {
         val diario = hashMapOf<String, Any>(
             "utente" to utente,
@@ -65,13 +65,10 @@ class DiarioDB : FirebaseDB() {
     suspend fun getUserDiario(utente: String) : Diario? {
         val diariList = getDiari()
         val date = LocalDate.now().toString()
-        if(diariList == null)
-            Log.e("Diario","Nessun diario per l'utente corrente")
-        else{
-            for(diario in diariList!!) {
-                if (diario.utente == utente && diario.data == date) {
+        if(diariList != null){
+            for(diario in diariList) {
+                if (diario.utente == utente && diario.data == date)
                     return diario
-                }
             }
         }
         return null

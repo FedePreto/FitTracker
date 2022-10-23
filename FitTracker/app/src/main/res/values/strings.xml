@@ -24,6 +24,5 @@
     <string name="completa">Completa con i tuoi dati...</string>
     <string name="inizio">La tua applicazione per la nutrizione e una vita più sana.</string>
     <string name="sesso">Uomo o Donna?</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="calorie_rimaste">Kcal RIMANENTI</string>
 </resources>

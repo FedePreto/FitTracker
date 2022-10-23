@@ -1,6 +1,5 @@
 package com.example.fittracker.diario
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -26,10 +25,10 @@ class DiarioViewModel : ViewModel() {
     var isFull = arrayOf(false,false,false,false,false,false,false,false)
 
 
-    fun setDiarioOnDB(data:String = LocalDate.now().toString(),fabbisogno: Int = 0, grassiTot:Int = 0, proteineTot:Int = 0,
+    fun setDiarioOnDB(data:String = LocalDate.now().toString(), fabbisogno: Int = 0, grassiTot:Int = 0, proteineTot:Int = 0,
                       carboidratiTot:Int = 0, chiloCalorieEsercizio:Int = 0, chiloCalorieColazione:Int = 0,
                       chiloCaloriePranzo:Int = 0, chiloCalorieCena:Int = 0, chiloCalorieSpuntino:Int = 0,
-                      acqua: List<Boolean> = listOf(false,false,false,false,false,false,false,false)){
+                      acqua: ArrayList<Boolean> = arrayListOf(false, false, false, false, false, false, false, false)){
         viewModelScope.launch {
             val utente = utenteDB.getUtente(auth.currentUser?.email!!)
             val today = LocalDate.now()

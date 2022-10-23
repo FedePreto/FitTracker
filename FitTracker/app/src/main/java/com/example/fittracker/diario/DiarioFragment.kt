@@ -37,6 +37,8 @@ class DiarioFragment : Fragment() {
 
     private lateinit var intent : Intent
     private lateinit var diario : Diario
+    private lateinit var glasses : Array<ImageView>
+    private var contatore = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,6 +47,11 @@ class DiarioFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_diario, container, false)
+
+        //aggiornamento automatico view
+        binding.viewModel = model
+        binding.lifecycleOwner = this
+
         return binding.root
 
     }
@@ -53,21 +60,30 @@ class DiarioFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setUpAllGlasses()
-        setOnClickAllGlasses()
-        setOnclick()
+        glasses = arrayOf(binding.glass1,binding.glass2,binding.glass3,binding.glass4,
+                            binding.glass5,binding.glass6,binding.glass7,binding.glass8)
         model.getUserDiarioDB()
 
-        val diarioObserver = Observer<Diario>{
-            Log.e("msg","Sono dentro l'observer")
-            if(model.diario.value != null)
-                Toast.makeText(context, model.diario.value!!.utente.toString(), Toast.LENGTH_LONG).show()
-            else {
+        val diarioObserver = Observer<Diario> {
+            if (model.diario.value == null && contatore == 0) {
+                Log.e("Logger","Ho creato per la prima volta un diario")
                 Toast.makeText(context, "Non è ancora stato creato un diario", Toast.LENGTH_LONG).show()
                 model.setDiarioOnDB()
                 model.getUserDiarioDB()
+            }else{
+                Log.e("Logger","Il diario è già presente e valorizzato")
+                if(contatore < 1) {
+                    Log.e("Logger","Il contatore viene incrementato di uno")
+                    checkFullGlasses()
+                    contatore += 1
+                }else {
+                    Log.e("Logger", "contatore viene azzerato")
+                    contatore = 0
+                }
             }
         }
+
+
         model.diario.observe(viewLifecycleOwner,diarioObserver)
 
 
@@ -98,6 +114,12 @@ class DiarioFragment : Fragment() {
 
     }
 
+    fun checkFullGlasses(){
+        for(i in 0..7)
+            if(model.diario.value!!.acqua[i])
+                //startAnimation(glasses[i])
+    }
+
     private fun setUpAllGlasses(){
         setUpGlass(binding.glass1,0)
         setUpGlass(binding.glass2,1)
@@ -122,12 +144,12 @@ class DiarioFragment : Fragment() {
     private fun setUpGlass(glass : ImageView,  i: Int){
         glass.setBackgroundResource(R.drawable.filling_animation)
         var frameAnimation: AnimationDrawable = glass.background as AnimationDrawable
-        if(model.isFull[i]){
+        if(diario.acqua[i]){
             frameAnimation.start()
-            model.isFull[i] = false
+            diario.acqua[i] = false
         }else {
             glass.setBackgroundResource(R.drawable.empty_glass_plus)
-            model.isFull[i] = true
+            diario.acqua[i] = true
         }
 
     }

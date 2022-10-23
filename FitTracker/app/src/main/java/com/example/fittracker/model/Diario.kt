@@ -14,7 +14,7 @@ data class Diario(
     val chiloCaloriePranzo : Int,
     val chiloCalorieCena : Int,
     val chiloCalorieSpuntino : Int,
-    val acqua : List<Boolean>
+    val acqua : ArrayList<Boolean>
 
-) { constructor(): this("",LocalDate.now().toString(), 0,0,0,0,0,0,0,0,0, listOf(false,false,false,false,false,false,false,false))
+) { constructor(): this("",LocalDate.now().toString(), 0,0,0,0,0,0,0,0,0, arrayListOf(false,false,false,false,false,false,false,false))
 }
