@@ -32,7 +32,7 @@
                     android:layout_marginRight="20dp"
                     android:textSize="18sp"
                     android:gravity="right"
-                    android:inputType="number"
+                    android:inputType="numberSigned"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" android:id="@+id/eT_kcal"
             />
@@ -57,7 +57,7 @@
                     android:hint="Facoltativo"
                     android:layout_marginRight="20dp"
                     android:textSize="18sp"
-                    android:inputType="number"
+                    android:inputType="numberDecimal"
                     android:gravity="right"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" android:id="@+id/eT_carb"
@@ -84,7 +84,7 @@
                     android:layout_marginRight="20dp"
                     android:textSize="18sp"
                     android:gravity="right"
-                    android:inputType="number"
+                    android:inputType="numberDecimal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" android:id="@+id/eT_grassi"
             />
@@ -109,7 +109,7 @@
                     android:hint="Facoltativo"
                     android:textSize="18sp"
                     android:layout_marginRight="20dp"
-                    android:inputType="number"
+                    android:inputType="numberDecimal"
                     android:gravity="right"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" android:id="@+id/eT_proteine"
@@ -136,6 +136,7 @@
                     android:layout_marginRight="20dp"
                     android:textSize="18sp"
                     android:gravity="right"
+                    android:inputType="textPersonName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" android:id="@+id/eT_titolo"
             />

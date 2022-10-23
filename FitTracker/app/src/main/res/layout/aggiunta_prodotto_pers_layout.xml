@@ -58,7 +58,7 @@
                     android:layout_marginRight="20dp"
                     android:textSize="18sp"
                     android:gravity="right"
-                    android:inputType="number"
+                    android:inputType="numberSigned"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" android:id="@+id/eT_kcal"
             />
@@ -85,6 +85,7 @@
                     android:textSize="18sp"
                     android:gravity="right"
                     android:layout_width="match_parent"
+                    android:inputType="numberDecimal"
                     android:layout_height="wrap_content" android:id="@+id/eT_carb"
             />
         </LinearLayout>
@@ -109,6 +110,7 @@
                     android:layout_marginRight="20dp"
                     android:textSize="18sp"
                     android:gravity="right"
+                    android:inputType="numberDecimal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" android:id="@+id/eT_grassi"
             />
@@ -134,6 +136,7 @@
                     android:textSize="18sp"
                     android:layout_marginRight="20dp"
                     android:gravity="right"
+                    android:inputType="numberDecimal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" android:id="@+id/eT_proteine"
             />
