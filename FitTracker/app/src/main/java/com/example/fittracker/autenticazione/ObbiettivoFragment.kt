@@ -33,71 +33,51 @@ class ObbiettivoFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle? ): View? {
         binding = DataBindingUtil.inflate(inflater,R.layout.fragment_obbiettivo, container, false)
-        binding.liniette.isVisible = false
-        //model.getUtente("")
-        //utente = model.utente.value!!  //prendo un utente non parametrizzato da valorizzare di fragment in fragment, alla fine lo registro
+        binding.liniette.isVisible = true
         return binding.root
     }
 
    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
        super.onViewCreated(view, savedInstanceState)
-       utente.obbiettivo = -1
+       utente.stile_di_vita = -1
        var listener = View.OnClickListener { v ->
            when(v.id){
-               R.id.rB_sedentario -> {
-                   utente.obbiettivo = 0
-                   setStep(false)
+               R.id.rB_sedentario -> utente.stile_di_vita = 0
 
-               }
+               R.id.rB_pocoattivo -> utente.stile_di_vita = 1
 
-               R.id.rB_pocoattivo -> {
-                   utente.obbiettivo = 1
-                   setStep(true)
-               }
+               R.id.rB_attivo -> utente.stile_di_vita = 2
 
-               R.id.rB_attivo -> {
-                   utente.obbiettivo = 2
-                   setStep(false)
-
-               }
+               R.id.rB_moltoattivo -> utente.stile_di_vita = 3
            }
        }
 
-       binding.rBAumenta.setOnClickListener(listener)
-       binding.rBDiminuisci.setOnClickListener(listener)
-       binding.rBMantieni.setOnClickListener(listener)
+       binding.rBAttivo.setOnClickListener(listener)
+       binding.rBMoltoattivo.setOnClickListener(listener)
+       binding.rBPocoattivo.setOnClickListener(listener)
+       binding.rBSedentario.setOnClickListener(listener)
 
        // Get radio group selected status and text using button click event
        binding.btAvantiObb.setOnClickListener { view : View->
            // Get the checked radio button id from radio group
-           if (utente.obbiettivo != -1) {
+           if (utente.stile_di_vita != -1) {
                val action = ObbiettivoFragmentDirections.actionObbiettivoFragmentToSessoFragment(utente)
                view.findNavController().navigate(action) //navigazione da obiettivo a sesso
-
-
            } else {
                // If no radio button checked in this radio group
                Toast.makeText(context, "Per favore, seleziona un'opzione",Toast.LENGTH_SHORT).show()
            }
        }
-   }
 
+       binding.sBAgonistico.setOnCheckedChangeListener { _, isChecked ->
+           utente.agonista = isChecked
+           binding.imageView16.isVisible = isChecked
+       }
+
+   }
     override fun onStop() {
         super.onStop()
         binding.GruppoRadioObbiettivo.clearCheck()
-    }
-    fun setStep(isMantieni: Boolean) {
-            if (!isMantieni) {
-                binding.liniette.isVisible = true
-                binding.imageView16.isVisible = true
-                binding.imageView71.isVisible = true
-
-            } else {
-                binding.liniette.isVisible = true
-                binding.imageView16.isVisible = false
-                binding.imageView71.isVisible = false
-
-            }
     }
 
 }

@@ -38,7 +38,7 @@ class AltezzaFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         var utente = args.utente
-        setStep(utente.obbiettivo)
+        binding.imageView36.isVisible = utente.agonista
         binding.btAvantiAltezza.setOnClickListener {
             var altezza = binding.eTAltezza.text.toString()
             if(altezza != ""){
@@ -50,22 +50,6 @@ class AltezzaFragment : Fragment() {
             }
     }
 
-    fun setStep(obbietivo: Int) {
-        when(obbietivo){
-            0 -> {
-                binding.imageView37.isVisible = true
-                binding.imageView36.isVisible = true
-            }
-            1 ->{
-                binding.imageView37.isVisible = false
-                binding.imageView36.isVisible = false
-            }
-            2 ->{
-                binding.imageView37.isVisible = true
-                binding.imageView36.isVisible = true
-            }
-        }
-    }
 
     
 }

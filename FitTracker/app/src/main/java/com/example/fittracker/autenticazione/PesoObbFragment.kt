@@ -1,5 +1,6 @@
 package com.example.fittracker.autenticazione
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -15,6 +16,7 @@ import com.example.fittracker.databinding.FragmentObbiettivoBinding
 import com.example.fittracker.databinding.FragmentPesoAttualeBinding
 import com.example.fittracker.databinding.FragmentPesoObbBinding
 import com.example.fittracker.model.Utente
+import kotlinx.android.synthetic.main.fragment_peso_obb.*
 
 
 class PesoObbFragment : Fragment() {
@@ -36,38 +38,69 @@ class PesoObbFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         utente = args.utente
+        utente.sport=""
         binding.btAvantiPesoObb.setOnClickListener {
-            var peso_obiettivo = binding.eTPesoObb.text.toString()
-            if (peso_obiettivo != "") {
-                var isCorrect = checkPesi(peso_obiettivo.toDouble(), utente.peso_attuale, utente.obbiettivo)
-                if (isCorrect!!) {
-                    utente.peso_obbiettivo = peso_obiettivo.toDouble()
-                    val action = PesoObbFragmentDirections.actionPesoObbFragmentToSliderFragment(utente)
-                    view.findNavController().navigate(action!!)
-                }
-            } else
-                Toast.makeText(context, "Per favore, completa il campo", Toast.LENGTH_SHORT).show()
+            takeChecked()
+            if(utente.sport == "")
+                Toast.makeText(context,"Per favore, completa il campo", Toast.LENGTH_SHORT).show()
+            else {
+                val intent = Intent(context, RegisterActivity::class.java)
+                intent.putExtra("utente", utente)
+                startActivity(intent)
+            }
         }
     }
 
-    fun checkPesi(pOb: Double, pAt: Double, ob: Int): Boolean? {
-        when (ob) {
-            0 -> {
-                if (pAt < pOb) {
-                    binding.eTPesoObb.setError("Inserisci un obiettivo di peso minore di ${utente.peso_attuale}")
-                    return false
-                } else
-                    return true
-            }
+    private fun takeChecked() {
+        var listener = View.OnClickListener { v ->
+            when(v.id){
+                R.id.cB_calcio -> utente.sport = cB_calcio.text.toString()
+                R.id.cB_basket -> utente.sport = cB_basket.text.toString()
+                R.id.cB_baseball -> utente.sport = cB_baseball.text.toString()
+                R.id.cB_nuoto -> utente.sport = cB_nuoto.text.toString()
+                R.id.cB_judo -> utente.sport = cB_judo.text.toString()
+                R.id.cB_golf -> utente.sport = cB_golf.text.toString()
+                R.id.cB_tennis-> utente.sport = cB_tennis.text.toString()
+                R.id.cB_ping_pong -> utente.sport = cB_ping_pong.text.toString()
+                R.id.cB_football -> utente.sport = cB_football.text.toString()
+                R.id.cB_cricket -> utente.sport = cB_cricket.text.toString()
+                R.id.cB_karate -> utente.sport = cB_karate.text.toString()
+                R.id.cB_hockey -> utente.sport = cB_hockey.text.toString()
+                R.id.cB_ginnastica_art -> utente.sport = cB_ginnastica_art.text.toString()
+                R.id.cB_ginnastica_ritm -> utente.sport = cB_ginnastica_ritm.text.toString()
+                R.id.cB_rugby -> utente.sport = cB_rugby.text.toString()
+                R.id.cB_atletica -> utente.sport = cB_atletica.text.toString()
+                R.id.cB_ciclismo -> utente.sport = cB_ciclismo.text.toString()
+                R.id.cB_pallavolo -> utente.sport = cB_pallavolo.text.toString()
+                R.id.cB_pattinaggio -> utente.sport = cB_pattinaggio.text.toString()
+                R.id.cB_pallanuoto -> utente.sport = cB_pallanuoto.text.toString()
+                R.id.cB_altro -> utente.sport = cB_altro.text.toString()
 
-            2 -> {
-                if (pOb < pAt) {
-                    binding.eTPesoObb.setError("Inserisci un obiettivo di peso maggiore di ${utente.peso_attuale}")
-                    return false
-                } else
-                    return true
             }
-            else-> return null
         }
+
+        binding.cBCalcio.setOnClickListener(listener)
+        binding.cBBasket.setOnClickListener(listener)
+        binding.cBBaseball.setOnClickListener(listener)
+        binding.cBNuoto.setOnClickListener(listener)
+        binding.cBJudo.setOnClickListener(listener)
+        binding.cBGolf.setOnClickListener(listener)
+        binding.cBTennis.setOnClickListener(listener)
+        binding.cBPingPong.setOnClickListener(listener)
+        binding.cBFootball.setOnClickListener(listener)
+        binding.cBCricket.setOnClickListener(listener)
+        binding.cBRugby.setOnClickListener(listener)
+        binding.cBKarate.setOnClickListener(listener)
+        binding.cBHockey.setOnClickListener(listener)
+        binding.cBGinnasticaArt.setOnClickListener(listener)
+        binding.cBGinnasticaRitm.setOnClickListener(listener)
+        binding.cBAtletica.setOnClickListener(listener)
+        binding.cBCiclismo.setOnClickListener(listener)
+        binding.cBPallavolo.setOnClickListener(listener)
+        binding.cBPattinaggio.setOnClickListener(listener)
+        binding.cBPallanuoto.setOnClickListener(listener)
+        binding.cBAltro.setOnClickListener(listener)
     }
+
+
 }

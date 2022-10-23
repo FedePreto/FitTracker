@@ -17,11 +17,6 @@ import com.example.fittracker.databinding.FragmentDatiPersonaliBinding
 import java.util.Calendar
 
 
-/**
- * A simple [Fragment] subclass.
- * Use the [DatiPersonaliFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class DatiPersonaliFragment : Fragment() {
     lateinit var binding : FragmentDatiPersonaliBinding
     val args: DatiPersonaliFragmentArgs by navArgs()
@@ -43,7 +38,7 @@ class DatiPersonaliFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         var utente = args.utente
-        setStep(utente.obbiettivo)
+        binding.imageView28.isVisible = utente.agonista
         //calendario
         val c = Calendar.getInstance()
         val year = c.get(Calendar.YEAR)
@@ -74,24 +69,6 @@ class DatiPersonaliFragment : Fragment() {
 
 
     }
-
-    fun setStep(obbietivo: Int) {
-        when(obbietivo){
-            0 -> {
-                binding.imageView28.isVisible = true
-                binding.imageView29.isVisible = true
-            }
-            1 ->{
-                binding.imageView28.isVisible = false
-                binding.imageView29.isVisible = false
-            }
-            2 ->{
-                binding.imageView28.isVisible = true
-                binding.imageView29.isVisible = true
-            }
-        }
-    }
-
 
 
 }

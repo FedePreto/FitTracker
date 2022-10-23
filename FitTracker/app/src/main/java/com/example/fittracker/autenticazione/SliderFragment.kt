@@ -1,4 +1,4 @@
-package com.example.fittracker.autenticazione
+/*package com.example.fittracker.autenticazione
 
 import android.content.Intent
 import android.os.Bundle
@@ -19,7 +19,7 @@ import kotlinx.android.synthetic.main.fragment_slider.*
 import java.time.LocalDate
 
 
-class SliderFragment : Fragment() {
+/*class SliderFragment : Fragment() {
     lateinit var binding: FragmentSliderBinding
     private lateinit var utente: Utente
     val args: SliderFragmentArgs by navArgs()
@@ -85,4 +85,4 @@ class SliderFragment : Fragment() {
         return LocalDate.now().plusDays(n_settimane.toLong()).toString()
     }
 
-}
+}*/

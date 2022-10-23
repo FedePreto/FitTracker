@@ -18,27 +18,25 @@ class UtenteDB : FirebaseDB() {
         nome: String,
         cognome : String,
         email: String,
-        obbiettivo: Int,
+        stile_di_vita: Int,
+        agonistico: Boolean,
         sesso: String,
         data_nascita: String,
         altezza: Int,
         peso_attuale: Double,
-        peso_obbiettivo: Double?,
-        kg_settimanali: Double?,
-        data_raggiungimento: String?,
+        sport: String?,
         contesto: Context): Boolean {
         val utente = hashMapOf<String, Any>(
             "nome" to nome,
             "cognome" to cognome,
             "email" to email,
-            "obbiettivo" to obbiettivo,
+            "stile_di_vita" to stile_di_vita,
+            "agonistico" to agonistico,
             "sesso" to sesso,
             "data_nascita" to data_nascita,
             "altezza" to altezza,
             "peso_attuale" to peso_attuale,
-            "peso_obbiettivo" to peso_obbiettivo!!,
-            "kg_settimanali" to kg_settimanali!!,
-            "data_raggiungimento" to data_raggiungimento!!
+            "sport" to sport!!
         )
 
         withContext(Dispatchers.IO){

@@ -32,7 +32,7 @@ class RegisterActivity : AppCompatActivity() {
         utente = args.utente
         progressBar = binding.progressBar3
         progressBar.visibility = ProgressBar.INVISIBLE
-        setStep(utente.obbiettivo)
+        binding.imageView68.isVisible = utente.agonista
 
         binding.btnRegister.setOnClickListener {
             val email = binding.InputEmail.text.toString().trim()
@@ -46,10 +46,9 @@ class RegisterActivity : AppCompatActivity() {
                     if (model.singUp(email, pass) == null) {
                         checkError(isOnline(this@RegisterActivity))
                     } else {
-                        model.addAuthUtenteOnDB(utente.nome, utente.cognome, email, utente.obbiettivo, utente.sesso,
+                        model.addAuthUtenteOnDB(utente.nome, utente.cognome, email, utente.stile_di_vita,utente.agonista, utente.sesso,
                             utente.data_nascita,utente.altezza,utente.peso_attuale,
-                            utente.peso_obbiettivo,utente.kg_settimanali,
-                            utente.data_raggiungimento, this@RegisterActivity)
+                            utente.sport, this@RegisterActivity)
                         val intent = Intent(applicationContext, ConosciamociActivity::class.java)
                         intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
                         intent.putExtra("EXIT", true)
@@ -107,24 +106,6 @@ class RegisterActivity : AppCompatActivity() {
             return true
     }
 
-    private fun setStep(obbietivo: Int) {
-        when (obbietivo) {
-            0 -> {
-                binding.imageView69.isVisible = true
-                binding.imageView68.isVisible = true
-            }
-
-            1 -> {
-                binding.imageView69.isVisible = false
-                binding.imageView68.isVisible = false
-            }
-
-            2 -> {
-                binding.imageView69.isVisible = true
-                binding.imageView68.isVisible = true
-            }
-        }
-    }
 
     private fun checkError(isOnline : Boolean){
         if (isOnline)

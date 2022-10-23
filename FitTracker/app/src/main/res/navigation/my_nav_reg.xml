@@ -5,8 +5,6 @@
             app:startDestination="@id/obbiettivoFragment">
     <fragment android:id="@+id/pesoObbFragment" android:name="com.example.fittracker.autenticazione.PesoObbFragment"
               android:label="PesoObbFragment" tools:layout="@layout/fragment_peso_obb">
-        <action android:id="@+id/action_pesoObbFragment_to_sliderFragment" app:destination="@id/sliderFragment"
-                app:enterAnim="@anim/nav_default_enter_anim" app:exitAnim="@anim/nav_default_exit_anim"/>
         <argument android:name="utente" app:argType="com.example.fittracker.model.Utente"/>
         <action android:id="@+id/action_pesoObbFragment_to_registerActivity" app:destination="@id/registerActivity"/>
     </fragment>

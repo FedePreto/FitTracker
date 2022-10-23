@@ -11,14 +11,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.fittracker.R
-import com.example.fittracker.databinding.FragmentObbiettivoBinding
 import com.example.fittracker.databinding.FragmentSessoBinding
 
-/**
- * A simple [Fragment] subclass.
- * Use the [SessoFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class SessoFragment : Fragment() {
     lateinit var binding: FragmentSessoBinding
     val args: SessoFragmentArgs by navArgs()
@@ -36,7 +30,7 @@ class SessoFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         var utente = args.utente
-        setStep(utente.obbiettivo)
+        binding.imageView20.isVisible = utente.agonista
         var listener = View.OnClickListener { v ->
             when(v.id){
                 R.id.rB_uomo -> utente.sesso = "uomo"
@@ -61,22 +55,7 @@ class SessoFragment : Fragment() {
             }
         }
     }
-    fun setStep(obbietivo: Int) {
-        when(obbietivo){
-            0 -> {
-                binding.imageView20.isVisible = true
-                binding.imageView21.isVisible = true
-            }
-            1 ->{
-                binding.imageView20.isVisible = false
-                binding.imageView21.isVisible = false
-            }
-            2 ->{
-                binding.imageView20.isVisible = true
-                binding.imageView21.isVisible = true
-            }
-        }
-    }
+
 
     override fun onStop() {
         super.onStop()
