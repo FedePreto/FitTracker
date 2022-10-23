@@ -44,13 +44,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" app:srcCompat="@drawable/linietta_grigia"
                 android:id="@+id/imageView53" android:layout_weight="1"/>
-        <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" app:srcCompat="@drawable/linietta_grigia"
-                android:id="@+id/imageView55" android:layout_weight="1"/>
     </LinearLayout>
     <TextView
-            android:text="Qual è il tuo obiettivo di peso?"
+            android:text="Quale sport pratichi?"
             android:layout_width="0dp"
             android:layout_height="wrap_content" android:id="@+id/textView11"
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
@@ -58,31 +54,195 @@
             android:textAlignment="center" app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout16"
             android:layout_marginTop="10dp" android:layout_marginStart="30dp" android:layout_marginEnd="30dp"/>
-    <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
-            android:id="@+id/linearLayout6" android:background="@drawable/input_bg_green"
-            app:layout_constraintBottom_toTopOf="@+id/bt_AvantiPesoObb"
-            android:layout_marginBottom="170dp" android:layout_marginStart="30dp" android:layout_marginEnd="30dp"
-            app:layout_constraintTop_toBottomOf="@+id/textView11">
-        <EditText
-                android:layout_width="150dp"
+
+    <ScrollView android:layout_width="0dp" android:layout_height="0dp"
+                android:gravity="center"
+                app:layout_constraintTop_toBottomOf="@+id/textView11" app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toTopOf="@+id/bt_AvantiPesoObb"
+                app:layout_constraintVertical_bias="0.0" android:layout_marginTop="50dp"
+                android:layout_marginBottom="40dp" android:layout_marginStart="50dp" android:layout_marginEnd="50dp">
+        <LinearLayout
+                android:gravity="center"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="numberDecimal"
-                android:ems="10"
-                android:layout_marginStart="10dp"
-                android:id="@+id/eT_PesoObb" android:layout_weight="1" android:textSize="30sp"
-                android:textAlignment="center" android:autofillHints=""/>
-        <TextView
-                android:text="Kg"
-                android:layout_marginRight="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" android:id="@+id/textView12" android:layout_weight="1"
-                android:textStyle="bold" android:textAlignment="center" android:textSize="30sp"
-                android:textColor="@color/black"/>
-    </LinearLayout>
+                app:layout_constraintTop_toBottomOf="@+id/textView11"
+                app:layout_constraintBottom_toTopOf="@+id/bt_AvantiPesoObb"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="30dp" app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="30dp">
+            <CheckBox
+                    android:text="Calcio"
+                    android:layout_marginBottom="10dp"
+                    android:layout_width="150dp"
+                    android:gravity="center"
+                    android:layout_height="wrap_content"
+                    android:textSize="22sp"
+                    android:id="@+id/cB_calcio"/>
+            <CheckBox
+                    android:text="Basket"
+                    android:layout_marginBottom="10dp"
+                    android:layout_width="150dp"
+                    android:gravity="center"
+                    android:layout_height="wrap_content"
+                    android:textSize="22sp"
+                    android:id="@+id/cB_basket"/>
+            <CheckBox
+                    android:text="Pallavolo"
+                    android:layout_marginBottom="10dp"
+                    android:layout_width="150dp"
+                    android:gravity="center"
+                    android:layout_height="wrap_content"
+                    android:textSize="22sp"
+                    android:id="@+id/cB_pallavolo"/>
+            <CheckBox
+                    android:text="Nuoto"
+                    android:layout_marginBottom="10dp"
+                    android:layout_width="150dp"
+                    android:gravity="center"
+                    android:layout_height="wrap_content"
+                    android:textSize="22sp"
+                    android:id="@+id/cB_nuoto"/>
+            <CheckBox
+                    android:text="Baseball"
+                    android:layout_marginBottom="10dp"
+                    android:layout_width="150dp"
+                    android:gravity="center"
+                    android:layout_height="wrap_content"
+                    android:textSize="22sp"
+                    android:id="@+id/cB_baseball"/>
+            <CheckBox
+                    android:text="Karate"
+                    android:layout_marginBottom="10dp"
+                    android:layout_width="150dp"
+                    android:gravity="center"
+                    android:layout_height="wrap_content"
+                    android:textSize="22sp"
+                    android:id="@+id/cB_karate"/>
+            <CheckBox
+                    android:text="Pattinaggio"
+                    android:layout_marginBottom="10dp"
+                    android:layout_width="150dp"
+                    android:gravity="center"
+                    android:layout_height="wrap_content"
+                    android:textSize="22sp"
+                    android:id="@+id/cB_pattinaggio"/>
+            <CheckBox
+                    android:text="Cricket"
+                    android:layout_marginBottom="10dp"
+                    android:layout_width="150dp"
+                    android:gravity="center"
+                    android:layout_height="wrap_content"
+                    android:textSize="22sp"
+                    android:id="@+id/cB_cricket"/>
+            <CheckBox
+                    android:text="Tennis"
+                    android:layout_marginBottom="10dp"
+                    android:layout_width="150dp"
+                    android:gravity="center"
+                    android:layout_height="wrap_content"
+                    android:textSize="22sp"
+                    android:id="@+id/cB_tennis"/>
+            <CheckBox
+                    android:text="Hockey"
+                    android:layout_marginBottom="10dp"
+                    android:layout_width="150dp"
+                    android:gravity="center"
+                    android:layout_height="wrap_content"
+                    android:textSize="22sp"
+                    android:id="@+id/cB_hockey"/>
+            <CheckBox
+                    android:text="Ping Pong"
+                    android:layout_marginBottom="10dp"
+                    android:layout_width="150dp"
+                    android:gravity="center"
+                    android:layout_height="wrap_content"
+                    android:textSize="22sp"
+                    android:id="@+id/cB_ping_pong"/>
+
+            <CheckBox
+                    android:text="Golf"
+                    android:layout_marginBottom="10dp"
+                    android:layout_width="150dp"
+                    android:gravity="center"
+                    android:layout_height="wrap_content"
+                    android:textSize="22sp"
+                    android:id="@+id/cB_golf"/>
+            <CheckBox
+                    android:text="Rugby"
+                    android:layout_marginBottom="10dp"
+                    android:layout_width="150dp"
+                    android:gravity="center"
+                    android:layout_height="wrap_content"
+                    android:textSize="22sp"
+                    android:id="@+id/cB_rugby"/>
+            <CheckBox
+                    android:text="Football americano"
+                    android:layout_marginBottom="10dp"
+                    android:layout_width="150dp"
+                    android:gravity="center"
+                    android:layout_height="wrap_content"
+                    android:textSize="22sp"
+                    android:id="@+id/cB_football"/>
+
+            <CheckBox
+                    android:text="Atletica"
+                    android:layout_marginBottom="10dp"
+                    android:layout_width="150dp"
+                    android:gravity="center"
+                    android:layout_height="wrap_content"
+                    android:textSize="22sp"
+                    android:id="@+id/cB_atletica"/>
+
+            <CheckBox
+                    android:text="Ginnastica artistica"
+                    android:layout_marginBottom="10dp"
+                    android:layout_width="150dp"
+                    android:gravity="center"
+                    android:layout_height="wrap_content"
+                    android:textSize="22sp"
+                    android:id="@+id/cB_ginnastica_art"/>
+
+            <CheckBox
+                    android:text="Ginnastica ritmica"
+                    android:layout_marginBottom="10dp"
+                    android:layout_width="150dp"
+                    android:gravity="center"
+                    android:layout_height="wrap_content"
+                    android:textSize="22sp"
+                    android:id="@+id/cB_ginnastica_ritm"/>
+            <CheckBox
+                    android:text="Ciclismo"
+                    android:layout_width="150dp"
+                    android:gravity="center"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:textSize="22sp"
+                    android:id="@+id/cB_ciclismo"/>
+            <CheckBox
+                    android:text="Judo"
+                    android:layout_width="150dp"
+                    android:gravity="center"
+                    android:layout_marginBottom="10dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="22sp"
+                    android:id="@+id/cB_judo"/>
+            <CheckBox
+                    android:text="Altro"
+                    android:layout_width="150dp"
+                    android:gravity="center"
+                    android:layout_height="wrap_content"
+                    android:textSize="22sp"
+                    android:id="@+id/cB_altro"/>
+        </LinearLayout>
+    </ScrollView>
+
+
+
+
+
+
+
     <Button
             android:text="AVANTI"
             android:layout_width="225dp"
@@ -91,5 +251,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginBottom="40dp" android:background="@drawable/animazione_1" android:textStyle="bold"
             android:textAlignment="center" android:textSize="25sp"/>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

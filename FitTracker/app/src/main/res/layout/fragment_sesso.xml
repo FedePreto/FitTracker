@@ -85,10 +85,6 @@
                 android:src="@drawable/linietta_grigia"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" android:id="@+id/imageView20" android:layout_weight="1"/>
-        <ImageView
-                android:src="@drawable/linietta_grigia"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" android:id="@+id/imageView21" android:layout_weight="1"/>
     </LinearLayout>
 
 

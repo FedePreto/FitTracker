@@ -43,10 +43,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" app:srcCompat="@drawable/linietta_grigia"
                 android:id="@+id/imageView44" android:layout_weight="1"/>
-        <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" app:srcCompat="@drawable/linietta_grigia"
-                android:id="@+id/imageView45" android:layout_weight="1"/>
     </LinearLayout>
     <TextView
             android:text="Qual è il tuo peso attuale?"
