@@ -18,6 +18,7 @@ import androidx.compose.ui.layout.Layout
 import androidx.core.view.marginLeft
 import androidx.core.view.marginRight
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.asFlow
 import com.example.fittracker.R
 import com.example.fittracker.aggiungi.AggiungiActivity
 import com.example.fittracker.databinding.FragmentDiarioBinding
@@ -127,6 +128,7 @@ class DiarioFragment : Fragment() {
             intent.putExtra("bottone","CENA")
             startActivity(intent)
         }
+
         binding.esercizio.setOnClickListener {
             startActivity(Intent(context, AggiungiActivity::class.java))
             intent.putExtra("bottone","ESERCIZIO")
