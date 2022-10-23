@@ -88,7 +88,7 @@
                         android:textColor="@color/black"
                         android:gravity="center"
                         android:textSize="20sp"
-                        android:layout_width="198dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="match_parent" android:id="@+id/textView248" android:layout_weight="1"/>
                 <Spinner
                         android:layout_width="wrap_content"
@@ -186,7 +186,7 @@
                         android:textColor="@color/black"
                         android:gravity="center"
                         android:textSize="20sp"
-                        android:layout_width="130dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="match_parent" android:id="@+id/textView98" android:layout_weight="1"/>
                 <Spinner
                         android:layout_width="wrap_content"
@@ -280,7 +280,7 @@
                         android:textColor="@color/black"
                         android:gravity="center"
                         android:textSize="20sp"
-                        android:layout_width="130dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="match_parent" android:id="@+id/textView328" android:layout_weight="1"/>
                 <Spinner
                         android:layout_width="wrap_content"
