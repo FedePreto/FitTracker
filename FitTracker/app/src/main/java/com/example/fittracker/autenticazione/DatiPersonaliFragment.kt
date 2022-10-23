@@ -14,6 +14,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.fittracker.R
 import com.example.fittracker.databinding.FragmentDatiPersonaliBinding
+import java.time.LocalDate
 import java.util.Calendar
 
 
@@ -40,6 +41,7 @@ class DatiPersonaliFragment : Fragment() {
         var utente = args.utente
         binding.imageView28.isVisible = utente.agonista
         //calendario
+        var date = ""
         val c = Calendar.getInstance()
         val year = c.get(Calendar.YEAR)
         val month = c.get(Calendar.MONTH)
@@ -48,13 +50,14 @@ class DatiPersonaliFragment : Fragment() {
         //selezione data
         binding.tvDataNascita.setOnClickListener{
             val dpd = DatePickerDialog(requireContext(), { view, mYear, mMonth, mDay ->
+                date = LocalDate.of(mYear,(mMonth+1),mDay).toString()
                 binding.tvDataNascita.text = "$mDay-"+(mMonth +1)+"-$mYear"
             }, year, month, day)
             dpd.show()
         }
 
         binding.btAvantiDati.setOnClickListener{
-            utente.data_nascita = binding.tvDataNascita.text.toString()
+            utente.data_nascita = date
             utente.nome = binding.tEName.text.toString()
             utente.cognome = binding.tESurname.text.toString()
             if(utente.data_nascita != "" && utente.nome != "" && utente.cognome != ""){

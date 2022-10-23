@@ -3,8 +3,8 @@
             xmlns:app="http://schemas.android.com/apk/res-auto"
             xmlns:tools="http://schemas.android.com/tools" android:id="@+id/my_nav_reg"
             app:startDestination="@id/obbiettivoFragment">
-    <fragment android:id="@+id/pesoObbFragment" android:name="com.example.fittracker.autenticazione.PesoObbFragment"
-              android:label="PesoObbFragment" tools:layout="@layout/fragment_peso_obb">
+    <fragment android:id="@+id/pesoObbFragment" android:name="com.example.fittracker.autenticazione.SportFragment"
+              android:label="PesoObbFragment" tools:layout="@layout/fragment_sport">
         <argument android:name="utente" app:argType="com.example.fittracker.model.Utente"/>
         <action android:id="@+id/action_pesoObbFragment_to_registerActivity" app:destination="@id/registerActivity"/>
     </fragment>
@@ -24,8 +24,8 @@
         <argument android:name="utente" app:argType="com.example.fittracker.model.Utente"/>
     </fragment>
     <fragment android:id="@+id/obbiettivoFragment"
-              android:name="com.example.fittracker.autenticazione.ObbiettivoFragment"
-              android:label="ObbiettivoFragment" tools:layout="@layout/fragment_obbiettivo">
+              android:name="com.example.fittracker.autenticazione.StileVitaFragment"
+              android:label="ObbiettivoFragment" tools:layout="@layout/fragment_stile_vita">
         <action android:id="@+id/action_obbiettivoFragment_to_sessoFragment" app:destination="@id/sessoFragment"
                 app:enterAnim="@anim/nav_default_enter_anim" app:exitAnim="@anim/nav_default_exit_anim">
             <argument android:name="obbiettivo" android:defaultValue="-1"/>

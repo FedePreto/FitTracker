@@ -1,8 +1,11 @@
 package com.example.fittracker.model
 
+import java.time.LocalDate
+
 data class Diario(
     val utente : String,
     val data : String,
+    val fabbisogno : Int,
     val grassiTot : Int,
     val proteineTot : Int,
     val carboidratiTot : Int,
@@ -11,7 +14,7 @@ data class Diario(
     val chiloCaloriePranzo : Int,
     val chiloCalorieCena : Int,
     val chiloCalorieSpuntino : Int,
-    val acqua : ArrayList<Boolean>
+    val acqua : List<Boolean>
 
-) { constructor(): this("","",0,0,0,0,0,0,0,0, ArrayList<Boolean>())
+) { constructor(): this("",LocalDate.now().toString(), 0,0,0,0,0,0,0,0,0, listOf(false,false,false,false,false,false,false,false))
 }

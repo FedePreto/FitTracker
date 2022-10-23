@@ -19,6 +19,7 @@ class DiarioDB : FirebaseDB() {
     suspend fun setDiario(
         utente : String,
         data : String,
+        fabbisogno : Int,
         grassiTot : Int,
         proteineTot : Int,
         carboidratiTot : Int,
@@ -27,11 +28,12 @@ class DiarioDB : FirebaseDB() {
         chiloCaloriePranzo : Int,
         chiloCalorieCena : Int,
         chiloCalorieSpuntino : Int,
-        acqua : ArrayList<Boolean>
+        acqua : List<Boolean>
     ): Boolean {
         val diario = hashMapOf<String, Any>(
             "utente" to utente,
             "data" to data,
+            "fabbisogno" to fabbisogno,
             "grassiTot" to grassiTot,
             "proteineTot" to proteineTot,
             "carboidratiTot" to carboidratiTot,
@@ -44,7 +46,7 @@ class DiarioDB : FirebaseDB() {
         )
         withContext(Dispatchers.IO) {
             diari_collection
-                .document(utente + data)
+                .document(data+'_'+utente)
                 .set(diario)
                 .addOnSuccessListener { status = true }
                 .addOnFailureListener { status = false }
@@ -67,8 +69,7 @@ class DiarioDB : FirebaseDB() {
             Log.e("Diario","Nessun diario per l'utente corrente")
         else{
             for(diario in diariList!!) {
-                Log.e("Giorno", (date == diario.data).toString())
-                if (diario.utente == utente) {
+                if (diario.utente == utente && diario.data == date) {
                     return diario
                 }
             }

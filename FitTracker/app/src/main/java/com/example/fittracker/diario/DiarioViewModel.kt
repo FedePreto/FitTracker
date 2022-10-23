@@ -1,35 +1,48 @@
 package com.example.fittracker.diario
 
-import android.content.Context
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.fittracker.databaseFB.DiarioDB
-import com.example.fittracker.databaseFB.FirebaseDB
+import com.example.fittracker.databaseFB.UtenteDB
 import com.example.fittracker.model.Diario
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.ktx.userProfileChangeRequest
 import kotlinx.coroutines.launch
+import java.time.LocalDate
+import java.time.Period
 
 class DiarioViewModel : ViewModel() {
 
     private val diarioDB = DiarioDB()
+    private val utenteDB = UtenteDB()
     private val auth = FirebaseAuth.getInstance()
 
-    private var _diario = MutableLiveData(Diario())
+    private var _diario = MutableLiveData<Diario>()
     val diario: LiveData<Diario>
         get() = _diario
 
     var isFull = arrayOf(false,false,false,false,false,false,false,false)
 
 
-    fun setDiarioOnDB(data:String, grassiTot:Int, proteineTot:Int, carboidratiTot:Int,
-                              chiloCalorieEsercizio:Int, chiloCalorieColazione:Int, chiloCaloriePranzo:Int,
-                              chiloCalorieCena:Int, chiloCalorieSpuntino:Int,acqua:ArrayList<Boolean>){
+    fun setDiarioOnDB(data:String = LocalDate.now().toString(),fabbisogno: Int = 0, grassiTot:Int = 0, proteineTot:Int = 0,
+                      carboidratiTot:Int = 0, chiloCalorieEsercizio:Int = 0, chiloCalorieColazione:Int = 0,
+                      chiloCaloriePranzo:Int = 0, chiloCalorieCena:Int = 0, chiloCalorieSpuntino:Int = 0,
+                      acqua: List<Boolean> = listOf(false,false,false,false,false,false,false,false)){
         viewModelScope.launch {
-            diarioDB.setDiario(auth.currentUser?.email!!,data, grassiTot, proteineTot, carboidratiTot, chiloCalorieEsercizio,
-                                chiloCalorieColazione, chiloCaloriePranzo, chiloCalorieCena, chiloCalorieSpuntino,acqua)
+            val utente = utenteDB.getUtente(auth.currentUser?.email!!)
+            val today = LocalDate.now()
+            val birthday: LocalDate = LocalDate.parse(utente.data_nascita)
+            val period: Period = Period.between(birthday, today)
+            var fabbisogno = 0.0
+            if(utente.sesso == "uomo")
+                fabbisogno = (66 + (13.7 * utente.peso_attuale) + (5 * utente.altezza) - (6.8 * period.years)) * utente.LAF
+            else
+                fabbisogno = (65 + (9.6 * utente.peso_attuale) + (1.8 * utente.altezza) - (4.7 * period.years)) * utente.LAF
+
+            diarioDB.setDiario(auth.currentUser?.email!!,data,fabbisogno.toInt(), grassiTot, proteineTot, carboidratiTot, chiloCalorieEsercizio,
+                                chiloCalorieColazione, chiloCaloriePranzo, chiloCalorieCena, chiloCalorieSpuntino, acqua)
         }
     }
 

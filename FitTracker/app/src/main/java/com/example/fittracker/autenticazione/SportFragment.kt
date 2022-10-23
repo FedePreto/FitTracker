@@ -7,22 +7,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.fittracker.R
-import com.example.fittracker.databinding.FragmentObbiettivoBinding
-import com.example.fittracker.databinding.FragmentPesoAttualeBinding
-import com.example.fittracker.databinding.FragmentPesoObbBinding
+import com.example.fittracker.databinding.FragmentSportBinding
 import com.example.fittracker.model.Utente
-import kotlinx.android.synthetic.main.fragment_peso_obb.*
+import kotlinx.android.synthetic.main.fragment_sport.*
 
 
-class PesoObbFragment : Fragment() {
-    lateinit var binding: FragmentPesoObbBinding
+class SportFragment : Fragment() {
+    lateinit var binding: FragmentSportBinding
     private lateinit var utente: Utente
-    val args: PesoObbFragmentArgs by navArgs()
+    val args: SportFragmentArgs by navArgs()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,7 +27,7 @@ class PesoObbFragment : Fragment() {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_peso_obb, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_sport, container, false)
         return binding.root
     }
 
@@ -39,8 +35,8 @@ class PesoObbFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         utente = args.utente
         utente.sport=""
+        takeChecked()
         binding.btAvantiPesoObb.setOnClickListener {
-            takeChecked()
             if(utente.sport == "")
                 Toast.makeText(context,"Per favore, completa il campo", Toast.LENGTH_SHORT).show()
             else {

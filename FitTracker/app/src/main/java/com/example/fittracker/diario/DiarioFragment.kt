@@ -29,6 +29,7 @@ import com.example.fittracker.model.Diario
 import com.mikhaellopez.circularprogressbar.CircularProgressBar
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_diario.*
+import java.time.LocalDate
 
 class DiarioFragment : Fragment() {
     private lateinit var binding: FragmentDiarioBinding
@@ -36,11 +37,9 @@ class DiarioFragment : Fragment() {
 
     private lateinit var intent : Intent
     private lateinit var diario : Diario
-    private var contatore = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        model.getUserDiarioDB()
     }
 
 
@@ -57,14 +56,17 @@ class DiarioFragment : Fragment() {
         setUpAllGlasses()
         setOnClickAllGlasses()
         setOnclick()
+        model.getUserDiarioDB()
 
         val diarioObserver = Observer<Diario>{
             Log.e("msg","Sono dentro l'observer")
-            if(model.diario.value != null && contatore >= 1)
+            if(model.diario.value != null)
                 Toast.makeText(context, model.diario.value!!.utente.toString(), Toast.LENGTH_LONG).show()
-            else
+            else {
                 Toast.makeText(context, "Non è ancora stato creato un diario", Toast.LENGTH_LONG).show()
-            contatore+=1
+                model.setDiarioOnDB()
+                model.getUserDiarioDB()
+            }
         }
         model.diario.observe(viewLifecycleOwner,diarioObserver)
 

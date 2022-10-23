@@ -46,7 +46,7 @@ class RegisterActivity : AppCompatActivity() {
                     if (model.singUp(email, pass) == null) {
                         checkError(isOnline(this@RegisterActivity))
                     } else {
-                        model.addAuthUtenteOnDB(utente.nome, utente.cognome, email, utente.stile_di_vita,utente.agonista, utente.sesso,
+                        model.addAuthUtenteOnDB(utente.nome, utente.cognome, email, utente.LAF,utente.agonista, utente.sesso,
                             utente.data_nascita,utente.altezza,utente.peso_attuale,
                             utente.sport, this@RegisterActivity)
                         val intent = Intent(applicationContext, ConosciamociActivity::class.java)

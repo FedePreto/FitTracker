@@ -9,7 +9,7 @@ data class Utente(
         var nome: String,
         var cognome: String,
         var email: String,
-        var stile_di_vita: Int,
+        var LAF: Double,
         var agonista: Boolean,
         var sesso: String,
         var data_nascita: String,
@@ -17,6 +17,6 @@ data class Utente(
         var peso_attuale: Double,
         var sport: String?
 
-) : Parcelable {    constructor(): this("","","",-1,false,"","",0,0.0,"")
+) : Parcelable {    constructor(): this("","","",0.0,false,"","",0,0.0,"")
 
 }

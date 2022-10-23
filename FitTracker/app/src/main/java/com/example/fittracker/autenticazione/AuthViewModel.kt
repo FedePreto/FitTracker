@@ -44,7 +44,7 @@ class AuthViewModel : ViewModel() {
     }
 
 
-    suspend fun addAuthUtenteOnDB(nome:String, cognome:String, email:String, stile_di_vita:Int, agonistico:Boolean,
+    suspend fun addAuthUtenteOnDB(nome:String, cognome:String, email:String, LAF:Double, agonistico:Boolean,
                                   sesso:String, data_nascita:String, altezza:Int, peso_attuale:Double,
                                   sport:String?,contesto: Context) {
         try {
@@ -53,7 +53,7 @@ class AuthViewModel : ViewModel() {
                 displayName = nome + ' ' + cognome
             }
             user!!.updateProfile(profileUpdates)
-            utenteDB.addUtente(nome, cognome, email,stile_di_vita, agonistico ,sesso, data_nascita, altezza,
+            utenteDB.addUtente(nome, cognome, email,LAF, agonistico ,sesso, data_nascita, altezza,
                                 peso_attuale, sport, contesto)
 
         } catch (e: Exception) {

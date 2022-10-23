@@ -10,19 +10,13 @@ import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import com.example.fittracker.R
-import com.example.fittracker.databinding.FragmentObbiettivoBinding
+import com.example.fittracker.databinding.FragmentStileVitaBinding
 import com.example.fittracker.model.Utente
 
 
-/**
- * A simple [Fragment] subclass.
- * Use the [ObbiettivoFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class ObbiettivoFragment : Fragment() {
-    lateinit var binding: FragmentObbiettivoBinding
-    //private  val model = AuthViewModel()
-    //lateinit var utente : Utente
+
+class StileVitaFragment : Fragment() {
+    lateinit var binding: FragmentStileVitaBinding
     val utente = Utente()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,23 +26,23 @@ class ObbiettivoFragment : Fragment() {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle? ): View? {
-        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_obbiettivo, container, false)
+        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_stile_vita, container, false)
         binding.liniette.isVisible = true
         return binding.root
     }
 
    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
        super.onViewCreated(view, savedInstanceState)
-       utente.stile_di_vita = -1
+       utente.LAF = 0.0
        var listener = View.OnClickListener { v ->
            when(v.id){
-               R.id.rB_sedentario -> utente.stile_di_vita = 0
+               R.id.rB_sedentario -> utente.LAF = 1.2
 
-               R.id.rB_pocoattivo -> utente.stile_di_vita = 1
+               R.id.rB_pocoattivo -> utente.LAF = 1.5
 
-               R.id.rB_attivo -> utente.stile_di_vita = 2
+               R.id.rB_attivo -> utente.LAF = 1.7
 
-               R.id.rB_moltoattivo -> utente.stile_di_vita = 3
+               R.id.rB_moltoattivo -> utente.LAF = 2.0
            }
        }
 
@@ -60,8 +54,8 @@ class ObbiettivoFragment : Fragment() {
        // Get radio group selected status and text using button click event
        binding.btAvantiObb.setOnClickListener { view : View->
            // Get the checked radio button id from radio group
-           if (utente.stile_di_vita != -1) {
-               val action = ObbiettivoFragmentDirections.actionObbiettivoFragmentToSessoFragment(utente)
+           if (utente.LAF != 0.0) {
+               val action = StileVitaFragmentDirections.actionObbiettivoFragmentToSessoFragment(utente)
                view.findNavController().navigate(action) //navigazione da obiettivo a sesso
            } else {
                // If no radio button checked in this radio group
