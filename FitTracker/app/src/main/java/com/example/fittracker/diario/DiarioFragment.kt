@@ -30,37 +30,27 @@ class DiarioFragment : Fragment() {
     private var calorie_giornaliere = 2000
     private val model = DiarioViewModel()
 
+    private lateinit var intent : Intent
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
 
 
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_diario, container, false)
         return binding.root
 
-        }
-<<<<<<< Updated upstream
+    }
 
-        binding.colazione.setOnClickListener{
-            startActivity(Intent(context, AggiungiActivity::class.java))
-        }
-
-
-/*
-        val glass1 = binding.glass1
-        val glass2 = binding.glass2
-        glass1.setImageResource(R.drawable.empty_glass_plus)
-=======
->>>>>>> Stashed changes
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         setUpAllGlasses()
         setOnClickAllGlasses()
+        setOnclick()
 
 
     }
@@ -121,11 +111,27 @@ class DiarioFragment : Fragment() {
         }
 
     }
-
-
-    private fun onClickGlass(glass : ImageView,  i: Int){
-        glass.setBackgroundResource(R.drawable.filling_animation)
-
-
+    private fun setOnclick(){
+        binding.colazione.setOnClickListener {
+            intent =  Intent(context, AggiungiActivity::class.java)
+            intent.putExtra("bottone","colazione")
+            startActivity(intent)
+        }
+        binding.pranzo.setOnClickListener {
+            startActivity(Intent(context, AggiungiActivity::class.java))
+            intent.putExtra("bottone","pranzo")
+            startActivity(intent)
+        }
+        binding.cena.setOnClickListener {
+            startActivity(Intent(context, AggiungiActivity::class.java))
+            intent.putExtra("bottone","cena")
+            startActivity(intent)
+        }
+        binding.esercizio.setOnClickListener {
+            startActivity(Intent(context, AggiungiActivity::class.java))
+            intent.putExtra("bottone","esercizio")
+            startActivity(intent)
+        }
     }
+
 }

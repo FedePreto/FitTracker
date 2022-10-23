@@ -41,25 +41,21 @@ class UtenteDB : FirebaseDB() {
             "data_raggiungimento" to data_raggiungimento!!
         )
 
-        GlobalScope.launch {
-            withContext(Dispatchers.IO){
-                utenti_collection
-                    .document(email)
-                    .set(utente)
-                    .addOnSuccessListener {
-                        GlobalScope.launch (Dispatchers.Main){
-                            Toast.makeText(contesto, "Operazione completata con successo!", Toast.LENGTH_SHORT).show()
-                        }
-                        status = true
+        withContext(Dispatchers.IO){
+            utenti_collection
+                .document(email)
+                .set(utente)
+                .addOnSuccessListener {
+                    Toast.makeText(contesto, "Operazione completata con successo!", Toast.LENGTH_SHORT).show()
+                    status = true
 
-                    }
-                    .addOnFailureListener{
-                        Toast.makeText(contesto, "Qualcosa è andato storto...", Toast.LENGTH_SHORT).show()
-                        status = false
-                    }
-                    .await()
+                }
+                .addOnFailureListener{
+                    Toast.makeText(contesto, "Qualcosa è andato storto...", Toast.LENGTH_SHORT).show()
+                    status = false
+                }
+                .await()
             }
-        }
         return status
     }
 

@@ -22,6 +22,7 @@ class AggiungiActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityAggiungiBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        binding.myToolbar.title = "Aggiungi " + intent.getStringExtra("bottone")
 
         showRegRapidaDialog()
 

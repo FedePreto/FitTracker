@@ -45,7 +45,7 @@ class DiarioDB : FirebaseDB() {
         GlobalScope.launch {
             withContext(Dispatchers.IO){
                 diari_collection
-                    .document(utente)
+                    .document(utente+data)
                     .set(diario)
                     .addOnSuccessListener {
                         GlobalScope.launch (Dispatchers.Main){
