@@ -1,7 +1,8 @@
-package com.example.fittracker.autenticazione
+package com.example.fittracker.profilo
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.fittracker.R
 
 class ProfiloActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

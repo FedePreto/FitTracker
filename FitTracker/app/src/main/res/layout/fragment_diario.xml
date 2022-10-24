@@ -259,7 +259,7 @@
                             android:layout_height="match_parent" android:id="@+id/textView23" android:layout_weight="1"
                     />
                     <TextView
-                            android:text="0 L"
+                            android:text="@{viewModel.acqua}"
                             android:textSize="23sp"
                             android:textStyle="bold"
                             android:textColor="@color/black"
@@ -289,49 +289,49 @@
                             android:layout_weight="0"/>
                     <ImageView
                             android:id="@+id/glass_2"
-                            android:background="@drawable/empty_glass_plus"
+                            android:background="@drawable/empty_glass"
                             android:layout_marginLeft="5dp"
                             android:layout_width="36dp"
                             android:layout_height="55dp"
                             android:layout_weight="0"/>
                     <ImageView
                             android:id="@+id/glass_3"
-                            android:background="@drawable/empty_glass_plus"
+                            android:background="@drawable/empty_glass"
                             android:layout_marginLeft="5dp"
                             android:layout_width="36dp"
                             android:layout_height="55dp"
                             android:layout_weight="0"/>
                     <ImageView
                             android:id="@+id/glass_4"
-                            android:background="@drawable/empty_glass_plus"
+                            android:background="@drawable/empty_glass"
                             android:layout_marginLeft="5dp"
                             android:layout_width="36dp"
                             android:layout_height="55dp"
                             android:layout_weight="0"/>
                     <ImageView
                             android:id="@+id/glass_5"
-                            android:background="@drawable/empty_glass_plus"
+                            android:background="@drawable/empty_glass"
                             android:layout_marginLeft="5dp"
                             android:layout_width="36dp"
                             android:layout_height="55dp"
                             android:layout_weight="0"/>
                     <ImageView
                             android:id="@+id/glass_6"
-                            android:background="@drawable/empty_glass_plus"
+                            android:background="@drawable/empty_glass"
                             android:layout_marginLeft="5dp"
                             android:layout_width="36dp"
                             android:layout_height="55dp"
                             android:layout_weight="0"/>
                     <ImageView
                             android:id="@+id/glass_7"
-                            android:background="@drawable/empty_glass_plus"
+                            android:background="@drawable/empty_glass"
                             android:layout_marginLeft="5dp"
                             android:layout_width="36dp"
                             android:layout_height="55dp"
                             android:layout_weight="0"/>
                     <ImageView
                             android:id="@+id/glass_8"
-                            android:background="@drawable/empty_glass_plus"
+                            android:background="@drawable/empty_glass"
                             android:layout_marginLeft="5dp"
                             android:layout_width="36dp"
                             android:layout_height="55dp"

@@ -7,17 +7,15 @@ import android.os.Looper
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.navigation.NavController
 import com.example.fittracker.R
-import com.example.fittracker.autenticazione.AuthViewModel
 import com.example.fittracker.autenticazione.InizioActivity
+import com.example.fittracker.profilo.ProfiloActivity
 import com.example.fittracker.databinding.ActivityHomeBinding
 import com.example.fittracker.diario.DiarioFragment
 import com.example.fittracker.diete.DieteFragment
 import com.example.fittracker.funzioni.FunzioniFragment
 import com.example.fittracker.statistiche.StatisticheFragment
 import nl.joery.animatedbottombar.AnimatedBottomBar
-import kotlin.system.exitProcess
 
 class HomeActivity : AppCompatActivity() {
 
@@ -69,6 +67,7 @@ class HomeActivity : AppCompatActivity() {
 
         binding.aggToolbar.setOnMenuItemClickListener {
                 when (it.itemId) {
+                    R.id.ic_profilo ->  openProfilo()
                     R.id.ic_settings -> openSettings()
                     R.id.ic_guida -> openGuida()
                     R.id.ic_logout -> {
@@ -104,7 +103,10 @@ class HomeActivity : AppCompatActivity() {
 
     private fun openGuida(){
 
+    }
 
+    private fun openProfilo(){
+        startActivity(Intent(this, ProfiloActivity::class.java))
     }
 }
 

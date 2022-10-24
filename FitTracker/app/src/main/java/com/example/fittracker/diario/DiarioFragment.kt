@@ -1,44 +1,46 @@
 package com.example.fittracker.diario
 
+import android.annotation.SuppressLint
+import android.app.Dialog
+import android.content.Context
 import android.content.Intent
-import android.graphics.Color
 import android.graphics.drawable.AnimationDrawable
-import android.os.Build
-import androidx.lifecycle.ViewModelProvider
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
-import android.view.View.OnClickListener
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Toast
-import androidx.annotation.RequiresApi
-import androidx.compose.ui.layout.Layout
-import androidx.core.view.marginLeft
-import androidx.core.view.marginRight
+import androidx.appcompat.app.AlertDialog
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.window.Dialog
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
-import androidx.lifecycle.asFlow
-import androidx.lifecycle.lifecycleScope
+import com.bumptech.glide.Glide
 import com.example.fittracker.R
 import com.example.fittracker.aggiungi.AggiungiActivity
 import com.example.fittracker.databinding.FragmentDiarioBinding
 import com.example.fittracker.model.Diario
-import com.mikhaellopez.circularprogressbar.CircularProgressBar
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_diario.*
-import java.time.LocalDate
+import kotlinx.android.synthetic.main.win_layout_dialog.*
 
 class DiarioFragment : Fragment() {
     private lateinit var binding: FragmentDiarioBinding
     private val model = DiarioViewModel()
+    private val diario = Diario()
 
     private lateinit var intent : Intent
-    private lateinit var diario : Diario
     private lateinit var glasses : Array<ImageView>
     private var contatore = 0
+    private var flag_congratulazioni = false
+
+    private var acqua = arrayListOf(false,false,false,false,false,false,false,false)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,6 +54,9 @@ class DiarioFragment : Fragment() {
         binding.viewModel = model
         binding.lifecycleOwner = this
 
+
+
+
         return binding.root
 
     }
@@ -62,6 +67,10 @@ class DiarioFragment : Fragment() {
 
         glasses = arrayOf(binding.glass1,binding.glass2,binding.glass3,binding.glass4,
                             binding.glass5,binding.glass6,binding.glass7,binding.glass8)
+
+        onClickGlass()
+        setOnclickPasti()
+
         model.getUserDiarioDB()
 
         val diarioObserver = Observer<Diario> {
@@ -91,6 +100,16 @@ class DiarioFragment : Fragment() {
 
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        model.setDiarioOnDB(model.diario.value!!.grassiTot, model.diario.value!!.proteineTot,
+            model.diario.value!!.carboidratiTot, model.diario.value!!.chiloCalorieEsercizio,
+            model.diario.value!!.chiloCalorieColazione, model.diario.value!!.chiloCaloriePranzo,
+            model.diario.value!!.chiloCalorieCena, model.diario.value!!.chiloCalorieSpuntino,
+            acqua)
+
+    }
+
 
 /*
         binding.progressCalorie.apply {
@@ -109,51 +128,76 @@ class DiarioFragment : Fragment() {
 
 
     private fun startAnimation(glass : ImageView){
+        glass.setBackgroundResource(R.drawable.filling_animation)
         val frameAnimation: AnimationDrawable = glass.background as AnimationDrawable
         frameAnimation.start()
-
     }
 
     fun checkFullGlasses(){
-        for(i in 0..7)
-            if(model.diario.value!!.acqua[i])
-                //startAnimation(glasses[i])
+        for(i in 0..7) {
+            if (model.diario.value!!.acqua[i]) {
+                acqua[i] = model.diario.value!!.acqua[i]
+                startAnimation(glasses[i])
+                if(i < 7)
+                    glasses[i+1].setBackgroundResource(R.drawable.empty_glass_plus)
+            }
+        }
+        checkAcquaBevuta()
     }
 
-    private fun setUpAllGlasses(){
-        setUpGlass(binding.glass1,0)
-        setUpGlass(binding.glass2,1)
-        setUpGlass(binding.glass3,2)
-        setUpGlass(binding.glass4,3)
-        setUpGlass(binding.glass5,4)
-        setUpGlass(binding.glass6,5)
-        setUpGlass(binding.glass7,6)
-        setUpGlass(binding.glass8,7)
-    }
-    private fun setOnClickAllGlasses(){
-        binding.glass1.setOnClickListener { setUpGlass(binding.glass1,0) }
-        binding.glass2.setOnClickListener { setUpGlass(binding.glass2,1) }
-        binding.glass3.setOnClickListener { setUpGlass(binding.glass3,2) }
-        binding.glass4.setOnClickListener { setUpGlass(binding.glass4,3) }
-        binding.glass5.setOnClickListener { setUpGlass(binding.glass5,4) }
-        binding.glass6.setOnClickListener { setUpGlass(binding.glass6,5) }
-        binding.glass7.setOnClickListener { setUpGlass(binding.glass7,6) }
-        binding.glass8.setOnClickListener { setUpGlass(binding.glass8,7) }
+    private fun onClickGlass(){
+        for(i in 0..7){
+            glasses[i].setOnClickListener {
+                if(acqua[i]){
+                    glasses[i].setBackgroundResource(R.drawable.empty_glass_plus)
+                    for(x in i..7){
+                        if(x < 7)
+                            glasses[x+1].setBackgroundResource(R.drawable.empty_glass)
+                        acqua[x] = false
+                    }
+                }else {
+                    for(x in 0..i){
+                        startAnimation(glasses[x])
+                        acqua[x] = true
+                    }
+                }
+                checkAcquaBevuta()
+            }
+        }
     }
 
-    private fun setUpGlass(glass : ImageView,  i: Int){
-        glass.setBackgroundResource(R.drawable.filling_animation)
-        var frameAnimation: AnimationDrawable = glass.background as AnimationDrawable
-        if(diario.acqua[i]){
-            frameAnimation.start()
-            diario.acqua[i] = false
-        }else {
-            glass.setBackgroundResource(R.drawable.empty_glass_plus)
-            diario.acqua[i] = true
+    private fun checkAcquaBevuta(){
+        var litri_acqua = 0.0
+        for (bicchiere in acqua)
+            if(bicchiere)
+                litri_acqua += 0.25
+        model.setAcqua(litri_acqua)
+        /*Per fare in modo che il messaggio di congratulazioni venga mostrato una sola volta nel caso di raggiungimento
+        dell'obiettivo controllo che il totale sia a 2 litri, se ho gia mostrato il messaggio nella stesso ciclo di vita del fragment
+        e se il settimo bicchiere d'acqua era gia presente al momento del caricamento del diario
+         */
+        if(litri_acqua == 2.0 && !flag_congratulazioni && !model.diario.value!!.acqua[7]){
+            flag_congratulazioni = true
+            openCongratulazioni()
         }
 
     }
-    private fun setOnclick(){
+
+
+    @SuppressLint("ResourceAsColor")
+    private fun openCongratulazioni() {
+        var dialog = Dialog(requireContext())
+        dialog.setContentView(R.layout.win_layout_dialog)
+        dialog.window?.setBackgroundDrawable(ColorDrawable(R.color.transparent))
+        dialog.btn_OK.setOnClickListener {
+            dialog.dismiss()        }
+        Glide.with(requireContext())
+            .load(R.raw.awards)
+            .into(dialog.imageViewWin);
+        dialog.show()
+    }
+
+    private fun setOnclickPasti(){
         intent =  Intent(context, AggiungiActivity::class.java)
         binding.colazione.setOnClickListener {
             intent.putExtra("bottone","COLAZIONE")
