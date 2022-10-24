@@ -151,7 +151,7 @@ class DiarioFragment : Fragment() {
                 if(acqua[i]){
                     glasses[i].setBackgroundResource(R.drawable.empty_glass_plus)
                     for(x in i..7){
-                        if(x < 7)
+                        if(x<7)
                             glasses[x+1].setBackgroundResource(R.drawable.empty_glass)
                         acqua[x] = false
                     }
@@ -159,6 +159,9 @@ class DiarioFragment : Fragment() {
                     for(x in 0..i){
                         startAnimation(glasses[x])
                         acqua[x] = true
+                    }
+                    if(i < 7){
+                        glasses[i+1].setBackgroundResource(R.drawable.empty_glass_plus)
                     }
                 }
                 checkAcquaBevuta()
