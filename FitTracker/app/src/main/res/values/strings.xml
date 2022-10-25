@@ -26,4 +26,14 @@
     <string name="sesso">Uomo o Donna?</string>
     <string name="calorie_rimaste">Kcal RIMANENTI</string>
     <string name="congratulazioni">Congratulazioni hai raggiunto il tuo obiettivo giornaliero di 2 litri d\'acqua</string>
+    <string name="not_ready">Ci dispiace ma questa funzionalità non è al momento dispondibile, i nostri sviluppatori stanno lavorando per voi</string>
+    <string name="title_activity_main2">MainActivity2</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 </resources>

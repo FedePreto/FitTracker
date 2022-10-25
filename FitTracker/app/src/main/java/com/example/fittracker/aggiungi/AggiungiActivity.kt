@@ -19,6 +19,8 @@ class AggiungiActivity : AppCompatActivity() {
 
 
 
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityAggiungiBinding.inflate(layoutInflater)
@@ -40,8 +42,8 @@ class AggiungiActivity : AppCompatActivity() {
                 }
             else when (it.itemId) {
                 R.id.reg_rapida -> showRegRapidaDialog()
-                R.id.ic_alimento -> openAlimento()
-                R.id.ic_ricetta -> openRicetta()
+              //  R.id.ic_alimento -> openAlimento()
+              //  R.id.ic_ricetta -> openRicetta()
             }
             true
         }

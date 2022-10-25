@@ -6,6 +6,7 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.drawable.AnimationDrawable
 import android.graphics.drawable.ColorDrawable
+import android.opengl.Visibility
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -19,6 +20,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.window.Dialog
+import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import com.bumptech.glide.Glide
@@ -110,6 +112,16 @@ class DiarioFragment : Fragment() {
 
     }
 
+    override fun onPause() {
+        super.onPause()
+        model.setDiarioOnDB(model.diario.value!!.grassiTot, model.diario.value!!.proteineTot,
+            model.diario.value!!.carboidratiTot, model.diario.value!!.chiloCalorieEsercizio,
+            model.diario.value!!.chiloCalorieColazione, model.diario.value!!.chiloCaloriePranzo,
+            model.diario.value!!.chiloCalorieCena, model.diario.value!!.chiloCalorieSpuntino,
+            acqua)
+
+    }
+
 
 /*
         binding.progressCalorie.apply {
@@ -179,9 +191,14 @@ class DiarioFragment : Fragment() {
         dell'obiettivo controllo che il totale sia a 2 litri, se ho gia mostrato il messaggio nella stesso ciclo di vita del fragment
         e se il settimo bicchiere d'acqua era gia presente al momento del caricamento del diario
          */
-        if(litri_acqua == 2.0 && !flag_congratulazioni && !model.diario.value!!.acqua[7]){
-            flag_congratulazioni = true
-            openCongratulazioni()
+        if(litri_acqua == 2.0){
+            binding.imageViewGoldMedal.isVisible = true
+            if(!flag_congratulazioni && !model.diario.value!!.acqua[7]) {
+                flag_congratulazioni = true
+                openCongratulazioni()
+            }
+        }else{
+            binding.imageViewGoldMedal.isVisible = false
         }
 
     }
@@ -196,7 +213,7 @@ class DiarioFragment : Fragment() {
             dialog.dismiss()        }
         Glide.with(requireContext())
             .load(R.raw.awards)
-            .into(dialog.imageViewWin);
+            .into(dialog.imageViewWin)
         dialog.show()
     }
 

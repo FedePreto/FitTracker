@@ -6,16 +6,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fittracker.R
-import com.example.fittracker.databinding.FragmentRicercaBinding
+import com.example.fittracker.databinding.FragmentPersonalizzatiBinding
 
 
-class RicercaFragment : Fragment() {
+class PersonalizzatiFragment : Fragment() {
 
-    lateinit private var binding: FragmentRicercaBinding
+    lateinit private var binding: FragmentPersonalizzatiBinding
 
 
     //Prova adapter
@@ -24,26 +23,24 @@ class RicercaFragment : Fragment() {
     lateinit var imageId: Array<Int>
     lateinit var heading: Array<String>
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
     }
 
-
-
-
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?): View? {
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_ricerca, container, false)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_personalizzati, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        imageId = arrayOf(R.drawable.a,R.drawable.a,R.drawable.a,
-            R.drawable.a,R.drawable.a,R.drawable.a,R.drawable.a,
-            R.drawable.a,R.drawable.a,R.drawable.a,R.drawable.a,
-            R.drawable.a,R.drawable.a,R.drawable.a,)
+
+        imageId = arrayOf(R.drawable.b,R.drawable.b, R.drawable.b,
+            R.drawable.b,R.drawable.b,R.drawable.b,R.drawable.b,
+            R.drawable.b,R.drawable.b,R.drawable.b,R.drawable.b,
+            R.drawable.b,R.drawable.b,R.drawable.b,)
 
         heading = arrayOf("fsjdfdgfd",
             "dkjfkjfbds",

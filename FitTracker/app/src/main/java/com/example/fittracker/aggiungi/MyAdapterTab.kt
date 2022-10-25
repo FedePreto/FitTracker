@@ -14,7 +14,7 @@ class MyAdapterTab(fragmentManager: FragmentManager, lifecycle: Lifecycle) : Fra
         when(position){
             0 -> return RicercaFragment()
             1-> return PreferitiFragment()
-            2-> return  SelezionatiFragment()
+            2-> return  PersonalizzatiFragment()
             else -> return RicercaFragment()
         }
     }

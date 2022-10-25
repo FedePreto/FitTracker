@@ -6,27 +6,29 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
+import com.bumptech.glide.Glide
 import com.example.fittracker.R
+import com.example.fittracker.databinding.FragmentFunzioniBinding
+import kotlinx.android.synthetic.main.win_layout_dialog.*
 
 class FunzioniFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = FunzioniFragment()
+
+    private lateinit var binding : FragmentFunzioniBinding
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_funzioni,container,false)
+        return binding.root
+
     }
 
-    private lateinit var viewModel: FunzioniViewModel
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_funzioni, container, false)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        Glide.with(requireContext())
+            .load(R.raw.programmer)
+            .into(binding.imageViewProgrammer)
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(FunzioniViewModel::class.java)
-        // TODO: Use the ViewModel
-    }
 
 }

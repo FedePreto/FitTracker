@@ -7,7 +7,7 @@
                 android:title="Registr. rapida"/>
 
 
-
+<!--
         <item
                 android:id="@+id/ic_alimento"
                 android:title="Crea alimento"/>
@@ -15,5 +15,6 @@
         <item
                 android:id="@+id/ic_ricetta"
                 android:title="Crea ricetta"/>
+                -->
 
 </menu>

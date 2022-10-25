@@ -24,6 +24,7 @@ class MainActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         binding.progressBar.visibility = ProgressBar.VISIBLE
 
+
         if (model.checkUtenteisLoggato()) {
             val intent = Intent(this@MainActivity, HomeActivity::class.java)
             startActivity(intent)
