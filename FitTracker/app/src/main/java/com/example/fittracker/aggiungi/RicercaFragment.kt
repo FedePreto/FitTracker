@@ -1,16 +1,19 @@
 package com.example.fittracker.aggiungi
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fittracker.R
 import com.example.fittracker.databinding.FragmentRicercaBinding
+import com.example.fittracker.prodotto.ProdottoActivity
 
 
 class RicercaFragment : Fragment() {
@@ -23,6 +26,7 @@ class RicercaFragment : Fragment() {
     private lateinit var newArrayList: ArrayList<News>
     lateinit var imageId: Array<Int>
     lateinit var heading: Array<String>
+    lateinit var news : Array<String>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,6 +44,27 @@ class RicercaFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+/*
+        //Moshi and Retrofit
+        val moshi = Moshi.Builder().add(
+            KotlinJsonAdapterFactory()
+        ).build()
+
+        val retrofit = Retrofit.Builder().
+            addConverterFactory(MoshiConverterFactory.create(moshi))
+            .baseUrl("").build()
+
+        object API {
+            val retrofitService : SimpleService by lazy {
+                retrofit.create(SimpleService::Prodotto.java)
+            }
+        }
+
+*/
+
+
+
+
         imageId = arrayOf(R.drawable.a,R.drawable.a,R.drawable.a,
             R.drawable.a,R.drawable.a,R.drawable.a,R.drawable.a,
             R.drawable.a,R.drawable.a,R.drawable.a,R.drawable.a,
@@ -60,6 +85,21 @@ class RicercaFragment : Fragment() {
             "fsjdsjjhfsd",
             "dkjfkjfdsbj",)
 
+        news = arrayOf("fsjdfsgdgddsbfsdbhjbhfdsjdsjhfhdjfhhfdsvhjfdsvhjdsvhjdsvhvhjvdbjdfbhjvbdhjbhjfdbjfdbvbdjvbxczjbdgfd",
+            "dkjfkjfbadnkjbfkjbkvcxjvnkjdzsjknzvkdnjdnkvzdjnkjvdzsknjvdjknvdnsjvdknsjkvdjsknjvzdsknjvdsds",
+            "fsjdfkjdsfdsvdsvdsvsdvdsvdsvsdvzdsvzdsvzdvzdsbgfdnfdjjhgghnghghchgcnnhcncnhchnccgnhnhhk",
+            "dkjfkjchgncghnhcgncnhgnhcgcnnhgghmmhmghmhgmhgmhmmhgmhgmhgmhghmgfdfdsrgrgfbdjk",
+            "fsjhsfsgdffgdgdgdffdbbvc vcngfgfgfjhgghfhgffgsgsgshgshgshgshgfshffsfssfsfdhsddfkjhfsd",
+            "dkdshfdhfdshdhsdhsfdshdshfdhfsdshfdshffshdfshdhfdsshfdhfsdhsfdhfsdshfdhfsdshfdsdshdhsfdbj",
+            "fsjdfsgdgddsbfsdbhjbhfdsjdsjhfhdjfhhfdsvhjfdsvhjdsvhjdsvhvhjvdbjdfbhjvbdhjbhjfdbjfdbvbdjvbxczjbdgfd",
+            "fsjdfkjdsfdsvdsvdsvsdvdsvdsvsdvzdsvzdsvzdvzdsbgfdnfdjjhgghnghghchgcnnhcncnhchnccgnhnhhk",
+            "dkjfkjchgncghnhcgncnhgnhcgcnnhgghmmhmghmhgmhgmhmmhgmhgmhgmhghmgfdfdsrgrgfbdjk",
+            "fsjhsfsgdffgdgdgdffdbbvc vcngfgfgfjhgghfhgffgsgsgshgshgshgshgfshffsfssfsfdhsddfkjhfsd",
+            "dkdshfdhfdshdhsdhsfdshdshfdhfsdshfdshffshdxzxzxzxzxxzfshdhfdsshfdhfsdhsfdhfsdshfdhfsdshfdsdshdhsfdbj",
+            "fsjhsfsgdffgdgdgdffdbbvc xxzzcxcxzcxzvcngfgfgfjhgghfhgffgsgsgshgshgshgshgfshffsfssfsfdhsddfkjhfsd",
+            "dkdshfdhfdshdhsdhsfdshdshfdzxcxzxzcxchfsdshfdshffshdfshdhfdsshfdhfsdhsfdhfsdshfdhfsdshfdsdshdhsfdbj",
+            "dkdshfdhfdshdhsdhsfdshdshfdzxcxzxzcxchfsdshfdshffshdfshdhfdsshfdhfsdhsfdhfsdshfdhfsdshfdsdshdhsfdbj")
+
         newRecyclerView = binding.gridProdotto
         newRecyclerView.layoutManager = LinearLayoutManager(requireContext())
         newRecyclerView.setHasFixedSize(true)
@@ -72,8 +112,20 @@ class RicercaFragment : Fragment() {
             val news = News(imageId[i], heading[i])
             newArrayList.add(news)
         }
+        val adapter = MyAdapter(newArrayList)
+        newRecyclerView.adapter = adapter
+        adapter.setOnItemClickListener(object : MyAdapter.onItemClickListener {
+            override fun onItemClick(position: Int) {
 
-        newRecyclerView.adapter = MyAdapter(newArrayList,requireContext())
+                Toast.makeText(requireContext(), "Hai cliccato sull'elemento $position", Toast.LENGTH_SHORT).show()
+
+                val intent = Intent(requireContext(), ProdottoActivity::class.java)
+                intent.putExtra("heading", newArrayList[position].headings)
+                intent.putExtra("imageID", newArrayList[position].titleImage)
+                intent.putExtra("news", news[position])
+                startActivity(intent)
+            }
+        })
     }
 
 

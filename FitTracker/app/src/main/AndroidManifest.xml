@@ -18,13 +18,14 @@
             android:supportsRtl="true"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity
-                android:name=".MainActivity2"
+                android:name=".prodotto.ProdottoActivity"
                 android:exported="false"
-                android:label="@string/title_activity_main2"
-                android:theme="@style/NoActionBar"/>
+                android:screenOrientation="portrait"
+                android:parentActivityName=".aggiungi.AggiungiActivity"/>
         <activity
-                android:name=".ProfiloActivity"
-                android:exported="false"/>
+                android:name=".profilo.ProfiloActivity"
+                android:exported="false"
+                android:screenOrientation="portrait"/>
         <activity
                 android:name=".aggiungi.AggiungiActivity"
                 android:exported="false"

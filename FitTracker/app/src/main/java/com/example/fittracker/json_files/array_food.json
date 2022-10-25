@@ -1308,3 +1308,6 @@
     "next": {
       "title": "Next page",
       "href": "https://api.edamam.com/api/food-database/v2/parser?session=40&app_id=a4e62224&app_key=2b0adbda47d1293d35d373d9f2ffcee1&ingr=banana&nutrition-type=cooking"
+    }
+  }
+}

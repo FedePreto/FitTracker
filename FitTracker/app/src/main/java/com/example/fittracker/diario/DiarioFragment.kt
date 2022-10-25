@@ -209,8 +209,12 @@ class DiarioFragment : Fragment() {
         var dialog = Dialog(requireContext())
         dialog.setContentView(R.layout.win_layout_dialog)
         dialog.window?.setBackgroundDrawable(ColorDrawable(R.color.transparent))
+        dialog.imageViewClose.setOnClickListener {
+            dialog.dismiss()
+        }
         dialog.btn_OK.setOnClickListener {
-            dialog.dismiss()        }
+            dialog.dismiss()
+        }
         Glide.with(requireContext())
             .load(R.raw.awards)
             .into(dialog.imageViewWin)

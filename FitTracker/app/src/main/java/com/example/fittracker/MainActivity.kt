@@ -4,14 +4,14 @@ import android.os.Bundle
 import android.content.Intent
 import android.util.Log
 import android.widget.ProgressBar
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.Observer
 import com.example.fittracker.autenticazione.AuthViewModel
 import com.example.fittracker.autenticazione.InizioActivity
 import com.example.fittracker.databinding.ActivityMainBinding
 import com.example.fittracker.home.HomeActivity
-import com.example.fittracker.model.Utente
+import com.example.fittracker.model.Json_Parsing.Json_FoodList
+import com.squareup.moshi.JsonAdapter
+import com.squareup.moshi.Moshi
 
 
 class MainActivity : AppCompatActivity() {
@@ -25,6 +25,7 @@ class MainActivity : AppCompatActivity() {
         binding.progressBar.visibility = ProgressBar.VISIBLE
 
 
+
         if (model.checkUtenteisLoggato()) {
             val intent = Intent(this@MainActivity, HomeActivity::class.java)
             startActivity(intent)
@@ -34,6 +35,7 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
+
 
     }
 }

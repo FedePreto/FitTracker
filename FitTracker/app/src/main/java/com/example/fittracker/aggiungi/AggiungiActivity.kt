@@ -6,16 +6,25 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
+import android.widget.SearchView
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.lifecycle.Observer
+import androidx.lifecycle.lifecycleScope
 import com.example.fittracker.R
 import com.example.fittracker.autenticazione.InizioActivity
 import com.example.fittracker.databinding.ActivityAggiungiBinding
+import com.example.fittracker.model.Diario
+import com.example.fittracker.model.Json_Parsing.Json_FoodList
+import com.example.fittracker.model.Json_Parsing.Json_Hint
 import com.google.android.material.tabs.TabLayoutMediator
 
 class AggiungiActivity : AppCompatActivity() {
 
-    lateinit var binding: ActivityAggiungiBinding
-    var tabTitle = arrayOf(R.drawable.ricerca,R.drawable.add_to_playlist,R.drawable.heart)
+    private lateinit var binding: ActivityAggiungiBinding
+    private var tabTitle = arrayOf(R.drawable.ricerca,R.drawable.add_to_playlist,R.drawable.heart)
+    private lateinit var searchBar : SearchView
+    private val model = AggiungiViewModel()
 
 
 
@@ -26,8 +35,28 @@ class AggiungiActivity : AppCompatActivity() {
         binding = ActivityAggiungiBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.aggToolbar.title =  intent.getStringExtra("bottone")
-        var pager = binding.tabContainer
-        var tab = binding.tabLayout
+        searchBar = binding.searchBar
+        searchBar.queryHint = "Cerca il pasto"
+        searchBar.onActionViewCollapsed()
+        searchBar.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                return true
+            }
+        })
+
+       model.getFoodFromNameorUPC("apple","")
+
+        val prodottiObserver = Observer<List<Json_Hint>> {
+            Log.d("Food",model.foodLiveData.value.toString())
+        }
+        model.foodLiveData.observe(this,prodottiObserver)
+
+        val pager = binding.tabContainer
+        val tab = binding.tabLayout
         pager.adapter = MyAdapterTab(supportFragmentManager, lifecycle)
 
         TabLayoutMediator(tab, pager){
@@ -54,6 +83,7 @@ class AggiungiActivity : AppCompatActivity() {
 
 
     }
+
 
     private fun aggiungiEsercizio() {
         val builder = AlertDialog.Builder(this)
