@@ -73,6 +73,35 @@
                             android:layout_marginRight="15dp"
                             android:id="@+id/tvCalorie"/>
 
+                </TableRow>
+
+                <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="5dp">
+
+                    <TextView
+                            android:text="Carboidrati [gr] : "
+                            android:textColor="@color/black"
+                            android:textStyle="bold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/textView46"/>
+
+                    <TextView
+                            android:id="@+id/tvCarboidrati"
+                            android:text="@string/noInfo"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            />
+
+                </TableRow>
+
+                <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="5dp">
+
                     <TextView
                             android:text="Grassi [gr] : "
                             android:textColor="@color/black"
@@ -105,21 +134,6 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:id="@+id/tvProteine"/>
-
-                    <TextView
-                            android:text="Carboidrati [gr] : "
-                            android:textColor="@color/black"
-                            android:textStyle="bold"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/textView46"/>
-
-                    <TextView
-                            android:id="@+id/tvCarboidrati"
-                            android:text="@string/noInfo"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            />
 
                 </TableRow>
 
