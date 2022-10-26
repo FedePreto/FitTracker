@@ -24,7 +24,7 @@
             <com.google.android.material.imageview.ShapeableImageView
                     android:layout_width="80dp"
                     android:layout_height="80dp"
-                    android:id="@+id/imageProduct"
+                    android:id="@+id/imageProdotto"
                     android:scaleType="centerCrop"
                     android:adjustViewBounds="true"
                     app:shapeAppearanceOverlay="@style/RoundCorner"
@@ -42,7 +42,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:padding="2dp"
-                        android:text="NomeProdotto"
+                        android:text="@string/noInfo"
                         android:textSize="20dp"
                         android:layout_marginTop="5dp"
                         android:layout_marginStart="2dp"
@@ -70,13 +70,13 @@
                                 android:id="@+id/textView43"/>
 
                         <TextView
-                                android:text="Nessuna info \n disponibile ci \n dispiace, riprova \n più tardi"
+                                android:text="@string/noInfo"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:padding="2dp"
                                 android:textSize="15dp"
                                 android:textColor="@color/gray_deep"
-                                android:id="@+id/categoria"/>
+                                android:id="@+id/tvCategoria"/>
                     </TableRow>
 
                     <TableRow
@@ -84,7 +84,7 @@
                             android:layout_height="wrap_content">
 
                         <TextView
-                                android:text="CONTENUTO : "
+                                android:text="ETICHETTA : "
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
                                 android:padding="2dp"
@@ -95,14 +95,14 @@
                                 />
 
                         <TextView
-                                android:text="TextView"
+                                android:text="@string/noInfo"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:padding="2dp"
                                 android:textSize="10dp"
                                 android:textColor="@color/gray"
                                 android:layout_marginStart="5dp"
-                                android:id="@+id/contenuto"/>
+                                android:id="@+id/tvEtichetta"/>
                     </TableRow>
 
                 </TableLayout>

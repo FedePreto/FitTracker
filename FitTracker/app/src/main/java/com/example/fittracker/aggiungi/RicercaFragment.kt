@@ -2,28 +2,32 @@ package com.example.fittracker.aggiungi
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SearchView
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
-import androidx.recyclerview.widget.GridLayoutManager
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fittracker.R
 import com.example.fittracker.databinding.FragmentRicercaBinding
+import com.example.fittracker.model.Prodotto
 import com.example.fittracker.prodotto.ProdottoActivity
 
 
 class RicercaFragment : Fragment() {
 
-    lateinit private var binding: FragmentRicercaBinding
-
+    private lateinit var binding: FragmentRicercaBinding
+    private var model = AggiungiViewModel()
 
     //Prova adapter
     private lateinit var newRecyclerView: RecyclerView
-    private lateinit var newArrayList: ArrayList<News>
+    private lateinit var foods : ArrayList<Prodotto>
+    //private lateinit var newArrayList: ArrayList<News>
     lateinit var imageId: Array<Int>
     lateinit var heading: Array<String>
     lateinit var news : Array<String>
@@ -44,27 +48,22 @@ class RicercaFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-/*
-        //Moshi and Retrofit
-        val moshi = Moshi.Builder().add(
-            KotlinJsonAdapterFactory()
-        ).build()
 
-        val retrofit = Retrofit.Builder().
-            addConverterFactory(MoshiConverterFactory.create(moshi))
-            .baseUrl("").build()
-
-        object API {
-            val retrofitService : SimpleService by lazy {
-                retrofit.create(SimpleService::Prodotto.java)
+        val searchBar = binding.searchBar1
+        searchBar.queryHint = "Cerca il tuo prodotto"
+        //searchBar.onActionViewCollapsed()
+        searchBar.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                model.getFoodFromNameorUPC(query!!,"")
+                return true
             }
-        }
 
-*/
-
-
-
-
+            override fun onQueryTextChange(query: String?): Boolean {
+                Toast.makeText(requireContext(),query!!,Toast.LENGTH_SHORT).show()
+                return true
+            }
+        })
+/*
         imageId = arrayOf(R.drawable.a,R.drawable.a,R.drawable.a,
             R.drawable.a,R.drawable.a,R.drawable.a,R.drawable.a,
             R.drawable.a,R.drawable.a,R.drawable.a,R.drawable.a,
@@ -83,7 +82,7 @@ class RicercaFragment : Fragment() {
             "fsjhfsd",
             "dkjfkbfdsbj",
             "fsjdsjjhfsd",
-            "dkjfkjfdsbj",)
+            "dkjfkjfdsbj")
 
         news = arrayOf("fsjdfsgdgddsbfsdbhjbhfdsjdsjhfhdjfhhfdsvhjfdsvhjdsvhjdsvhvhjvdbjdfbhjvbdhjbhjfdbjfdbvbdjvbxczjbdgfd",
             "dkjfkjfbadnkjbfkjbkvcxjvnkjdzsjknzvkdnjdnkvzdjnkjvdzsknjvdjknvdnsjvdknsjkvdjsknjvzdsknjvdsds",
@@ -99,33 +98,68 @@ class RicercaFragment : Fragment() {
             "fsjhsfsgdffgdgdgdffdbbvc xxzzcxcxzcxzvcngfgfgfjhgghfhgffgsgsgshgshgshgshgfshffsfssfsfdhsddfkjhfsd",
             "dkdshfdhfdshdhsdhsfdshdshfdzxcxzxzcxchfsdshfdshffshdfshdhfdsshfdhfsdhsfdhfsdshfdhfsdshfdsdshdhsfdbj",
             "dkdshfdhfdshdhsdhsfdshdshfdzxcxzxzcxchfsdshfdshffshdfshdhfdsshfdhfsdhsfdhfsdshfdhfsdshfdsdshdhsfdbj")
+*/
+
 
         newRecyclerView = binding.gridProdotto
         newRecyclerView.layoutManager = LinearLayoutManager(requireContext())
         newRecyclerView.setHasFixedSize(true)
-
-        newArrayList = arrayListOf()
-        getUserdata()
-    }
-    private fun getUserdata() {
-        for (i in imageId.indices) {
-            val news = News(imageId[i], heading[i])
-            newArrayList.add(news)
+        val foodObserver = Observer<ArrayList<Prodotto>>{
+            Log.d("Food",model.foodLiveData.value.toString())
+            val adapter = MyAdapter(model.foodLiveData.value!!)
+            newRecyclerView.adapter = adapter
+            adapter.setOnItemClickListener(object : MyAdapter.onItemClickListener {
+                override fun onItemClick(position: Int) {
+                    Toast.makeText(requireContext(), "Hai cliccato sull'elemento $position", Toast.LENGTH_SHORT).show()
+                    val intent = prepareIntent(position)
+                    startActivity(intent)
+                }
+            })
         }
-        val adapter = MyAdapter(newArrayList)
-        newRecyclerView.adapter = adapter
-        adapter.setOnItemClickListener(object : MyAdapter.onItemClickListener {
-            override fun onItemClick(position: Int) {
+        model.foodLiveData.observe(viewLifecycleOwner,foodObserver)
 
-                Toast.makeText(requireContext(), "Hai cliccato sull'elemento $position", Toast.LENGTH_SHORT).show()
+/*
 
-                val intent = Intent(requireContext(), ProdottoActivity::class.java)
-                intent.putExtra("heading", newArrayList[position].headings)
-                intent.putExtra("imageID", newArrayList[position].titleImage)
-                intent.putExtra("news", news[position])
-                startActivity(intent)
-            }
-        })
+        val foodObserver = Observer<ArrayList<Prodotto>>{
+            Log.d("Food",model.foodLiveData.value.toString())
+            val adapter = MyAdapter(model.foodLiveData.value!!)
+            newRecyclerView.adapter = adapter
+            adapter.setOnItemClickListener(object : MyAdapter.onItemClickListener {
+                override fun onItemClick(position: Int) {
+
+                    Toast.makeText(requireContext(), "Hai cliccato sull'elemento $position", Toast.LENGTH_SHORT).show()
+
+                   /* val intent = Intent(requireContext(), ProdottoActivity::class.java)
+                    intent.putExtra("heading", model.foodLiveData.value!![position].label)
+                    intent.putExtra("imageID", model.foodLiveData.value!![position].image)
+                    intent.putExtra("news", model.foodLiveData.value!![position].foodContentsLabel)
+                    startActivity(intent)
+
+                    */
+
+
+                }
+            })
+        }
+       model.foodLiveData.observe(viewLifecycleOwner,foodObserver)
+
+ */
+
+
+
+    }
+
+    private fun prepareIntent(position: Int) : Intent{
+        var intent = Intent(requireContext(), ProdottoActivity::class.java)
+        intent.putExtra("brand", model.foodLiveData.value!![position].brand)
+        intent.putExtra("category", model.foodLiveData.value!![position].category)
+        intent.putExtra("foodContents", model.foodLiveData.value!![position].foodContentsLabel)
+        intent.putExtra("foodId", model.foodLiveData.value!![position].foodId)
+        intent.putExtra("image", model.foodLiveData.value!![position].image)
+        intent.putExtra("knownAs", model.foodLiveData.value!![position].knownAs)
+        intent.putExtra("label", model.foodLiveData.value!![position].label)
+        intent.putExtra("nutrients", model.foodLiveData.value!![position].nutrients)
+        return intent
     }
 
 

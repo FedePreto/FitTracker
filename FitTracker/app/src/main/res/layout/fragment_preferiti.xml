@@ -1,13 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
-    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                 xmlns:tools="http://schemas.android.com/tools"
-                 android:layout_width="match_parent"
-                 android:layout_height="match_parent"
-                 tools:context=".aggiungi.AggiungiActivity">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:background="@color/green_primary"
+                android:layout_height="50dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/agg_toolbar"
+                android:id="@+id/linearLayout18">
+
+            <SearchView
+                    android:clickable="true"
+                    android:id="@+id/searchBar3"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:background="@drawable/btn_bg_3"
+                    android:iconifiedByDefault="false"
+                    android:layout_marginRight="5dp"
+                    android:textSize="12sp"
+                    android:textColor="@color/black"
+                    tools:ignore="HardcodedText">
+
+            </SearchView>
+
+        </LinearLayout>
+
         <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/gridProdotto"/>
-    </FrameLayout>
+                android:layout_height="wrap_content"
+
+                android:id="@+id/gridProdotto">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+    </LinearLayout>
 </layout>

@@ -1,13 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             xmlns:tools="http://schemas.android.com/tools"
-             android:layout_width="match_parent"
+<layout xmlns:tools="http://schemas.android.com/tools"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+<FrameLayout
+        android:layout_width="match_parent"
              android:layout_height="match_parent"
              tools:context=".aggiungi.FragmentRicerca">
-    <androidx.recyclerview.widget.RecyclerView
+
+
+    <LinearLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/gridProdotto"/>
+            android:layout_height="match_parent">
+
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:background="@color/green_primary"
+                android:layout_height="50dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/agg_toolbar"
+                android:id="@+id/linearLayout18">
+
+            <SearchView
+                    android:clickable="true"
+                    android:id="@+id/searchBar1"
+                    android:layout_width="300dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/btn_bg_3"
+                    android:iconifiedByDefault="false"
+                    android:layout_marginRight="5dp"
+                    android:textSize="12sp"
+                    android:textColor="@color/black"
+                    tools:ignore="HardcodedText">
+
+            </SearchView>
+
+            <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+
+            <FrameLayout
+                    android:clickable="true"
+                    android:id="@+id/btn_scanner"
+                    android:layout_width="50dp"
+                    android:layout_height="40dp"
+                    android:gravity="center"
+                    android:background="@drawable/animazione_3"
+                    android:layout_marginLeft="5dp">
+
+                <ImageView
+                        android:layout_width="wrap_content"
+                        android:gravity="center"
+                        android:layout_marginTop="7dp"
+                        android:layout_marginBottom="7dp"
+                        android:src="@drawable/barcode"
+                        android:scaleX="1"
+                        android:scaleY="1"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/scanner_image"
+                        />
+            </FrameLayout>
+
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:id="@+id/gridProdotto">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+    </LinearLayout>
+
 </FrameLayout>
+
 </layout>

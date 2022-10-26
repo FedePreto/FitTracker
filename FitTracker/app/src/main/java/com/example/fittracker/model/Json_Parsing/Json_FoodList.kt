@@ -8,5 +8,6 @@ import com.squareup.moshi.JsonClass
 //a loro volta contengo ognuno un oggetto Nutrients
 @JsonClass(generateAdapter = true)
 data class Json_FoodList(
-    val hints: List<Json_Hint>?
+    val hints: List<Json_Hint>?,
+    val _links: Json_Links?
 )

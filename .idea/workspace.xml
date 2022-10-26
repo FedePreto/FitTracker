@@ -1,14 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AndroidLogFilters">
+    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b963e457-dd90-4a7d-9303-7c2e65906ec3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/Progetto_Programmazione_Mobile.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FitTracker/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/FitTracker/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FitTracker/app/src/main/res/drawable/no_image.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FitTracker/app/src/main/res/menu/bottom_nav_aggiungi.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FitTracker/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/FitTracker/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FitTracker/app/src/main/java/com/example/fittracker/aggiungi/AggiungiActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/FitTracker/app/src/main/java/com/example/fittracker/aggiungi/AggiungiActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FitTracker/app/src/main/java/com/example/fittracker/aggiungi/AggiungiViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/FitTracker/app/src/main/java/com/example/fittracker/aggiungi/AggiungiViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FitTracker/app/src/main/java/com/example/fittracker/aggiungi/MyAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/FitTracker/app/src/main/java/com/example/fittracker/aggiungi/MyAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FitTracker/app/src/main/java/com/example/fittracker/aggiungi/MyAdapterTab.kt" beforeDir="false" afterPath="$PROJECT_DIR$/FitTracker/app/src/main/java/com/example/fittracker/aggiungi/MyAdapterTab.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FitTracker/app/src/main/java/com/example/fittracker/aggiungi/PersonalizzatiFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/FitTracker/app/src/main/java/com/example/fittracker/aggiungi/PersonalizzatiFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FitTracker/app/src/main/java/com/example/fittracker/aggiungi/PreferitiFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/FitTracker/app/src/main/java/com/example/fittracker/aggiungi/PreferitiFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FitTracker/app/src/main/java/com/example/fittracker/aggiungi/RicercaFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/FitTracker/app/src/main/java/com/example/fittracker/aggiungi/RicercaFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FitTracker/app/src/main/java/com/example/fittracker/autenticazione/LoginActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/FitTracker/app/src/main/java/com/example/fittracker/autenticazione/LoginActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FitTracker/app/src/main/java/com/example/fittracker/databaseRoom/Alimento.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FitTracker/app/src/main/java/com/example/fittracker/databaseRoom/AlimentoDao.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FitTracker/app/src/main/java/com/example/fittracker/databaseRoom/AppDatabase.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FitTracker/app/src/main/java/com/example/fittracker/home/HomeActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/FitTracker/app/src/main/java/com/example/fittracker/home/HomeActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FitTracker/app/src/main/java/com/example/fittracker/json_files/array_food.json" beforeDir="false" afterPath="$PROJECT_DIR$/FitTracker/app/src/main/java/com/example/fittracker/json_files/array_food.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FitTracker/app/src/main/res/layout/activity_aggiungi.xml" beforeDir="false" afterPath="$PROJECT_DIR$/FitTracker/app/src/main/res/layout/activity_aggiungi.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FitTracker/app/src/main/res/layout/fragment_personalizzati.xml" beforeDir="false" afterPath="$PROJECT_DIR$/FitTracker/app/src/main/res/layout/fragment_personalizzati.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FitTracker/app/src/main/res/layout/fragment_preferiti.xml" beforeDir="false" afterPath="$PROJECT_DIR$/FitTracker/app/src/main/res/layout/fragment_preferiti.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FitTracker/app/src/main/res/layout/fragment_ricerca.xml" beforeDir="false" afterPath="$PROJECT_DIR$/FitTracker/app/src/main/res/layout/fragment_ricerca.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FitTracker/app/src/main/res/layout/layout_item_prodotto.xml" beforeDir="false" afterPath="$PROJECT_DIR$/FitTracker/app/src/main/res/layout/layout_item_prodotto.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FitTracker/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/FitTracker/app/src/main/res/values/strings.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,6 +76,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "dart.analysis.tool.window.visible": "false",
+    "last_opened_file_path": "C:/Users/Msi/OneDrive/Documenti/GitHub/Progetto_Programmazione_Mobile/FitTracker",
     "settings.editor.selected.configurable": "configurable.group.editor",
     "show.migrate.to.gradle.popup": "false"
   }

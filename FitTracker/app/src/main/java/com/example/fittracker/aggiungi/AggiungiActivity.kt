@@ -7,24 +7,20 @@ import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.SearchView
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import androidx.lifecycle.Observer
-import androidx.lifecycle.lifecycleScope
+import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import com.example.fittracker.R
 import com.example.fittracker.autenticazione.InizioActivity
 import com.example.fittracker.databinding.ActivityAggiungiBinding
-import com.example.fittracker.model.Diario
-import com.example.fittracker.model.Json_Parsing.Json_FoodList
-import com.example.fittracker.model.Json_Parsing.Json_Hint
-import com.google.android.material.tabs.TabLayoutMediator
+import nl.joery.animatedbottombar.AnimatedBottomBar
 
 class AggiungiActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityAggiungiBinding
-    private var tabTitle = arrayOf(R.drawable.ricerca,R.drawable.add_to_playlist,R.drawable.heart)
-    private lateinit var searchBar : SearchView
-    private val model = AggiungiViewModel()
+    val ricercaFragment = RicercaFragment()
+    val personalizzatiFragment = PersonalizzatiFragment()
+    val preferitiFragment = PreferitiFragment ()
 
 
 
@@ -32,83 +28,53 @@ class AggiungiActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityAggiungiBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_aggiungi)
         binding.aggToolbar.title =  intent.getStringExtra("bottone")
-        searchBar = binding.searchBar
-        searchBar.queryHint = "Cerca il pasto"
-        searchBar.onActionViewCollapsed()
-        searchBar.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String?): Boolean {
-                return true
+
+        var bottomNav = binding.bottomNavigation
+        setContentView(binding.root)
+        binding.bottomNavigation.selectTabById(R.id.ricerca,true)
+        replaceFragment(ricercaFragment)
+
+        bottomNav.setOnTabSelectListener(object : AnimatedBottomBar.OnTabSelectListener {
+            override fun onTabSelected(
+                lastIndex: Int,
+                lastTab: AnimatedBottomBar.Tab?,
+                newIndex: Int,
+                newTab: AnimatedBottomBar.Tab
+            ) {
+                //redirecting fragment
+                when(newIndex){
+                    0 -> replaceFragment(ricercaFragment)
+                    1 -> {
+                        val bottone = intent.getStringExtra("bottone")
+                        val bundle = Bundle()
+                        bundle.putString("bottone",bottone)
+                        personalizzatiFragment.arguments = bundle
+                        replaceFragment(personalizzatiFragment)
+                    }
+                    2 -> replaceFragment(preferitiFragment)
+                    else -> replaceFragment(ricercaFragment)
+                }
+
+
             }
 
-            override fun onQueryTextChange(newText: String?): Boolean {
-                return true
-            }
+
         })
 
-       model.getFoodFromNameorUPC("apple","")
+    }
 
-        val prodottiObserver = Observer<List<Json_Hint>> {
-            Log.d("Food",model.foodLiveData.value.toString())
-        }
-        model.foodLiveData.observe(this,prodottiObserver)
-
-        val pager = binding.tabContainer
-        val tab = binding.tabLayout
-        pager.adapter = MyAdapterTab(supportFragmentManager, lifecycle)
-
-        TabLayoutMediator(tab, pager){
-            tab, position -> tab.setIcon(tabTitle[position])
-
-        }.attach()
-
-        binding.aggToolbar.setOnMenuItemClickListener{
-            if(intent.getStringExtra("bottone")=="ESERCIZIO")
-                when(it.itemId){
-                    R.id.reg_rapida -> aggiungiEsercizio()
-                }
-            else when (it.itemId) {
-                R.id.reg_rapida -> showRegRapidaDialog()
-              //  R.id.ic_alimento -> openAlimento()
-              //  R.id.ic_ricetta -> openRicetta()
-            }
-            true
-        }
-
-
-
-
-
+    private fun replaceFragment(fragment: Fragment){
+        val fragmentManager = supportFragmentManager
+        val fragmentTransiction = fragmentManager.beginTransaction()
+        fragmentTransiction.replace(R.id.frame_layout, fragment)
+        fragmentTransiction.commit()
 
     }
 
 
-    private fun aggiungiEsercizio() {
-        val builder = AlertDialog.Builder(this)
-        val inflater = layoutInflater
-        val dialogLayout = inflater.inflate(R.layout.calorie_semplici_layout, null)
-        val kcal = dialogLayout.findViewById<EditText>(R.id.eT_kcal)
-        val titolo = dialogLayout.findViewById<EditText>(R.id.eT_titolo)
 
-
-        with(builder){
-            setTitle("CALORIE SEMPLICI")
-            setPositiveButton("Registra"){dialog, which ->
-                var kcal_salva = kcal.text.toString()
-                var titolo = titolo.text.toString().trim()
-
-
-            }
-            setNegativeButton("Annulla"){ dialog, which ->
-                Log.d("Main", "Negative button clicked")
-            }
-            setView(dialogLayout)
-            show()
-        }
-
-    }
 
     private fun openRicetta() {
         val builder = AlertDialog.Builder(this)
@@ -176,38 +142,4 @@ class AggiungiActivity : AppCompatActivity() {
             show()
         }
     }
-
-
-    private fun showRegRapidaDialog(){
-        val builder = AlertDialog.Builder(this)
-        val inflater = layoutInflater
-        val dialogLayout = inflater.inflate(R.layout.registrazione_rapida_layout, null)
-        val kcal = dialogLayout.findViewById<EditText>(R.id.eT_kcal)
-        val carbo = dialogLayout.findViewById<EditText>(R.id.eT_carb)
-        val proteine = dialogLayout.findViewById<EditText>(R.id.eT_proteine)
-        val grassi = dialogLayout.findViewById<EditText>(R.id.eT_grassi)
-        val titolo = dialogLayout.findViewById<EditText>(R.id.eT_titolo)
-
-        with(builder){
-            setTitle("REGISTRAZIONE RAPIDA PASTO")
-            setPositiveButton("Registra"){dialog, which ->
-                var kcal_salva = kcal.text.toString()
-                var carbo_salva = carbo.text.toString()
-                var proteine_salva = proteine.text.toString()
-                var grassi_salva = grassi.text.toString()
-                var titolo = titolo.text.toString().trim()
-
-            }
-            setNegativeButton("Annulla"){ dialog, which ->
-                Log.d("Main", "Negative button clicked")
-            }
-            setView(dialogLayout)
-            show()
-        }
-    }
-
-
-
-
-
 }

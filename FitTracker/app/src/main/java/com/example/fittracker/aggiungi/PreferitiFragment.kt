@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.fittracker.R
 import com.example.fittracker.databinding.FragmentPreferitiBinding
 import com.example.fittracker.databinding.FragmentRicercaBinding
+import com.example.fittracker.model.Prodotto
 import com.example.fittracker.prodotto.ProdottoActivity
 
 
@@ -23,7 +24,7 @@ class PreferitiFragment : Fragment() {
 
     //Prova adapter
     private lateinit var newRecyclerView: RecyclerView
-    private lateinit var newArrayList: ArrayList<News>
+    private lateinit var prodottiList: ArrayList<Prodotto>
     lateinit var imageId: Array<Int>
     lateinit var heading: Array<String>
     lateinit var news : Array<String>
@@ -81,9 +82,11 @@ class PreferitiFragment : Fragment() {
         newRecyclerView.layoutManager = LinearLayoutManager(requireContext())
         newRecyclerView.setHasFixedSize(true)
 
-        newArrayList = arrayListOf()
-        getUserdata()
+        prodottiList = arrayListOf()
+        //getUserdata()
     }
+
+/*
     private fun getUserdata() {
         for (i in imageId.indices) {
             val news = News(imageId[i], heading[i])
@@ -105,6 +108,9 @@ class PreferitiFragment : Fragment() {
             }
         })
     }
+
+ */
+
 
 
 }

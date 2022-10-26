@@ -7,14 +7,15 @@ import com.squareup.moshi.JsonClass
 //una questione di sicurezza ho reso tutte le variabili nullabili
 @JsonClass(generateAdapter = true)
 data class Prodotto(
-    val brand: String?,
-    val category: String?,
-    val categoryLabel: String?,
-    val foodContentsLabel: String?,
-    val foodId: String?,
-    val image: String?,
-    val knownAs: String?,
-    val label: String?,
-    val nutrients: Nutrients?,
-    val servingsPerContainer: Int?
-)
+    val brand: String? = "",
+    val category: String? = "",
+    val categoryLabel: String? = "",
+    val foodContentsLabel: String? = "",
+    val foodId: String? = "",
+    val image: String? = "",
+    val knownAs: String? = "",
+    val label: String? = "",
+    val nutrients: Nutrients? = Nutrients()
+){
+
+}
