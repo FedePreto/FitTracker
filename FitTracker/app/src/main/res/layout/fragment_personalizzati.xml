@@ -18,6 +18,8 @@
                 android:id="@+id/linearLayout18">
 
             <SearchView
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="5dp"
                     android:clickable="true"
                     android:id="@+id/searchBar2"
                     android:layout_width="300dp"
@@ -37,6 +39,8 @@
                     android:layout_weight="1"/>
 
             <FrameLayout
+                    android:layout_marginRight="25dp"
+                    android:layout_marginTop="5dp"
                     android:clickable="true"
                     android:id="@+id/btn_aggiungi"
                     android:layout_width="40dp"

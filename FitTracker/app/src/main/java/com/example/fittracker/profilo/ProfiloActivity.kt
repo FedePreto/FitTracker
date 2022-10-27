@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.core.view.isVisible
@@ -17,6 +16,7 @@ import com.example.fittracker.model.Utente
 import kotlinx.android.synthetic.main.riautenticazione_layout.*
 import kotlinx.coroutines.launch
 import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 import java.util.*
 
 class ProfiloActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
@@ -94,16 +94,17 @@ class ProfiloActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener 
             binding.selezioneSport.isVisible = model.profilo.value!!.agonista
 
             //calendario
+
             var date = LocalDate.parse(model.profilo.value!!.data_nascita)
             val year = date.year
-            val month = date.monthValue - 1
+            val month = (date.monthValue - 1)
             val day = date.dayOfMonth
 
             //selezione data
             binding.tVDataNascita.setOnClickListener {
                 val dpd = DatePickerDialog(this, { view, mYear, mMonth, mDay ->
-                    date = LocalDate.parse(model.profilo.value!!.data_nascita)
-                    binding.tVDataNascita.text = "$mYear-"+(mMonth + 1)+"-$mDay"
+                    date = LocalDate.of(mYear,(mMonth+1),mDay)
+                    binding.tVDataNascita.text = "$mYear-"+(mMonth +1)+"-$mDay"
                 }, year, month, day)
                 dpd.show()
             }
@@ -142,13 +143,14 @@ class ProfiloActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener 
                     "Attivo" -> LAF_up = 1.55
                     "Molto attivo" -> LAF_up =1.725
                 }
-                val data_nascita_up = binding.tVDataNascita.text.toString()
+                val data_nascita_up = date.toString()
                 val agonistico_up = binding.switchAgonistico.isChecked
                 val sesso_up = binding.sWSesso.selectedItem.toString()
                 val altezza_up = binding.eTAltezza.text.toString()
                 val peso_up = binding.eTPeso.text.toString()
-                var sport_up = binding.sWSport.selectedItem.toString()
-                if(!agonistico_up) sport_up = ""
+                var sport_up = ""
+                sport_up = if(!agonistico_up) ""
+                else binding.sWSport.selectedItem.toString()
                 model.updateAuthUtenteOnDB(nome_up, cognome_up, email_up,LAF_up,agonistico_up,sesso_up,data_nascita_up,altezza_up.toInt(),peso_up.toDouble(),sport_up,this)
             }
 

@@ -1,7 +1,6 @@
 package com.example.fittracker.profilo
 
 import android.content.Context
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -9,10 +8,8 @@ import androidx.lifecycle.viewModelScope
 import com.example.fittracker.databaseFB.UtenteDB
 import com.example.fittracker.model.Utente
 import com.google.android.gms.tasks.Task
-import com.google.firebase.auth.EmailAuthProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.userProfileChangeRequest
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
 class ProfiloViewModel : ViewModel() {
@@ -30,14 +27,6 @@ class ProfiloViewModel : ViewModel() {
         return auth.sendPasswordResetEmail(email)
     }
 
-    fun changeEmail(email: String, password:String, newEmail: String): Task<Void>? {
-        val credential = EmailAuthProvider.getCredential(email, password)
-        auth.currentUser?.reauthenticate(credential)?.addOnCompleteListener{
-            Log.d("riautenticazione","Riautenticato con successo!")
-        }
-        return auth.currentUser?.updateEmail(newEmail)
-    }
-
     fun getDataProfilo(){
         viewModelScope.launch {
            _profilo.value =  utenteDB.getUtente(auth.currentUser!!.email!!)
@@ -45,13 +34,13 @@ class ProfiloViewModel : ViewModel() {
     }
     fun updateAuthUtenteOnDB(
         nome:String, cognome:String, email:String, LAF:Double, agonistico:Boolean,
-        sesso:String, data_nascita:String, altezza:Int, peso_attuale:Double,
+        sesso:String, data_nascita: String, altezza:Int, peso_attuale:Double,
         sport:String?, contesto: Context
     ){
         try {
             val user = auth.currentUser
             val profileUpdates = userProfileChangeRequest {
-                displayName = nome + ' ' + cognome
+                displayName = "$nome $cognome"
             }
             user!!.updateProfile(profileUpdates)
             viewModelScope.launch { utenteDB.updateUtente(nome, cognome, email,LAF, agonistico ,sesso, data_nascita, altezza,

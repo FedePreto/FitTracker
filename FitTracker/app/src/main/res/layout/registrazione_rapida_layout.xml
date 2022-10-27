@@ -13,6 +13,32 @@
             android:layout_marginStart="20dp" android:layout_marginEnd="20dp">
         <LinearLayout
                 android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:gravity="center"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/input_bg_green"
+                android:layout_height="wrap_content">
+            <TextView
+                    android:text="Titolo"
+                    android:layout_marginLeft="20dp"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
+                    android:gravity="left"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:id="@+id/textView27"
+            />
+            <EditText
+                    android:hint="Obbligatorio"
+                    android:layout_marginRight="20dp"
+                    android:textSize="18sp"
+                    android:gravity="right"
+                    android:inputType="textPersonName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:id="@+id/eT_titolo"
+            />
+        </LinearLayout>
+        <LinearLayout
+                android:orientation="horizontal"
                 android:layout_marginBottom="5dp"
                 android:background="@drawable/input_bg_green"
                 android:layout_width="match_parent"
@@ -115,31 +141,6 @@
                     android:layout_height="wrap_content" android:id="@+id/eT_proteine"
             />
         </LinearLayout>
-        <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:gravity="center"
-                android:layout_marginBottom="5dp"
-                android:background="@drawable/input_bg_green"
-                android:layout_height="wrap_content">
-            <TextView
-                    android:text="Titolo"
-                    android:layout_marginLeft="20dp"
-                    android:textStyle="bold"
-                    android:textSize="18sp"
-                    android:gravity="left"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" android:id="@+id/textView27"
-            />
-            <EditText
-                    android:hint="Facoltativo"
-                    android:layout_marginRight="20dp"
-                    android:textSize="18sp"
-                    android:gravity="right"
-                    android:inputType="textPersonName"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" android:id="@+id/eT_titolo"
-            />
-        </LinearLayout>
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
