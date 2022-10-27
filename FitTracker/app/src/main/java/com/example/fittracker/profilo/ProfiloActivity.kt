@@ -9,9 +9,17 @@ import com.example.fittracker.databinding.ActivityProfiloBinding
 class ProfiloActivity : AppCompatActivity() {
 
     private lateinit var binding : ActivityProfiloBinding
+    private val model = ProfiloViewModel()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         binding = DataBindingUtil.setContentView(this, R.layout.activity_profilo)
+
+
+        model.getDataProfilo()
+
+        //aggiornamento automatico view
+        binding.viewModel = model
+        binding.lifecycleOwner = this
+
     }
 }

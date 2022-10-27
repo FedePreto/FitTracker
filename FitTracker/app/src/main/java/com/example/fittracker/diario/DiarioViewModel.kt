@@ -62,6 +62,7 @@ class DiarioViewModel : ViewModel() {
 
     }
 
+    //Variabile usata per la visualizzazione, altrimenti avrei visualizzato solamente il numero
     fun setAcqua(acqua : Double){
         var water = acqua.toString() + " L"
         _acqua.value = water
@@ -77,6 +78,8 @@ class DiarioViewModel : ViewModel() {
                 val arrayProdotti = prodottoDB.getProdotti(LocalDate.now().toString(), auth.currentUser?.email!!,pasto)
                 setMacroDiario(arrayProdotti,pasto)
             }
+
+            Log.d("Diario", "Set del diario nel database")
 
             diarioDB.setDiario(auth.currentUser?.email!!,LocalDate.now().toString(),_diario.value!!.fabbisogno,
                                 _diario.value!!.grassiTot, _diario.value!!.proteineTot,_diario.value!!.carboidratiTot,
@@ -103,31 +106,6 @@ class DiarioViewModel : ViewModel() {
 
                 }
                 hashMapCalorie.put(pasto,calorie.toInt())
-
-      /*
-                when(pasto){
-                    "COLAZIONE" ->
-                                    }
-                    "PRANZO" ->  viewModelScope.launch{
-                                                diarioDB.setDiario(auth.currentUser?.email!!,LocalDate.now().toString(),_diario.value!!.fabbisogno,_diario.value!!.grassiTot,
-                                                 _diario.value!!.proteineTot,_diario.value!!.carboidratiTot, _diario.value!!.chiloCalorieEsercizio,_diario.value!!.chiloCalorieColazione,
-                                                calorie.toInt(), _diario.value!!.chiloCalorieCena,_diario.value!!.chiloCalorieSpuntino,_diario.value!!.acqua)
-                                     }
-                    "CENA" ->  viewModelScope.launch{
-                                                diarioDB.setDiario(auth.currentUser?.email!!,LocalDate.now().toString(),_diario.value!!.fabbisogno,_diario.value!!.grassiTot,
-                                                 _diario.value!!.proteineTot,_diario.value!!.carboidratiTot, _diario.value!!.chiloCalorieEsercizio,_diario.value!!.chiloCalorieColazione,
-                                                    _diario.value!!.chiloCaloriePranzo, calorie.toInt(),_diario.value!!.chiloCalorieSpuntino,_diario.value!!.acqua)
-                                     }
-                    "SPUNTINO" ->  viewModelScope.launch{
-                                                 diarioDB.setDiario(auth.currentUser?.email!!,LocalDate.now().toString(),_diario.value!!.fabbisogno,_diario.value!!.grassiTot,
-                                                 _diario.value!!.proteineTot,_diario.value!!.carboidratiTot, _diario.value!!.chiloCalorieEsercizio,_diario.value!!.chiloCalorieColazione,
-                                                 _diario.value!!.chiloCaloriePranzo, _diario.value!!.chiloCalorieCena,calorie.toInt(),_diario.value!!.acqua)
-                                     }
-                    }
-
-       */
-
-
 
             }
 
