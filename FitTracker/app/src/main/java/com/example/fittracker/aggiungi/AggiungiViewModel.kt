@@ -5,19 +5,12 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.fittracker.model.Json_Parsing.Json_FoodList
-import com.example.fittracker.model.Json_Parsing.Json_Hint
-import com.example.fittracker.model.Prodotto
-import com.example.fittracker.retrofit.ApiInterface
+import com.example.fittracker.model.Json_Parsing.Prodotto
 import com.example.fittracker.retrofit.RetrofitInstance
 import com.example.fittracker.utils.APICredentials
-import com.squareup.moshi.JsonAdapter
-import com.squareup.moshi.Moshi
-import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.moshi.MoshiConverterFactory
 
 
 class AggiungiViewModel : ViewModel() {

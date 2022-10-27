@@ -8,14 +8,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.SearchView
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fittracker.R
 import com.example.fittracker.databinding.FragmentRicercaBinding
-import com.example.fittracker.model.Prodotto
+import com.example.fittracker.model.Json_Parsing.Prodotto
 import com.example.fittracker.prodotto.ProdottoActivity
 
 
@@ -51,7 +50,7 @@ class RicercaFragment : Fragment() {
 
         val searchBar = binding.searchBar1
         searchBar.queryHint = "Cerca il tuo prodotto"
-        //searchBar.onActionViewCollapsed()
+        searchBar.onActionViewCollapsed()
         searchBar.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(query: String?): Boolean {
                 model.getFoodFromNameorUPC(query!!,"")
@@ -59,47 +58,9 @@ class RicercaFragment : Fragment() {
             }
 
             override fun onQueryTextChange(query: String?): Boolean {
-                Toast.makeText(requireContext(),query!!,Toast.LENGTH_SHORT).show()
                 return true
             }
         })
-/*
-        imageId = arrayOf(R.drawable.a,R.drawable.a,R.drawable.a,
-            R.drawable.a,R.drawable.a,R.drawable.a,R.drawable.a,
-            R.drawable.a,R.drawable.a,R.drawable.a,R.drawable.a,
-            R.drawable.a,R.drawable.a,R.drawable.a,)
-
-        heading = arrayOf("fsjdfdgfd",
-            "dkjfkjfbds",
-            "fsjdfkjdsfhk",
-            "dkjfkjfbdjk",
-            "fsjdfkjhfsd",
-            "dkdsbj",
-            "fssjjhfsd",
-            "dkjfkjfj",
-            "fsjdfkshfdshfdd",
-            "dkjfkjffdsjkbfdsbj",
-            "fsjhfsd",
-            "dkjfkbfdsbj",
-            "fsjdsjjhfsd",
-            "dkjfkjfdsbj")
-
-        news = arrayOf("fsjdfsgdgddsbfsdbhjbhfdsjdsjhfhdjfhhfdsvhjfdsvhjdsvhjdsvhvhjvdbjdfbhjvbdhjbhjfdbjfdbvbdjvbxczjbdgfd",
-            "dkjfkjfbadnkjbfkjbkvcxjvnkjdzsjknzvkdnjdnkvzdjnkjvdzsknjvdjknvdnsjvdknsjkvdjsknjvzdsknjvdsds",
-            "fsjdfkjdsfdsvdsvdsvsdvdsvdsvsdvzdsvzdsvzdvzdsbgfdnfdjjhgghnghghchgcnnhcncnhchnccgnhnhhk",
-            "dkjfkjchgncghnhcgncnhgnhcgcnnhgghmmhmghmhgmhgmhmmhgmhgmhgmhghmgfdfdsrgrgfbdjk",
-            "fsjhsfsgdffgdgdgdffdbbvc vcngfgfgfjhgghfhgffgsgsgshgshgshgshgfshffsfssfsfdhsddfkjhfsd",
-            "dkdshfdhfdshdhsdhsfdshdshfdhfsdshfdshffshdfshdhfdsshfdhfsdhsfdhfsdshfdhfsdshfdsdshdhsfdbj",
-            "fsjdfsgdgddsbfsdbhjbhfdsjdsjhfhdjfhhfdsvhjfdsvhjdsvhjdsvhvhjvdbjdfbhjvbdhjbhjfdbjfdbvbdjvbxczjbdgfd",
-            "fsjdfkjdsfdsvdsvdsvsdvdsvdsvsdvzdsvzdsvzdvzdsbgfdnfdjjhgghnghghchgcnnhcncnhchnccgnhnhhk",
-            "dkjfkjchgncghnhcgncnhgnhcgcnnhgghmmhmghmhgmhgmhmmhgmhgmhgmhghmgfdfdsrgrgfbdjk",
-            "fsjhsfsgdffgdgdgdffdbbvc vcngfgfgfjhgghfhgffgsgsgshgshgshgshgfshffsfssfsfdhsddfkjhfsd",
-            "dkdshfdhfdshdhsdhsfdshdshfdhfsdshfdshffshdxzxzxzxzxxzfshdhfdsshfdhfsdhsfdhfsdshfdhfsdshfdsdshdhsfdbj",
-            "fsjhsfsgdffgdgdgdffdbbvc xxzzcxcxzcxzvcngfgfgfjhgghfhgffgsgsgshgshgshgshgfshffsfssfsfdhsddfkjhfsd",
-            "dkdshfdhfdshdhsdhsfdshdshfdzxcxzxzcxchfsdshfdshffshdfshdhfdsshfdhfsdhsfdhfsdshfdhfsdshfdsdshdhsfdbj",
-            "dkdshfdhfdshdhsdhsfdshdshfdzxcxzxzcxchfsdshfdshffshdfshdhfdsshfdhfsdhsfdhfsdshfdhfsdshfdsdshdhsfdbj")
-*/
-
 
         newRecyclerView = binding.gridProdotto
         newRecyclerView.layoutManager = LinearLayoutManager(requireContext())
@@ -110,7 +71,6 @@ class RicercaFragment : Fragment() {
             newRecyclerView.adapter = adapter
             adapter.setOnItemClickListener(object : MyAdapter.onItemClickListener {
                 override fun onItemClick(position: Int) {
-                    Toast.makeText(requireContext(), "Hai cliccato sull'elemento $position", Toast.LENGTH_SHORT).show()
                     val intent = prepareIntent(position)
                     startActivity(intent)
                 }
@@ -151,6 +111,7 @@ class RicercaFragment : Fragment() {
 
     private fun prepareIntent(position: Int) : Intent{
         var intent = Intent(requireContext(), ProdottoActivity::class.java)
+        intent.putExtra("tipologiaPasto", requireArguments().getString("bottone"))
         intent.putExtra("brand", model.foodLiveData.value!![position].brand)
         intent.putExtra("category", model.foodLiveData.value!![position].category)
         intent.putExtra("foodContents", model.foodLiveData.value!![position].foodContentsLabel)

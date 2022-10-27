@@ -34,7 +34,7 @@ class AggiungiActivity : AppCompatActivity() {
         var bottomNav = binding.bottomNavigation
         setContentView(binding.root)
         binding.bottomNavigation.selectTabById(R.id.ricerca,true)
-        replaceFragment(ricercaFragment)
+        checkTabToReplace(0)
 
         bottomNav.setOnTabSelectListener(object : AnimatedBottomBar.OnTabSelectListener {
             override fun onTabSelected(
@@ -43,26 +43,34 @@ class AggiungiActivity : AppCompatActivity() {
                 newIndex: Int,
                 newTab: AnimatedBottomBar.Tab
             ) {
-                //redirecting fragment
-                when(newIndex){
-                    0 -> replaceFragment(ricercaFragment)
-                    1 -> {
-                        val bottone = intent.getStringExtra("bottone")
-                        val bundle = Bundle()
-                        bundle.putString("bottone",bottone)
-                        personalizzatiFragment.arguments = bundle
-                        replaceFragment(personalizzatiFragment)
-                    }
-                    2 -> replaceFragment(preferitiFragment)
-                    else -> replaceFragment(ricercaFragment)
-                }
-
+                checkTabToReplace(newIndex)
 
             }
 
 
         })
 
+    }
+
+    private fun checkTabToReplace(index : Int){
+        when(index){
+            0 -> {
+                val bottone = intent.getStringExtra("bottone")
+                val bundle = Bundle()
+                bundle.putString("bottone",bottone)
+                ricercaFragment.arguments = bundle
+                replaceFragment(ricercaFragment)
+            }
+            1 -> {
+                val bottone = intent.getStringExtra("bottone")
+                val bundle = Bundle()
+                bundle.putString("bottone",bottone)
+                personalizzatiFragment.arguments = bundle
+                replaceFragment(personalizzatiFragment)
+            }
+            2 -> replaceFragment(preferitiFragment)
+            else -> replaceFragment(ricercaFragment)
+        }
     }
 
     private fun replaceFragment(fragment: Fragment){

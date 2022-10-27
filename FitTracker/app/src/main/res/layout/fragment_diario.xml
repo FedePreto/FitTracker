@@ -394,7 +394,7 @@
                         android:layout_width="117dp"
                         android:layout_height="match_parent" android:id="@+id/textView32" android:layout_weight="1"/>
                 <TextView
-                        android:text="0 kcal"
+                        android:text="@{Integer.valueOf(viewModel.diario.chiloCalorieColazione).toString()}"
                         android:textColor="@color/grey_primary_dark"
                         android:layout_width="97dp"
                         android:textSize="25sp"
@@ -431,7 +431,7 @@
                         android:layout_width="117dp"
                         android:layout_height="match_parent" android:id="@+id/textView33" android:layout_weight="1"/>
                 <TextView
-                        android:text="0 kcal"
+                        android:text="@{Integer.valueOf(viewModel.diario.chiloCaloriePranzo).toString()}"
                         android:textColor="@color/grey_primary_dark"
                         android:layout_width="97dp"
                         android:textSize="25sp"
@@ -468,7 +468,7 @@
                         android:layout_width="117dp"
                         android:layout_height="match_parent" android:id="@+id/textView36" android:layout_weight="1"/>
                 <TextView
-                        android:text="0 kcal"
+                        android:text="@{Integer.valueOf(viewModel.diario.chiloCalorieCena).toString()}"
                         android:textColor="@color/grey_primary_dark"
                         android:layout_width="97dp"
                         android:textSize="25sp"
@@ -505,7 +505,7 @@
                         android:layout_width="117dp"
                         android:layout_height="match_parent" android:id="@+id/textView38" android:layout_weight="1"/>
                 <TextView
-                        android:text="0 kcal"
+                        android:text="@{Integer.valueOf(viewModel.diario.chiloCalorieSpuntino).toString()}"
                         android:textColor="@color/grey_primary_dark"
                         android:layout_width="97dp"
                         android:textSize="25sp"
@@ -542,7 +542,7 @@
                         android:layout_width="117dp"
                         android:layout_height="match_parent" android:id="@+id/textView40" android:layout_weight="1"/>
                 <TextView
-                        android:text="0 kcal"
+                        android:text="@{Integer.valueOf(viewModel.diario.chiloCalorieEsercizio).toString()}"
                         android:layout_width="97dp"
                         android:textSize="25sp"
                         android:textStyle="bold"

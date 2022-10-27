@@ -1,20 +1,16 @@
 package com.example.fittracker.aggiungi
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fittracker.R
 import com.example.fittracker.databinding.FragmentPreferitiBinding
-import com.example.fittracker.databinding.FragmentRicercaBinding
-import com.example.fittracker.model.Prodotto
-import com.example.fittracker.prodotto.ProdottoActivity
+import com.example.fittracker.model.Json_Parsing.Prodotto
 
 
 class PreferitiFragment : Fragment() {

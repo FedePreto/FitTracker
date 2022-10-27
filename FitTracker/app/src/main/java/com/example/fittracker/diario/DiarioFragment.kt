@@ -35,7 +35,6 @@ import kotlinx.android.synthetic.main.win_layout_dialog.*
 class DiarioFragment : Fragment() {
     private lateinit var binding: FragmentDiarioBinding
     private val model = DiarioViewModel()
-    private val diario = Diario()
 
     private lateinit var intent : Intent
     private lateinit var glasses : Array<ImageView>
@@ -86,6 +85,7 @@ class DiarioFragment : Fragment() {
                 if(contatore < 1) {
                     Log.e("Logger","Il contatore viene incrementato di uno")
                     checkFullGlasses()
+                    model.setFabbisognoRimanente()
                     contatore += 1
                 }else {
                     Log.e("Logger", "contatore viene azzerato")

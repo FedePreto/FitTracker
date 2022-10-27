@@ -1,15 +1,13 @@
 package com.example.fittracker.aggiungi
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.fittracker.R
-import com.example.fittracker.model.Prodotto
+import com.example.fittracker.model.Json_Parsing.Prodotto
 import com.google.android.material.imageview.ShapeableImageView
 
 //ArrayList<Prodotto>

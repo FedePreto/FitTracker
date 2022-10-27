@@ -12,231 +12,270 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent">
 
-        <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:id="@+id/linearLayout6"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                >
-
-            <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    tools:srcCompat="@tools:sample/avatars"
-                    android:id="@+id/imageProdotto"
-                    />
-
-            <TextView
-                    android:text="@string/noInfo"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:id="@+id/tvProductName"
-                    android:textSize="25dp"
-                    android:textColor="@color/black"
-                    android:textStyle="bold"/>
-
-            <TextView
-                    android:text="INFO NUTRIZIONALI PER 100gr DI PRODOTTO"
-                    android:textColor="@color/black"
-                    android:layout_marginBottom="5dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/textView51"/>
-
-            <TableLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginBottom="5dp">
-
-                    <TextView
-                            android:text="Calorie [Kcal] : "
-                            android:textColor="@color/black"
-                            android:textStyle="bold"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/textView34"/>
-
-                    <TextView
-                            android:text="@string/noInfo"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:layout_marginRight="15dp"
-                            android:id="@+id/tvCalorie"/>
-
-                </TableRow>
-
-                <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginBottom="5dp">
-
-                    <TextView
-                            android:text="Carboidrati [gr] : "
-                            android:textColor="@color/black"
-                            android:textStyle="bold"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/textView46"/>
-
-                    <TextView
-                            android:id="@+id/tvCarboidrati"
-                            android:text="@string/noInfo"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            />
-
-                </TableRow>
-
-                <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginBottom="5dp">
-
-                    <TextView
-                            android:text="Grassi [gr] : "
-                            android:textColor="@color/black"
-                            android:textStyle="bold"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:id="@+id/textView49"/>
-
-                    <TextView
-                            android:text="@string/noInfo"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/tvGrassi"/>
-                </TableRow>
-
-                <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-
-                    <TextView
-                            android:text="Proteine [gr] : "
-                            android:textColor="@color/black"
-                            android:textStyle="bold"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/textView37"/>
-
-                    <TextView
-                            android:text="@string/noInfo"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/tvProteine"/>
-
-                </TableRow>
-
-            </TableLayout>
-
-            <TextView
-                    android:text="ULTERIORI INFORMAZIONI SUL PRODOTTO"
-                    android:textColor="@color/black"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginBottom="15dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/textView52"/>
-
-            <TableLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginBottom="10dp">
-
-                    <TextView
-                            android:text="Brand : "
-                            android:textColor="@color/black"
-                            android:textStyle="bold"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/textView54"/>
-
-                    <TextView
-                            android:text="@string/noInfo"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/tvBrand"/>
-                </TableRow>
-
-                <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginBottom="10dp">
-
-                    <TextView
-                            android:text="Categoria : "
-
-                            android:textColor="@color/black"
-                            android:textStyle="bold"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/textView55"/>
-
-                    <TextView
-                            android:text="@string/noInfo"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/tvCategory"/>
-                </TableRow>
-
-                <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-
-                    <TextView
-                            android:text="Descrizione : "
-                            android:textColor="@color/black"
-                            android:textStyle="bold"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/textView57"/>
-
-                    <TextView
-                            android:text="@string/noInfo"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/tvDescription"/>
-                </TableRow>
-
-            </TableLayout>
+        <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
             <LinearLayout
-                    android:orientation="horizontal"
+                    android:orientation="vertical"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="bottom">
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="5dp"
+                    android:id="@+id/linearLayout6"
+                    >
 
-                <Button
-                        android:text="AGGIUNGI \nAL DIARIO"
-                        android:gravity="center"
-                        android:layout_width="wrap_content"
+                <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        tools:srcCompat="@tools:sample/avatars"
+                        android:id="@+id/imageProdotto"
+                        />
+
+                <TextView
+                        android:text="@string/noInfo"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/button4"
-                        android:layout_weight="1"/>
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:id="@+id/tvProductName"
+                        android:textSize="25dp"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"/>
 
-                <Button
-                        android:text="AGGIUNGI \nAI PREFERITI"
-                        android:layout_width="wrap_content"
+                <TextView
+                        android:text="INFO NUTRIZIONALI PER 100gr DI PRODOTTO"
+                        android:textColor="@color/black"
+                        android:layout_marginBottom="5dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/button3"
-                        android:layout_weight="1"/>
+                        android:id="@+id/textView51"/>
+
+                <TableLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                    <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginBottom="5dp">
+
+                        <TextView
+                                android:text="Calorie [Kcal] : "
+                                android:textColor="@color/black"
+                                android:textStyle="bold"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/textView34"/>
+
+                        <TextView
+                                android:text="@string/noInfo"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_marginRight="15dp"
+                                android:paddingRight="70dp"
+                                android:id="@+id/tvCalorie"/>
+
+                    </TableRow>
+
+                    <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginBottom="5dp">
+
+                        <TextView
+                                android:text="Carboidrati [gr] : "
+                                android:textColor="@color/black"
+                                android:textStyle="bold"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/textView46"/>
+
+                        <TextView
+                                android:id="@+id/tvCarboidrati"
+                                android:text="@string/noInfo"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:paddingRight="70dp"
+                                />
+
+                    </TableRow>
+
+                    <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginBottom="5dp">
+
+                        <TextView
+                                android:text="Grassi [gr] : "
+                                android:textColor="@color/black"
+                                android:textStyle="bold"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:id="@+id/textView49"/>
+
+                        <TextView
+                                android:text="@string/noInfo"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/tvGrassi"
+                                android:paddingRight="70dp"/>
+                    </TableRow>
+
+                    <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                        <TextView
+                                android:text="Proteine [gr] : "
+                                android:textColor="@color/black"
+                                android:textStyle="bold"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/textView37"/>
+
+                        <TextView
+                                android:text="@string/noInfo"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/tvProteine"
+                                android:paddingRight="70dp"/>
+
+                    </TableRow>
+
+                </TableLayout>
+
+                <TextView
+                        android:text="ULTERIORI INFORMAZIONI SUL PRODOTTO"
+                        android:textColor="@color/black"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="15dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textView52"/>
+
+                <TableLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                    <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginBottom="10dp">
+
+                        <TextView
+                                android:text="Brand : "
+                                android:textColor="@color/black"
+                                android:textStyle="bold"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/textView54"/>
+
+                        <TextView
+                                android:text="@string/noInfo"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:paddingRight="70dp"
+                                android:id="@+id/tvBrand"/>
+                    </TableRow>
+
+                    <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginBottom="10dp">
+
+                        <TextView
+                                android:text="Categoria : "
+
+                                android:textColor="@color/black"
+                                android:textStyle="bold"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/textView55"/>
+
+                        <TextView
+                                android:text="@string/noInfo"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:paddingRight="70dp"
+                                android:id="@+id/tvCategory"/>
+                    </TableRow>
+
+                    <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginBottom="10dp">
+
+                        <TextView
+                                android:text="Descrizione : "
+                                android:textColor="@color/black"
+                                android:textStyle="bold"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/textView57"/>
+
+                        <TextView
+                                android:text="@string/noInfo"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:paddingRight="80dp"
+                                android:id="@+id/tvDescription"/>
+                    </TableRow>
+                    <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginBottom="10dp">
+
+                        <TextView
+                                android:text="Quantità : "
+                                android:textColor="@color/black"
+                                android:textStyle="bold"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/textView58"/>
+
+                        <EditText
+                                android:text="1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:inputType="number"
+                                android:ems="10"
+                                android:id="@+id/etQuantita"/>
 
 
+                    </TableRow>
+
+                </TableLayout>
+
+
+
+                <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="10dp"
+                        android:gravity="bottom">
+
+                    <Button
+                            android:text="AGGIUNGI \nAL DIARIO"
+                            android:gravity="center"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/btnAddDiary"
+                            android:layout_weight="1"/>
+
+                    <Button
+                            android:text="AGGIUNGI \nAI PREFERITI"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/btnAddPreferiti"
+                            android:layout_weight="1"/>
+
+
+                </LinearLayout>
             </LinearLayout>
-        </LinearLayout>
+        </ScrollView>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
