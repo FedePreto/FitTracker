@@ -6,18 +6,16 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import android.widget.Spinner
-import android.widget.Switch
-import android.widget.Toast
-import androidx.core.content.ContentProviderCompat.requireContext
+import android.widget.*
 import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
+import androidx.lifecycle.lifecycleScope
 import com.example.fittracker.R
 import com.example.fittracker.databinding.ActivityProfiloBinding
 import com.example.fittracker.model.Utente
+import kotlinx.android.synthetic.main.riautenticazione_layout.*
+import kotlinx.coroutines.launch
 import java.time.LocalDate
 import java.util.*
 
@@ -49,7 +47,7 @@ class ProfiloActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener 
         //aggiornamento automatico view
         binding.viewModel = model
         binding.lifecycleOwner = this
-
+        binding.eTCambioEmail.isEnabled=false
 
 
         // on below line we are initializing spinner with ids.
@@ -61,6 +59,7 @@ class ProfiloActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener 
         agonisticoSwitch.setOnCheckedChangeListener{ _, isChecked ->
             binding.selezioneSport.isVisible = isChecked
         }
+
 
 
         // on below line we are adding click listener for our spinner
@@ -86,32 +85,75 @@ class ProfiloActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener 
         stileDiVitaSpinner.adapter = adapterStile
         sportSpinner.adapter = adapterSport
 
-        val profiloObserver = Observer<Utente>{
+        val profiloObserver = Observer<Utente> {
             //setto i miei spinner con i valori del db
-            setSpinner(adapterSesso,adapterStile,adapterSport)
+            setSpinner(adapterSesso, adapterStile, adapterSport)
             //setto lo switcher con il valore del db
             agonisticoSwitch.isChecked = model.profilo.value!!.agonista
             //se lo switch è true faccio vedere la selezione dello sport
             binding.selezioneSport.isVisible = model.profilo.value!!.agonista
 
-
-
             //calendario
             var date = LocalDate.parse(model.profilo.value!!.data_nascita)
             val year = date.year
-            val month = date.monthValue
+            val month = date.monthValue - 1
             val day = date.dayOfMonth
 
             //selezione data
             binding.tVDataNascita.setOnClickListener {
                 val dpd = DatePickerDialog(this, { view, mYear, mMonth, mDay ->
                     date = LocalDate.parse(model.profilo.value!!.data_nascita)
-                    binding.tVDataNascita.text = "$mDay-" + (mMonth + 1) + "-$mYear"
+                    binding.tVDataNascita.text = "$mYear-"+(mMonth + 1)+"-$mDay"
                 }, year, month, day)
                 dpd.show()
             }
 
+            //pulsante cambia password
+            binding.btnCambioPass.setOnClickListener {
+                val email = model.profilo.value!!.email
+                lifecycleScope.launch {
+                    val task = model.changePassword(email)
+                    task.addOnCompleteListener {
+                        if (it.isSuccessful) {
+                            Toast.makeText(
+                                this@ProfiloActivity,
+                                "Il link per cambiare la password è stato mandato all'indirizzo email!",
+                                Toast.LENGTH_LONG
+                            ).show()
+                        } else {
+                            Toast.makeText(
+                                this@ProfiloActivity,
+                                "Email non registrata o non corretta!",
+                                Toast.LENGTH_LONG
+                            ).show()
+                        }
+                    }
+                }
+            }
+
+            binding.btnSalva.setOnClickListener{
+                val nome_up = binding.eTNome.text.toString().trim()
+                val cognome_up = binding.etCognome.text.toString().trim()
+                val email_up = binding.eTCambioEmail.text.toString().trim()
+                var LAF_up =0.0
+                when(binding.sWStileDiVita.selectedItem.toString()){
+                    "Sedentario" -> LAF_up = 1.2
+                    "Poco attivo" -> LAF_up = 1.375
+                    "Attivo" -> LAF_up = 1.55
+                    "Molto attivo" -> LAF_up =1.725
+                }
+                val data_nascita_up = binding.tVDataNascita.text.toString()
+                val agonistico_up = binding.switchAgonistico.isChecked
+                val sesso_up = binding.sWSesso.selectedItem.toString()
+                val altezza_up = binding.eTAltezza.text.toString()
+                val peso_up = binding.eTPeso.text.toString()
+                var sport_up = binding.sWSport.selectedItem.toString()
+                if(!agonistico_up) sport_up = ""
+                model.updateAuthUtenteOnDB(nome_up, cognome_up, email_up,LAF_up,agonistico_up,sesso_up,data_nascita_up,altezza_up.toInt(),peso_up.toDouble(),sport_up,this)
+            }
+
         }
+
         model.profilo.observe(this,profiloObserver)
 
 }

@@ -79,7 +79,7 @@
 
                             <TextView
                                     android:text="@{Integer.valueOf(viewModel.diario.fabbisogno).toString()}"
-                                    android:textSize="18sp"
+                                    android:textSize="25sp"
                                     android:textColor="@color/black"
                                     android:textStyle="bold"
                                     android:textAlignment="center"
@@ -91,12 +91,12 @@
 
                             <TextView
                                     android:text="@string/calorie_rimaste"
-                                    android:textSize="18sp"
+                                    android:textSize="14sp"
                                     android:textColor="@color/black"
                                     android:textStyle="bold"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
-                                    android:textAlignment = "center"
+                                    android:textAlignment="center"
                                     android:gravity="top"
                                     android:id="@+id/Testo_statico"
                                     tools:ignore="RtlCompat"/>
@@ -391,8 +391,8 @@
                         android:textColor="@color/black"
                         android:textSize="24sp"
                         android:textStyle="bold"
-                        android:layout_width="117dp"
-                        android:layout_height="match_parent" android:id="@+id/textView32" android:layout_weight="1"/>
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:id="@+id/textView32" android:layout_weight="1"/>
                 <TextView
                         android:text="@{Integer.valueOf(viewModel.diario.chiloCalorieColazione).toString()}"
                         android:textColor="@color/grey_primary_dark"
@@ -401,6 +401,14 @@
                         android:textStyle="bold"
                         android:gravity="center"
                         android:layout_height="match_parent" android:id="@+id/kcal_colazione" android:layout_weight="1"/>
+                <TextView
+                        android:text="Kcal"
+                        android:gravity="center"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:id="@+id/textView332" android:layout_weight="1"/>
             </LinearLayout>
             <LinearLayout
                     android:clickable="true"
@@ -428,8 +436,8 @@
                         android:textColor="@color/black"
                         android:textSize="24sp"
                         android:textStyle="bold"
-                        android:layout_width="117dp"
-                        android:layout_height="match_parent" android:id="@+id/textView33" android:layout_weight="1"/>
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:id="@+id/textView33" android:layout_weight="1"/>
                 <TextView
                         android:text="@{Integer.valueOf(viewModel.diario.chiloCaloriePranzo).toString()}"
                         android:textColor="@color/grey_primary_dark"
@@ -438,6 +446,15 @@
                         android:textStyle="bold"
                         android:gravity="center"
                         android:layout_height="match_parent" android:id="@+id/kcal_pranzo" android:layout_weight="1"/>
+                <TextView
+                        android:text="Kcal"
+                        android:gravity="center"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:id="@+id/textView309" android:layout_weight="1"/>
+
             </LinearLayout>
             <LinearLayout
                     android:clickable="true"
@@ -465,8 +482,8 @@
                         android:textColor="@color/black"
                         android:textSize="24sp"
                         android:textStyle="bold"
-                        android:layout_width="117dp"
-                        android:layout_height="match_parent" android:id="@+id/textView36" android:layout_weight="1"/>
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:id="@+id/textView36" android:layout_weight="1"/>
                 <TextView
                         android:text="@{Integer.valueOf(viewModel.diario.chiloCalorieCena).toString()}"
                         android:textColor="@color/grey_primary_dark"
@@ -475,6 +492,14 @@
                         android:textStyle="bold"
                         android:gravity="center"
                         android:layout_height="match_parent" android:id="@+id/kcal_cena" android:layout_weight="1"/>
+                <TextView
+                        android:text="Kcal"
+                        android:gravity="center"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:id="@+id/textView12" android:layout_weight="1"/>
             </LinearLayout>
             <LinearLayout
                     android:clickable="true"
@@ -502,8 +527,8 @@
                         android:textColor="@color/black"
                         android:textSize="24sp"
                         android:textStyle="bold"
-                        android:layout_width="117dp"
-                        android:layout_height="match_parent" android:id="@+id/textView38" android:layout_weight="1"/>
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:id="@+id/textView38" android:layout_weight="1"/>
                 <TextView
                         android:text="@{Integer.valueOf(viewModel.diario.chiloCalorieSpuntino).toString()}"
                         android:textColor="@color/grey_primary_dark"
@@ -512,6 +537,14 @@
                         android:textStyle="bold"
                         android:gravity="center"
                         android:layout_height="match_parent" android:id="@+id/kcal_spuntino" android:layout_weight="1"/>
+                <TextView
+                        android:text="Kcal"
+                        android:gravity="center"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:id="@+id/textView632" android:layout_weight="1"/>
             </LinearLayout>
             <LinearLayout
                     android:orientation="horizontal"
@@ -539,8 +572,8 @@
                         android:textColor="@color/black"
                         android:textSize="24sp"
                         android:textStyle="bold"
-                        android:layout_width="117dp"
-                        android:layout_height="match_parent" android:id="@+id/textView40" android:layout_weight="1"/>
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:id="@+id/textView40" android:layout_weight="1"/>
                 <TextView
                         android:text="@{Integer.valueOf(viewModel.diario.chiloCalorieEsercizio).toString()}"
                         android:layout_width="97dp"
@@ -548,6 +581,14 @@
                         android:textStyle="bold"
                         android:gravity="center"
                         android:layout_height="match_parent" android:id="@+id/kcal_esercizio" android:layout_weight="1"/>
+                <TextView
+                        android:text="Kcal"
+                        android:gravity="center"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:id="@+id/textView352" android:layout_weight="1"/>
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

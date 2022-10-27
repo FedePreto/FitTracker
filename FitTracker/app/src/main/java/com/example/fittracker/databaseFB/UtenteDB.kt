@@ -69,6 +69,48 @@ class UtenteDB : FirebaseDB() {
             }
         }
         return Utente()
+    }
 
+    suspend fun updateUtente(
+        nome: String,
+        cognome : String,
+        email: String,
+        LAF: Double,
+        agonistico: Boolean,
+        sesso: String,
+        data_nascita: String,
+        altezza: Int,
+        peso_attuale: Double,
+        sport: String?,
+        contesto: Context): Boolean {
+        val utente = hashMapOf<String, Any>(
+            "nome" to nome,
+            "cognome" to cognome,
+            "email" to email,
+            "LAF" to LAF,
+            "agonistico" to agonistico,
+            "sesso" to sesso,
+            "data_nascita" to data_nascita,
+            "altezza" to altezza,
+            "peso_attuale" to peso_attuale,
+            "sport" to sport!!
+        )
+
+        withContext(Dispatchers.IO){
+            utenti_collection
+                .document(email)
+                .update(utente)
+                .addOnSuccessListener {
+                    Toast.makeText(contesto, "Operazione completata con successo!", Toast.LENGTH_SHORT).show()
+                    status = true
+
+                }
+                .addOnFailureListener{
+                    Toast.makeText(contesto, "Qualcosa è andato storto...", Toast.LENGTH_SHORT).show()
+                    status = false
+                }
+                .await()
+        }
+        return status
     }
 }
