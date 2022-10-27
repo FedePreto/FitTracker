@@ -103,9 +103,7 @@
                         android:gravity="center"
                         android:textSize="20sp"
                         android:layout_height="match_parent"
-                        android:inputType="textPersonName"
-                        android:text="Name"
-                        android:ems="10"
+                        android:spinnerMode="dialog"
                         android:id="@+id/sW_sesso" android:layout_weight="1"/>
             </LinearLayout>
             <LinearLayout
@@ -203,8 +201,7 @@
                         android:gravity="center"
                         android:textSize="20sp"
                         android:layout_height="match_parent"
-                        android:inputType="textPersonName"
-                        android:text="Name"
+                        android:spinnerMode="dialog"
                         android:ems="10"
                         android:id="@+id/sW_stile_di_vita" android:layout_weight="1"/>
 
@@ -300,7 +297,7 @@
                         android:gravity="center"
                         android:textSize="20sp"
                         android:layout_height="match_parent"
-                        android:inputType="textPersonName"
+                        android:spinnerMode="dialog"
                         android:ems="10"
                         android:id="@+id/editTextTextPersonName" android:layout_weight="1"/>
             </LinearLayout>
