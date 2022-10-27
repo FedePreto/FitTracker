@@ -38,11 +38,11 @@ class StileVitaFragment : Fragment() {
            when(v.id){
                R.id.rB_sedentario -> utente.LAF = 1.2
 
-               R.id.rB_pocoattivo -> utente.LAF = 1.5
+               R.id.rB_pocoattivo -> utente.LAF = 1.375
 
-               R.id.rB_attivo -> utente.LAF = 1.7
+               R.id.rB_attivo -> utente.LAF = 1.55
 
-               R.id.rB_moltoattivo -> utente.LAF = 2.0
+               R.id.rB_moltoattivo -> utente.LAF = 1.725
            }
        }
 
