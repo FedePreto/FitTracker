@@ -68,8 +68,6 @@ class HomeActivity : AppCompatActivity() {
         binding.aggToolbar.setOnMenuItemClickListener {
             when (it.itemId) {
                 R.id.ic_profilo ->  openProfilo()
-                R.id.ic_settings -> openSettings()
-                R.id.ic_guida -> openGuida()
                 R.id.ic_logout -> {
                     model.logOut()
                     startActivity(Intent(this,InizioActivity::class.java))
