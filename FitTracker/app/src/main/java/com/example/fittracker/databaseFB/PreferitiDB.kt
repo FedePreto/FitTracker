@@ -12,7 +12,6 @@ class PreferitiDB : FirebaseDB() {
 
     suspend fun setPastoPreferiti(
         utente : String,
-        date : String,
         tipologiaPasto : String,
         foodId : String,
         image : String,
@@ -33,7 +32,7 @@ class PreferitiDB : FirebaseDB() {
         )
         withContext(Dispatchers.IO) {
             prodotti_collection
-                .document(date + '_' + utente)
+                .document(utente)
                 .collection(tipologiaPasto)
                 .document(foodId)
                 .set(prodotto)
@@ -43,11 +42,22 @@ class PreferitiDB : FirebaseDB() {
         return status
     }
 
-    suspend fun getPastiPreferiti(date: String, utente: String, tipologiaPasto: String): List<Pasto> {
+    suspend fun getPastiPreferiti(utente: String, tipologiaPasto: String): List<Pasto> {
         return prodotti_collection
-            .document(date + '_' + utente)
+            .document(utente)
             .collection(tipologiaPasto).get().await().toObjects()
 
+    }
+
+    suspend fun deletePreferiti(utente: String,id:String,tipologiaPasto: String): Boolean{
+        withContext(Dispatchers.IO) {
+            prodotti_collection
+            .document(utente).collection(tipologiaPasto)
+            .document(id).delete()
+            .addOnSuccessListener {status = true }
+            .addOnFailureListener {status = false }
+        }.await()
+        return status
     }
 }
 

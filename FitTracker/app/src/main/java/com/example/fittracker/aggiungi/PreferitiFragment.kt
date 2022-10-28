@@ -1,12 +1,15 @@
 package com.example.fittracker.aggiungi
 
+import android.annotation.SuppressLint
+import android.app.Dialog
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
@@ -14,10 +17,14 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.fittracker.R
 import com.example.fittracker.databinding.FragmentPreferitiBinding
 import com.example.fittracker.model.Json_Parsing.Prodotto
 import com.example.fittracker.model.Pasto
+import kotlinx.android.synthetic.main.add_delete_layout.*
+import kotlinx.android.synthetic.main.add_delete_layout.view.*
+import kotlinx.android.synthetic.main.win_layout_dialog.*
 
 
 class PreferitiFragment : Fragment() {
@@ -55,61 +62,57 @@ class PreferitiFragment : Fragment() {
             recyclerViewPreferiti.adapter = adapter
             adapter.setOnItemClickListener(object : MyAdapterPrefPers.onItemClickListener {
                 override fun onItemClick(position: Int) {
-                   // openUpdateDeleteDialog(position)
+                   openUpdateDeleteDialog(position)
                 }
             })
         }
         model.preferitiLiveData.observe(viewLifecycleOwner,preferitiObserver)
-
-
-        //getUserdata()
     }
 
-/*
-    private fun getUserdata() {
-        for (i in imageId.indices) {
-            val news = News(imageId[i], heading[i])
-            newArrayList.add(news)
-        }
 
-        val adapter = MyAdapter(newArrayList)
-        newRecyclerView.adapter = adapter
-        adapter.setOnItemClickListener(object : MyAdapter.onItemClickListener {
-            override fun onItemClick(position: Int) {
-
-                Toast.makeText(requireContext(), "Hai cliccato sull'elemento $position", Toast.LENGTH_SHORT).show()
-
-                val intent = Intent(requireContext(), ProdottoActivity::class.java)
-                intent.putExtra("heading", newArrayList[position].headings)
-                intent.putExtra("imageID", newArrayList[position].titleImage)
-                intent.putExtra("news", news[position])
-                startActivity(intent)
-            }
-        })
-    }*/
-
+    @SuppressLint("ResourceAsColor")
     private fun openUpdateDeleteDialog(position: Int){
-        val builder = AlertDialog.Builder(requireContext())
-        val inflater = layoutInflater
-        val dialogLayout = inflater.inflate(R.layout.delete_layout, null)
-        val item = dialogLayout.findViewById<TextView>(R.id.tV_elimina)
-            item.text = "Vuoi eliminare $position dalla lista?"
+        var dialog = Dialog(requireContext())
+        dialog.setContentView(R.layout.add_delete_layout)
+        dialog.window?.setBackgroundDrawable(ColorDrawable(R.color.transparent))
+        Glide.with(requireContext())
+            .load(model.preferitiLiveData.value!![position].image)
+            .placeholder(R.drawable.no_image)
+            .into(dialog.ProductImage)
+        dialog.Product.text = model.preferitiLiveData.value!![position].nome
+        dialog.textViewMessaggio.text = "Scegli cosa vuoi fare! "
 
-        with(builder){
-            setTitle("ELIMINARE")
-            setPositiveButton("Elimina"){dialog, which ->
 
-
+        var flag = false
+        dialog.btnAddDiario.setOnClickListener {
+            dialog.layout_quantita.visibility = View.VISIBLE
+            val quantita = dialog.editTextQuantita.text.toString().toInt()
+            if(quantita != 0 && quantita.toString() != "") {
+                model.setPastoOnDB(requireArguments().getString("bottone")!!,model.preferitiLiveData.value!![position].id,
+                    model.preferitiLiveData.value!![position].image,model.preferitiLiveData.value!![position].nome,
+                    model.preferitiLiveData.value!![position].calorie,model.preferitiLiveData.value!![position].proteine,
+                    model.preferitiLiveData.value!![position].carboidrati,model.preferitiLiveData.value!![position].grassi,
+                    quantita,requireContext())
             }
-            setNegativeButton("Annulla"){ dialog, which ->
-                Log.d("Main", "Negative button clicked")
+            else {
+                if (flag)
+                    Toast.makeText(requireContext(),"Per favore inserisci una quantità diversa da $quantita se desideri aggiungere il prodotto al Diario",Toast.LENGTH_LONG).show()
+                flag = true
             }
-            setView(dialogLayout)
-            show()
         }
+
+        dialog.btnElimina.setOnClickListener {
+            model.deletePreferiti(model.preferitiLiveData.value!![position].id,
+                requireArguments().getString("bottone")!!,
+                requireContext() )
+            dialog.dismiss()
+        }
+
+        dialog.btnAnnulla.setOnClickListener {
+            dialog.dismiss()
+        }
+
+        dialog.show()
     }
-
-
-
 
 }

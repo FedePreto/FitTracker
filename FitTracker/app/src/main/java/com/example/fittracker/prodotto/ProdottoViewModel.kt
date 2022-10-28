@@ -48,7 +48,7 @@ class ProdottoViewModel : ViewModel() {
                               calorie: Double, proteine: Double, carboidrati: Double, grassi: Double, context: Context)
     {
         viewModelScope.launch {
-            if (preferitiDB.setPastoPreferiti(auth.currentUser?.email!!, LocalDate.now().toString(), tipologiaPasto,
+            if (preferitiDB.setPastoPreferiti(auth.currentUser?.email!!, tipologiaPasto,
                                             foodId, image,  nome/*label*/, calorie, proteine,  carboidrati, grassi
                                             )
             ) {

@@ -7,7 +7,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.fittracker.databaseFB.DiarioDB
 import com.example.fittracker.databaseFB.PreferitiDB
+import com.example.fittracker.databaseFB.ProdottoDB
 import com.example.fittracker.model.Json_Parsing.Json_FoodList
 import com.example.fittracker.model.Json_Parsing.Prodotto
 import com.example.fittracker.model.Pasto
@@ -24,7 +26,11 @@ import java.time.LocalDate
 class AggiungiViewModel : ViewModel() {
 
     private val preferitiDB = PreferitiDB()
+    private val prodottoDB = ProdottoDB()
+    private val diarioDB = DiarioDB()
     private val auth = FirebaseAuth.getInstance()
+    private var hashMapCalorie = HashMap<String, Int>()
+    private var hashMapMacro = HashMap<String, Int>()
 
     private var _foodLiveData = MutableLiveData<ArrayList<Prodotto>>()
 
@@ -61,8 +67,87 @@ class AggiungiViewModel : ViewModel() {
     fun getPreferiti(tipologiaPasto : String){
         viewModelScope.launch {
             _preferitiLiveData.value =
-                preferitiDB.getPastiPreferiti(LocalDate.now().toString(),auth.currentUser!!.email!!, tipologiaPasto)
+                preferitiDB.getPastiPreferiti(auth.currentUser!!.email!!, tipologiaPasto)
         }
+    }
+
+    fun deletePreferiti(id : String, tipologiaPasto: String, context:Context){
+        viewModelScope.launch {
+            if(preferitiDB.deletePreferiti(auth.currentUser!!.email!!, id, tipologiaPasto)){
+                Toast.makeText(context,"Prodotto eliminato correttamente",Toast.LENGTH_LONG).show()
+                getPreferiti(tipologiaPasto)
+            }else{
+                Toast.makeText(context,"ATTENZIONE!\nProdotto non eliminato",Toast.LENGTH_LONG).show()
+            }
+
+        }
+    }
+
+    fun setPastoOnDB(
+        tipologiaPasto: String, foodId: String, image: String, nome: String/*label*/, calorie: Double, proteine: Double,
+        carboidrati: Double, grassi: Double, quantita: Int, context: Context
+    ) {
+        viewModelScope.launch {
+            if (prodottoDB.setPasto(
+                    auth.currentUser?.email!!,
+                    LocalDate.now().toString(), tipologiaPasto, foodId, image, nome/*label*/, calorie, proteine,
+                    carboidrati, grassi, quantita
+                )
+            ) {
+                Toast.makeText(context, "$quantita $nome aggiunto/i al tuo Diario", Toast.LENGTH_LONG).show()
+                setChiloCalorie()
+            } else
+                Toast.makeText(context, "Aggiunta pasto al Diario fallita", Toast.LENGTH_LONG).show()
+        }
+    }
+
+    private fun setChiloCalorie() {
+        viewModelScope.launch {
+            val diario = diarioDB.getUserDiario(auth.currentUser!!.email!!)
+            Log.d("Pasto", diario!!.utente.toString())
+            val tipologiaPasto = arrayListOf<String>("COLAZIONE", "PRANZO", "CENA", "SPUNTINO")
+            val macroNutrienti = arrayListOf<String>("proteine", "carboidrati", "grassi")
+            for (pasto in tipologiaPasto)
+                hashMapCalorie.put(pasto, 0)
+            for(macro in macroNutrienti)
+                hashMapMacro.put(macro,0)
+            Log.d("Pasto", hashMapCalorie.toString())
+            for (pasto in tipologiaPasto) {
+                val arrayProdotti = prodottoDB.getProdotti(LocalDate.now().toString(), auth.currentUser?.email!!, pasto)
+                setMacroDiario(arrayProdotti, pasto)
+            }
+            Log.d("Pasto", hashMapCalorie.toString())
+            diarioDB.setDiario(
+                auth.currentUser?.email!!, LocalDate.now().toString(), diario.fabbisogno,
+                hashMapMacro["grassi"]!!,  hashMapMacro["proteine"]!!,  hashMapMacro["carboidrati"]!!,
+                diario.chiloCalorieEsercizio, hashMapCalorie["COLAZIONE"]!!,
+                hashMapCalorie["PRANZO"]!!, hashMapCalorie["CENA"]!!,
+                hashMapCalorie["SPUNTINO"]!!, diario.acqua
+            )
+        }
+    }
+
+
+    private fun setMacroDiario(arrayProdotti: List<Pasto>?, pasto: String) {
+        if (arrayProdotti != null)
+            if (arrayProdotti.isNotEmpty()) {
+                var calorie = 0.0
+                var proteine = 0.0
+                var carboidrati = 0.0
+                var grassi = 0.0
+                for (prodotto in arrayProdotti) {
+                    calorie += prodotto.calorie * prodotto.quantita
+                    proteine += prodotto.proteine * prodotto.quantita
+                    carboidrati += prodotto.carboidrati * prodotto.quantita
+                    grassi += prodotto.grassi * prodotto.quantita
+
+                }
+                hashMapCalorie.put(pasto, calorie.toInt())
+                hashMapMacro.put("proteine", (hashMapMacro.get("proteine")!! + proteine).toInt())
+                hashMapMacro.put("carboidrati", (hashMapMacro.get("carboidrati")!! + carboidrati).toInt())
+                hashMapMacro.put("grassi", (hashMapMacro.get("grassi")!! + grassi).toInt())
+
+            }
     }
 
 }
