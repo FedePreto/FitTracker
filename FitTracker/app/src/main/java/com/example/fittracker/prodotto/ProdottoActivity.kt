@@ -8,6 +8,7 @@ import com.example.fittracker.R
 
 import com.example.fittracker.databinding.ActivityProdottoBinding
 import com.example.fittracker.model.Json_Parsing.Nutrients
+import kotlin.math.roundToInt
 
 class ProdottoActivity : AppCompatActivity() {
 
@@ -24,10 +25,18 @@ class ProdottoActivity : AppCompatActivity() {
         setLayout()
 
         binding.btnAddDiary.setOnClickListener {
-            model.setPastoOnDB(prodotto.get("tipologiaPasto")!!,prodotto.get("foodId")!!,prodotto.get("image")!!,
-                                prodotto.get("label")!!,nutrients.get("calorie")!!,nutrients.get("proteine")!!,
-                                nutrients.get("carboidrati")!!,nutrients.get("grassi")!!, binding.etQuantita.text.toString().toInt(), this)
+            model.setPastoOnDB(prodotto["tipologiaPasto"]!!, prodotto["foodId"]!!, prodotto["image"]!!,
+                            prodotto["label"]!!, nutrients["calorie"]!!, nutrients["proteine"]!!, nutrients["carboidrati"]!!,
+                            nutrients["grassi"]!!, binding.etQuantita.text.toString().toInt(), this)
             finish()
+        }
+
+        binding.btnAddPreferiti.setOnClickListener {
+            model.setPastoPreferitiOnDB(
+                                        prodotto["tipologiaPasto"]!!, prodotto["foodId"]!!, prodotto["image"]!!,
+                                        prodotto["label"]!!, nutrients["calorie"]!!, nutrients["proteine"]!!,
+                                        nutrients["carboidrati"]!!, nutrients["grassi"]!!, this
+                                        )
         }
 
 
@@ -61,10 +70,10 @@ class ProdottoActivity : AppCompatActivity() {
         binding.tvBrand.text = prodotto.get("brand")
         binding.tvCategory.text = prodotto.get("category")
         binding.tvDescription.text = prodotto.get("foodContents")
-        binding.tvCalorie.text = nutrients.get("calorie").toString()
-        binding.tvProteine.text = nutrients.get("proteine").toString()
-        binding.tvCarboidrati.text = nutrients.get("carboidrati").toString()
-        binding.tvGrassi.text = nutrients.get("grassi").toString()
+        binding.tvCalorie.text = ((nutrients.get("calorie")!!.times(100.0)).roundToInt()/100.0).toString()
+        binding.tvProteine.text = ((nutrients.get("proteine")!!.times(100.0)).roundToInt()/100.0).toString()
+        binding.tvCarboidrati.text = ((nutrients.get("carboidrati")!!.times(100.0)).roundToInt()/100.0).toString()
+        binding.tvGrassi.text = ((nutrients.get("grassi")!!.times(100.0)).roundToInt()/100.0).toString()
     }
 
 }

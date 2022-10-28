@@ -146,6 +146,7 @@
                             android:layout_width="wrap_content"
                             android:gravity="center"
                             android:layout_height="match_parent">
+
                         <TextView
                                 android:text="CARBOIDRATI"
                                 android:textAlignment="center"
@@ -161,13 +162,44 @@
                                 android:progress="50"
                                 android:layout_height="wrap_content"
                                 android:id="@+id/pgBar_carboidrati"/>
-                        <TextView
-                                android:text="0/230g"
-                                android:textAlignment="center"
-                                android:textSize="15sp"
-                                android:textStyle="bold"
+
+                        <LinearLayout
+                                android:orientation="horizontal"
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content" android:id="@+id/qnt_carbo"/>
+                                android:layout_height="match_parent">
+
+                            <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/qnt_carboidrati"
+                                    android:text="@{Integer.valueOf(viewModel.diario.carboidratiTot).toString()}"
+                                    android:layout_weight="1"/>
+
+                            <!-- android:text="@{Integer.valueOf(viewModel.carboidrati).toString()}"-->
+
+                            <TextView
+                                    android:text="/"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/text"
+                                    android:layout_weight="1"/>
+
+                            <TextView
+                                    android:textAlignment="center"
+                                    android:textSize="15sp"
+                                    android:textStyle="bold"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/qnt_carbo_MAX"/>
+
+                            <TextView
+                                    android:text="gr"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/textView"
+                                    android:layout_weight="1"/>
+                        </LinearLayout>
+
                     </LinearLayout>
                     <LinearLayout
                             android:orientation="vertical"
@@ -177,6 +209,7 @@
                             android:gravity="center"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent">
+
                         <TextView
                                 android:text="PROTEINE"
                                 android:textAlignment="center"
@@ -192,13 +225,44 @@
                                 android:progress="50"
                                 android:layout_height="wrap_content"
                                 android:id="@+id/pgBar_proteine"/>
-                        <TextView
-                                android:text="0/250g"
-                                android:textAlignment="center"
-                                android:textSize="15sp"
-                                android:textStyle="bold"
+
+                        <LinearLayout
+                                android:orientation="horizontal"
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content" android:id="@+id/qnt_pro"/>
+                                android:layout_height="match_parent">
+
+                            <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@{Integer.valueOf(viewModel.diario.proteineTot).toString()}"
+                                    android:id="@+id/qnt_proteine"
+                                    android:layout_weight="1"/>
+                                   <!-- android:text="@{Integer.valueOf(viewModel.proteine).toString()}" -->
+
+
+                            <TextView
+                                    android:text="/"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/textVi"
+                                    android:layout_weight="1"/>
+
+                            <TextView
+                                    android:textAlignment="center"
+                                    android:textSize="15sp"
+                                    android:textStyle="bold"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/qnt_pro_MAX"/>
+
+                            <TextView
+                                    android:text="gr"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/textV"
+                                    android:layout_weight="1"/>
+                        </LinearLayout>
+
                     </LinearLayout>
                     <LinearLayout
                             android:orientation="vertical"
@@ -224,13 +288,44 @@
                                 android:progress="50"
                                 android:layout_height="wrap_content"
                                 android:id="@+id/pgBar_grassi"/>
-                        <TextView
-                                android:text="0/250g"
-                                android:textAlignment="center"
-                                android:textSize="15sp"
-                                android:textStyle="bold"
+
+                        <LinearLayout
+                                android:orientation="horizontal"
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content" android:id="@+id/qnt_grs"/>
+                                android:layout_height="match_parent">
+
+                            <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/qnt_grassi"
+                                    android:text="@{Integer.valueOf(viewModel.diario.grassiTot).toString()}"
+                                    android:layout_weight="1"/>
+                                <!--    android:text="@{Integer.valueOf(viewModel.grassi).toString()}" -->
+
+
+                            <TextView
+                                    android:text="/"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/textView31"
+                                    android:layout_weight="1"/>
+
+                            <TextView
+                                    android:textAlignment="center"
+                                    android:textSize="15sp"
+                                    android:textStyle="bold"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/qnt_grs_MAX"/>
+
+                            <TextView
+                                    android:text="gr"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/textView21"
+                                    android:layout_weight="1"/>
+                        </LinearLayout>
+
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>

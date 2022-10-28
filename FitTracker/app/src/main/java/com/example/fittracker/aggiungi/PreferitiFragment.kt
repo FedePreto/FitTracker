@@ -5,12 +5,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fittracker.R
 import com.example.fittracker.databinding.FragmentPreferitiBinding
 import com.example.fittracker.model.Json_Parsing.Prodotto
+import com.example.fittracker.model.Pasto
 
 
 class PreferitiFragment : Fragment() {
@@ -19,11 +22,10 @@ class PreferitiFragment : Fragment() {
 
 
     //Prova adapter
-    private lateinit var newRecyclerView: RecyclerView
-    private lateinit var prodottiList: ArrayList<Prodotto>
-    lateinit var imageId: Array<Int>
-    lateinit var heading: Array<String>
-    lateinit var news : Array<String>
+    private lateinit var recyclerViewPreferiti: RecyclerView
+    private lateinit var preferitiList: ArrayList<Prodotto>
+
+    private val model = AggiungiViewModel()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,46 +41,23 @@ class PreferitiFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        imageId = arrayOf(R.drawable.c,R.drawable.c,R.drawable.c,
-            R.drawable.c,R.drawable.c,R.drawable.c,R.drawable.c,
-            R.drawable.c,R.drawable.c,R.drawable.c,R.drawable.c,
-            R.drawable.c,R.drawable.c,R.drawable.c)
+        model.getPreferiti(requireArguments().getString("bottone")!!)
+        recyclerViewPreferiti = binding.gridPreferiti
+        recyclerViewPreferiti.layoutManager = LinearLayoutManager(requireContext())
+        recyclerViewPreferiti.setHasFixedSize(true)
 
-        news = arrayOf("fsjdfsgdgddsbfsdbhjbhfdsjdsjhfhdjfhhfdsvhjfdsvhjdsvhjdsvhvhjvdbjdfbhjvbdhjbhjfdbjfdbvbdjvbxczjbdgfd",
-            "dkjfkjfbadnkjbfkjbkvcxjvnkjdzsjknzvkdnjdnkvzdjnkjvdzsknjvdjknvdnsjvdknsjkvdjsknjvzdsknjvdsds",
-            "fsjdfkjdsfdsvdsvdsvsdvdsvdsvsdvzdsvzdsvzdvzdsbgfdnfdjjhgghnghghchgcnnhcncnhchnccgnhnhhk",
-            "dkjfkjchgncghnhcgncnhgnhcgcnnhgghmmhmghmhgmhgmhmmhgmhgmhgmhghmgfdfdsrgrgfbdjk",
-            "fsjhsfsgdffgdgdgdffdbbvc vcngfgfgfjhgghfhgffgsgsgshgshgshgshgfshffsfssfsfdhsddfkjhfsd",
-            "dkdshfdhfdshdhsdhsfdshdshfdhfsdshfdshffshdfshdhfdsshfdhfsdhsfdhfsdshfdhfsdshfdsdshdhsfdbj",
-            "fsjdfsgdgddsbfsdbhjbhfdsjdsjhfhdjfhhfdsvhjfdsvhjdsvhjdsvhvhjvdbjdfbhjvbdhjbhjfdbjfdbvbdjvbxczjbdgfd",
-            "fsjdfkjdsfdsvdsvdsvsdvdsvdsvsdvzdsvzdsvzdvzdsbgfdnfdjjhgghnghghchgcnnhcncnhchnccgnhnhhk",
-            "dkjfkjchgncghnhcgncnhgnhcgcnnhgghmmhmghmhgmhgmhmmhgmhgmhgmhghmgfdfdsrgrgfbdjk",
-            "fsjhsfsgdffgdgdgdffdbbvc vcngfgfgfjhgghfhgffgsgsgshgshgshgshgfshffsfssfsfdhsddfkjhfsd",
-            "dkdshfdhfdshdhsdhsfdshdshfdhfsdshfdshffshdxzxzxzxzxxzfshdhfdsshfdhfsdhsfdhfsdshfdhfsdshfdsdshdhsfdbj",
-            "fsjhsfsgdffgdgdgdffdbbvc xxzzcxcxzcxzvcngfgfgfjhgghfhgffgsgsgshgshgshgshgfshffsfssfsfdhsddfkjhfsd",
-            "dkdshfdhfdshdhsdhsfdshdshfdzxcxzxzcxchfsdshfdshffshdfshdhfdsshfdhfsdhsfdhfsdshfdhfsdshfdsdshdhsfdbj",
-            "dkdshfdhfdshdhsdhsfdshdshfdzxcxzxzcxchfsdshfdshffshdfshdhfdsshfdhfsdhsfdhfsdshfdhfsdshfdsdshdhsfdbj")
+        val preferitiObserver = Observer<List<Pasto>>{
+            val adapter = MyAdapterPrefPers(model.preferitiLiveData.value!! as ArrayList<Pasto>)
+            recyclerViewPreferiti.adapter = adapter
+            adapter.setOnItemClickListener(object : MyAdapterPrefPers.onItemClickListener {
+                override fun onItemClick(position: Int) {
+                    openUpdateDeleteDialog(position)
+                }
+            })
+        }
+        model.preferitiLiveData.observe(viewLifecycleOwner,preferitiObserver)
 
-        heading = arrayOf("fsjdfdgfd",
-            "dkjfkjfbds",
-            "fsjdfkjdsfhk",
-            "dkjfkjfbdjk",
-            "fsjdfkjhfsd",
-            "dkdsbj",
-            "fssjjhfsd",
-            "dkjfkjfj",
-            "fsjdfkshfdshfdd",
-            "dkjfkjffdsjkbfdsbj",
-            "fsjhfsd",
-            "dkjfkbfdsbj",
-            "fsjdsjjhfsd",
-            "dkjfkjfdsbj",)
 
-        newRecyclerView = binding.gridProdotto
-        newRecyclerView.layoutManager = LinearLayoutManager(requireContext())
-        newRecyclerView.setHasFixedSize(true)
-
-        prodottiList = arrayListOf()
         //getUserdata()
     }
 

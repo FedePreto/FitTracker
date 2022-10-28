@@ -1,25 +1,39 @@
 package com.example.fittracker.aggiungi
 
+import android.content.Context
 import android.util.Log
+import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.example.fittracker.databaseFB.PreferitiDB
 import com.example.fittracker.model.Json_Parsing.Json_FoodList
 import com.example.fittracker.model.Json_Parsing.Prodotto
+import com.example.fittracker.model.Pasto
 import com.example.fittracker.retrofit.RetrofitInstance
 import com.example.fittracker.utils.APICredentials
+import com.google.firebase.auth.FirebaseAuth
+import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.time.LocalDate
 
 
 class AggiungiViewModel : ViewModel() {
 
+    private val preferitiDB = PreferitiDB()
+    private val auth = FirebaseAuth.getInstance()
 
     private var _foodLiveData = MutableLiveData<ArrayList<Prodotto>>()
 
     val foodLiveData : LiveData<ArrayList<Prodotto>>
         get() = _foodLiveData
+
+    private var _preferitiLiveData = MutableLiveData<List<Pasto>>()
+    val preferitiLiveData: LiveData<List<Pasto>>
+        get() = _preferitiLiveData
 
     fun getFoodFromNameorUPC(ingr : String, upc: String) {
 
@@ -42,6 +56,13 @@ class AggiungiViewModel : ViewModel() {
                 }
             })
 
+    }
+
+    fun getPreferiti(tipologiaPasto : String){
+        viewModelScope.launch {
+            _preferitiLiveData.value =
+                preferitiDB.getPastiPreferiti(LocalDate.now().toString(),auth.currentUser!!.email!!, tipologiaPasto)
+        }
     }
 
 }

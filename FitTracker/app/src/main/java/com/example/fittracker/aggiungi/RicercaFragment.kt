@@ -25,11 +25,7 @@ class RicercaFragment : Fragment() {
 
     //Prova adapter
     private lateinit var newRecyclerView: RecyclerView
-    private lateinit var foods : ArrayList<Prodotto>
-    //private lateinit var newArrayList: ArrayList<News>
-    lateinit var imageId: Array<Int>
-    lateinit var heading: Array<String>
-    lateinit var news : Array<String>
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -67,9 +63,9 @@ class RicercaFragment : Fragment() {
         newRecyclerView.setHasFixedSize(true)
         val foodObserver = Observer<ArrayList<Prodotto>>{
 
-            val adapter = MyAdapter(model.foodLiveData.value!!)
+            val adapter = MyAdapterRicerca(model.foodLiveData.value!!)
             newRecyclerView.adapter = adapter
-            adapter.setOnItemClickListener(object : MyAdapter.onItemClickListener {
+            adapter.setOnItemClickListener(object : MyAdapterRicerca.onItemClickListener {
                 override fun onItemClick(position: Int) {
                     val intent = prepareIntent(position)
                     startActivity(intent)
@@ -77,33 +73,6 @@ class RicercaFragment : Fragment() {
             })
         }
         model.foodLiveData.observe(viewLifecycleOwner,foodObserver)
-
-/*
-
-        val foodObserver = Observer<ArrayList<Prodotto>>{
-            Log.d("Food",model.foodLiveData.value.toString())
-            val adapter = MyAdapter(model.foodLiveData.value!!)
-            newRecyclerView.adapter = adapter
-            adapter.setOnItemClickListener(object : MyAdapter.onItemClickListener {
-                override fun onItemClick(position: Int) {
-
-                    Toast.makeText(requireContext(), "Hai cliccato sull'elemento $position", Toast.LENGTH_SHORT).show()
-
-                   /* val intent = Intent(requireContext(), ProdottoActivity::class.java)
-                    intent.putExtra("heading", model.foodLiveData.value!![position].label)
-                    intent.putExtra("imageID", model.foodLiveData.value!![position].image)
-                    intent.putExtra("news", model.foodLiveData.value!![position].foodContentsLabel)
-                    startActivity(intent)
-
-                    */
-
-
-                }
-            })
-        }
-       model.foodLiveData.observe(viewLifecycleOwner,foodObserver)
-
- */
 
 
 

@@ -1,6 +1,5 @@
 package com.example.fittracker.diete
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -10,10 +9,8 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fittracker.R
-import com.example.fittracker.aggiungi.MyAdapter
 import com.example.fittracker.databinding.FragmentDieteBinding
 import com.example.fittracker.model.Dieta
 

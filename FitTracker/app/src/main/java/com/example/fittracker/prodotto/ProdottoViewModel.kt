@@ -6,6 +6,7 @@ import android.widget.Toast
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.fittracker.databaseFB.DiarioDB
+import com.example.fittracker.databaseFB.PreferitiDB
 import com.example.fittracker.databaseFB.ProdottoDB
 import com.example.fittracker.databaseFB.UtenteDB
 import com.example.fittracker.model.Diario
@@ -18,10 +19,11 @@ import java.time.LocalDate
 class ProdottoViewModel : ViewModel() {
 
     private val prodottoDB = ProdottoDB()
-    private val utenteDB = UtenteDB()
+    private val preferitiDB = PreferitiDB()
     private val diarioDB = DiarioDB()
     private val auth = FirebaseAuth.getInstance()
     private var hashMapCalorie = HashMap<String, Int>()
+    private var hashMapMacro = HashMap<String, Int>()
 
 
     fun setPastoOnDB(
@@ -42,13 +44,31 @@ class ProdottoViewModel : ViewModel() {
         }
     }
 
+    fun setPastoPreferitiOnDB(tipologiaPasto: String, foodId: String, image: String, nome: String/*label*/,
+                              calorie: Double, proteine: Double, carboidrati: Double, grassi: Double, context: Context)
+    {
+        viewModelScope.launch {
+            if (preferitiDB.setPastoPreferiti(auth.currentUser?.email!!, LocalDate.now().toString(), tipologiaPasto,
+                                            foodId, image,  nome/*label*/, calorie, proteine,  carboidrati, grassi
+                                            )
+            ) {
+                Toast.makeText(context, "$nome aggiunto/i ai Preferiti", Toast.LENGTH_LONG).show()
+                setChiloCalorie()
+            } else
+                Toast.makeText(context, "Aggiunta pasto ai Preferiti fallita", Toast.LENGTH_LONG).show()
+        }
+    }
+
     private fun setChiloCalorie() {
         viewModelScope.launch {
             val diario = diarioDB.getUserDiario(auth.currentUser!!.email!!)
             Log.d("Pasto", diario!!.utente.toString())
             val tipologiaPasto = arrayListOf<String>("COLAZIONE", "PRANZO", "CENA", "SPUNTINO")
+            val macroNutrienti = arrayListOf<String>("proteine", "carboidrati", "grassi")
             for (pasto in tipologiaPasto)
                 hashMapCalorie.put(pasto, 0)
+            for(macro in macroNutrienti)
+                hashMapMacro.put(macro,0)
             Log.d("Pasto", hashMapCalorie.toString())
             for (pasto in tipologiaPasto) {
                 val arrayProdotti = prodottoDB.getProdotti(LocalDate.now().toString(), auth.currentUser?.email!!, pasto)
@@ -56,11 +76,11 @@ class ProdottoViewModel : ViewModel() {
             }
             Log.d("Pasto", hashMapCalorie.toString())
             diarioDB.setDiario(
-                auth.currentUser?.email!!, LocalDate.now().toString(), diario!!.fabbisogno,
-                diario!!.grassiTot, diario!!.proteineTot, diario!!.carboidratiTot,
-                diario!!.chiloCalorieEsercizio, hashMapCalorie.get("COLAZIONE")!!,
-                hashMapCalorie.get("PRANZO")!!, hashMapCalorie.get("CENA")!!,
-                hashMapCalorie.get("SPUNTINO")!!, diario!!.acqua
+                auth.currentUser?.email!!, LocalDate.now().toString(), diario.fabbisogno,
+                hashMapMacro["grassi"]!!,  hashMapMacro["proteine"]!!,  hashMapMacro["carboidrati"]!!,
+                diario.chiloCalorieEsercizio, hashMapCalorie["COLAZIONE"]!!,
+                hashMapCalorie["PRANZO"]!!, hashMapCalorie["CENA"]!!,
+                hashMapCalorie["SPUNTINO"]!!, diario.acqua
             )
         }
     }
@@ -80,7 +100,10 @@ class ProdottoViewModel : ViewModel() {
                     grassi += prodotto.grassi * prodotto.quantita
 
                 }
-                hashMapCalorie.set(pasto, calorie.toInt())
+                hashMapCalorie.put(pasto, calorie.toInt())
+                hashMapMacro.put("proteine", (hashMapMacro.get("proteine")!! + proteine).toInt())
+                hashMapMacro.put("carboidrati", (hashMapMacro.get("carboidrati")!! + carboidrati).toInt())
+                hashMapMacro.put("grassi", (hashMapMacro.get("grassi")!! + grassi).toInt())
 
             }
     }

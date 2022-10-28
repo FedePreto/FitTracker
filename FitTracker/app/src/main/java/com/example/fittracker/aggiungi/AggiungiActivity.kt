@@ -14,6 +14,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.fittracker.R
 import com.example.fittracker.autenticazione.InizioActivity
 import com.example.fittracker.databinding.ActivityAggiungiBinding
+import com.example.fittracker.home.HomeActivity
 import nl.joery.animatedbottombar.AnimatedBottomBar
 
 class AggiungiActivity : AppCompatActivity() {
@@ -70,7 +71,13 @@ class AggiungiActivity : AppCompatActivity() {
                 personalizzatiFragment.arguments = bundle
                 replaceFragment(personalizzatiFragment)
             }
-            2 -> replaceFragment(preferitiFragment)
+            2 -> {
+                val bottone = intent.getStringExtra("bottone")
+                val bundle = Bundle()
+                bundle.putString("bottone",bottone)
+                preferitiFragment.arguments = bundle
+                replaceFragment(preferitiFragment)
+            }
             else -> replaceFragment(ricercaFragment)
         }
     }
@@ -81,6 +88,11 @@ class AggiungiActivity : AppCompatActivity() {
         fragmentTransiction.replace(R.id.frame_layout, fragment)
         fragmentTransiction.commit()
 
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        startActivity(Intent(this,HomeActivity::class.java))
     }
 
 
