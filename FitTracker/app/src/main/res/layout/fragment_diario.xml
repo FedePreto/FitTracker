@@ -43,7 +43,7 @@
                             android:gravity="center"
                             android:layout_height="wrap_content">
                         <TextView
-                                android:text="0"
+                                android:text="@{viewModel.assunte}"
                                 android:hint="0"
                                 android:textAlignment="center"
                                 android:textColor="@color/grey_primary_dark"
@@ -68,6 +68,8 @@
 
                         <com.mikhaellopez.circularprogressbar.CircularProgressBar
                                 android:id="@+id/progress_calorie"
+                                app:cpb_background_progressbar_color="@color/white"
+                                app:cpb_progressbar_color="@color/green_primary"
                                 android:layout_width="150dp"
                                 android:layout_height="150dp"
                         />
@@ -78,7 +80,7 @@
                                 android:layout_height="match_parent">
 
                             <TextView
-                                    android:text="@{Integer.valueOf(viewModel.diario.fabbisogno).toString()}"
+                                    android:text="@{viewModel.result}"
                                     android:textSize="25sp"
                                     android:textColor="@color/black"
                                     android:textStyle="bold"
@@ -109,7 +111,7 @@
                             android:gravity="center"
                             android:layout_height="wrap_content">
                         <TextView
-                                android:text="0"
+                                android:text="@{Integer.valueOf(viewModel.diario.chiloCalorieEsercizio).toString()}"
                                 android:hint="0"
                                 android:textColor="@color/grey_primary_dark"
                                 android:textAlignment="center"

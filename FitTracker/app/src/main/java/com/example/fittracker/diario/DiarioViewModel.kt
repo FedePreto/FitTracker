@@ -3,8 +3,10 @@ package com.example.fittracker.diario
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.fittracker.databaseFB.DiarioDB
 import com.example.fittracker.databaseFB.ProdottoDB
 import com.example.fittracker.databaseFB.UtenteDB
@@ -19,7 +21,6 @@ class DiarioViewModel : ViewModel() {
 
     private val diarioDB = DiarioDB()
     private val utenteDB = UtenteDB()
-    private val prodottoDB = ProdottoDB()
     private val auth = FirebaseAuth.getInstance()
 
     private var _diario = MutableLiveData<Diario>()
@@ -31,8 +32,17 @@ class DiarioViewModel : ViewModel() {
     val acqua : LiveData<String>
         get() = _acqua
 
-    private var hashMapCalorie = HashMap<String,Int>()
+    private var _assunte = MutableLiveData<String>()
+    val assunte : LiveData<String>
+        get() = _assunte
 
+    private var _rimanenti = MutableLiveData<String>()
+    val rimanenti : LiveData<String>
+        get() = _rimanenti
+
+    val result : LiveData<String> = Transformations.map(rimanenti){
+        x -> if (x.toInt() < 0) "Nessuna" else x
+    }
 
     fun setDiarioOnDB(grassiTot:Int = 0, proteineTot:Int = 0,
                       carboidratiTot:Int = 0, chiloCalorieEsercizio:Int = 0, chiloCalorieColazione:Int = 0,
@@ -66,6 +76,17 @@ class DiarioViewModel : ViewModel() {
     fun setAcqua(acqua : Double){
         var water = acqua.toString() + " L"
         _acqua.value = water
+    }
+
+    fun setAssunte(){
+        val assunte = diario.value!!.chiloCalorieCena + diario.value!!.chiloCalorieColazione + diario.value!!.chiloCaloriePranzo + diario.value!!.chiloCalorieSpuntino
+        _assunte.value = assunte.toString()
+    }
+
+    fun setRimanenti(){
+        val rimanenti = diario.value!!.fabbisogno - assunte.value!!.toInt()
+        _rimanenti.value = rimanenti.toString()
+
     }
 
 }

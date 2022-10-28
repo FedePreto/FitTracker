@@ -29,6 +29,7 @@ import com.example.fittracker.R
 import com.example.fittracker.aggiungi.AggiungiActivity
 import com.example.fittracker.databinding.FragmentDiarioBinding
 import com.example.fittracker.model.Diario
+import com.mikhaellopez.circularprogressbar.CircularProgressBar
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_diario.*
 import kotlinx.android.synthetic.main.win_layout_dialog.*
@@ -86,7 +87,9 @@ class DiarioFragment : Fragment() {
                 if(contatore < 1) {
                     Log.e("Logger","Il contatore viene incrementato di uno")
                     checkFullGlasses()
-                    updateProgressBar()
+                    model.setAssunte()
+                    model.setRimanenti()
+                    updateProgressBar(binding.progressCalorie)
                     contatore += 1
                 }else {
                     Log.e("Logger", "contatore viene azzerato")
@@ -189,14 +192,14 @@ class DiarioFragment : Fragment() {
 
     }
 
-    private fun updateProgressBar(progrssBar : ProgressBar){
+    private fun updateProgressBar(progrssBar : CircularProgressBar){
         progrssBar.apply {
-            progressMax = calorie_giornaliere.toFloat()
-            setProgressWithAnimation(65f, 1500)
+            progressMax = model.diario.value!!.fabbisogno.toFloat()
+            setProgressWithAnimation(model.assunte.value!!.toFloat(), 1500)
             progressBarWidth = 7f
             backgroundProgressBarWidth = 5f
-            backgroundProgressBarColor = Color.WHITE
-            progressBarColor = Color.GREEN
+            //backgroundProgressBarColor = R.color.white
+           // progressBarColor = Color.Green.green//R.color.green_primary
             roundBorder = true
             startAngle= 90f
             progressDirection = CircularProgressBar.ProgressDirection.TO_RIGHT
