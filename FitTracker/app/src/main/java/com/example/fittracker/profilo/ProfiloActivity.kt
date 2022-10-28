@@ -2,6 +2,7 @@ package com.example.fittracker.profilo
 
 import android.annotation.SuppressLint
 import android.app.DatePickerDialog
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -12,6 +13,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import com.example.fittracker.R
 import com.example.fittracker.databinding.ActivityProfiloBinding
+import com.example.fittracker.home.HomeActivity
 import com.example.fittracker.model.Utente
 import kotlinx.android.synthetic.main.riautenticazione_layout.*
 import kotlinx.coroutines.launch
@@ -152,6 +154,8 @@ class ProfiloActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener 
                 sport_up = if(!agonistico_up) ""
                 else binding.sWSport.selectedItem.toString()
                 model.updateAuthUtenteOnDB(nome_up, cognome_up, email_up,LAF_up,agonistico_up,sesso_up,data_nascita_up,altezza_up.toInt(),peso_up.toDouble(),sport_up,this)
+                startActivity(Intent(this, HomeActivity::class.java))
+                finish()
             }
 
         }

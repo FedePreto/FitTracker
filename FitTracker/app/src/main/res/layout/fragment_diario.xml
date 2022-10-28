@@ -237,7 +237,6 @@
                                     android:text="@{Integer.valueOf(viewModel.diario.proteineTot).toString()}"
                                     android:id="@+id/qnt_proteine"
                                     android:layout_weight="1"/>
-                                   <!-- android:text="@{Integer.valueOf(viewModel.proteine).toString()}" -->
 
 
                             <TextView
@@ -249,6 +248,7 @@
 
                             <TextView
                                     android:textAlignment="center"
+                                    android:text="@{Integer.valueOf(viewModel.proteineMax).toString()}"
                                     android:textSize="15sp"
                                     android:textStyle="bold"
                                     android:layout_width="wrap_content"
@@ -300,7 +300,6 @@
                                     android:id="@+id/qnt_grassi"
                                     android:text="@{Integer.valueOf(viewModel.diario.grassiTot).toString()}"
                                     android:layout_weight="1"/>
-                                <!--    android:text="@{Integer.valueOf(viewModel.grassi).toString()}" -->
 
 
                             <TextView
@@ -312,6 +311,7 @@
 
                             <TextView
                                     android:textAlignment="center"
+                                    android:text="@{Integer.valueOf(viewModel.grassiMax).toString()}"
                                     android:textSize="15sp"
                                     android:textStyle="bold"
                                     android:layout_width="wrap_content"

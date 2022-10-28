@@ -105,6 +105,7 @@ class HomeActivity : AppCompatActivity() {
 
     private fun openProfilo(){
         startActivity(Intent(this, ProfiloActivity::class.java))
+        finish()
     }
 }
 

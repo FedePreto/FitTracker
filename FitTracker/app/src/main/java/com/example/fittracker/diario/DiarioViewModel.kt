@@ -106,9 +106,12 @@ class DiarioViewModel : ViewModel() {
         viewModelScope.launch {
             val utente = utenteDB.getUtente(auth.currentUser?.email!!)
             val dieta = dietaDB.getDieta(utente.dieta)
-            _carboidratiMax.value = (diario.value!!.fabbisogno*(dieta.perc_carb.toDouble()/100.0) / 4).toInt() //1gr di carbo = 4Kcal
-            val proteineMax = diario.value!!.fabbisogno*(dieta.perc_prot.toDouble()/100.0) / 4 //1gr di prot = 4Kcal
-            val grassiMax = diario.value!!.fabbisogno*(dieta.perc_prot.toDouble()/100.0) / 9//1gr di grassi = 9Kcal
+            Log.d("Dieta",(dieta.perc_carb.toDouble()/100.0).toString())
+            Log.d("Dieta", (diario.value!!.fabbisogno).toString())
+            Log.d("Dieta", ((diario.value!!.fabbisogno*(dieta.perc_carb.toDouble()/100.0)).toString()))
+            _carboidratiMax.value = ((diario.value!!.fabbisogno*(dieta.perc_carb.toDouble()/100.0)) / 4).toInt() //1gr di carbo = 4Kcal
+            _proteineMax.value = ((diario.value!!.fabbisogno*(dieta.perc_prot.toDouble()/100.0)) / 4).toInt() //1gr di prot = 4Kcal
+            _grassiMax.value = ((diario.value!!.fabbisogno*(dieta.perc_prot.toDouble()/100.0)) / 9).toInt()//1gr di grassi = 9Kcal
         }
     }
 
