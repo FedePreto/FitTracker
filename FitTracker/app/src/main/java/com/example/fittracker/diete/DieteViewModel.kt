@@ -9,11 +9,13 @@ import com.example.fittracker.model.Dieta
 import kotlinx.coroutines.launch
 
 class DieteViewModel : ViewModel() {
+    private val dieteDB = DietaDB()
+
 
     private var _dieteLiveData = MutableLiveData<List<Dieta>>()
     val dieteLiveData : LiveData<List<Dieta>>
         get() = _dieteLiveData
-    private val dieteDB = DietaDB()
+
 
 
     fun getDiete(){
@@ -21,6 +23,7 @@ class DieteViewModel : ViewModel() {
             _dieteLiveData.value = dieteDB.getDiete()
         }
     }
+
 
 
     fun calcoloMacro(kcal: Int, dieta:String, perc_carboidrati: Int, perc_proteine: Int, perc_grassi:Int){

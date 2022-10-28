@@ -1,18 +1,24 @@
 package com.example.fittracker.diete
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.fittracker.R
 import com.example.fittracker.databinding.FragmentDieteBinding
 import com.example.fittracker.model.Dieta
+import java.text.FieldPosition
 
 class DieteFragment : Fragment() {
 
@@ -47,7 +53,7 @@ class DieteFragment : Fragment() {
             recyclerViewDiete.adapter = adapter
             adapter.setOnItemClickListener(object : MyAdapterDiete.onItemClickListener{
                 override fun onItemClick(position: Int) {
-                    Toast.makeText(requireContext(),"Hai premuto l'item $position", Toast.LENGTH_LONG).show()
+                    openDettagliDieta(position)
                 }
 
             })
@@ -79,6 +85,42 @@ class DieteFragment : Fragment() {
             }
         })
     }*/
+
+    private fun openDettagliDieta(position: Int){
+                val builder = AlertDialog.Builder(requireContext())
+                val inflater = layoutInflater
+                val dialogLayout = inflater.inflate(R.layout.descrizione_dieta_layout, null)
+                val titolo = dialogLayout.findViewById<TextView>(R.id.titolo_dieta)
+                val perc_carbo = dialogLayout.findViewById<TextView>(R.id.perc_carb)
+                val perc_prot = dialogLayout.findViewById<TextView>(R.id.perc_proteine)
+                val perc_grassi = dialogLayout.findViewById<TextView>(R.id.perc_grassi)
+                val descrizione = dialogLayout.findViewById<TextView>(R.id.descrizione_dieta)
+                val immagine = dialogLayout.findViewById<ImageView>(R.id.image_dieta)
+
+                titolo.text = model.dieteLiveData.value!![position].titolo
+                perc_carbo.text = model.dieteLiveData.value!![position].perc_carb.toString() + "%"
+                perc_prot.text = model.dieteLiveData.value!![position].perc_prot.toString() + "%"
+                perc_grassi.text = model.dieteLiveData.value!![position].perc_grassi.toString() + "%"
+                descrizione.text = model.dieteLiveData.value!![position].descrizione.replace(".",".\n\n")
+                Glide.with(requireContext())
+                    .load(model.dieteLiveData.value!![position].image)
+                    .placeholder(R.drawable.no_image)
+                    .into(immagine)
+
+                    with(builder){
+                        setTitle("Dettagli della dieta")
+                        setPositiveButton("Seleziona"){dialog, which ->
+
+
+                        }
+                        setNegativeButton("Annulla"){ dialog, which ->
+                            Log.d("Main", "Negative button clicked")
+                        }
+                        setView(dialogLayout)
+                        show()
+                    }
+
+    }
 
 
 

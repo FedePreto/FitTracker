@@ -307,7 +307,7 @@
                                     android:text="/"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:id="@+id/textView31"
+                                    android:id="@+id/descrizione_dieta"
                                     android:layout_weight="1"/>
 
                             <TextView
