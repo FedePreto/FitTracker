@@ -88,6 +88,7 @@ class DiarioFragment : Fragment() {
                     checkFullGlasses()
                     model.setAssunte()
                     model.setRimanenti()
+                    model.setMacro()
                     updateProgressBar(binding.progressCalorie)
                     contatore += 1
                 }else {

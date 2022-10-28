@@ -99,6 +99,7 @@ class PreferitiFragment : Fragment() {
                     Toast.makeText(requireContext(),"Per favore inserisci una quantità diversa da $quantita se desideri aggiungere il prodotto al Diario",Toast.LENGTH_LONG).show()
                 flag = true
             }
+            dialog.dismiss()
         }
 
         dialog.btnElimina.setOnClickListener {

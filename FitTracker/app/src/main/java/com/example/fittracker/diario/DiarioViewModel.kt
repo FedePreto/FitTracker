@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.fittracker.databaseFB.DiarioDB
+import com.example.fittracker.databaseFB.DietaDB
 import com.example.fittracker.databaseFB.ProdottoDB
 import com.example.fittracker.databaseFB.UtenteDB
 import com.example.fittracker.model.Diario
@@ -21,6 +22,7 @@ class DiarioViewModel : ViewModel() {
 
     private val diarioDB = DiarioDB()
     private val utenteDB = UtenteDB()
+    private val dietaDB = DietaDB()
     private val auth = FirebaseAuth.getInstance()
 
     private var _diario = MutableLiveData<Diario>()
@@ -87,6 +89,15 @@ class DiarioViewModel : ViewModel() {
         val rimanenti = diario.value!!.fabbisogno - assunte.value!!.toInt()
         _rimanenti.value = rimanenti.toString()
 
+    }
+
+    fun setMacro(){
+        viewModelScope.launch {
+            //val dieta = dietaDB.getDieta(_utenteDB.)
+            val carboidratiMax = diario.value!!.fabbisogno
+            val proteineMax = diario.value!!.fabbisogno
+            val grassiMax = diario.value!!.fabbisogno
+        }
     }
 
 }

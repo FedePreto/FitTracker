@@ -2,6 +2,7 @@ package com.example.fittracker.databaseFB
 
 import com.example.fittracker.model.Dieta
 import com.example.fittracker.model.Pasto
+import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.firestore.ktx.toObjects
 import kotlinx.coroutines.tasks.await
 
@@ -12,6 +13,8 @@ class DietaDB : FirebaseDB() {
         return diete_collection.get().await().toObjects()
     }
 
-    //suspend fun getDieta(titolo: String){}
+    suspend fun getDieta(titolo: String) : Dieta {
+      return  diete_collection.document(titolo).get().await().toObject<Dieta>()!!
+    }
 }
 
