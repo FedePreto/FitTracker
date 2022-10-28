@@ -37,6 +37,7 @@ class ProdottoActivity : AppCompatActivity() {
                                         prodotto["label"]!!, nutrients["calorie"]!!, nutrients["proteine"]!!,
                                         nutrients["carboidrati"]!!, nutrients["grassi"]!!, this
                                         )
+            finish()
         }
 
 

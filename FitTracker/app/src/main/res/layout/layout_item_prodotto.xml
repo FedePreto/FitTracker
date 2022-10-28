@@ -12,9 +12,9 @@
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:id="@+id/linearLayout">
+            android:id="@+id/linearLayout"
+            app:layout_constraintBottom_toBottomOf="parent">
 
         <LinearLayout
                 android:orientation="horizontal"

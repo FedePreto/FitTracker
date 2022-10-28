@@ -24,8 +24,9 @@ class UtenteDB : FirebaseDB() {
         data_nascita: String,
         altezza: Int,
         peso_attuale: Double,
-        sport: String?,
-        contesto: Context): Boolean {
+        sport : String?,
+        contesto: Context,
+        dieta : String = "Mediterranea" ): Boolean {
         val utente = hashMapOf<String, Any>(
             "nome" to nome,
             "cognome" to cognome,
@@ -36,7 +37,8 @@ class UtenteDB : FirebaseDB() {
             "data_nascita" to data_nascita,
             "altezza" to altezza,
             "peso_attuale" to peso_attuale,
-            "sport" to sport!!
+            "sport" to sport!!,
+            "dieta" to dieta
         )
 
         withContext(Dispatchers.IO){

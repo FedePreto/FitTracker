@@ -15,8 +15,9 @@ data class Utente(
         var data_nascita: String,
         var altezza: Int,
         var peso_attuale: Double,
-        var sport: String?
+        var sport: String?,
+        var dieta: String
 
-) : Parcelable {    constructor(): this("","","",0.0,false,"","",0,0.0,"")
+) : Parcelable {    constructor(): this("","","",0.0,false,"","",0,0.0,"","Mediterranea")
 
 }

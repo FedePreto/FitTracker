@@ -51,7 +51,7 @@ class PreferitiFragment : Fragment() {
             recyclerViewPreferiti.adapter = adapter
             adapter.setOnItemClickListener(object : MyAdapterPrefPers.onItemClickListener {
                 override fun onItemClick(position: Int) {
-                    openUpdateDeleteDialog(position)
+                   // openUpdateDeleteDialog(position)
                 }
             })
         }

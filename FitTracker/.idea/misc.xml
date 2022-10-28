@@ -19,10 +19,11 @@
         <entry key="..\:/Users/Msi/OneDrive/Documenti/GitHub/Progetto_Programmazione_Mobile/FitTracker/app/src/main/res/layout/activity_profilo.xml" value="0.10989583333333333" />
         <entry key="..\:/Users/Msi/OneDrive/Documenti/GitHub/Progetto_Programmazione_Mobile/FitTracker/app/src/main/res/layout/activity_rec_password.xml" value="0.14791666666666667" />
         <entry key="..\:/Users/Msi/OneDrive/Documenti/GitHub/Progetto_Programmazione_Mobile/FitTracker/app/src/main/res/layout/activity_register.xml" value="0.264" />
+        <entry key="..\:/Users/Msi/OneDrive/Documenti/GitHub/Progetto_Programmazione_Mobile/FitTracker/app/src/main/res/layout/dieta_layout.xml" value="0.15885416666666666" />
         <entry key="..\:/Users/Msi/OneDrive/Documenti/GitHub/Progetto_Programmazione_Mobile/FitTracker/app/src/main/res/layout/fragment_altezza.xml" value="0.15260416666666668" />
         <entry key="..\:/Users/Msi/OneDrive/Documenti/GitHub/Progetto_Programmazione_Mobile/FitTracker/app/src/main/res/layout/fragment_dati_personali.xml" value="0.2359375" />
         <entry key="..\:/Users/Msi/OneDrive/Documenti/GitHub/Progetto_Programmazione_Mobile/FitTracker/app/src/main/res/layout/fragment_diario.xml" value="0.2813333333333333" />
-        <entry key="..\:/Users/Msi/OneDrive/Documenti/GitHub/Progetto_Programmazione_Mobile/FitTracker/app/src/main/res/layout/fragment_diete.xml" value="0.2269021739130435" />
+        <entry key="..\:/Users/Msi/OneDrive/Documenti/GitHub/Progetto_Programmazione_Mobile/FitTracker/app/src/main/res/layout/fragment_diete.xml" value="0.1" />
         <entry key="..\:/Users/Msi/OneDrive/Documenti/GitHub/Progetto_Programmazione_Mobile/FitTracker/app/src/main/res/layout/fragment_funzioni.xml" value="0.16197916666666667" />
         <entry key="..\:/Users/Msi/OneDrive/Documenti/GitHub/Progetto_Programmazione_Mobile/FitTracker/app/src/main/res/layout/fragment_io.xml" value="0.4" />
         <entry key="..\:/Users/Msi/OneDrive/Documenti/GitHub/Progetto_Programmazione_Mobile/FitTracker/app/src/main/res/layout/fragment_obbiettivo.xml" value="0.14791666666666667" />
@@ -39,6 +40,8 @@
         <entry key="..\:/Users/Msi/OneDrive/Documenti/GitHub/Progetto_Programmazione_Mobile/FitTracker/app/src/main/res/layout/layout_item_prodotto.xml" value="0.4" />
         <entry key="..\:/Users/Msi/OneDrive/Documenti/GitHub/Progetto_Programmazione_Mobile/FitTracker/app/src/main/res/layout/layout_item_prodotto_pref_pers.xml" value="0.536" />
         <entry key="..\:/Users/Msi/OneDrive/Documenti/GitHub/Progetto_Programmazione_Mobile/FitTracker/app/src/main/res/layout/recycler.xml" value="0.1609375" />
+        <entry key="..\:/Users/Msi/OneDrive/Documenti/GitHub/Progetto_Programmazione_Mobile/FitTracker/app/src/main/res/layout/registrazione_rapida_layout.xml" value="0.15885416666666666" />
+        <entry key="..\:/Users/Msi/OneDrive/Documenti/GitHub/Progetto_Programmazione_Mobile/FitTracker/app/src/main/res/layout/riautenticazione_layout.xml" value="0.15885416666666666" />
         <entry key="..\:/Users/Msi/OneDrive/Documenti/GitHub/Progetto_Programmazione_Mobile/FitTracker/app/src/main/res/layout/toolbar_action.xml" value="0.1609375" />
         <entry key="..\:/Users/Msi/OneDrive/Documenti/GitHub/Progetto_Programmazione_Mobile/FitTracker/app/src/main/res/layout/win_layout_dialog.xml" value="0.1" />
         <entry key="..\:/Users/Msi/OneDrive/Documenti/GitHub/Progetto_Programmazione_Mobile/FitTracker/app/src/main/res/menu/bottom_menu.xml" value="0.26458333333333334" />

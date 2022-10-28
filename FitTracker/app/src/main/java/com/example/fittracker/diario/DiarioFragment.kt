@@ -198,8 +198,6 @@ class DiarioFragment : Fragment() {
             setProgressWithAnimation(model.assunte.value!!.toFloat(), 1500)
             progressBarWidth = 7f
             backgroundProgressBarWidth = 5f
-            //backgroundProgressBarColor = R.color.white
-           // progressBarColor = Color.Green.green//R.color.green_primary
             roundBorder = true
             startAngle= 90f
             progressDirection = CircularProgressBar.ProgressDirection.TO_RIGHT
