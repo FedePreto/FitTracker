@@ -3,16 +3,20 @@ package com.example.fittracker.aggiungi
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.SearchView
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.example.fittracker.R
 import com.example.fittracker.autenticazione.InizioActivity
 import com.example.fittracker.databinding.ActivityAggiungiBinding
+import com.example.fittracker.home.HomeActivity
 import nl.joery.animatedbottombar.AnimatedBottomBar
 
 class AggiungiActivity : AppCompatActivity() {
@@ -21,6 +25,7 @@ class AggiungiActivity : AppCompatActivity() {
     val ricercaFragment = RicercaFragment()
     val personalizzatiFragment = PersonalizzatiFragment()
     val preferitiFragment = PreferitiFragment ()
+    private var doubleBackToExitPressedOnce = false
 
 
 
@@ -149,5 +154,15 @@ class AggiungiActivity : AppCompatActivity() {
             setView(dialogLayout)
             show()
         }
+    }
+
+    override fun onBackPressed() {
+        if (doubleBackToExitPressedOnce) {
+            startActivity(Intent(this,HomeActivity::class.java))
+            finish()
+        }
+        this.doubleBackToExitPressedOnce = true
+        Toast.makeText(this, "Premi due volte indietro per uscire", Toast.LENGTH_SHORT).show()
+        Handler(Looper.getMainLooper()).postDelayed(Runnable { doubleBackToExitPressedOnce = false }, 2000)
     }
 }

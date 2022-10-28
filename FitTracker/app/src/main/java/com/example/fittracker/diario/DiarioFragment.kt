@@ -16,6 +16,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
+import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.compose.ui.graphics.Color
@@ -85,7 +86,7 @@ class DiarioFragment : Fragment() {
                 if(contatore < 1) {
                     Log.e("Logger","Il contatore viene incrementato di uno")
                     checkFullGlasses()
-                    model.setFabbisognoRimanente()
+                    updateProgressBar()
                     contatore += 1
                 }else {
                     Log.e("Logger", "contatore viene azzerato")
@@ -104,11 +105,12 @@ class DiarioFragment : Fragment() {
 
     override fun onDestroy() {
         super.onDestroy()
-        model.setDiarioOnDB(model.diario.value!!.grassiTot, model.diario.value!!.proteineTot,
+       model.setDiarioOnDB(model.diario.value!!.grassiTot, model.diario.value!!.proteineTot,
             model.diario.value!!.carboidratiTot, model.diario.value!!.chiloCalorieEsercizio,
             model.diario.value!!.chiloCalorieColazione, model.diario.value!!.chiloCaloriePranzo,
             model.diario.value!!.chiloCalorieCena, model.diario.value!!.chiloCalorieSpuntino,
             acqua)
+
 
     }
 
@@ -121,22 +123,6 @@ class DiarioFragment : Fragment() {
             acqua)
 
     }
-
-
-/*
-        binding.progressCalorie.apply {
-            progressMax = calorie_giornaliere.toFloat()
-            setProgressWithAnimation(65f, 1500)
-            progressBarWidth = 7f
-            backgroundProgressBarWidth = 5f
-            backgroundProgressBarColor = Color.WHITE
-            progressBarColor = Color.GREEN
-            roundBorder = true
-            startAngle= 90f
-            progressDirection = CircularProgressBar.ProgressDirection.TO_RIGHT
-
-        }
-        */
 
 
     private fun startAnimation(glass : ImageView){
@@ -203,6 +189,21 @@ class DiarioFragment : Fragment() {
 
     }
 
+    private fun updateProgressBar(progrssBar : ProgressBar){
+        progrssBar.apply {
+            progressMax = calorie_giornaliere.toFloat()
+            setProgressWithAnimation(65f, 1500)
+            progressBarWidth = 7f
+            backgroundProgressBarWidth = 5f
+            backgroundProgressBarColor = Color.WHITE
+            progressBarColor = Color.GREEN
+            roundBorder = true
+            startAngle= 90f
+            progressDirection = CircularProgressBar.ProgressDirection.TO_RIGHT
+
+        }
+    }
+
 
     @SuppressLint("ResourceAsColor")
     private fun openCongratulazioni() {
@@ -226,19 +227,23 @@ class DiarioFragment : Fragment() {
         binding.colazione.setOnClickListener {
             intent.putExtra("bottone","COLAZIONE")
             startActivity(intent)
+            requireActivity().finish()
         }
         binding.pranzo.setOnClickListener {
             intent.putExtra("bottone","PRANZO")
             startActivity(intent)
+            requireActivity().finish()
         }
         binding.cena.setOnClickListener {
             intent.putExtra("bottone","CENA")
             startActivity(intent)
+            requireActivity().finish()
         }
 
         binding.spuntino.setOnClickListener {
             intent.putExtra("bottone","SPUNTINO")
             startActivity(intent)
+            requireActivity().finish()
         }
 
         binding.esercizio.setOnClickListener {
