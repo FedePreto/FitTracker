@@ -10,6 +10,7 @@ import android.widget.SearchView
 import androidx.appcompat.app.AlertDialog
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import com.example.fittracker.R
 import com.example.fittracker.autenticazione.InizioActivity
 import com.example.fittracker.databinding.ActivityAggiungiBinding
@@ -84,70 +85,6 @@ class AggiungiActivity : AppCompatActivity() {
 
 
 
-    private fun openRicetta() {
-        val builder = AlertDialog.Builder(this)
-        val inflater = layoutInflater
-        val dialogLayout = inflater.inflate(R.layout.aggiunta_ricetta_pers_layout, null)
-        val kcal = dialogLayout.findViewById<EditText>(R.id.eT_kcal)
-        val carbo = dialogLayout.findViewById<EditText>(R.id.eT_carb)
-        val proteine = dialogLayout.findViewById<EditText>(R.id.eT_proteine)
-        val grassi = dialogLayout.findViewById<EditText>(R.id.eT_grassi)
-        val titolo = dialogLayout.findViewById<EditText>(R.id.eT_titolo)
-        val foto = dialogLayout.findViewById<Button>(R.id.btn_foto)
-        val note = dialogLayout.findViewById<EditText>(R.id.eT_note)
 
 
-        with(builder){
-            setTitle("CREA RICETTA")
-            setPositiveButton("Crea"){dialog, which ->
-                var kcal_salva = kcal.text.toString()
-                var carbo_salva = carbo.text.toString()
-                var proteine_salva = proteine.text.toString()
-                var grassi_salva = grassi.text.toString()
-                var titolo = titolo.text.toString().trim()
-                var foto = foto.text.toString().trim()
-                var note = note.text.toString()
-
-            }
-            setNegativeButton("Annulla"){ dialog, which ->
-                Log.d("Main", "Negative button clicked")
-            }
-            setView(dialogLayout)
-            show()
-        }
-    }
-
-
-    private fun openAlimento() {
-        val builder = AlertDialog.Builder(this)
-        val inflater = layoutInflater
-        val dialogLayout = inflater.inflate(R.layout.aggiunta_prodotto_pers_layout, null)
-        val kcal = dialogLayout.findViewById<EditText>(R.id.eT_kcal)
-        val carbo = dialogLayout.findViewById<EditText>(R.id.eT_carb)
-        val proteine = dialogLayout.findViewById<EditText>(R.id.eT_proteine)
-        val grassi = dialogLayout.findViewById<EditText>(R.id.eT_grassi)
-        val titolo = dialogLayout.findViewById<EditText>(R.id.eT_titolo)
-        val foto = dialogLayout.findViewById<Button>(R.id.btn_foto)
-
-
-
-        with(builder){
-            setTitle("CREA PRODOTTO")
-            setPositiveButton("Crea"){dialog, which ->
-                var kcal_salva = kcal.text.toString()
-                var carbo_salva = carbo.text.toString()
-                var proteine_salva = proteine.text.toString()
-                var grassi_salva = grassi.text.toString()
-                var titolo = titolo.text.toString().trim()
-                var foto = foto.text.toString().trim()
-
-
-            }
-            setNegativeButton("Annulla"){ dialog, which ->
-                Log.d("Main", "Negative button clicked")
-            }
-            setView(dialogLayout)
-            show()
-        }
-    }
 }
