@@ -90,14 +90,14 @@ class DieteFragment : Fragment() {
                 val builder = AlertDialog.Builder(requireContext())
                 val inflater = layoutInflater
                 val dialogLayout = inflater.inflate(R.layout.descrizione_dieta_layout, null)
-                val titolo = dialogLayout.findViewById<TextView>(R.id.titolo_dieta)
+                val titolo_dieta_scelta = dialogLayout.findViewById<TextView>(R.id.titolo_dieta)
                 val perc_carbo = dialogLayout.findViewById<TextView>(R.id.perc_carb)
                 val perc_prot = dialogLayout.findViewById<TextView>(R.id.perc_proteine)
                 val perc_grassi = dialogLayout.findViewById<TextView>(R.id.perc_grassi)
                 val descrizione = dialogLayout.findViewById<TextView>(R.id.descrizione_dieta)
                 val immagine = dialogLayout.findViewById<ImageView>(R.id.image_dieta)
 
-                titolo.text = model.dieteLiveData.value!![position].titolo
+                titolo_dieta_scelta.text = model.dieteLiveData.value!![position].titolo
                 perc_carbo.text = model.dieteLiveData.value!![position].perc_carb.toString() + "%"
                 perc_prot.text = model.dieteLiveData.value!![position].perc_prot.toString() + "%"
                 perc_grassi.text = model.dieteLiveData.value!![position].perc_grassi.toString() + "%"
@@ -110,8 +110,7 @@ class DieteFragment : Fragment() {
                     with(builder){
                         setTitle("Dettagli della dieta")
                         setPositiveButton("Seleziona"){dialog, which ->
-
-
+                            model.updateDieta(model.dieteLiveData.value!![position].titolo, requireContext())
                         }
                         setNegativeButton("Annulla"){ dialog, which ->
                             Log.d("Main", "Negative button clicked")
