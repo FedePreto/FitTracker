@@ -175,7 +175,6 @@
                                     android:text="@{Integer.valueOf(viewModel.diario.carboidratiTot).toString()}"
                                     android:layout_weight="1"/>
 
-                            <!-- android:text="@{Integer.valueOf(viewModel.carboidrati).toString()}"-->
 
                             <TextView
                                     android:text="/"
@@ -186,6 +185,7 @@
 
                             <TextView
                                     android:textAlignment="center"
+                                    android:text="@{Integer.valueOf(viewModel.carboidratiMax).toString()}"
                                     android:textSize="15sp"
                                     android:textStyle="bold"
                                     android:layout_width="wrap_content"

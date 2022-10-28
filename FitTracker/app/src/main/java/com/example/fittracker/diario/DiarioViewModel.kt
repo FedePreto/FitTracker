@@ -25,6 +25,17 @@ class DiarioViewModel : ViewModel() {
     private val dietaDB = DietaDB()
     private val auth = FirebaseAuth.getInstance()
 
+    private var _carboidratiMax = MutableLiveData<Int>()
+    val carboidratiMax : LiveData<Int>
+        get() = _carboidratiMax
+    private var _proteineMax = MutableLiveData<Int>()
+    val proteineMax : LiveData<Int>
+        get() = _proteineMax
+    private var _grassiMax = MutableLiveData<Int>()
+    val grassiMax : LiveData<Int>
+        get() = _grassiMax
+
+
     private var _diario = MutableLiveData<Diario>()
     val diario: LiveData<Diario>
         get() = _diario
@@ -93,10 +104,11 @@ class DiarioViewModel : ViewModel() {
 
     fun setMacro(){
         viewModelScope.launch {
-            //val dieta = dietaDB.getDieta(_utenteDB.)
-            val carboidratiMax = diario.value!!.fabbisogno
-            val proteineMax = diario.value!!.fabbisogno
-            val grassiMax = diario.value!!.fabbisogno
+            val utente = utenteDB.getUtente(auth.currentUser?.email!!)
+            val dieta = dietaDB.getDieta(utente.dieta)
+            _carboidratiMax.value = (diario.value!!.fabbisogno*(dieta.perc_carb.toDouble()/100.0) / 4).toInt() //1gr di carbo = 4Kcal
+            val proteineMax = diario.value!!.fabbisogno*(dieta.perc_prot.toDouble()/100.0) / 4 //1gr di prot = 4Kcal
+            val grassiMax = diario.value!!.fabbisogno*(dieta.perc_prot.toDouble()/100.0) / 9//1gr di grassi = 9Kcal
         }
     }
 
