@@ -26,7 +26,8 @@ class ProdottoActivity : AppCompatActivity() {
         binding.btnAddDiary.setOnClickListener {
             model.setPastoOnDB(prodotto.get("tipologiaPasto")!!,prodotto.get("foodId")!!,prodotto.get("image")!!,
                                 prodotto.get("label")!!,nutrients.get("calorie")!!,nutrients.get("proteine")!!,
-                                nutrients.get("carboidrati")!!,nutrients.get("grassi")!!, binding.etQuantita.text.toString().toInt())
+                                nutrients.get("carboidrati")!!,nutrients.get("grassi")!!, binding.etQuantita.text.toString().toInt(), this)
+            finish()
         }
 
 
