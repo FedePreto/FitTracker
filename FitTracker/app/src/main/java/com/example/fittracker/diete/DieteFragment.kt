@@ -87,8 +87,6 @@ class DieteFragment : Fragment() {
             recyclerViewDiete.adapter = adapter
             adapter.setOnItemClickListener(object : MyAdapterDiete.onItemClickListener{
                 override fun onItemClick(position: Int) {
-
-
                     Toast.makeText(requireContext(),"Hai premuto l'item $position", Toast.LENGTH_LONG).show()
                 }
 
