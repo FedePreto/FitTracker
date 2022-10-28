@@ -103,9 +103,9 @@ class PreferitiFragment : Fragment() {
                 startActivity(intent)
             }
         })
-    }
+    }*/
 
- */
+
 
 
 

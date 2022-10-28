@@ -66,7 +66,7 @@ class RicercaFragment : Fragment() {
         newRecyclerView.layoutManager = LinearLayoutManager(requireContext())
         newRecyclerView.setHasFixedSize(true)
         val foodObserver = Observer<ArrayList<Prodotto>>{
-            Log.d("Food",model.foodLiveData.value.toString())
+
             val adapter = MyAdapter(model.foodLiveData.value!!)
             newRecyclerView.adapter = adapter
             adapter.setOnItemClickListener(object : MyAdapter.onItemClickListener {
