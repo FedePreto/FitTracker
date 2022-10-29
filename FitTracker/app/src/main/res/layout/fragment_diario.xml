@@ -164,16 +164,18 @@
                                 android:id="@+id/pgBar_carboidrati"/>
 
                         <LinearLayout
+                                android:gravity="center"
                                 android:orientation="horizontal"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent">
 
                             <TextView
+                                    android:gravity="center"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:id="@+id/qnt_carboidrati"
                                     android:text="@{Integer.valueOf(viewModel.diario.carboidratiTot).toString()}"
-                                    android:layout_weight="1"/>
+                                    android:layout_weight="0"/>
 
 
                             <TextView
@@ -181,7 +183,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:id="@+id/text"
-                                    android:layout_weight="1"/>
+                                    android:layout_weight="0"/>
 
                             <TextView
                                     android:textAlignment="center"
@@ -197,7 +199,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:id="@+id/textView"
-                                    android:layout_weight="1"/>
+                                    android:layout_weight="0"/>
                         </LinearLayout>
 
                     </LinearLayout>
@@ -227,6 +229,7 @@
                                 android:id="@+id/pgBar_proteine"/>
 
                         <LinearLayout
+                                android:gravity="center"
                                 android:orientation="horizontal"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent">
@@ -236,7 +239,7 @@
                                     android:layout_height="wrap_content"
                                     android:text="@{Integer.valueOf(viewModel.diario.proteineTot).toString()}"
                                     android:id="@+id/qnt_proteine"
-                                    android:layout_weight="1"/>
+                                    android:layout_weight="0"/>
 
 
                             <TextView
@@ -244,7 +247,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:id="@+id/textVi"
-                                    android:layout_weight="1"/>
+                                    android:layout_weight="0"/>
 
                             <TextView
                                     android:textAlignment="center"
@@ -260,7 +263,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:id="@+id/textV"
-                                    android:layout_weight="1"/>
+                                    android:layout_weight="0"/>
                         </LinearLayout>
 
                     </LinearLayout>
@@ -290,6 +293,7 @@
                                 android:id="@+id/pgBar_grassi"/>
 
                         <LinearLayout
+                                android:gravity="center"
                                 android:orientation="horizontal"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent">
@@ -299,7 +303,7 @@
                                     android:layout_height="wrap_content"
                                     android:id="@+id/qnt_grassi"
                                     android:text="@{Integer.valueOf(viewModel.diario.grassiTot).toString()}"
-                                    android:layout_weight="1"/>
+                                    android:layout_weight="0"/>
 
 
                             <TextView
@@ -307,7 +311,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:id="@+id/descrizione_dieta"
-                                    android:layout_weight="1"/>
+                                    android:layout_weight="0"/>
 
                             <TextView
                                     android:textAlignment="center"
@@ -323,7 +327,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:id="@+id/textView21"
-                                    android:layout_weight="1"/>
+                                    android:layout_weight="0"/>
                         </LinearLayout>
 
                     </LinearLayout>

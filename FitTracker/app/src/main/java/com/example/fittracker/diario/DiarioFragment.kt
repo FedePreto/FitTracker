@@ -301,4 +301,20 @@ class DiarioFragment : Fragment() {
     }
 
 
+/*
+    private fun prepareIntent(position: Int) : Intent{
+        var intent = Intent(requireContext(), PastoActivity::class.java)
+        intent.putExtra("tipologiaPasto", requireArguments().getString("bottone"))
+        intent.putExtra("brand", model.foodLiveData.value!![position].brand)
+        intent.putExtra("category", model.foodLiveData.value!![position].category)
+        intent.putExtra("foodContents", model.foodLiveData.value!![position].foodContentsLabel)
+        intent.putExtra("foodId", model.foodLiveData.value!![position].foodId)
+        intent.putExtra("image", model.foodLiveData.value!![position].image)
+        intent.putExtra("knownAs", model.foodLiveData.value!![position].knownAs)
+        intent.putExtra("label", model.foodLiveData.value!![position].label)
+        intent.putExtra("nutrients", model.foodLiveData.value!![position].nutrients)
+        return intent
+    }*/
+
+
 }
