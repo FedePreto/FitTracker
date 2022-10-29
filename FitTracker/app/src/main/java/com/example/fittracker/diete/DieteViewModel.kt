@@ -22,6 +22,9 @@ class DieteViewModel : ViewModel() {
     val dieteLiveData : LiveData<List<Dieta>>
         get() = _dieteLiveData
 
+    private var _indiceDieta = MutableLiveData<Int>
+    val indiceDieta : LiveData<Int>
+        get() = _indiceDieta
 
 
     fun getDiete(){
@@ -42,6 +45,16 @@ class DieteViewModel : ViewModel() {
          }
     }
 
+    fun setDietaView(){
+        viewModelScope.launch {
+            val utente = utenteDB.getUtente(user!!.email.toString())
+            for (i in 0.._dieteLiveData.value!!.size){
+                if(_dieteLiveData.value!![i].titolo == utente.dieta)
+                    _indiceDieta.value = i
+            }
+        }
+
+    }
 
 
 

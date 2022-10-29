@@ -87,6 +87,7 @@ class DieteFragment : Fragment() {
                         setTitle("Dettagli della dieta")
                         setPositiveButton("Seleziona"){dialog, which ->
                             model.updateDieta(model.dieteLiveData.value!![position].titolo, requireContext())
+
                         }
                         setNegativeButton("Annulla"){ dialog, which ->
                             Log.d("Main", "Negative button clicked")
