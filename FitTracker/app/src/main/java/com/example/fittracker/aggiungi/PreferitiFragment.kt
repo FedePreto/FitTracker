@@ -62,7 +62,7 @@ class PreferitiFragment : Fragment() {
             recyclerViewPreferiti.adapter = adapter
             adapter.setOnItemClickListener(object : MyAdapterPrefPers.onItemClickListener {
                 override fun onItemClick(position: Int) {
-                   openUpdateDeleteDialog(position)
+                    openUpdateDeleteDialog(position)
                 }
             })
         }
@@ -93,13 +93,13 @@ class PreferitiFragment : Fragment() {
                     model.preferitiLiveData.value!![position].calorie,model.preferitiLiveData.value!![position].proteine,
                     model.preferitiLiveData.value!![position].carboidrati,model.preferitiLiveData.value!![position].grassi,
                     quantita,requireContext())
+                dialog.dismiss()
             }
             else {
                 if (flag)
                     Toast.makeText(requireContext(),"Per favore inserisci una quantità diversa da $quantita se desideri aggiungere il prodotto al Diario",Toast.LENGTH_LONG).show()
                 flag = true
             }
-            dialog.dismiss()
         }
 
         dialog.btnElimina.setOnClickListener {

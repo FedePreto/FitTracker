@@ -63,9 +63,6 @@ class DiarioFragment : Fragment() {
         binding.viewModel = model
         binding.lifecycleOwner = this
 
-
-
-
         return binding.root
 
     }
@@ -84,19 +81,17 @@ class DiarioFragment : Fragment() {
 
         val diarioObserver = Observer<Diario> {
             if (model.diario.value == null && contatore == 0) {
-                Log.e("Logger","Ho creato per la prima volta un diario")
                 Toast.makeText(context, "Non è ancora stato creato un diario", Toast.LENGTH_LONG).show()
                 model.setDiarioOnDB()
                 model.getUserDiarioDB()
             }else{
-                Log.e("Logger","Il diario è già presente e valorizzato")
                 if(contatore < 1) {
                     Log.e("Logger","Il contatore viene incrementato di uno")
                     checkFullGlasses()
                     model.setAssunte()
                     model.setRimanenti()
                     model.setMacro()
-                    updateProgressBar(binding.progressCalorie)
+                    updateProgressBar(binding.progressCalorie,binding.pgBarCarboidrati,binding.pgBarProteine,binding.pgBarGrassi)
                     contatore += 1
                 }else {
                     Log.e("Logger", "contatore viene azzerato")
@@ -104,8 +99,6 @@ class DiarioFragment : Fragment() {
                 }
             }
         }
-
-
         model.diario.observe(viewLifecycleOwner,diarioObserver)
 
 
@@ -199,14 +192,14 @@ class DiarioFragment : Fragment() {
 
     }
 
-    private fun updateProgressBar(progrssBar : CircularProgressBar){
+    private fun updateProgressBar(progrssBar : CircularProgressBar,progressBarCarbo : ProgressBar,ProgressBarProteine : ProgressBar,ProgrssBarGrassi: ProgressBar){
         progrssBar.apply {
             progressMax = model.diario.value!!.fabbisogno.toFloat()
             setProgressWithAnimation(model.assunte.value!!.toFloat(), 1500)
             progressBarWidth = 7f
             backgroundProgressBarWidth = 5f
             roundBorder = true
-            startAngle= 90f
+            startAngle = 0f
             progressDirection = CircularProgressBar.ProgressDirection.TO_RIGHT
 
         }

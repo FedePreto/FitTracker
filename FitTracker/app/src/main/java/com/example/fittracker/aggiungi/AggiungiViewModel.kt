@@ -8,6 +8,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.fittracker.databaseFB.DiarioDB
+import com.example.fittracker.databaseFB.PersonalizzatiDB
 import com.example.fittracker.databaseFB.PreferitiDB
 import com.example.fittracker.databaseFB.ProdottoDB
 import com.example.fittracker.model.Json_Parsing.Json_FoodList
@@ -27,6 +28,7 @@ class AggiungiViewModel : ViewModel() {
 
     private val preferitiDB = PreferitiDB()
     private val prodottoDB = ProdottoDB()
+    private val personalizzatiDB = PersonalizzatiDB()
     private val diarioDB = DiarioDB()
     private val auth = FirebaseAuth.getInstance()
     private var hashMapCalorie = HashMap<String, Int>()
@@ -40,6 +42,11 @@ class AggiungiViewModel : ViewModel() {
     private var _preferitiLiveData = MutableLiveData<List<Pasto>>()
     val preferitiLiveData: LiveData<List<Pasto>>
         get() = _preferitiLiveData
+
+    private var _personalizzatiLiveData = MutableLiveData<List<Pasto>>()
+    val personalizzatiLiveData: LiveData<List<Pasto>>
+        get() = _personalizzatiLiveData
+
 
     fun getFoodFromNameorUPC(ingr : String, upc: String) {
 
@@ -149,5 +156,43 @@ class AggiungiViewModel : ViewModel() {
 
             }
     }
+
+    fun getPersonalizzati(tipologiaPasto : String){
+        viewModelScope.launch {
+            _personalizzatiLiveData.value =
+                personalizzatiDB.getPastiPersonalizzati(auth.currentUser!!.email!!, tipologiaPasto)
+        }
+    }
+
+    fun setPersonalizzatiOnDB(tipologiaPasto: String, nome: String, calorie: Int,proteine: Int,carboidrati: Int,grassi:Int,context: Context){
+        viewModelScope.launch {
+            if(personalizzatiDB.setPastoPersonalizzati(auth.currentUser!!.email!!,tipologiaPasto,nome,calorie,proteine,carboidrati,grassi))
+                Toast.makeText(context,"Pasto personalizzato registrato con successo",Toast.LENGTH_LONG).show()
+            else
+                Toast.makeText(context,"ATTENZIONE, registrazione pasto personalizzato fallita",Toast.LENGTH_LONG).show()
+        }
+    }
+
+    fun deletePersonalizzato(id : String, tipologiaPasto: String, context:Context) {
+        viewModelScope.launch {
+            if (personalizzatiDB.deletePersonalizzato(auth.currentUser!!.email!!, id, tipologiaPasto)) {
+                Toast.makeText(context, "Prodotto eliminato correttamente", Toast.LENGTH_LONG).show()
+                getPersonalizzati(tipologiaPasto)
+            } else {
+                Toast.makeText(context, "ATTENZIONE!\nProdotto non eliminato", Toast.LENGTH_LONG).show()
+            }
+
+        }
+    }
+
+    fun updatePersonalizzatoOnDB(id : String, tipologiaPasto: String, nome: String, calorie: Int,proteine: Int,carboidrati: Int,grassi:Int,context: Context){
+        viewModelScope.launch {
+            if(personalizzatiDB.updatePastoPersonalizzato(auth.currentUser!!.email!!,id,tipologiaPasto,nome,calorie,proteine,carboidrati,grassi))
+                Toast.makeText(context,"Pasto personalizzato aggiornato con successo",Toast.LENGTH_LONG).show()
+            else
+                Toast.makeText(context,"ATTENZIONE, aggiornamento pasto personalizzato fallita",Toast.LENGTH_LONG).show()
+        }
+    }
+
 
 }
