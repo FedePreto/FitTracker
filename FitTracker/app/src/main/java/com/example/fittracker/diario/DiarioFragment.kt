@@ -34,6 +34,7 @@ import com.example.fittracker.aggiungi.AggiungiActivity
 import com.example.fittracker.databinding.FragmentDiarioBinding
 import com.example.fittracker.model.Diario
 import com.example.fittracker.model.Pasto
+import com.example.fittracker.pasto.PastoActivity
 import com.example.fittracker.prodotto.ProdottoActivity
 import com.mikhaellopez.circularprogressbar.CircularProgressBar
 import kotlinx.android.synthetic.main.activity_main.*
@@ -294,7 +295,7 @@ class DiarioFragment : Fragment() {
             rVSelezionati.adapter = adapter
             adapter.setOnItemClickListener(object : MyAdapterSelezionati.onItemClickListener{
                 override fun onItemClick(position: Int) {
-                    Toast.makeText(requireContext(),"Pisellone $position",Toast.LENGTH_LONG).show()
+                    startActivity(Intent(requireContext(),PastoActivity::class.java))
                 }
             })
         }

@@ -18,10 +18,13 @@
             android:supportsRtl="true"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity
+                android:name=".pasto.PastoActivity"
+                android:exported="false"/>
+        <activity
                 android:name=".prodotto.ProdottoActivity"
                 android:exported="false"
-                android:screenOrientation="portrait"
-                android:parentActivityName=".aggiungi.AggiungiActivity"/>
+                android:parentActivityName=".aggiungi.AggiungiActivity"
+                android:screenOrientation="portrait"/>
         <activity
                 android:name=".profilo.ProfiloActivity"
                 android:exported="false"
