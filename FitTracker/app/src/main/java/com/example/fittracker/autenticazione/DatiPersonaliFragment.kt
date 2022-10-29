@@ -3,6 +3,7 @@ package com.example.fittracker.autenticazione
 import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -15,6 +16,7 @@ import androidx.navigation.fragment.navArgs
 import com.example.fittracker.R
 import com.example.fittracker.databinding.FragmentDatiPersonaliBinding
 import java.time.LocalDate
+import java.time.Period
 import java.util.Calendar
 
 
@@ -44,23 +46,40 @@ class DatiPersonaliFragment : Fragment() {
         utente.cognome=""
         binding.imageView28.isVisible = utente.agonista
         //calendario
-        var date = ""
-        val c = Calendar.getInstance()
-        val year = c.get(Calendar.YEAR)
-        val month = c.get(Calendar.MONTH)
-        val day = c.get(Calendar.DAY_OF_MONTH)
+        val oggi = LocalDate.now()
+        var date= LocalDate.now()
+        var data_selezionata = ""
+        var year = oggi.year
+        var month = oggi.monthValue-1
+        var day = oggi.dayOfMonth
+
+        val minima = LocalDate.of(oggi.year-15,oggi.monthValue-1,oggi.dayOfMonth)
 
         //selezione data
         binding.tvDataNascita.setOnClickListener{
             val dpd = DatePickerDialog(requireContext(), { view, mYear, mMonth, mDay ->
-                date = LocalDate.of(mYear,(mMonth+1),mDay).toString()
-                binding.tvDataNascita.text = "$mDay-"+(mMonth +1)+"-$mYear"
+                date = LocalDate.of(mYear,(mMonth+1),mDay)
+                year = date.year
+                month = date.monthValue-1
+                day = date.dayOfMonth
+                if (date.year <= minima.year && date<=oggi){
+                    binding.tvDataNascita.text = "$mDay-"+(mMonth +1)+"-$mYear"
+                    data_selezionata = date.toString()
+                    Log.d("data_nascita", data_selezionata)
+                    binding.tvDataNascita.error = null
+                    binding.btAvantiDati.isEnabled=true
+                } else{
+                    binding.tvDataNascita.text = ""
+                    binding.tvDataNascita.error = "Seleziona una data corretta"
+                    binding.btAvantiDati.isEnabled=false
+                }
+
             }, year, month, day)
             dpd.show()
         }
 
         binding.btAvantiDati.setOnClickListener{
-            utente.data_nascita = date
+            utente.data_nascita = data_selezionata
             utente.nome = binding.tEName.text.toString()
             utente.cognome = binding.tESurname.text.toString()
             if(utente.data_nascita != "" && utente.nome != "" && utente.cognome != ""){
