@@ -31,7 +31,7 @@ class SessoFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         var utente = args.utente
         utente.sesso=""
-        binding.imageView20.isVisible = utente.agonista
+        binding.imageView20.isVisible = utente.agonistico
         var listener = View.OnClickListener { v ->
             when(v.id){
                 R.id.rB_uomo -> utente.sesso = "uomo"

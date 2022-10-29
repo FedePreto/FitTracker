@@ -19,7 +19,8 @@ import kotlinx.android.synthetic.main.fragment_sport.*
 class SportFragment : Fragment() {
     lateinit var binding: FragmentSportBinding
     private lateinit var utente: Utente
-    val args: SportFragmentArgs by navArgs()
+    private val args: SportFragmentArgs by navArgs()
+    private lateinit var cbSport : ArrayList<RadioButton>
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,20 +30,20 @@ class SportFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_sport, container, false)
-        utente = args.utente
-        utente.sport=""
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val cbSport = arrayListOf<RadioButton>(binding.cBCalcio,binding.cBBasket ,binding.cBBaseball, binding.cBNuoto, binding.cBJudo,
-                        binding.cBGolf, binding.cBTennis, binding.cBPingPong, binding.cBFootball,
-                        binding.cBCricket, binding.cBRugby, binding.cBKarate, binding.cBHockey, binding.cBGinnasticaArt,
-                        binding.cBGinnasticaRitm,  binding.cBAtletica,  binding.cBCiclismo,  binding.cBPallavolo,
-                       binding.cBPattinaggio,  binding.cBPallanuoto,  binding.cBAltro)
-        
+        cbSport = arrayListOf(binding.cBCalcio,binding.cBBasket ,binding.cBBaseball, binding.cBNuoto, binding.cBJudo,
+            binding.cBGolf, binding.cBTennis, binding.cBPingPong, binding.cBFootball,
+            binding.cBCricket, binding.cBRugby, binding.cBKarate, binding.cBHockey, binding.cBGinnasticaArt,
+            binding.cBGinnasticaRitm,  binding.cBAtletica,  binding.cBCiclismo,  binding.cBPallavolo,
+            binding.cBPattinaggio,  binding.cBPallanuoto,  binding.cBAltro)
+
+        utente = args.utente
+        utente.sport=""
         takeChecked()
         binding.btAvantiPesoObb.setOnClickListener {
             if(utente.sport == "")
@@ -83,6 +84,9 @@ class SportFragment : Fragment() {
             }
         }
 
+        for(radioButton in cbSport){
+            radioButton.setOnClickListener(listener)
+        }
 
     }
 

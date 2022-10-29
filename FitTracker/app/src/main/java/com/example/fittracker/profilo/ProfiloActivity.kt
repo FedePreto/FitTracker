@@ -5,6 +5,7 @@ import android.app.DatePickerDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.core.view.isVisible
@@ -51,10 +52,13 @@ class ProfiloActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener 
         //aggiornamento automatico view
         binding.viewModel = model
         binding.lifecycleOwner = this
+
+
+        //L'utente non può cambiare email perchè questo per come
+        // è stato impostato il db comporterebbe una perdita di tutti i dati
         binding.eTCambioEmail.isEnabled=false
 
-
-        // on below line we are initializing spinner with ids.
+        //Di seguito inizializziamo gli spinner
         sessoSpinner = binding.sWSesso
         stileDiVitaSpinner = binding.sWStileDiVita
         sportSpinner = binding.sWSport
@@ -66,12 +70,12 @@ class ProfiloActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener 
 
 
 
-        // on below line we are adding click listener for our spinner
+        //Diamo ad ogni spinner il suo selected listener
         sessoSpinner.onItemSelectedListener = this
         stileDiVitaSpinner.onItemSelectedListener = this
         sportSpinner.onItemSelectedListener = this
 
-        // on below line we are initializing adapter for our spinner
+
         val adapterSesso: ArrayAdapter<CharSequence> =
             ArrayAdapter(this, android.R.layout.simple_spinner_item, sessoS)
         val adapterStile: ArrayAdapter<CharSequence> =
@@ -79,12 +83,12 @@ class ProfiloActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener 
         val adapterSport: ArrayAdapter<CharSequence> =
             ArrayAdapter(this, android.R.layout.simple_spinner_item, sport)
 
-        // on below line we are setting drop down view resource for our adapter.
+        // Di seguito settiamo il dop down adapter
         adapterSesso.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         adapterStile.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         adapterSport.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
 
-        // on below line we are setting adapter for spinner.
+        //Di seguito associamo gli adapter
         sessoSpinner.adapter = adapterSesso
         stileDiVitaSpinner.adapter = adapterStile
         sportSpinner.adapter = adapterSport
@@ -93,9 +97,10 @@ class ProfiloActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener 
             //setto i miei spinner con i valori del db
             setSpinner(adapterSesso, adapterStile, adapterSport)
             //setto lo switcher con il valore del db
-            agonisticoSwitch.isChecked = model.profilo.value!!.agonista
+            agonisticoSwitch.isChecked = model.profilo.value!!.agonistico
+
             //se lo switch è true faccio vedere la selezione dello sport
-            binding.selezioneSport.isVisible = model.profilo.value!!.agonista
+            binding.selezioneSport.isVisible = model.profilo.value!!.agonistico
 
             //calendario
             val oggi = LocalDate.now()
@@ -213,19 +218,18 @@ class ProfiloActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener 
     }
 
 
-    override fun onItemSelected(p0: AdapterView<*>?, p1: View?, position: Int, p3: Long) {
-
-    }
-
-    override fun onNothingSelected(p0: AdapterView<*>?) {
-
-    }
 
     override fun onBackPressed() {
         super.onBackPressed()
         startActivity(Intent(this, HomeActivity::class.java))
         finish()
 
+    }
+
+    override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+    }
+
+    override fun onNothingSelected(p0: AdapterView<*>?) {
     }
 
 }

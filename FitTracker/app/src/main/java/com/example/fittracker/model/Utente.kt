@@ -10,7 +10,7 @@ data class Utente(
         var cognome: String,
         var email: String,
         var LAF: Double,
-        var agonista: Boolean,
+        var agonistico: Boolean,
         var sesso: String,
         var data_nascita: String,
         var altezza: Int,

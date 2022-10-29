@@ -32,7 +32,7 @@ class RegisterActivity : AppCompatActivity() {
         utente = args.utente
         progressBar = binding.progressBar3
         progressBar.visibility = ProgressBar.INVISIBLE
-        binding.imageView68.isVisible = utente.agonista
+        binding.imageView68.isVisible = utente.agonistico
 
         binding.btnRegister.setOnClickListener {
             val email = binding.InputEmail.text.toString().trim()
@@ -46,7 +46,7 @@ class RegisterActivity : AppCompatActivity() {
                     if (model.singUp(email, pass) == null) {
                         checkError(isOnline(this@RegisterActivity))
                     } else {
-                        model.addAuthUtenteOnDB(utente.nome, utente.cognome, email, utente.LAF,utente.agonista, utente.sesso,
+                        model.addAuthUtenteOnDB(utente.nome, utente.cognome, email, utente.LAF,utente.agonistico, utente.sesso,
                             utente.data_nascita,utente.altezza,utente.peso_attuale,
                             utente.sport, this@RegisterActivity)
                         val intent = Intent(applicationContext, ConosciamociActivity::class.java)

@@ -35,7 +35,7 @@ class StileVitaFragment : Fragment() {
    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
        super.onViewCreated(view, savedInstanceState)
        utente.LAF = 0.0
-       utente.agonista = false
+       utente.agonistico = false
        binding.imageView16.isVisible = false
        var listener = View.OnClickListener { v ->
            when(v.id){
@@ -75,7 +75,7 @@ class StileVitaFragment : Fragment() {
     override fun onStop() {
         super.onStop()
         binding.GruppoRadioObbiettivo.clearCheck()
-        utente.agonista = checked
+        utente.agonistico = checked
         binding.imageView16.isVisible = checked
         binding.sBAgonistico.isChecked = false
         binding.imageView16.isVisible = false

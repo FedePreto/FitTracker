@@ -34,7 +34,7 @@ class AltezzaFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         var utente = args.utente
         utente.altezza=0
-        binding.imageView36.isVisible = utente.agonista
+        binding.imageView36.isVisible = utente.agonistico
         binding.btAvantiAltezza.setOnClickListener {
             var altezza = binding.eTAltezza.text.toString()
             if(altezza != ""){

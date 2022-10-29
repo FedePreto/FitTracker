@@ -36,9 +36,9 @@ class PesoAttualeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         utente = args.utente
         utente.peso_attuale=0.0
-        binding.imageView44.isVisible = utente.agonista
+        binding.imageView44.isVisible = utente.agonistico
         Log.d("Utente",utente.toString())
-        val action = setNavigation(utente.agonista)
+        val action = setNavigation(utente.agonistico)
             binding.btAvantiPesoAttuale.setOnClickListener {
                 val pesoAttuale = binding.eTPesoAttuale.text.toString()
                 if (pesoAttuale != "") {

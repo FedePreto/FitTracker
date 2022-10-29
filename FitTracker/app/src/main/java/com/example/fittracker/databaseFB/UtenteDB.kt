@@ -1,6 +1,7 @@
 package com.example.fittracker.databaseFB
 
 import android.content.Context
+import android.util.Log
 import android.widget.Toast
 import com.example.fittracker.model.Utente
 import com.google.firebase.firestore.ktx.toObjects
@@ -67,6 +68,7 @@ class UtenteDB : FirebaseDB() {
         val utentiList = getUtenti()
         for(utente in utentiList) {
             if (utente.email == email) {
+                Log.d("Utente",utente.toString())
                 return utente
             }
         }
