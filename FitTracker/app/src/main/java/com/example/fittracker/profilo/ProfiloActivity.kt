@@ -98,17 +98,30 @@ class ProfiloActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener 
             binding.selezioneSport.isVisible = model.profilo.value!!.agonista
 
             //calendario
-
+            val oggi = LocalDate.now()
+            val minima = LocalDate.of(oggi.year-15,oggi.monthValue-1,oggi.dayOfMonth)
             var date = LocalDate.parse(model.profilo.value!!.data_nascita)
-            val year = date.year
-            val month = (date.monthValue - 1)
-            val day = date.dayOfMonth
+            var data_selezionata = ""
+            var year = date.year
+            var month = (date.monthValue - 1)
+            var day = date.dayOfMonth
 
             //selezione data
             binding.tVDataNascita.setOnClickListener {
                 val dpd = DatePickerDialog(this, { view, mYear, mMonth, mDay ->
                     date = LocalDate.of(mYear,(mMonth+1),mDay)
-                    binding.tVDataNascita.text = "$mYear-"+(mMonth +1)+"-$mDay"
+                    year = date.year
+                    month = (date.monthValue - 1)
+                    day = date.dayOfMonth
+                    if(date.year <= minima.year && date <= oggi){
+                        binding.tVDataNascita.text = "$mYear-"+(mMonth +1)+"-$mDay"
+                        data_selezionata = date.toString()
+                        binding.tVDataNascita.error = null
+                    }else{
+                        binding.tVDataNascita.text = ""
+                        binding.tVDataNascita.error = "Seleziona una data corretta"
+                    }
+
                 }, year, month, day)
                 dpd.show()
             }
@@ -147,7 +160,7 @@ class ProfiloActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener 
                     "Attivo" -> LAF_up = 1.55
                     "Molto attivo" -> LAF_up =1.725
                 }
-                val data_nascita_up = date.toString()
+                val data_nascita_up = data_selezionata
                 val agonistico_up = binding.switchAgonistico.isChecked
                 val sesso_up = binding.sWSesso.selectedItem.toString()
                 val altezza_up = binding.eTAltezza.text.toString()

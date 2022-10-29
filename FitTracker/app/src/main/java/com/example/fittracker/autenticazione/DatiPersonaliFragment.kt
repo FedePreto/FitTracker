@@ -47,13 +47,15 @@ class DatiPersonaliFragment : Fragment() {
         binding.imageView28.isVisible = utente.agonista
         //calendario
         val oggi = LocalDate.now()
+        val minima = LocalDate.of(oggi.year-15,oggi.monthValue-1,oggi.dayOfMonth)
+
         var date= LocalDate.now()
         var data_selezionata = ""
         var year = oggi.year
         var month = oggi.monthValue-1
         var day = oggi.dayOfMonth
 
-        val minima = LocalDate.of(oggi.year-15,oggi.monthValue-1,oggi.dayOfMonth)
+
 
         //selezione data
         binding.tvDataNascita.setOnClickListener{
@@ -65,7 +67,6 @@ class DatiPersonaliFragment : Fragment() {
                 if (date.year <= minima.year && date<=oggi){
                     binding.tvDataNascita.text = "$mDay-"+(mMonth +1)+"-$mYear"
                     data_selezionata = date.toString()
-                    Log.d("data_nascita", data_selezionata)
                     binding.tvDataNascita.error = null
                     binding.btAvantiDati.isEnabled=true
                 } else{
