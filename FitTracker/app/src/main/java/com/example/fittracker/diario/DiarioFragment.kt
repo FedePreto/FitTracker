@@ -108,22 +108,15 @@ class DiarioFragment : Fragment() {
 
     override fun onDestroy() {
         super.onDestroy()
-       model.setDiarioOnDB(model.diario.value!!.grassiTot, model.diario.value!!.proteineTot,
-            model.diario.value!!.carboidratiTot, model.diario.value!!.chiloCalorieEsercizio,
-            model.diario.value!!.chiloCalorieColazione, model.diario.value!!.chiloCaloriePranzo,
-            model.diario.value!!.chiloCalorieCena, model.diario.value!!.chiloCalorieSpuntino,
-            acqua)
+        setDiario()
+
 
 
     }
 
     override fun onPause() {
         super.onPause()
-        model.setDiarioOnDB(model.diario.value!!.grassiTot, model.diario.value!!.proteineTot,
-            model.diario.value!!.carboidratiTot, model.diario.value!!.chiloCalorieEsercizio,
-            model.diario.value!!.chiloCalorieColazione, model.diario.value!!.chiloCaloriePranzo,
-            model.diario.value!!.chiloCalorieCena, model.diario.value!!.chiloCalorieSpuntino,
-            acqua)
+        setDiario()
 
     }
 
@@ -298,6 +291,14 @@ class DiarioFragment : Fragment() {
             setView(dialogLayout)
             show()
         }
+    }
+
+    private fun setDiario(){
+        model.setDiarioOnDB(model.diario.value!!.grassiTot, model.diario.value!!.proteineTot,
+            model.diario.value!!.carboidratiTot, model.diario.value!!.chiloCalorieEsercizio,
+            model.diario.value!!.chiloCalorieColazione, model.diario.value!!.chiloCaloriePranzo,
+            model.diario.value!!.chiloCalorieCena, model.diario.value!!.chiloCalorieSpuntino,
+            acqua)
     }
 
 

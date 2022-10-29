@@ -13,6 +13,7 @@ import com.example.fittracker.databaseFB.ProdottoDB
 import com.example.fittracker.databaseFB.UtenteDB
 import com.example.fittracker.model.Diario
 import com.example.fittracker.model.Pasto
+import com.example.fittracker.model.Utente
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.launch
 import java.time.LocalDate
@@ -70,15 +71,7 @@ class DiarioViewModel : ViewModel() {
                       acqua: ArrayList<Boolean> = arrayListOf(false, false, false, false, false, false, false, false)){
         viewModelScope.launch {
             val utente = utenteDB.getUtente(auth.currentUser?.email!!)
-            val today = LocalDate.now()
-            val birthday: LocalDate = LocalDate.parse(utente.data_nascita)
-            val period: Period = Period.between(birthday, today)
-            var fabbisogno = 0.0
-            if(utente.sesso == "uomo")
-                fabbisogno = (66 + (13.7 * utente.peso_attuale) + (5 * utente.altezza) - (6.8 * period.years)) * utente.LAF
-            else
-                fabbisogno = (65 + (9.6 * utente.peso_attuale) + (1.8 * utente.altezza) - (4.7 * period.years)) * utente.LAF
-
+            var fabbisogno = calculateFabbisogno(utente)
             diarioDB.setDiario(auth.currentUser?.email!!,LocalDate.now().toString(), fabbisogno.toInt(), grassiTot, proteineTot, carboidratiTot, chiloCalorieEsercizio,
                                 chiloCalorieColazione, chiloCaloriePranzo, chiloCalorieCena, chiloCalorieSpuntino, acqua)
         }
@@ -113,9 +106,6 @@ class DiarioViewModel : ViewModel() {
         viewModelScope.launch {
             val utente = utenteDB.getUtente(auth.currentUser?.email!!)
             val dieta = dietaDB.getDieta(utente.dieta)
-            Log.d("Dieta",(dieta.perc_carb.toDouble()/100.0).toString())
-            Log.d("Dieta", (diario.value!!.fabbisogno).toString())
-            Log.d("Dieta", ((diario.value!!.fabbisogno*(dieta.perc_carb.toDouble()/100.0)).toString()))
             _carboidratiMax.value = ((diario.value!!.fabbisogno*(dieta.perc_carb.toDouble()/100.0)) / 4).toInt() //1gr di carbo = 4Kcal
             _proteineMax.value = ((diario.value!!.fabbisogno*(dieta.perc_prot.toDouble()/100.0)) / 4).toInt() //1gr di prot = 4Kcal
             _grassiMax.value = ((diario.value!!.fabbisogno*(dieta.perc_prot.toDouble()/100.0)) / 9).toInt()//1gr di grassi = 9Kcal
@@ -127,6 +117,18 @@ class DiarioViewModel : ViewModel() {
         viewModelScope.launch {
             _selezionati.value = prodottoDB.getProdotti(LocalDate.now().toString(),auth.currentUser!!.email.toString(),pasto)
         }
+    }
+
+    private fun calculateFabbisogno(utente: Utente) : Double{
+        val today = LocalDate.now()
+        val birthday: LocalDate = LocalDate.parse(utente.data_nascita)
+        val period: Period = Period.between(birthday, today)
+        if(utente.sesso == "uomo")
+            return (66 + (13.7 * utente.peso_attuale) + (5 * utente.altezza) - (6.8 * period.years)) * utente.LAF
+        else
+            return (65 + (9.6 * utente.peso_attuale) + (1.8 * utente.altezza) - (4.7 * period.years)) * utente.LAF
+
+
     }
 
 }

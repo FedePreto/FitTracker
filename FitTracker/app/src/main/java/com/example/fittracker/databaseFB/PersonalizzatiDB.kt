@@ -15,10 +15,10 @@ class PersonalizzatiDB : FirebaseDB() {
         utente : String,
         tipologiaPasto : String,
         nome/*label*/ : String,
-        calorie : Int,
-        proteine : Int,
-        carboidrati : Int,
-        grassi : Int
+        calorie : Double,
+        proteine : Double,
+        carboidrati : Double,
+        grassi : Double
     ): Boolean {
         val id = UUID.randomUUID().toString()
         val prodotto = hashMapOf<String, Any>(
@@ -64,10 +64,10 @@ class PersonalizzatiDB : FirebaseDB() {
         utente : String,
         tipologiaPasto : String,
         nome/*label*/ : String,
-        calorie : Int,
-        proteine : Int,
-        carboidrati : Int,
-        grassi : Int
+        calorie : Double,
+        proteine : Double,
+        carboidrati : Double,
+        grassi : Double
     ): Boolean {
         val prodotto = hashMapOf<String, Any>(
             "id" to id,

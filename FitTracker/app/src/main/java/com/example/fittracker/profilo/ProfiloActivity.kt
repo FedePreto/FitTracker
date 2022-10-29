@@ -14,7 +14,9 @@ import androidx.lifecycle.lifecycleScope
 import com.example.fittracker.R
 import com.example.fittracker.databinding.ActivityProfiloBinding
 import com.example.fittracker.home.HomeActivity
+import com.example.fittracker.model.Diario
 import com.example.fittracker.model.Utente
+import com.google.type.Date
 import kotlinx.android.synthetic.main.riautenticazione_layout.*
 import kotlinx.coroutines.launch
 import java.time.LocalDate
@@ -154,13 +156,17 @@ class ProfiloActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener 
                 sport_up = if(!agonistico_up) ""
                 else binding.sWSport.selectedItem.toString()
                 model.updateAuthUtenteOnDB(nome_up, cognome_up, email_up,LAF_up,agonistico_up,sesso_up,data_nascita_up,altezza_up.toInt(),peso_up.toDouble(),sport_up,this)
-                startActivity(Intent(this, HomeActivity::class.java))
-                finish()
             }
 
         }
-
         model.profilo.observe(this,profiloObserver)
+
+        val diarioUpdatedObserver = Observer<Boolean> {
+            startActivity(Intent(this, HomeActivity::class.java))
+            finish()
+        }
+
+        model.diarioUpdated.observe(this,diarioUpdatedObserver)
 
 }
 

@@ -5,6 +5,7 @@ import android.app.Dialog
 import android.content.Intent
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.text.Layout
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -12,9 +13,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.LinearLayout
 import android.widget.SearchView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.core.text.set
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -80,7 +83,7 @@ class PersonalizzatiFragment : Fragment() {
             recyclerViewPersonalizzati.adapter = adapter
             adapter.setOnItemClickListener(object : MyAdapterPrefPers.onItemClickListener {
                 override fun onItemClick(position: Int) {
-                    aggiungiProdotto("clickItem", model.personalizzatiLiveData.value!![position].id)
+                    aggiungiProdotto(position,"clickItem", model.personalizzatiLiveData.value!![position].id)
                 }
             })
         }
@@ -93,7 +96,7 @@ class PersonalizzatiFragment : Fragment() {
             }
         else
             binding.btnAggiungi.setOnClickListener {
-                aggiungiProdotto("clickAggiungi","")//idEsercizio)
+                aggiungiProdotto(0,"clickAggiungi","")//idEsercizio)
             }
 
 
@@ -126,7 +129,7 @@ class PersonalizzatiFragment : Fragment() {
 
     }
 
-    private fun aggiungiProdotto(bottone:String, id : String){
+    private fun aggiungiProdotto(position : Int, bottone:String, id : String){
         val builder = AlertDialog.Builder(requireContext())
         val inflater = layoutInflater
         val dialogLayout = inflater.inflate(R.layout.registrazione_rapida_layout, null)
@@ -135,20 +138,27 @@ class PersonalizzatiFragment : Fragment() {
         val proteine = dialogLayout.findViewById<EditText>(R.id.eT_proteine)
         val grassi = dialogLayout.findViewById<EditText>(R.id.eT_grassi)
         val titolo = dialogLayout.findViewById<EditText>(R.id.eT_titolo)
-        val btnAggiungi = dialogLayout.findViewById<Button>(R.id.btnAggiungi)
+        val btnAggiungiLista = dialogLayout.findViewById<Button>(R.id.btnAggiungi)
         val btnElimina = dialogLayout.findViewById<Button>(R.id.buttonElimina)
+        val btnAggiungiDiario = dialogLayout.findViewById<Button>(R.id.btnAggiungiDiario)
+        val layout_info = dialogLayout.findViewById<LinearLayout>(R.id.layout_info)
         if(bottone == "clickItem"){
-            btnAggiungi.text = "AGGIORNA"
-            btnElimina.visibility= View.VISIBLE
+            btnAggiungiLista.text = "AGGIORNA\nNELLA LISTA"
+            layout_info.visibility = View.GONE
+            btnElimina.visibility = View.VISIBLE
+            btnAggiungiDiario.visibility = View.VISIBLE
+            hideLayout(arrayOf(titolo,kcal,carbo,grassi,proteine),position)
+
         }else{
-            btnAggiungi.text = "AGGIUNGI"
+            btnAggiungiLista.text = "AGGIUNGI\nALLA LISTA"
             btnElimina.visibility = View.GONE
+            btnAggiungiDiario.visibility = View.GONE
         }
 
 
 
 
-        btnAggiungi.setOnClickListener {
+        btnAggiungiLista.setOnClickListener {
             var kcal_salva = kcal.text.toString()
             var carbo_salva = carbo.text.toString()
             var proteine_salva = proteine.text.toString()
@@ -157,12 +167,12 @@ class PersonalizzatiFragment : Fragment() {
             if(kcal_salva != "" && carbo_salva != "" && proteine_salva != "" && grassi_salva != "" && titolo != "") {
                 if(bottone == "clickItem"){
                     model.updatePersonalizzatoOnDB(
-                        id,requireArguments().getString("bottone")!!, titolo, kcal_salva.toInt(),
-                        proteine_salva.toInt(), carbo_salva.toInt(), grassi_salva.toInt(), requireContext())
+                        id,requireArguments().getString("bottone")!!, titolo, kcal_salva.toDouble(),
+                        proteine_salva.toDouble(), carbo_salva.toDouble(), grassi_salva.toDouble(), requireContext())
                 }else {
                     model.setPersonalizzatiOnDB(
-                        requireArguments().getString("bottone")!!, titolo, kcal_salva.toInt(),
-                        proteine_salva.toInt(), carbo_salva.toInt(), grassi_salva.toInt(), requireContext()
+                        requireArguments().getString("bottone")!!, titolo, kcal_salva.toDouble(),
+                        proteine_salva.toDouble(), carbo_salva.toDouble(), grassi_salva.toDouble(), requireContext()
                     )
                 }
                 model.getPersonalizzati(requireArguments().getString("bottone")!!)
@@ -186,6 +196,14 @@ class PersonalizzatiFragment : Fragment() {
         builder.setView(dialogLayout)
         builder.show()
 
+    }
+
+    private fun hideLayout(edit : Array<EditText>,position : Int){
+        edit[0].setText(model.personalizzatiLiveData.value!![position].nome)
+        edit[1].setText(model.personalizzatiLiveData.value!![position].calorie.toString())
+        edit[2].setText(model.personalizzatiLiveData.value!![position].carboidrati.toString())
+        edit[3].setText(model.personalizzatiLiveData.value!![position].grassi.toString())
+        edit[4].setText(model.personalizzatiLiveData.value!![position].proteine.toString())
     }
 
 

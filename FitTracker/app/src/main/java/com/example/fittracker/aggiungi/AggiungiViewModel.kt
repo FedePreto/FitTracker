@@ -164,7 +164,7 @@ class AggiungiViewModel : ViewModel() {
         }
     }
 
-    fun setPersonalizzatiOnDB(tipologiaPasto: String, nome: String, calorie: Int,proteine: Int,carboidrati: Int,grassi:Int,context: Context){
+    fun setPersonalizzatiOnDB(tipologiaPasto: String, nome: String, calorie: Double,proteine: Double,carboidrati: Double,grassi:Double,context: Context){
         viewModelScope.launch {
             if(personalizzatiDB.setPastoPersonalizzati(auth.currentUser!!.email!!,tipologiaPasto,nome,calorie,proteine,carboidrati,grassi))
                 Toast.makeText(context,"Pasto personalizzato registrato con successo",Toast.LENGTH_LONG).show()
@@ -185,7 +185,8 @@ class AggiungiViewModel : ViewModel() {
         }
     }
 
-    fun updatePersonalizzatoOnDB(id : String, tipologiaPasto: String, nome: String, calorie: Int,proteine: Int,carboidrati: Int,grassi:Int,context: Context){
+    fun updatePersonalizzatoOnDB(id : String, tipologiaPasto: String, nome: String, calorie: Double,proteine: Double,carboidrati: Double,
+                                 grassi:Double,context: Context){
         viewModelScope.launch {
             if(personalizzatiDB.updatePastoPersonalizzato(id,auth.currentUser!!.email!!,tipologiaPasto,nome,calorie,proteine,carboidrati,grassi))
                 Toast.makeText(context,"Pasto personalizzato aggiornato con successo",Toast.LENGTH_LONG).show()
