@@ -11,7 +11,8 @@ import com.example.fittracker.databinding.ActivityPastoBinding
 class PastoActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityPastoBinding
-    private var pasto  = HashMap<String,Any?>()
+    private var pasto  = HashMap<String,String>()
+    private val model = PastoViewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,20 +21,29 @@ class PastoActivity : AppCompatActivity() {
 
         getExtra()
         setLayout()
+
+        binding.btnElimina.setOnClickListener {
+            model.deletePasto(pasto["tipologiaPasto"]!!,pasto["id"]!!,this)
+        }
+        binding.btnModifica.setOnClickListener {
+            binding.eTQuantita
+        }
+
     }
 
 
 
     private fun getExtra(){
         val bundle = intent.extras!!
-        pasto.put("tipologiaPasto",bundle.getString("tipologiaPasto"))
-        pasto.put("kcal_pasto",bundle.getString("kcal_pasto"))
-        pasto.put("carboidrati",bundle.getString("carboidrati"))
-        pasto.put("proteine",bundle.getString("proteine"))
-        pasto.put("grassi",bundle.getString("grassi"))
-        pasto.put("prodotto",bundle.getString("prodotto"))
-        pasto.put("image",bundle.getString("image"))
-        pasto.put("quantità",bundle.getString("quantità"))
+        pasto.put("tipologiaPasto",bundle.getString("tipologiaPasto")!!)
+        pasto.put("id", bundle.getString("id")!!)
+        pasto.put("kcal_pasto",bundle.getString("kcal_pasto")!!)
+        pasto.put("carboidrati",bundle.getString("carboidrati")!!)
+        pasto.put("proteine",bundle.getString("proteine")!!)
+        pasto.put("grassi",bundle.getString("grassi")!!)
+        pasto.put("prodotto",bundle.getString("prodotto")!!)
+        pasto.put("image",bundle.getString("image")!!)
+        pasto.put("quantità",bundle.getString("quantità")!!)
     }
 
     private fun setLayout(){

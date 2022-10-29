@@ -55,4 +55,15 @@ class ProdottoDB : FirebaseDB(){
             return null
         }
     }
+
+    suspend fun deleteProdotti(date : String, utente : String, tipologiaPasto: String, id : String) : Boolean{
+        prodotti_collection.document(date+'_'+utente)
+            .collection(tipologiaPasto).document(id).delete()
+            .addOnSuccessListener(){status = true}
+            .addOnFailureListener { status = false}
+            .await()
+        return status
+
+    }
+
 }

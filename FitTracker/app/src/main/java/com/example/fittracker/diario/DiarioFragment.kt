@@ -7,7 +7,10 @@ import android.content.Intent
 import android.graphics.drawable.AnimationDrawable
 import android.graphics.drawable.ColorDrawable
 import android.opengl.Visibility
+import android.os.Build
 import android.os.Bundle
+import android.os.VibrationEffect
+import android.os.Vibrator
 import android.system.Os.close
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -23,6 +26,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.window.Dialog
+import androidx.core.content.ContextCompat.getSystemService
 import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
@@ -224,6 +228,7 @@ class DiarioFragment : Fragment() {
             requireActivity().finish()
         }
         binding.colazione.setOnLongClickListener{
+            vibrate()
             openScelti("COLAZIONE")
             true
         }
@@ -233,6 +238,7 @@ class DiarioFragment : Fragment() {
             requireActivity().finish()
         }
         binding.pranzo.setOnLongClickListener{
+            vibrate()
             openScelti("PRANZO")
             true
         }
@@ -242,6 +248,7 @@ class DiarioFragment : Fragment() {
             requireActivity().finish()
         }
         binding.cena.setOnLongClickListener{
+            vibrate()
             openScelti("CENA")
             true
         }
@@ -252,6 +259,7 @@ class DiarioFragment : Fragment() {
             requireActivity().finish()
         }
         binding.spuntino.setOnLongClickListener{
+            vibrate()
             openScelti("SPUNTINO")
             true
         }
@@ -261,6 +269,7 @@ class DiarioFragment : Fragment() {
             startActivity(intent)
         }
         binding.esercizio.setOnLongClickListener{
+            vibrate()
             openScelti("ESERCIZIO")
             true
         }
@@ -306,6 +315,7 @@ class DiarioFragment : Fragment() {
     private fun prepareIntent(position: Int, pasto: String) : Intent{
         var intent = Intent(requireContext(), PastoActivity::class.java)
         intent.putExtra("tipologiaPasto", pasto)
+        intent.putExtra("id",model.selezionati.value!![position].id)
         intent.putExtra("kcal_pasto", model.selezionati.value!![position].calorie.toString())
         intent.putExtra("carboidrati", model.selezionati.value!![position].carboidrati.toString())
         intent.putExtra("proteine", model.selezionati.value!![position].proteine.toString())
@@ -314,6 +324,13 @@ class DiarioFragment : Fragment() {
         intent.putExtra("prodotto", model.selezionati.value!![position].nome)
         intent.putExtra("quantità", model.selezionati.value!![position].quantita.toString())
         return intent
+    }
+
+    private fun vibrate(){
+        val vibrator = requireContext().getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
+        val vibrationEffect1 = VibrationEffect.createOneShot(100, VibrationEffect.DEFAULT_AMPLITUDE)
+        vibrator.cancel()
+        vibrator.vibrate(vibrationEffect1)
     }
 
 
