@@ -4,7 +4,9 @@ import android.content.Context
 import android.provider.ContactsContract
 import android.util.Log
 import android.widget.Toast
+import androidx.lifecycle.MutableLiveData
 import com.example.fittracker.model.Diario
+import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.firestore.ktx.toObjects
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -12,6 +14,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 import kotlinx.coroutines.withContext
 import me.moallemi.tools.daterange.date.DateRange
+import me.moallemi.tools.daterange.localdate.LocalDateRange
 import java.time.LocalDate
 import java.util.Date
 
@@ -77,15 +80,22 @@ class DiarioDB : FirebaseDB() {
         return null
     }
 
-    suspend fun getStatistiche(inizio: String, fine: String){
-        val data_inizio = Date(2000, 5, 18)
-        val data_fine = Date(2022, 5, 18)
-        val range = DateRange(data_inizio,data_fine)
+    suspend fun getStatistiche(inizio: String, fine: String, utente:String) : ArrayList<Diario>{
+        val data_inizio = LocalDate.parse(inizio)
+        val data_fine = LocalDate.parse(fine)
+        val statistiche = ArrayList<Diario>()
+        var diario : Diario?
+        val range = LocalDateRange(data_inizio,data_fine)
         for(d in range){
+            diario = diari_collection
+                .document(d.toString()+"_"+utente)
+                .get().await().toObject<Diario>()
+            if(diario != null)
+                statistiche.add(diario)
 
         }
 
-
+        return statistiche
 
     }
 }
