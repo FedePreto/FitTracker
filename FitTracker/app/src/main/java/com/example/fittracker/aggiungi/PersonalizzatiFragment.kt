@@ -142,6 +142,7 @@ class PersonalizzatiFragment : Fragment() {
         val btnElimina = dialogLayout.findViewById<Button>(R.id.buttonElimina)
         val btnAggiungiDiario = dialogLayout.findViewById<Button>(R.id.btnAggiungiDiario)
         val layout_info = dialogLayout.findViewById<LinearLayout>(R.id.layout_info)
+        val layout_quantita  = dialogLayout.findViewById<LinearLayout>(R.id.layout_quantita)
         if(bottone == "clickItem"){
             btnAggiungiLista.text = "AGGIORNA\nNELLA LISTA"
             layout_info.visibility = View.GONE
@@ -154,11 +155,31 @@ class PersonalizzatiFragment : Fragment() {
             btnElimina.visibility = View.GONE
             btnAggiungiDiario.visibility = View.GONE
         }
+        var flag_2 = false
+        btnAggiungiDiario.setOnClickListener {
+            layout_quantita.visibility = View.VISIBLE
+            layout_info.visibility = View.GONE
+            val quantita = dialogLayout.findViewById<EditText>(R.id.etNumQuantita).text.toString().toDouble()
+            if(quantita != 0.0 && quantita.toString() != ""){
+                model.setPastoOnDB(requireArguments().getString("bottone")!!,model.personalizzatiLiveData.value!![position].id,
+                    model.personalizzatiLiveData.value!![position].image,model.personalizzatiLiveData.value!![position].nome,
+                    model.personalizzatiLiveData.value!![position].calorie,model.personalizzatiLiveData.value!![position].proteine,
+                    model.personalizzatiLiveData.value!![position].carboidrati,model.personalizzatiLiveData.value!![position].grassi,
+                    quantita,requireContext())
+            }else {
+                if (flag_2)
+                    Toast.makeText(requireContext(),"Per favore inserisci una quantità diversa da $quantita se desideri aggiungere il prodotto al Diario",Toast.LENGTH_LONG).show()
+                flag_2 = true
+            }
+
+        }
 
 
 
-
+        var flag=false
         btnAggiungiLista.setOnClickListener {
+            layout_info.visibility = View.VISIBLE
+            layout_quantita.visibility = View.GONE
             var kcal_salva = kcal.text.toString()
             var carbo_salva = carbo.text.toString()
             var proteine_salva = proteine.text.toString()
@@ -166,9 +187,14 @@ class PersonalizzatiFragment : Fragment() {
             var titolo = titolo.text.toString().trim()
             if(kcal_salva != "" && carbo_salva != "" && proteine_salva != "" && grassi_salva != "" && titolo != "") {
                 if(bottone == "clickItem"){
-                    model.updatePersonalizzatoOnDB(
-                        id,requireArguments().getString("bottone")!!, titolo, kcal_salva.toDouble(),
-                        proteine_salva.toDouble(), carbo_salva.toDouble(), grassi_salva.toDouble(), requireContext())
+                    if (flag){
+                        model.updatePersonalizzatoOnDB(
+                            id,requireArguments().getString("bottone")!!, titolo, kcal_salva.toDouble(),
+                            proteine_salva.toDouble(), carbo_salva.toDouble(), grassi_salva.toDouble(), requireContext())
+                        flag=false
+                    }else{
+                        flag=true
+                    }
                 }else {
                     model.setPersonalizzatiOnDB(
                         requireArguments().getString("bottone")!!, titolo, kcal_salva.toDouble(),
@@ -181,6 +207,7 @@ class PersonalizzatiFragment : Fragment() {
                 Toast.makeText(requireContext(),"Per favore completa tutti i campi prima di salvare",Toast.LENGTH_LONG).show()
 
         }
+
 
 
         builder.setNegativeButton("Annulla"){ dialog, which ->
@@ -196,7 +223,10 @@ class PersonalizzatiFragment : Fragment() {
         builder.setView(dialogLayout)
         builder.show()
 
+
     }
+
+
 
     private fun hideLayout(edit : Array<EditText>,position : Int){
         edit[0].setText(model.personalizzatiLiveData.value!![position].nome)

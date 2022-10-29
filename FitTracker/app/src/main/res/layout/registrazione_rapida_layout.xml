@@ -18,6 +18,7 @@
 
         <LinearLayout
                 android:orientation="vertical"
+                android:layout_marginBottom="5dp"
                 android:id="@+id/layout_info"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
@@ -151,7 +152,6 @@
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:gravity="center"
-                    android:layout_marginBottom="5dp"
                     android:background="@drawable/input_bg_green"
                     android:layout_height="wrap_content">
 
@@ -178,13 +178,23 @@
                         />
             </LinearLayout>
 
+        </LinearLayout>
+
+
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
             <LinearLayout
+                    android:id="@+id/layout_quantita"
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
+                    android:visibility="gone"
                     android:gravity="center"
                     android:background="@drawable/input_bg_green"
                     android:layout_height="match_parent"
-                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="5dp"
                     tools:layout_editor_absoluteX="20dp">
 
                 <TextView
@@ -202,56 +212,57 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="18sp"
+                        android:text="0"
                         android:hint="Obbligatorio"
                         android:gravity="right"
                         android:inputType="numberDecimal"
                         android:ems="10"
-                        android:id="@+id/editTextNumber"
+                        android:id="@+id/etNumQuantita"
                         android:layout_weight="1"/>
             </LinearLayout>
-        </LinearLayout>
-
-
-        <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
 
             <Button
                     android:text="AGGIUNGI\n AL DIARIO"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="5dp"
                     android:textColor="@color/green_primary"
                     android:textStyle="bold"
                     android:textSize="19dp"
-                    android:layout_width="wrap_content"
-                    android:layout_marginRight="5dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/animazione_4"
                     android:id="@+id/btnAggiungiDiario"
                     android:layout_weight="1"/>
 
-            <Button
-                    android:text="AGGIUNGI\nALLA LISTA"
-                    android:textColor="@color/green_primary"
-                    android:textStyle="bold"
-                    android:textSize="19dp"
-                    android:layout_width="wrap_content"
-                    android:layout_marginRight="5dp"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/animazione_4"
-                    android:id="@+id/btnAggiungi"
-                    android:layout_weight="1"/>
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-            <Button
-                    android:text="ELIMINA\nDALLA LISTA"
-                    android:textColor="@color/green_primary"
-                    android:textStyle="bold"
-                    android:textSize="19dp"
-                    android:layout_marginLeft="5dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/animazione_4"
-                    android:id="@+id/buttonElimina"
-                    android:layout_weight="1"/>
+                <Button
+                        android:text="AGGIUNGI\nALLA LISTA"
+                        android:textColor="@color/green_primary"
+                        android:textStyle="bold"
+                        android:textSize="19dp"
+                        android:layout_width="wrap_content"
+                        android:layout_marginRight="5dp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/animazione_4"
+                        android:id="@+id/btnAggiungi"
+                        android:layout_weight="1"/>
+
+                <Button
+                        android:text="ELIMINA\nDALLA LISTA"
+                        android:textColor="@color/green_primary"
+                        android:textStyle="bold"
+                        android:textSize="19dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/animazione_4"
+                        android:id="@+id/buttonElimina"
+                        android:layout_weight="1"/>
+            </LinearLayout>
         </LinearLayout>
 
     </LinearLayout>

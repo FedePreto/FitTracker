@@ -92,7 +92,7 @@ class AggiungiViewModel : ViewModel() {
 
     fun setPastoOnDB(
         tipologiaPasto: String, foodId: String, image: String, nome: String/*label*/, calorie: Double, proteine: Double,
-        carboidrati: Double, grassi: Double, quantita: Int, context: Context
+        carboidrati: Double, grassi: Double, quantita: Double, context: Context
     ) {
         viewModelScope.launch {
             if (prodottoDB.setPasto(

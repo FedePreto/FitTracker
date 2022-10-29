@@ -22,7 +22,7 @@ class ProdottoDB : FirebaseDB(){
         proteine : Double,
         carboidrati : Double,
         grassi: Double,
-        quanita: Int
+        quanita: Double
     ): Boolean {
         val prodotto = hashMapOf<String, Any>(
             "id" to foodId,

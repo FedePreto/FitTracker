@@ -86,8 +86,8 @@ class PreferitiFragment : Fragment() {
         var flag = false
         dialog.btnAddDiario.setOnClickListener {
             dialog.layout_quantita.visibility = View.VISIBLE
-            val quantita = dialog.editTextQuantita.text.toString().toInt()
-            if(quantita != 0 && quantita.toString() != "") {
+            val quantita = dialog.editTextQuantita.text.toString().toDouble()
+            if(quantita != 0.0 && quantita.toString() != "") {
                 model.setPastoOnDB(requireArguments().getString("bottone")!!,model.preferitiLiveData.value!![position].id,
                     model.preferitiLiveData.value!![position].image,model.preferitiLiveData.value!![position].nome,
                     model.preferitiLiveData.value!![position].calorie,model.preferitiLiveData.value!![position].proteine,
