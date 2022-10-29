@@ -269,7 +269,6 @@ class DiarioFragment : Fragment() {
         }
         binding.esercizio.setOnLongClickListener{
             openScelti("ESERCIZIO")
-            Toast.makeText(requireContext(),"ciao",Toast.LENGTH_LONG).show()
             true
         }
     }
@@ -288,7 +287,8 @@ class DiarioFragment : Fragment() {
             rVSelezionati.adapter = adapter
             adapter.setOnItemClickListener(object : MyAdapterSelezionati.onItemClickListener{
                 override fun onItemClick(position: Int) {
-                    startActivity(Intent(requireContext(),PastoActivity::class.java))
+                    val intent = prepareIntent(position, pasto)
+                    startActivity(intent)
                 }
             })
         }
@@ -301,20 +301,19 @@ class DiarioFragment : Fragment() {
     }
 
 
-/*
-    private fun prepareIntent(position: Int) : Intent{
+
+    private fun prepareIntent(position: Int, pasto: String) : Intent{
         var intent = Intent(requireContext(), PastoActivity::class.java)
-        intent.putExtra("tipologiaPasto", requireArguments().getString("bottone"))
-        intent.putExtra("brand", model.foodLiveData.value!![position].brand)
-        intent.putExtra("category", model.foodLiveData.value!![position].category)
-        intent.putExtra("foodContents", model.foodLiveData.value!![position].foodContentsLabel)
-        intent.putExtra("foodId", model.foodLiveData.value!![position].foodId)
-        intent.putExtra("image", model.foodLiveData.value!![position].image)
-        intent.putExtra("knownAs", model.foodLiveData.value!![position].knownAs)
-        intent.putExtra("label", model.foodLiveData.value!![position].label)
-        intent.putExtra("nutrients", model.foodLiveData.value!![position].nutrients)
+        intent.putExtra("tipologiaPasto", pasto)
+        intent.putExtra("kcal_pasto", model.selezionati.value!![position].calorie.toString())
+        intent.putExtra("carboidrati", model.selezionati.value!![position].carboidrati.toString())
+        intent.putExtra("proteine", model.selezionati.value!![position].proteine.toString())
+        intent.putExtra("grassi", model.selezionati.value!![position].grassi.toString())
+        intent.putExtra("image", model.selezionati.value!![position].image)
+        intent.putExtra("prodotto", model.selezionati.value!![position].nome)
+        intent.putExtra("quantità", model.selezionati.value!![position].quantita.toString())
         return intent
-    }*/
+    }
 
 
 }
