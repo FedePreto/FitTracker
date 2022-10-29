@@ -17,12 +17,15 @@ import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.launch
 import java.time.LocalDate
 import java.time.Period
+import java.util.*
+import kotlin.collections.ArrayList
 
 class DiarioViewModel : ViewModel() {
 
     private val diarioDB = DiarioDB()
     private val utenteDB = UtenteDB()
     private val dietaDB = DietaDB()
+    private val prodottoDB = ProdottoDB()
     private val auth = FirebaseAuth.getInstance()
 
     private var _carboidratiMax = MutableLiveData<Int>()
@@ -56,6 +59,10 @@ class DiarioViewModel : ViewModel() {
     val result : LiveData<String> = Transformations.map(rimanenti){
         x -> if (x.toInt() < 0) "Nessuna" else x
     }
+
+    private var _selezionati = MutableLiveData<List<Pasto>>()
+    val selezionati : LiveData<List<Pasto>>
+        get() = _selezionati
 
     fun setDiarioOnDB(grassiTot:Int = 0, proteineTot:Int = 0,
                       carboidratiTot:Int = 0, chiloCalorieEsercizio:Int = 0, chiloCalorieColazione:Int = 0,
@@ -112,6 +119,13 @@ class DiarioViewModel : ViewModel() {
             _carboidratiMax.value = ((diario.value!!.fabbisogno*(dieta.perc_carb.toDouble()/100.0)) / 4).toInt() //1gr di carbo = 4Kcal
             _proteineMax.value = ((diario.value!!.fabbisogno*(dieta.perc_prot.toDouble()/100.0)) / 4).toInt() //1gr di prot = 4Kcal
             _grassiMax.value = ((diario.value!!.fabbisogno*(dieta.perc_prot.toDouble()/100.0)) / 9).toInt()//1gr di grassi = 9Kcal
+        }
+    }
+
+
+    fun getItemSelezionati(pasto: String){
+        viewModelScope.launch {
+            _selezionati.value = prodottoDB.getProdotti(LocalDate.now().toString(),auth.currentUser!!.email.toString(),pasto)
         }
     }
 

@@ -8,6 +8,7 @@ import android.graphics.drawable.AnimationDrawable
 import android.graphics.drawable.ColorDrawable
 import android.opengl.Visibility
 import android.os.Bundle
+import android.system.Os.close
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -16,6 +17,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
@@ -24,11 +26,15 @@ import androidx.compose.ui.window.Dialog
 import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.fittracker.R
 import com.example.fittracker.aggiungi.AggiungiActivity
 import com.example.fittracker.databinding.FragmentDiarioBinding
 import com.example.fittracker.model.Diario
+import com.example.fittracker.model.Pasto
+import com.example.fittracker.prodotto.ProdottoActivity
 import com.mikhaellopez.circularprogressbar.CircularProgressBar
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_diario.*
@@ -230,15 +236,27 @@ class DiarioFragment : Fragment() {
             startActivity(intent)
             requireActivity().finish()
         }
+        binding.colazione.setOnLongClickListener{
+            openScelti("COLAZIONE")
+            true
+        }
         binding.pranzo.setOnClickListener {
             intent.putExtra("bottone","PRANZO")
             startActivity(intent)
             requireActivity().finish()
         }
+        binding.pranzo.setOnLongClickListener{
+            openScelti("PRANZO")
+            true
+        }
         binding.cena.setOnClickListener {
             intent.putExtra("bottone","CENA")
             startActivity(intent)
             requireActivity().finish()
+        }
+        binding.cena.setOnLongClickListener{
+            openScelti("CENA")
+            true
         }
 
         binding.spuntino.setOnClickListener {
@@ -246,11 +264,47 @@ class DiarioFragment : Fragment() {
             startActivity(intent)
             requireActivity().finish()
         }
+        binding.spuntino.setOnLongClickListener{
+            openScelti("SPUNTINO")
+            true
+        }
 
         binding.esercizio.setOnClickListener {
             intent.putExtra("bottone","ESERCIZIO")
             startActivity(intent)
         }
+        binding.esercizio.setOnLongClickListener{
+            openScelti("ESERCIZIO")
+            Toast.makeText(requireContext(),"ciao",Toast.LENGTH_LONG).show()
+            true
+        }
     }
+
+    private fun openScelti(pasto: String){
+        val builder= AlertDialog.Builder(requireContext())
+        builder.create()
+        val inflater = layoutInflater
+        val dialogLayout = inflater.inflate(R.layout.del_mod_selezionati_layout, null)
+        model.getItemSelezionati(pasto)
+        val rVSelezionati = dialogLayout.findViewById<RecyclerView>(R.id.recyclerViewSelezionati)
+            rVSelezionati.layoutManager=LinearLayoutManager(requireContext())
+            rVSelezionati.setHasFixedSize(true)
+        val selezionatiObserver = Observer<List<Pasto>>{
+            val adapter = MyAdapterSelezionati(model.selezionati.value!! as ArrayList<Pasto>)
+            rVSelezionati.adapter = adapter
+            adapter.setOnItemClickListener(object : MyAdapterSelezionati.onItemClickListener{
+                override fun onItemClick(position: Int) {
+                    Toast.makeText(requireContext(),"Pisellone $position",Toast.LENGTH_LONG).show()
+                }
+            })
+        }
+        model.selezionati.observe(viewLifecycleOwner, selezionatiObserver)
+        with(builder){
+            setTitle("$pasto")
+            setView(dialogLayout)
+            show()
+        }
+    }
+
 
 }

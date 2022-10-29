@@ -43,19 +43,6 @@ class DieteViewModel : ViewModel() {
     }
 
 
-    fun calcoloMacro(kcal: Int, dieta:String, perc_carboidrati: Int, perc_proteine: Int, perc_grassi:Int){
-        val kcal_giornaliere = kcal
-        val perc_carb = perc_carboidrati
-        val perc_prot = perc_proteine
-        val perc_gras = perc_grassi
-
-        val grammi_carboidrati = ((kcal_giornaliere*perc_carb)/100)/4
-        val grammi_proteine = ((kcal_giornaliere*perc_prot)/100)/4
-        val grammi_grassi = ((kcal_giornaliere*perc_gras)/100)/9
-
-    }
-
-
 
 
 }
