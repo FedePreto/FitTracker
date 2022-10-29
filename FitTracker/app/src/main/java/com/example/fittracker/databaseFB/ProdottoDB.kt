@@ -56,6 +56,28 @@ class ProdottoDB : FirebaseDB(){
         }
     }
 
+    suspend fun updatePasto(
+        utente : String,
+        date : String,
+        tipologiaPasto: String,
+        foodId : String,
+        quanita: Double
+    ): Boolean {
+        val prodotto = hashMapOf<String, Any>(
+            "quantita" to quanita
+        )
+        withContext(Dispatchers.IO) {
+            prodotti_collection
+                .document(date+'_'+utente)
+                .collection(tipologiaPasto)
+                .document(foodId)
+                .update(prodotto)
+                .addOnSuccessListener { status = true }
+                .addOnFailureListener { status = false }
+        }.await()
+        return status
+    }
+
     suspend fun deleteProdotti(date : String, utente : String, tipologiaPasto: String, id : String) : Boolean{
         prodotti_collection.document(date+'_'+utente)
             .collection(tipologiaPasto).document(id).delete()

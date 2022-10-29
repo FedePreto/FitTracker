@@ -60,31 +60,7 @@ class DieteFragment : Fragment() {
         }
         model.dieteLiveData.observe(viewLifecycleOwner,dietaObserver)
 
-       // dietaList = arrayListOf()
-        //getUserdata()
     }
-/*
-   private fun getUserdata() {
-        for (i in imageId.indices) {
-            val news = News(imageId[i], heading[i])
-            newArrayList.add(news)
-        }
-
-        val adapter = MyAdapter(newArrayList)
-        newRecyclerView.adapter = adapter
-        adapter.setOnItemClickListener(object : MyAdapter.onItemClickListener {
-            override fun onItemClick(position: Int) {
-
-                Toast.makeText(requireContext(), "Hai cliccato sull'elemento $position", Toast.LENGTH_SHORT).show()
-
-                val intent = Intent(requireContext(), ProdottoActivity::class.java)
-                intent.putExtra("heading", newArrayList[position].headings)
-                intent.putExtra("imageID", newArrayList[position].titleImage)
-                intent.putExtra("news", news[position])
-                startActivity(intent)
-            }
-        })
-    }*/
 
     private fun openDettagliDieta(position: Int){
                 val builder = AlertDialog.Builder(requireContext())

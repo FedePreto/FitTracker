@@ -211,7 +211,7 @@ class ProfiloActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener 
     override fun onBackPressed() {
         super.onBackPressed()
         startActivity(Intent(this, HomeActivity::class.java))
-        finish()            
+        finish()
 
     }
 

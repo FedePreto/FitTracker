@@ -39,10 +39,6 @@ class PersonalizzatiFragment : Fragment() {
     //Prova adapter
     private lateinit var recyclerViewPersonalizzati: RecyclerView
 
-    lateinit var imageId: Array<Int>
-    lateinit var heading: Array<String>
-    lateinit var news : Array<String>
-
     val model = AggiungiViewModel()
 
 

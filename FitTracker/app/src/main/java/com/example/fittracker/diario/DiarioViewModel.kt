@@ -80,7 +80,6 @@ class DiarioViewModel : ViewModel() {
    fun getUserDiarioDB(){
        viewModelScope.launch {
            _diario.value = diarioDB.getUserDiario(auth.currentUser?.email!!)
-
        }
 
     }

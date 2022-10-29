@@ -78,6 +78,8 @@ class DiarioFragment : Fragment() {
         glasses = arrayOf(binding.glass1,binding.glass2,binding.glass3,binding.glass4,
                             binding.glass5,binding.glass6,binding.glass7,binding.glass8)
 
+
+
         onClickGlass()
         setOnclickPasti()
 
@@ -291,6 +293,7 @@ class DiarioFragment : Fragment() {
                 override fun onItemClick(position: Int) {
                     val intent = prepareIntent(position, pasto)
                     startActivity(intent)
+                    requireActivity().finish()
                 }
             })
         }

@@ -1,12 +1,18 @@
 package com.example.fittracker.pasto
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
+import android.view.View
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import com.bumptech.glide.Glide
 import com.example.fittracker.R
 import com.example.fittracker.databinding.ActivityPastoBinding
+import com.example.fittracker.home.HomeActivity
+import kotlinx.android.synthetic.main.add_delete_layout.*
 
 class PastoActivity : AppCompatActivity() {
 
@@ -22,11 +28,28 @@ class PastoActivity : AppCompatActivity() {
         getExtra()
         setLayout()
 
+        val observerDelete = Observer<Boolean>{
+            startActivity(Intent(this,HomeActivity::class.java))
+            finish()
+        }
+        model.diarioChanged.observe(this,observerDelete)
+
         binding.btnElimina.setOnClickListener {
             model.deletePasto(pasto["tipologiaPasto"]!!,pasto["id"]!!,this)
         }
+
+        var flag = false
         binding.btnModifica.setOnClickListener {
-            binding.eTQuantita
+            binding.layoutQuantita.visibility = View.VISIBLE
+            val quantita = binding.eTQuantita.text.toString().toDouble()
+            if(quantita != 0.0 && quantita.toString() != "" && quantita != pasto["quantità"]!!.toDouble())
+                model.updatePasto(pasto["tipologiaPasto"]!!,pasto["id"]!!,quantita,this)
+            else {
+                if (flag)
+                    Toast.makeText(this,"Inserisci una quantita diversa da $quantita\naltrimenti se desideri eliminare il prodotto clicca su elimina",
+                        Toast.LENGTH_LONG).show()
+                flag = true
+            }
         }
 
     }
@@ -58,5 +81,10 @@ class PastoActivity : AppCompatActivity() {
         binding.tVProteine.text = pasto["proteine"].toString()
         binding.tVGrassi.text = pasto["grassi"].toString()
         binding.eTQuantita.setText(pasto["quantità"].toString())
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        startActivity(Intent(this,HomeActivity::class.java))
     }
 }

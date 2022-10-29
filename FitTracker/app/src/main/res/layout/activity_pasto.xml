@@ -39,7 +39,7 @@
                 android:layout_height="wrap_content">
             <TextView
                     android:text="KCal:"
-                    android:gravity="center"
+                    android:gravity="right"
                     android:textStyle="bold"
                     android:textSize="18sp"
                     android:layout_width="150dp"
@@ -63,7 +63,7 @@
                 android:layout_height="wrap_content">
             <TextView
                     android:text="Carboidrati (gr):"
-                    android:gravity="center"
+                    android:gravity="right"
                     android:textStyle="bold"
                     android:textSize="18sp"
                     android:layout_width="150dp"
@@ -87,7 +87,7 @@
                 android:layout_height="wrap_content">
             <TextView
                     android:text="Proteine (gr):"
-                    android:gravity="center"
+                    android:gravity="right"
                     android:textStyle="bold"
                     android:textSize="18sp"
                     android:layout_width="150dp"
@@ -110,7 +110,7 @@
                 android:layout_height="wrap_content">
             <TextView
                     android:text="Grassi (gr):"
-                    android:gravity="center"
+                    android:gravity="right"
                     android:textStyle="bold"
                     android:textSize="18sp"
                     android:layout_width="150dp"
@@ -126,6 +126,8 @@
         </LinearLayout>
         <LinearLayout
                 android:padding="5dp"
+                android:id="@+id/layoutQuantita"
+                android:visibility="gone"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="20dp"
                 android:orientation="horizontal"
@@ -159,24 +161,28 @@
                 android:gravity="center"
                 android:layout_height="match_parent"
                 android:id="@+id/linearLayout10">
+
             <Button
                     android:layout_marginLeft="20dp"
-                    android:background="@drawable/animazione_5"
+                    android:background="@drawable/animazione_4"
                     android:layout_marginRight="5dp"
                     android:text="Elimina"
                     android:textSize="18sp"
                     android:layout_width="120dp"
-                    android:layout_height="80dp" android:id="@+id/btn_elimina"
-            />
+                    android:layout_height="80dp"
+                    android:id="@+id/btn_elimina"
+                    />
+
             <Button
                     android:text="Modifica"
-                    android:background="@drawable/animazione_5"
+                    android:background="@drawable/animazione_4"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="5dp"
                     android:textSize="18sp"
                     android:layout_width="120dp"
-                    android:layout_height="80dp" android:id="@+id/btn_modifica"
-            />
+                    android:layout_height="80dp"
+                    android:id="@+id/btn_modifica"
+                    />
         </LinearLayout>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
