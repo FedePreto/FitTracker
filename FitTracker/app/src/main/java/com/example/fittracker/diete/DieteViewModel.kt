@@ -22,7 +22,7 @@ class DieteViewModel : ViewModel() {
     val dieteLiveData : LiveData<List<Dieta>>
         get() = _dieteLiveData
 
-    private var _indiceDieta = MutableLiveData<Int>
+    private var _indiceDieta = MutableLiveData<Int>()
     val indiceDieta : LiveData<Int>
         get() = _indiceDieta
 
