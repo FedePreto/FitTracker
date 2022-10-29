@@ -159,7 +159,9 @@
                                 style="?android:attr/progressBarStyleHorizontal"
                                 android:layout_width="91dp"
                                 android:progressTint="@color/app_red"
-                                android:progress="50"
+                                android:min="0"
+                                android:max="100"
+                                android:progress="@{viewModel.diario.carboidratiTot}"
                                 android:layout_height="wrap_content"
                                 android:id="@+id/pgBar_carboidrati"/>
 
@@ -224,7 +226,6 @@
                                 style="?android:attr/progressBarStyleHorizontal"
                                 android:layout_width="80dp"
                                 android:progressTint="@color/app_yellow_dark"
-                                android:progress="50"
                                 android:layout_height="wrap_content"
                                 android:id="@+id/pgBar_proteine"/>
 
@@ -288,7 +289,6 @@
                                 style="?android:attr/progressBarStyleHorizontal"
                                 android:layout_width="80dp"
                                 android:progressTint="@color/app_blue_dark"
-                                android:progress="50"
                                 android:layout_height="wrap_content"
                                 android:id="@+id/pgBar_grassi"/>
 

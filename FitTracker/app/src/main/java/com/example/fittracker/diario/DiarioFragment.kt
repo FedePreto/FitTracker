@@ -97,7 +97,6 @@ class DiarioFragment : Fragment() {
                     model.setAssunte()
                     model.setRimanenti()
                     model.setMacro()
-                    updateProgressBar(binding.progressCalorie,binding.pgBarCarboidrati,binding.pgBarProteine,binding.pgBarGrassi)
                     contatore += 1
                 }else {
                     Log.e("Logger", "contatore viene azzerato")
@@ -106,8 +105,12 @@ class DiarioFragment : Fragment() {
             }
         }
         model.diario.observe(viewLifecycleOwner,diarioObserver)
-
-
+        var contatoreProgressi = 0
+        val diarioSettatoObserver = Observer<Boolean>{
+            if(contatoreProgressi == 3) updateProgressBar(progress_calorie, pgBar_carboidrati, pgBar_proteine, pgBar_grassi)
+            contatoreProgressi += 1
+        }
+        model.diarioSettato.observe(viewLifecycleOwner,diarioSettatoObserver)
 
 
     }
@@ -192,6 +195,15 @@ class DiarioFragment : Fragment() {
     }
 
     private fun updateProgressBar(progrssBar : CircularProgressBar,progressBarCarbo : ProgressBar,ProgressBarProteine : ProgressBar,ProgrssBarGrassi: ProgressBar){
+        progressBarCarbo.max = model.carboidratiMax.value!!
+        progressBarCarbo.progress = model.diario.value!!.carboidratiTot
+
+        ProgressBarProteine.max = model.carboidratiMax.value!!
+        ProgressBarProteine.progress = model.diario.value!!.proteineTot
+
+        ProgrssBarGrassi.max = model.grassiMax.value!!
+        ProgrssBarGrassi.progress = model.diario.value!!.grassiTot
+
         progrssBar.apply {
             progressMax = model.diario.value!!.fabbisogno.toFloat()
             setProgressWithAnimation(model.assunte.value!!.toFloat(), 1500)

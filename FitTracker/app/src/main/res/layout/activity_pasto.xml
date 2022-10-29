@@ -146,7 +146,7 @@
             <EditText
                     android:text="0"
                     android:gravity="center"
-                    android:inputType="numberSigned"
+                    android:inputType="numberDecimal"
                     android:textSize="18sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" android:id="@+id/eT_quantita"

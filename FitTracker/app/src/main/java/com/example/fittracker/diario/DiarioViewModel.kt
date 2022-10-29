@@ -65,6 +65,10 @@ class DiarioViewModel : ViewModel() {
     val selezionati : LiveData<List<Pasto>>
         get() = _selezionati
 
+    private var _diarioSettato = MutableLiveData<Boolean>()
+    val diarioSettato : LiveData<Boolean>
+        get() = _diarioSettato
+
     fun setDiarioOnDB(grassiTot:Int = 0, proteineTot:Int = 0,
                       carboidratiTot:Int = 0, chiloCalorieEsercizio:Int = 0, chiloCalorieColazione:Int = 0,
                       chiloCaloriePranzo:Int = 0, chiloCalorieCena:Int = 0, chiloCalorieSpuntino:Int = 0,
@@ -91,13 +95,17 @@ class DiarioViewModel : ViewModel() {
     }
 
     fun setAssunte(){
+        _diarioSettato.value = false
         val assunte = diario.value!!.chiloCalorieCena + diario.value!!.chiloCalorieColazione + diario.value!!.chiloCaloriePranzo + diario.value!!.chiloCalorieSpuntino
         _assunte.value = assunte.toString()
+        _diarioSettato.value = !(_diarioSettato.value)!!
     }
 
     fun setRimanenti(){
         val rimanenti = diario.value!!.fabbisogno - assunte.value!!.toInt()
         _rimanenti.value = rimanenti.toString()
+        _diarioSettato.value = !(_diarioSettato.value)!!
+
 
     }
 
@@ -108,6 +116,7 @@ class DiarioViewModel : ViewModel() {
             _carboidratiMax.value = ((diario.value!!.fabbisogno*(dieta.perc_carb.toDouble()/100.0)) / 4).toInt() //1gr di carbo = 4Kcal
             _proteineMax.value = ((diario.value!!.fabbisogno*(dieta.perc_prot.toDouble()/100.0)) / 4).toInt() //1gr di prot = 4Kcal
             _grassiMax.value = ((diario.value!!.fabbisogno*(dieta.perc_prot.toDouble()/100.0)) / 9).toInt()//1gr di grassi = 9Kcal
+            _diarioSettato.value = !(_diarioSettato.value)!!
         }
     }
 
