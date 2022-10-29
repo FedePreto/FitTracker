@@ -10,6 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.SearchView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
@@ -57,6 +58,7 @@ class PreferitiFragment : Fragment() {
         recyclerViewPreferiti.layoutManager = LinearLayoutManager(requireContext())
         recyclerViewPreferiti.setHasFixedSize(true)
 
+
         val preferitiObserver = Observer<List<Pasto>>{
             val adapter = MyAdapterPrefPers(model.preferitiLiveData.value!! as ArrayList<Pasto>)
             recyclerViewPreferiti.adapter = adapter
@@ -67,6 +69,8 @@ class PreferitiFragment : Fragment() {
             })
         }
         model.preferitiLiveData.observe(viewLifecycleOwner,preferitiObserver)
+
+
     }
 
 
@@ -115,5 +119,6 @@ class PreferitiFragment : Fragment() {
 
         dialog.show()
     }
+
 
 }

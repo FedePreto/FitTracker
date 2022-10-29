@@ -15,11 +15,6 @@ import com.example.fittracker.databinding.FragmentAltezzaBinding
 import com.example.fittracker.databinding.FragmentSessoBinding
 
 
-/**
- * A simple [Fragment] subclass.
- * Use the [AltezzaFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class AltezzaFragment : Fragment() {
     lateinit var binding: FragmentAltezzaBinding
     val args: AltezzaFragmentArgs by navArgs()
@@ -38,16 +33,27 @@ class AltezzaFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         var utente = args.utente
+        utente.altezza=0
         binding.imageView36.isVisible = utente.agonista
         binding.btAvantiAltezza.setOnClickListener {
             var altezza = binding.eTAltezza.text.toString()
             if(altezza != ""){
-                utente.altezza = altezza.toInt()
-                val action =AltezzaFragmentDirections.actionAltezzaFragmentToPesoAttualeFragment(utente)
-                view.findNavController().navigate(action)
+                if(altezza.toInt()<=300 && altezza.toInt()>=130){
+                    utente.altezza = altezza.toInt()
+                    val action =AltezzaFragmentDirections.actionAltezzaFragmentToPesoAttualeFragment(utente)
+                    view.findNavController().navigate(action)
+                }else{
+                    Toast.makeText(context, "Inserisci un valore compreso tra 300 e 130",Toast.LENGTH_LONG).show()
+                    binding.eTAltezza.setText("")
+                }
             }else
                 Toast.makeText(context, "Per favore, completa il campo", Toast.LENGTH_SHORT).show()
             }
+    }
+
+    override fun onStop() {
+        super.onStop()
+        binding.eTAltezza.setText("")
     }
 
 

@@ -56,19 +56,6 @@ class PersonalizzatiFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         model.getPersonalizzati(requireArguments().getString("bottone")!!)
-        val searchBar = binding.searchBar2
-        searchBar.queryHint = "Cerca il tuo prodotto personalizzato"
-        searchBar.onActionViewCollapsed()
-        searchBar.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
-            override fun onQueryTextSubmit(query: String?): Boolean {
-                //model.getProdottoByName(query!!,"")
-                return true
-            }
-
-            override fun onQueryTextChange(query: String?): Boolean {
-                return true
-            }
-        })
 
         recyclerViewPersonalizzati = binding.gridProdotto
         recyclerViewPersonalizzati.layoutManager = LinearLayoutManager(requireContext())

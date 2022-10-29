@@ -18,6 +18,7 @@ import com.example.fittracker.model.Utente
 class StileVitaFragment : Fragment() {
     lateinit var binding: FragmentStileVitaBinding
     val utente = Utente()
+    var checked = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,6 +35,8 @@ class StileVitaFragment : Fragment() {
    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
        super.onViewCreated(view, savedInstanceState)
        utente.LAF = 0.0
+       utente.agonista = false
+       binding.imageView16.isVisible = false
        var listener = View.OnClickListener { v ->
            when(v.id){
                R.id.rB_sedentario -> utente.LAF = 1.2
@@ -64,14 +67,18 @@ class StileVitaFragment : Fragment() {
        }
 
        binding.sBAgonistico.setOnCheckedChangeListener { _, isChecked ->
-           utente.agonista = isChecked
            binding.imageView16.isVisible = isChecked
+           checked = isChecked
        }
 
    }
     override fun onStop() {
         super.onStop()
         binding.GruppoRadioObbiettivo.clearCheck()
+        utente.agonista = checked
+        binding.imageView16.isVisible = checked
+        binding.sBAgonistico.isChecked = false
+        binding.imageView16.isVisible = false
     }
 
 }

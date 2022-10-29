@@ -39,6 +39,9 @@ class DatiPersonaliFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         var utente = args.utente
+        utente.data_nascita=""
+        utente.nome=""
+        utente.cognome=""
         binding.imageView28.isVisible = utente.agonista
         //calendario
         var date = ""
@@ -71,6 +74,13 @@ class DatiPersonaliFragment : Fragment() {
 
 
 
+    }
+
+    override fun onStop() {
+        super.onStop()
+        binding.tvDataNascita.text=""
+        binding.tEName.setText("")
+        binding.tESurname.setText("")
     }
 
 

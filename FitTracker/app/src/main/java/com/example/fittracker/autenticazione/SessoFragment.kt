@@ -30,6 +30,7 @@ class SessoFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         var utente = args.utente
+        utente.sesso=""
         binding.imageView20.isVisible = utente.agonista
         var listener = View.OnClickListener { v ->
             when(v.id){

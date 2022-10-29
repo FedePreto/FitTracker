@@ -75,7 +75,9 @@
                 android:layout_marginStart="30dp" app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginEnd="30dp">
             <RadioGroup android:layout_width="match_parent"
-                        android:gravity="center" android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:id="@+id/GruppoRadio_Sport"
+                        android:layout_height="match_parent"
             >
                 <RadioButton
                         android:text="Calcio"

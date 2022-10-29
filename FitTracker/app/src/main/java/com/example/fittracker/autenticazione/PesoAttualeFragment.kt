@@ -1,6 +1,7 @@
 package com.example.fittracker.autenticazione
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -34,36 +35,32 @@ class PesoAttualeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         utente = args.utente
+        utente.peso_attuale=0.0
         binding.imageView44.isVisible = utente.agonista
+        Log.d("Utente",utente.toString())
         val action = setNavigation(utente.agonista)
             binding.btAvantiPesoAttuale.setOnClickListener {
                 val pesoAttuale = binding.eTPesoAttuale.text.toString()
                 if (pesoAttuale != "") {
+                    if(pesoAttuale.toDouble()<=200.0 && pesoAttuale.toDouble()>=30.0){
                         utente.peso_attuale = pesoAttuale.toDouble()
                         view.findNavController().navigate(action)
+                    }else{
+                        Toast.makeText(context, "Per favore inserisci un peso compreso tra 30 Kg e 200 Kg", Toast.LENGTH_SHORT).show()
+                        binding.eTPesoAttuale.setText("")
+                    }
                 } else
                     Toast.makeText(context, "Per favore, completa il campo", Toast.LENGTH_SHORT).show()
             }
     }
-
-    /*fun setNavigation(obbietivo: Int): NavDirections? {
-        when (obbietivo) {
-            0 -> return PesoAttualeFragmentDirections.actionPesoAttualeFragmentToPesoObbFragment(utente)
-            1 ->{
-                val intent = Intent(this@PesoAttualeFragment.context, RegisterActivity::class.java)
-                intent.putExtra("utente",utente)
-                this@PesoAttualeFragment.startActivity(intent)
-                return null
-                }
-            2 -> return PesoAttualeFragmentDirections.actionPesoAttualeFragmentToPesoObbFragment(utente)
-            else -> return null
-        }
-    }
-
-     */
     fun setNavigation(isAgonista: Boolean): NavDirections {
         if(isAgonista) return PesoAttualeFragmentDirections.actionPesoAttualeFragmentToPesoObbFragment(utente)
         return PesoAttualeFragmentDirections.actionPesoAttualeFragmentToRegisterActivity(utente)
+    }
+
+    override fun onStop() {
+        super.onStop()
+        binding.eTPesoAttuale.setText("")
     }
 
 }
