@@ -67,7 +67,6 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth-ktx'
     implementation 'androidx.core:core-ktx:1.9.0'
     implementation 'androidx.appcompat:appcompat:1.5.1'
-    implementation 'com.google.android.material:material:1.6.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.5.1'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1'
@@ -119,6 +118,10 @@ dependencies {
     implementation 'com.mikhaellopez:circularprogressbar:3.1.0'
     //Animation Bottom navigation
     implementation 'nl.joery.animatedbottombar:library:1.0.9'
+    //Date range
+    implementation 'me.moallemi.tools:kotlin-date-range:1.0.0'
+    //material
+    implementation 'com.google.android.material:material:1.7.0'
 
 
 

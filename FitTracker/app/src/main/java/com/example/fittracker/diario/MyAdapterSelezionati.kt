@@ -34,10 +34,6 @@ class MyAdapterSelezionati(private val selezionatiList : ArrayList<Pasto>): Recy
             .placeholder(R.drawable.no_image)
             .into(holder.immagine)
         holder.tvNomeProdotto.text = currentItem.nome
-        holder.tvCalorie.text = currentItem.calorie.toString()
-        holder.tvCarboidrati.text = currentItem.carboidrati.toString()
-        holder.tvProteine.text = currentItem.proteine.toString()
-        holder.tvGrassi.text = currentItem.grassi.toString()
 
     }
 
@@ -50,10 +46,6 @@ class MyAdapterSelezionati(private val selezionatiList : ArrayList<Pasto>): Recy
 
         val immagine : ShapeableImageView = itemView.findViewById(R.id.immagine)
         val tvNomeProdotto : TextView = itemView.findViewById(R.id.tvNomeProdotto)
-        val tvCalorie : TextView = itemView.findViewById(R.id.tvCaloriePers)
-        val tvCarboidrati : TextView = itemView.findViewById(R.id.tvCarboPers)
-        val tvProteine : TextView = itemView.findViewById(R.id.tvProtPers)
-        val tvGrassi : TextView = itemView.findViewById(R.id.tvGrassiPers)
 
         init{
             itemView.setOnClickListener {

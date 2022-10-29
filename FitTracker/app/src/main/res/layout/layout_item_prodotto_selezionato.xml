@@ -2,149 +2,51 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
                                                    xmlns:app="http://schemas.android.com/apk/res-auto"
                                                    xmlns:tools="http://schemas.android.com/tools"
-                                                   android:layout_width="wrap_content"
-                                                   android:layout_height="wrap_content"
+                                                   android:layout_width="match_parent"
+                                                   android:layout_height="match_parent"
                                                    android:layout_margin="0dp">
 
     <LinearLayout
-            android:padding="5dp"
-            android:orientation="horizontal"
-            android:layout_width="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toBottomOf="parent"
-    >
-        <com.google.android.material.imageview.ShapeableImageView
-                android:layout_width="162dp"
-                android:layout_height="match_parent"
-                android:id="@+id/immagine"
-                android:scaleType="centerCrop"
-                android:adjustViewBounds="true"
-                app:shapeAppearanceOverlay="@style/RoundCorner"
-                android:src="@drawable/a"
-        >
-        </com.google.android.material.imageview.ShapeableImageView>
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginStart="10dp" android:layout_marginEnd="10dp">
         <LinearLayout
-                android:gravity="left"
-                android:layout_marginLeft="2dp"
-                android:orientation="vertical"
+
+                android:padding="5dp"
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
         >
+            <com.google.android.material.imageview.ShapeableImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:id="@+id/immagine"
+                    android:scaleType="centerCrop"
+                    android:adjustViewBounds="true"
+                    app:shapeAppearanceOverlay="@style/RoundCorner"
+                    android:src="@drawable/a"
+            >
+            </com.google.android.material.imageview.ShapeableImageView>
             <TextView
-                    android:gravity="center"
+                    android:layout_gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="2dp"
+                    android:layout_marginLeft="20dp"
                     android:text="@string/noInfo"
                     android:textSize="20dp"
                     android:textStyle="bold"
                     android:textColor="@color/black"
                     android:id="@+id/tvNomeProdotto"
             />
-            <LinearLayout
-                    android:gravity="center"
-                    android:orientation="horizontal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-            >
-                <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:padding="2dp"
-                        android:gravity="center"
-                        android:text="CALORIE [Kcal] : "
-                        android:textSize="15dp"
-                        android:textStyle="bold"
-                        android:textColor="@color/gray_deep"
-                        android:id="@+id/textViewcat"
-                />
-                <TextView
-                        android:text="0"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:padding="2dp"
-                        android:textSize="15dp"
-                        android:textColor="@color/gray_deep"
-                        android:id="@+id/tvCaloriePers"
-                />
-            </LinearLayout>
-            <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-                <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:padding="2dp"
-                        android:gravity="center"
-                        android:text="CARBOIDRATI [gr] : "
-                        android:textSize="15dp"
-                        android:textStyle="bold"
-                        android:textColor="@color/gray_deep"
-                        android:id="@+id/textView" tools:layout_conversion_absoluteHeight="24dp"
-                        tools:layout_conversion_absoluteWidth="136dp"/>
-                <TextView
-                        android:text="0"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:padding="2dp"
-                        android:textSize="15dp"
-                        android:textColor="@color/gray"
-                        android:id="@+id/tvCarboPers" tools:layout_conversion_absoluteHeight="24dp"
-                        tools:layout_conversion_absoluteWidth="4dp"/>
-            </LinearLayout>
-            <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-                <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:padding="2dp"
-                        android:text="PROTEINE [gr] : "
-                        android:gravity="center"
-                        android:textSize="15dp"
-                        android:textStyle="bold"
-                        android:textColor="@color/gray_deep"
-                        android:id="@+id/textVew81"
-                />
-                <TextView
-                        android:text="0"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:padding="2dp"
-                        android:textSize="15dp"
-                        android:textColor="@color/gray_deep"
-                        android:id="@+id/tvProtPers"
-                />
-            </LinearLayout>
-            <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-                <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:padding="2dp"
-                        android:text="GRASSI [gr] : "
-                        android:gravity="center"
-                        android:textSize="15dp"
-                        android:textStyle="bold"
-                        android:textColor="@color/gray_deep"
-                        android:id="@+id/textView80" tools:layout_conversion_absoluteHeight="24dp"
-                        tools:layout_conversion_absoluteWidth="111dp"/>
-                <TextView
-                        android:text="0"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:padding="2dp"
-                        android:textSize="15dp"
-                        android:textColor="@color/gray"
-                        android:id="@+id/tvGrassiPers" tools:layout_conversion_absoluteHeight="24dp"
-                        tools:layout_conversion_absoluteWidth="4dp"/>
-            </LinearLayout>
         </LinearLayout>
+        <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" app:srcCompat="@drawable/separatore" android:id="@+id/imageView29"
+                android:layout_weight="1" tools:ignore="ImageContrastCheck"/>
     </LinearLayout>
 
 
