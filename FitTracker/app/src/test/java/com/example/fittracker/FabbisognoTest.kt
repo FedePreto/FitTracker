@@ -1,12 +1,11 @@
 package com.example.fittracker
 
 import com.example.fittracker.model.Utente
-import com.example.fittracker.profilo.ProfiloViewModel
 import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
 
-class UtenteDbTest {
+class FabbisognoTest {
 
     @Before
     fun setUp(){

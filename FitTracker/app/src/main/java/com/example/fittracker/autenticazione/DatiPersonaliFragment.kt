@@ -47,7 +47,7 @@ class DatiPersonaliFragment : Fragment() {
         binding.imageView28.isVisible = utente.agonistico
         //calendario
         val oggi = LocalDate.now()
-        val minima = LocalDate.of(oggi.year-15,oggi.monthValue-1,oggi.dayOfMonth)
+        val minima = LocalDate.of(oggi.year-15,oggi.monthValue,oggi.dayOfMonth)
 
         var date= LocalDate.now()
         var data_selezionata = ""
