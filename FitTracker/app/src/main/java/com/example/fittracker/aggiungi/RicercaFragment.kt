@@ -16,6 +16,7 @@ import com.example.fittracker.R
 import com.example.fittracker.databinding.FragmentRicercaBinding
 import com.example.fittracker.model.Json_Parsing.Prodotto
 import com.example.fittracker.prodotto.ProdottoActivity
+import com.example.fittracker.scanner.ScannerActivity
 
 
 class RicercaFragment : Fragment() {
@@ -74,6 +75,10 @@ class RicercaFragment : Fragment() {
         }
         model.foodLiveData.observe(viewLifecycleOwner,foodObserver)
 
+
+        binding.btnScanner.setOnClickListener{
+            startActivity(Intent(requireContext(),ScannerActivity::class.java))
+        }
 
 
     }
