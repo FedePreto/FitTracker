@@ -3,12 +3,10 @@ package com.example.fittracker.diario
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.fittracker.R
-import com.example.fittracker.model.Dieta
 import com.example.fittracker.model.Pasto
 import com.google.android.material.imageview.ShapeableImageView
 
@@ -45,7 +43,7 @@ class MyAdapterSelezionati(private val selezionatiList : ArrayList<Pasto>): Recy
     class MyViewHolder(itemView : View, listener: onItemClickListener): RecyclerView.ViewHolder(itemView){
 
         val immagine : ShapeableImageView = itemView.findViewById(R.id.immagine)
-        val tvNomeProdotto : TextView = itemView.findViewById(R.id.tvNomeProdotto)
+        val tvNomeProdotto : TextView = itemView.findViewById(R.id.tvNomeEsercizio)
 
         init{
             itemView.setOnClickListener {

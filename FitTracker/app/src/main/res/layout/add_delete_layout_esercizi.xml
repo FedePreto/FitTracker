@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
                                                    xmlns:app="http://schemas.android.com/apk/res-auto"
-                                                   android:layout_width="match_parent"
-                                                   android:layout_height="match_parent"
-                                                    android:background="@color/transparent">
+                                                   android:layout_width="wrap_content"
+                                                   android:layout_height="wrap_content"
+                                                   android:background="@color/transparent">
 
     <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -15,8 +15,8 @@
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
@@ -25,20 +25,9 @@
             <LinearLayout
                     android:orientation="vertical"
                     android:gravity="center"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    >
-
-                <com.google.android.material.imageview.ShapeableImageView
-                        android:layout_width="350dp"
-                        android:layout_height="250dp"
-                        android:id="@+id/ProductImage"
-                        android:scaleType="centerCrop"
-                        android:adjustViewBounds="true"
-                        app:shapeAppearanceOverlay="@style/RoundCorner"
-
-                        android:src="@drawable/a">
-                </com.google.android.material.imageview.ShapeableImageView>
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+            >
 
                 <TextView
                         android:gravity="center"
@@ -47,7 +36,7 @@
                         android:textStyle="bold"
                         android:textSize="25dp"
                         android:textColor="@color/black"
-                        android:id="@+id/Product"/>
+                        android:id="@+id/esercizio"/>
 
                 <TextView
                         android:gravity="center"
@@ -57,7 +46,6 @@
                         android:textStyle="bold"
                         android:textColor="@color/green_primary"
                         android:id="@+id/textViewMessaggio"/>
-
                 <LinearLayout
                         android:id="@+id/layout_quantita"
                         android:visibility="invisible"
@@ -66,8 +54,7 @@
                         android:layout_height="wrap_content">
 
                     <TextView
-                            android:text="Quantità: "
-                            android:gravity="center"
+                            android:text="Durata : "
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textStyle="bold"
@@ -77,7 +64,6 @@
                             android:layout_weight="1"/>
 
                     <EditText
-                            android:gravity="center"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:inputType="numberDecimal"

@@ -36,10 +36,12 @@
 
             <LinearLayout
                     android:orientation="vertical"
+                    android:gravity="center"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
                 <TextView
+                        android:gravity="center"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="2dp"
@@ -49,13 +51,15 @@
                         android:layout_marginStart="2dp"
                         android:textStyle="bold"
                         android:textColor="@color/black"
-                        android:id="@+id/tvNomeProdotto"/>
+                        android:id="@+id/tvNomeEsercizio"/>
 
                 <TableLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                >
 
                     <TableRow
+
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content">
 
@@ -76,7 +80,7 @@
                                 android:padding="2dp"
                                 android:textSize="15dp"
                                 android:textColor="@color/gray_deep"
-                                android:id="@+id/tvCaloriePers"/>
+                                android:id="@+id/tvKcal_h"/>
 
                         <TextView
                                 android:layout_width="wrap_content"
@@ -121,7 +125,7 @@
                                 android:layout_height="wrap_content"
                                 android:padding="2dp"
                                 android:textSize="15dp"
-                                android:textColor="@color/gray"
+                                android:textColor="@color/gray_deep"
                                 android:layout_marginStart="5dp"
                                 android:id="@+id/tvCarboPers"/>
 
@@ -142,7 +146,7 @@
                                 android:layout_height="wrap_content"
                                 android:padding="2dp"
                                 android:textSize="15dp"
-                                android:textColor="@color/gray"
+                                android:textColor="@color/gray_deep"
                                 android:layout_marginStart="5dp"
                                 android:id="@+id/tvGrassiPers"/>
 
