@@ -1,5 +1,6 @@
 package com.example.fittracker.databaseFB
 
+import android.util.Log
 import com.example.fittracker.model.Json_Parsing.Prodotto
 import com.example.fittracker.model.Pasto
 import com.google.firebase.firestore.ktx.toObjects
@@ -34,6 +35,7 @@ class ProdottoDB : FirebaseDB(){
             "grassi" to grassi,
             "quantita" to quanita
         )
+        Log.d("prodotto", prodotto.toString())
         withContext(Dispatchers.IO) {
             prodotti_collection
                 .document(date+'_'+utente)
