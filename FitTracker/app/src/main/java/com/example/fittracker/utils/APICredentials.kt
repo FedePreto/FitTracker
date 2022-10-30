@@ -16,6 +16,6 @@ class APICredentials {
         @JvmStatic
         val BASE_URL_ESERCIZI: String = "https://api.api-ninjas.com"
         @JvmStatic
-        val API_KEY_ESERCIZI: String = "fdCw2Uz0PQ29LOxZAUbMGA==VQub6B3tOd8IjuxE"
+        val API_KEY_ESERCIZI: String = "WF3P9samgfmtcd0NlopT2w==OaTsIyDXQC9EvQKf"
     }
 }

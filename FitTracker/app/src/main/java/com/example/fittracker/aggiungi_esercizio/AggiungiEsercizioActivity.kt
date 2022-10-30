@@ -1,4 +1,4 @@
-package com.example.fittracker.aggiungi
+package com.example.fittracker.aggiungi_esercizio
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -6,11 +6,15 @@ import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.example.fittracker.R
+import com.example.fittracker.aggiungi.PersonalizzatiFragment
+import com.example.fittracker.aggiungi.PreferitiFragment
+import com.example.fittracker.aggiungi.RicercaFragment
 import com.example.fittracker.databinding.ActivityAggiungiBinding
+import com.example.fittracker.databinding.ActivityAggiungiEsercizioBinding
 import com.example.fittracker.home.HomeActivity
 import nl.joery.animatedbottombar.AnimatedBottomBar
 
-class AggiungiActivity : AppCompatActivity() {
+class AggiungiEsercizioActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityAggiungiBinding
     val ricercaFragment = RicercaFragment()
@@ -28,7 +32,6 @@ class AggiungiActivity : AppCompatActivity() {
 
         if (intent.getStringExtra("bottone") != null)
             binding.aggToolbar.title =  intent.getStringExtra("bottone")
-
 
         var bottomNav = binding.bottomNavigation
         setContentView(binding.root)
@@ -98,7 +101,7 @@ class AggiungiActivity : AppCompatActivity() {
 
     override fun onBackPressed() {
         super.onBackPressed()
-        startActivity(Intent(this,HomeActivity::class.java))
+        startActivity(Intent(this, HomeActivity::class.java))
     }
 
 

@@ -29,7 +29,6 @@ class ProdottoActivity : AppCompatActivity() {
             model.setPastoOnDB(prodotto["tipologiaPasto"]!!, prodotto["foodId"]!!, prodotto["image"]!!,
                             prodotto["label"]!!, nutrients["calorie"]!!, nutrients["proteine"]!!, nutrients["carboidrati"]!!,
                             nutrients["grassi"]!!, binding.etQuantita.text.toString().toDouble(), this)
-            Log.d("quantita",binding.etQuantita.text.toString())
             finish()
         }
 

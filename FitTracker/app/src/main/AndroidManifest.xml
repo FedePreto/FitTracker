@@ -17,6 +17,9 @@
             android:supportsRtl="true"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity
+                android:name=".AggiungiEsercizioActivity"
+                android:exported="false"/>
+        <activity
                 android:name=".esercizio.EsercizioActivity"
                 android:exported="false"/>
         <activity

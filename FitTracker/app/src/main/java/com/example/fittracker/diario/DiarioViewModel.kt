@@ -131,10 +131,12 @@ class DiarioViewModel : ViewModel() {
         val today = LocalDate.now()
         val birthday: LocalDate = LocalDate.parse(utente.data_nascita)
         val period: Period = Period.between(birthday, today)
-        if(utente.sesso == "uomo")
-            return (66 + (13.7 * utente.peso_attuale) + (5 * utente.altezza) - (6.8 * period.years)) * utente.LAF
+        if(utente.sesso == "Uomo")
+            return ((66 + (13.7 * utente.peso_attuale) + (5 * utente.altezza) - (6.8 * period.years)) * utente.LAF)
         else
-            return (65 + (9.6 * utente.peso_attuale) + (1.8 * utente.altezza) - (4.7 * period.years)) * utente.LAF
+            return ((65 + (9.6 * utente.peso_attuale) + (1.8 * utente.altezza) - (4.7 * period.years)) * utente.LAF)
+
+
 
 
     }
