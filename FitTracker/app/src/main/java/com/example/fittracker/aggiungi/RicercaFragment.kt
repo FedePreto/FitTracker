@@ -50,7 +50,6 @@ class RicercaFragment : Fragment() {
         searchBar.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(query: String?): Boolean {
                 model.getFoodFromNameorUPC(query!!,"")
-                requireActivity().currentFocus!!.clearFocus()
                 return true
             }
 

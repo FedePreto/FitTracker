@@ -2,6 +2,7 @@ package com.example.fittracker.prodotto
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.databinding.DataBindingUtil
 import com.bumptech.glide.Glide
 import com.example.fittracker.R
@@ -28,6 +29,7 @@ class ProdottoActivity : AppCompatActivity() {
             model.setPastoOnDB(prodotto["tipologiaPasto"]!!, prodotto["foodId"]!!, prodotto["image"]!!,
                             prodotto["label"]!!, nutrients["calorie"]!!, nutrients["proteine"]!!, nutrients["carboidrati"]!!,
                             nutrients["grassi"]!!, binding.etQuantita.text.toString().toDouble(), this)
+            Log.d("quantita",binding.etQuantita.text.toString())
             finish()
         }
 
@@ -71,10 +73,10 @@ class ProdottoActivity : AppCompatActivity() {
         binding.tvBrand.text = prodotto.get("brand")
         binding.tvCategory.text = prodotto.get("category")
         binding.tvDescription.text = prodotto.get("foodContents")
-        binding.tvCalorie.text = ((nutrients.get("calorie")!!.times(100.0)).roundToInt()/100.0).toString()
-        binding.tvProteine.text = ((nutrients.get("proteine")!!.times(100.0)).roundToInt()/100.0).toString()
-        binding.tvCarboidrati.text = ((nutrients.get("carboidrati")!!.times(100.0)).roundToInt()/100.0).toString()
-        binding.tvGrassi.text = ((nutrients.get("grassi")!!.times(100.0)).roundToInt()/100.0).toString()
+        binding.tvCalorie.text = (nutrients.get("calorie")!!).toString()
+        binding.tvProteine.text = (nutrients.get("proteine")!!).toString()
+        binding.tvCarboidrati.text = (nutrients.get("carboidrati")!!).toString()
+        binding.tvGrassi.text = (nutrients.get("grassi")!!).toString()
     }
 
 }
