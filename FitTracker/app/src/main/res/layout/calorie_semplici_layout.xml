@@ -53,9 +53,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" android:id="@+id/tew673"
             />
-            <TextView
-                    android:hint="0
-"
+            <EditText
+                    android:hint="Obbligatorio"
+                    android:layout_marginLeft="20dp"
                     android:layout_marginRight="30dp"
                     android:textSize="18sp"
                     android:gravity="right"
