@@ -119,12 +119,14 @@ class ProfiloActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener 
                     month = (date.monthValue - 1)
                     day = date.dayOfMonth
                     if(date.year <= minima.year && date <= oggi){
-                        binding.tVDataNascita.text = "$mYear-"+(mMonth +1)+"-$mDay"
+                        binding.tVDataNascita.text = "$mDay-"+(mMonth +1)+"-$mYear"
                         data_selezionata = date.toString()
                         binding.tVDataNascita.error = null
+                        binding.btnSalva.isEnabled=true
                     }else{
                         binding.tVDataNascita.text = ""
                         binding.tVDataNascita.error = "Seleziona una data corretta"
+                        binding.btnSalva.isEnabled=false
                     }
 
                 }, year, month, day)
