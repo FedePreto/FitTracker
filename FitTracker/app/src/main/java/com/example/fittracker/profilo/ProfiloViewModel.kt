@@ -64,11 +64,11 @@ class ProfiloViewModel : ViewModel() {
         }
     }
 
-    private fun calculateFabbisogno(data_nascita :String, sesso: String,peso_attuale: Double,altezza:Int,LAF:Double) : Int{
+    fun calculateFabbisogno(data_nascita :String, sesso: String,peso_attuale: Double,altezza:Int,LAF:Double) : Int{
         val today = LocalDate.now()
         val birthday: LocalDate = LocalDate.parse(data_nascita)
         val period: Period = Period.between(birthday, today)
-        if(sesso == "uomo")
+        if(sesso == "Uomo")
             return ((66 + (13.7 * peso_attuale) + (5 * altezza) - (6.8 * period.years)) * LAF).toInt()
         else
             return ((65 + (9.6 * peso_attuale) + (1.8 * altezza) - (4.7 * period.years)) * LAF).toInt()
