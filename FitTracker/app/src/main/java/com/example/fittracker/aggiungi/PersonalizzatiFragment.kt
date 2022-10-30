@@ -1,11 +1,6 @@
 package com.example.fittracker.aggiungi
 
-import android.annotation.SuppressLint
-import android.app.Dialog
-import android.content.Intent
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.text.Layout
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -14,21 +9,15 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.LinearLayout
-import android.widget.SearchView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import androidx.core.text.set
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.example.fittracker.R
 import com.example.fittracker.databinding.FragmentPersonalizzatiBinding
-import com.example.fittracker.model.Json_Parsing.Prodotto
 import com.example.fittracker.model.Pasto
-import com.example.fittracker.prodotto.ProdottoActivity
-import kotlinx.android.synthetic.main.add_delete_layout.*
 
 
 class PersonalizzatiFragment : Fragment() {
@@ -92,7 +81,7 @@ class PersonalizzatiFragment : Fragment() {
         val inflater = layoutInflater
         val dialogLayout = inflater.inflate(R.layout.calorie_semplici_layout, null)
         val kcal = dialogLayout.findViewById<EditText>(R.id.eT_kcal)
-        val titolo = dialogLayout.findViewById<EditText>(R.id.eT_titolo)
+        val titolo = dialogLayout.findViewById<EditText>(R.id.eT_nomeEs)
 
 
         with(builder){
@@ -120,7 +109,7 @@ class PersonalizzatiFragment : Fragment() {
         val carbo = dialogLayout.findViewById<EditText>(R.id.eT_carb)
         val proteine = dialogLayout.findViewById<EditText>(R.id.eT_proteine)
         val grassi = dialogLayout.findViewById<EditText>(R.id.eT_grassi)
-        val titolo = dialogLayout.findViewById<EditText>(R.id.eT_titolo)
+        val titolo = dialogLayout.findViewById<EditText>(R.id.eT_nomeEs)
         val btnAggiungiLista = dialogLayout.findViewById<Button>(R.id.btnAggiungi)
         val btnElimina = dialogLayout.findViewById<Button>(R.id.buttonElimina)
         val btnAggiungiDiario = dialogLayout.findViewById<Button>(R.id.btnAggiungiDiario)

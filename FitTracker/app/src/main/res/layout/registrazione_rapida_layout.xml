@@ -51,7 +51,7 @@
                         android:inputType="textPersonName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/eT_titolo"
+                        android:id="@+id/eT_nomeEs"
                         />
             </LinearLayout>
 
