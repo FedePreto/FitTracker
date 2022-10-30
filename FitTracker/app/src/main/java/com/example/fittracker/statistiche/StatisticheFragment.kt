@@ -7,7 +7,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
+import androidx.room.InvalidationTracker
 import com.example.fittracker.R
 import com.example.fittracker.databinding.FragmentStatisticheBinding
 import com.example.fittracker.model.Diario
@@ -42,7 +45,11 @@ class StatisticheFragment : Fragment() {
         setDate()
 
 
+
+
         binding.btnFiltra.setOnClickListener{
+            binding.progress.visibility=View.VISIBLE
+            Toast.makeText(context,"Sto sfogliando le tue pagine...",Toast.LENGTH_SHORT).show()
             binding.tVDataFine.error = null
             binding.tVDataiInizio.error = null
             if(binding.tVDataFine.text == "" && binding.tVDataiInizio.text ==""){
@@ -68,6 +75,14 @@ class StatisticheFragment : Fragment() {
             binding.tVDataiInizio.error = null
             binding.tVDataFine.error = null
         }
+
+
+        val getObserver = Observer<Boolean> {
+            binding.progress.visibility = View.GONE
+            Toast.makeText(context,"Filtraggio completato",Toast.LENGTH_SHORT).show()
+        }
+
+        model.getStatistiche.observe(viewLifecycleOwner,getObserver)
 
 
     }

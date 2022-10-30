@@ -42,6 +42,10 @@ class StatisticheViewModel : ViewModel() {
     val giorniAcqua : LiveData<Int>
         get() = _giorniAcqua
 
+    private var _getStatistiche = MutableLiveData<Boolean>()
+    val getStatistiche : LiveData<Boolean>
+        get() = _getStatistiche
+
 
 
     fun ottieniStatistihe(data_inizio: String, data_fine: String)  {
@@ -69,6 +73,7 @@ class StatisticheViewModel : ViewModel() {
                 }
 
             }
+            _getStatistiche.value = true
         }
     }
 
