@@ -48,8 +48,8 @@ class DieteFragment : Fragment() {
         recyclerViewDiete = binding.gridDiete
         recyclerViewDiete.layoutManager = GridLayoutManager(requireContext(),2)
         recyclerViewDiete.setHasFixedSize(true)
-        val dietaObserver = Observer<List<Dieta>>{
-            val adapter = MyAdapterDiete(model.dieteLiveData.value!! as ArrayList<Dieta>)
+        val indiceDietaObserver = Observer<Int>{
+            val adapter = MyAdapterDiete(model.dieteLiveData.value!! as ArrayList<Dieta>, model.indiceDieta.value!!)
             recyclerViewDiete.adapter = adapter
             adapter.setOnItemClickListener(object : MyAdapterDiete.onItemClickListener{
                 override fun onItemClick(position: Int) {
@@ -58,7 +58,7 @@ class DieteFragment : Fragment() {
 
             })
         }
-        model.dieteLiveData.observe(viewLifecycleOwner,dietaObserver)
+        model.indiceDieta.observe(viewLifecycleOwner,indiceDietaObserver)
 
     }
 
@@ -87,6 +87,7 @@ class DieteFragment : Fragment() {
                         setTitle("Dettagli della dieta")
                         setPositiveButton("Seleziona"){dialog, which ->
                             model.updateDieta(model.dieteLiveData.value!![position].titolo, requireContext())
+                            model.getDiete()
 
                         }
                         setNegativeButton("Annulla"){ dialog, which ->

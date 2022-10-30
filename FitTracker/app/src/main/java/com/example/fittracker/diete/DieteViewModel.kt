@@ -27,9 +27,14 @@ class DieteViewModel : ViewModel() {
         get() = _indiceDieta
 
 
-    fun getDiete(){
+    fun getDiete() {
         viewModelScope.launch {
             _dieteLiveData.value = dieteDB.getDiete()
+            val utente = utenteDB.getUtente(user!!.email.toString())
+            for (i in 0.._dieteLiveData.value!!.size-1) {
+                if (_dieteLiveData.value!![i].titolo == utente.dieta)
+                    _indiceDieta.value = i
+            }
         }
     }
 
@@ -44,18 +49,6 @@ class DieteViewModel : ViewModel() {
              else Toast.makeText(context, "Qualcosa è andato storto, riprovare.", Toast.LENGTH_LONG).show()
          }
     }
-
-    fun setDietaView(){
-        viewModelScope.launch {
-            val utente = utenteDB.getUtente(user!!.email.toString())
-            for (i in 0.._dieteLiveData.value!!.size){
-                if(_dieteLiveData.value!![i].titolo == utente.dieta)
-                    _indiceDieta.value = i
-            }
-        }
-
-    }
-
 
 
 }

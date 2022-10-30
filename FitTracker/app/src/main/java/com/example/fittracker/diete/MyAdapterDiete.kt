@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -11,7 +12,7 @@ import com.example.fittracker.R
 import com.example.fittracker.model.Dieta
 
 //ArrayList<Diete>
-class MyAdapterDiete(private val dietaList : ArrayList<Dieta>): RecyclerView.Adapter<MyAdapterDiete.MyViewHolder>() {
+class MyAdapterDiete(private val dietaList : ArrayList<Dieta>, private val indiceDiete: Int): RecyclerView.Adapter<MyAdapterDiete.MyViewHolder>() {
 
     private  lateinit var mListener: onItemClickListener //Interfaccia che serve per associare un clickListener agli elementi della recycler view
     interface onItemClickListener{
@@ -32,6 +33,8 @@ class MyAdapterDiete(private val dietaList : ArrayList<Dieta>): RecyclerView.Ada
             .placeholder(R.drawable.no_image)
             .into(holder.productImage)
         holder.titolo_dieta.text = currentItem.titolo
+        if(indiceDiete == position)
+            holder.layout_dieta.setBackgroundResource(R.drawable.animazione_card_selezionata)
 
     }
 
@@ -46,6 +49,7 @@ class MyAdapterDiete(private val dietaList : ArrayList<Dieta>): RecyclerView.Ada
 
         val productImage : ImageView = itemView.findViewById(R.id.immagine)
         val titolo_dieta : TextView = itemView.findViewById(R.id.titolo_dieta)
+        val layout_dieta : LinearLayout = itemView.findViewById(R.id.button)
 
         init{
             itemView.setOnClickListener {
