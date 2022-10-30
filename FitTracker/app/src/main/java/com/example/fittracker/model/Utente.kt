@@ -18,6 +18,6 @@ data class Utente(
         var sport: String?,
         var dieta: String
 
-) : Parcelable {    constructor(): this("","","",0.0,false,"","",0,0.0,"","Mediterranea")
+) : Parcelable {    constructor(): this("","","",0.0,false,"","",0,0.0,"","Climatica")
 
 }
