@@ -1,5 +1,6 @@
 package com.example.fittracker.scanner
 
+import android.content.Intent
 import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -12,6 +13,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.util.isNotEmpty
 import androidx.databinding.DataBindingUtil
 import com.example.fittracker.R
+import com.example.fittracker.aggiungi.AggiungiActivity
 import com.example.fittracker.databinding.ActivityScannerBinding
 import com.google.android.gms.vision.CameraSource
 import com.google.android.gms.vision.Detector
@@ -105,15 +107,27 @@ class ScannerActivity : AppCompatActivity() {
         }
 
         override fun receiveDetections(detections: Detector.Detections<Barcode>) {
-            if(detections != null && detections.detectedItems.isNotEmpty()){
+            if(detections.detectedItems.isNotEmpty()){
                 val qrCodes: SparseArray<Barcode> = detections.detectedItems
                 val code = qrCodes.valueAt(0)
-                textScanResult.text = code.displayValue
+                val intent = Intent(this@ScannerActivity, AggiungiActivity::class.java)
+                intent.putExtra("upc",code.displayValue)
+                intent.putExtra("bottone",intent.extras!!.getString("bottone"))
+                startActivity(intent)
+                finish()
             }else{
                 textScanResult.text = "Nessun codice trovato"
             }
 
         }
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val bottone = intent.extras!!.getString("bottone")
+        val intent = Intent(this@ScannerActivity,AggiungiActivity::class.java)
+        intent.putExtra("bottone",bottone )
+        startActivity(intent)
     }
 
 
