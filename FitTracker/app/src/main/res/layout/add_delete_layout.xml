@@ -86,20 +86,24 @@
                 <LinearLayout
                         android:orientation="horizontal"
                         android:layout_width="match_parent"
+                        android:gravity="center"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="10dp"
-                        >
+                >
 
                     <Button
                             android:text="ANNULLA"
-                            android:layout_marginTop="8dp"
+                            android:background="@drawable/animazione_5"
+                            android:layout_marginRight="8dp"
+                            android:layout_marginTop="5dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:id="@+id/btnAnnulla"
                             android:layout_weight="1"/>
-
                     <Button
                             android:text="AGGIUNGI\n AL DIARIO"
+                            android:background="@drawable/animazione_5"
+                            android:layout_marginRight="8dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:id="@+id/btnAddDiario"
@@ -107,9 +111,10 @@
 
                     <Button
                             android:text="ELIMINA"
+                            android:background="@drawable/animazione_5"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
+                            android:layout_marginTop="5dpdp"
                             android:id="@+id/btnElimina"
                             android:layout_weight="1"/>
                 </LinearLayout>
