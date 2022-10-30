@@ -45,6 +45,10 @@ class RicercaFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        if(requireArguments().getString("upc") != null)
+            model.getFoodFromNameorUPC("",requireArguments().getString("upc")!!)
+
+
         val searchBar = binding.searchBar1
         searchBar.queryHint = "Cerca il tuo prodotto"
         searchBar.onActionViewCollapsed()
@@ -78,7 +82,11 @@ class RicercaFragment : Fragment() {
 
 
         binding.btnScanner.setOnClickListener{
-            startActivity(Intent(requireContext(),ScannerActivity::class.java))
+            val intent = Intent(requireContext(),ScannerActivity::class.java)
+            Log.d("bottone",requireArguments().getString("bottone")!!)
+            intent.putExtra("bottone",requireArguments().getString("bottone"))
+            startActivity(intent)
+            requireActivity().finish()
         }
 
 

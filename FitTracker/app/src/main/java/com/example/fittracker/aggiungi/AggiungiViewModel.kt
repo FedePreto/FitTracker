@@ -48,7 +48,7 @@ class AggiungiViewModel : ViewModel() {
         get() = _personalizzatiLiveData
 
 
-    fun getFoodFromNameorUPC(ingr : String, upc: String) {
+    fun getFoodFromNameorUPC(ingr : String, upc : String) {
 
         RetrofitInstance.api.getFoodFromNameOrUPC(APICredentials.API_ID,APICredentials.API_KEY,ingr,upc)
             .enqueue(object : Callback<Json_FoodList> {
