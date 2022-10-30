@@ -157,7 +157,7 @@
                                 android:layout_height="wrap_content" android:id="@+id/textView15"/>
                         <ProgressBar
                                 style="?android:attr/progressBarStyleHorizontal"
-                                android:layout_width="91dp"
+                                android:layout_width="80dp"
                                 android:progressTint="@color/app_red"
                                 android:min="0"
                                 android:max="100"
