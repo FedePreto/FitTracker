@@ -5,11 +5,14 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.SparseArray
 import android.view.SurfaceHolder
+import android.view.View
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.util.isNotEmpty
+import androidx.databinding.DataBindingUtil
 import com.example.fittracker.R
+import com.example.fittracker.databinding.ActivityScannerBinding
 import com.google.android.gms.vision.CameraSource
 import com.google.android.gms.vision.Detector
 import com.google.android.gms.vision.barcode.Barcode
@@ -22,18 +25,23 @@ class ScannerActivity : AppCompatActivity() {
     private val requestCodeCameraPermission = 1001
     private lateinit var cameraSource : CameraSource
     private lateinit var detector:BarcodeDetector
+    private lateinit var binding: ActivityScannerBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_scanner)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_scanner)
+        binding.cameraSurfaceView.visibility = View.GONE
         if(ContextCompat.checkSelfPermission(this@ScannerActivity,
                 android.Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED){
             chiediPermessi()
         }else{
+
             setupControlli()
         }
     }
 
     private fun setupControlli(){
+        binding.cameraSurfaceView.setZOrderMediaOverlay(true)
+        binding.cameraSurfaceView.visibility = View.VISIBLE
         detector = BarcodeDetector.Builder(this@ScannerActivity).build()
         cameraSource = CameraSource.Builder(this@ScannerActivity,detector)
             .setAutoFocusEnabled(true).build()
@@ -64,35 +72,30 @@ class ScannerActivity : AppCompatActivity() {
     }
 
     private val callBack = object : SurfaceHolder.Callback{
-        override fun surfaceCreated(p0: SurfaceHolder) {
-            try{
-                if (ActivityCompat.checkSelfPermission(
-                        this@ScannerActivity,
-                        android.Manifest.permission.CAMERA
-                    ) != PackageManager.PERMISSION_GRANTED
-                ) {
-                    // TODO: Consider calling
-                    //    ActivityCompat#requestPermissions
-                    // here to request the missing permissions, and then overriding
-                    //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-                    //                                          int[] grantResults)
-                    // to handle the case where the user grants the permission. See the documentation
-                    // for ActivityCompat#requestPermissions for more details.
-                    return
-                }
-                cameraSource.start()
-            }catch (exception:Exception){
-                Toast.makeText(applicationContext,"Ops, qualcosa è andato storto",Toast.LENGTH_SHORT).show()
-            }
+
+        override fun surfaceDestroyed(p0: SurfaceHolder) {
+            cameraSource.stop()
         }
 
         override fun surfaceChanged(p0: SurfaceHolder, p1: Int, p2: Int, p3: Int) {
 
         }
 
-        override fun surfaceDestroyed(surfaceHolder: SurfaceHolder) {
-            cameraSource.stop()
+        override fun surfaceCreated(surfaceHolder: SurfaceHolder) {
+            try{
+                if (ActivityCompat.checkSelfPermission(
+                        this@ScannerActivity,
+                        android.Manifest.permission.CAMERA
+                    ) != PackageManager.PERMISSION_GRANTED
+                ) {
+                    return
+                }
+                cameraSource.start(surfaceHolder)
+            }catch (exception:Exception){
+                Toast.makeText(applicationContext,"Ops, qualcosa è andato storto",Toast.LENGTH_SHORT).show()
+            }
         }
+
     }
 
     private val processor = object :Detector.Processor<Barcode>{
