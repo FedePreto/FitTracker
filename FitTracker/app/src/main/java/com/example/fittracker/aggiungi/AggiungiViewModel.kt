@@ -80,7 +80,7 @@ class AggiungiViewModel : ViewModel() {
 
     }
 
-    fun getEsercizi(name : String) {
+    /*fun getEsercizi(name : String) {
         RetrofitEserciziInstance.api.getEsercizi(APICredentials.API_KEY_ESERCIZI,name)
             .enqueue(object : Callback<EserciziList> {
                 override fun onResponse(call: Call<EserciziList>, response: Response<EserciziList>) {
@@ -98,7 +98,7 @@ class AggiungiViewModel : ViewModel() {
                 }
             })
 
-    }
+    }*/
 
     fun getPreferiti(tipologiaPasto : String){
         viewModelScope.launch {

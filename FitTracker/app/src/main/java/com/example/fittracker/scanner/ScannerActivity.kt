@@ -27,7 +27,6 @@ class ScannerActivity : AppCompatActivity(), ZXingScannerView.ResultHandler {
 
     var scannerView : ZXingScannerView? = null
 
-    private val requestCodeCameraPermission = 1001
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         scannerView = ZXingScannerView(this)

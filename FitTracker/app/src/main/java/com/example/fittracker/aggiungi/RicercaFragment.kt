@@ -64,7 +64,7 @@ class RicercaFragment : Fragment() {
         }
 
 
-
+/*
         val searchBar = binding.searchBar1
         searchBar.queryHint = "Cerca il tuo prodotto"
         searchBar.onActionViewCollapsed()
@@ -82,7 +82,7 @@ class RicercaFragment : Fragment() {
             override fun onQueryTextChange(query: String?): Boolean {
                 return true
             }
-        })
+        })*/
 
         newRecyclerView = binding.gridProdotto
         newRecyclerView.layoutManager = LinearLayoutManager(requireContext())
@@ -111,19 +111,20 @@ class RicercaFragment : Fragment() {
              */
             val intent = Intent(requireContext().applicationContext,ScannerActivity::class.java)
             startActivity(intent)
+            }
 
-            val result = intent.getStringExtra(RESULT)
+            val result = requireActivity().intent.getStringExtra(RESULT)
 
             if (result != null) {
                 if(result.contains("https://") || result.contains("http://")){
                     val intent = Intent(Intent.ACTION_VIEW, Uri.parse(result))
                     startActivity(intent)
+
                 } else {
-                      val codice = result.toString()
-                    Toast.makeText(requireContext(), codice, Toast.LENGTH_LONG).show()
+                    val codice = result.toString()
+                    Log.d("codice", codice)
                 }
             }
-        }
 
 
 

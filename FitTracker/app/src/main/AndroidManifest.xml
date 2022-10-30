@@ -17,10 +17,10 @@
             android:supportsRtl="true"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity
-                android:name=".AggiungiEsercizioActivity"
+                android:name=".esercizio.EsercizioActivity"
                 android:exported="false"/>
         <activity
-                android:name=".EsercizioActivity"
+                android:name=".esercizio.AggiungiEsercizioActivity"
                 android:exported="false"/>
         <activity
                 android:name=".scanner.ScannerActivity"
