@@ -175,7 +175,11 @@ class ProfiloActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener 
                 var sport_up = ""
                 sport_up = if(!agonistico_up) ""
                 else binding.sWSport.selectedItem.toString()
-                model.updateAuthUtenteOnDB(nome_up, cognome_up, email_up,LAF_up,agonistico_up,sesso_up,data_nascita_up,altezza_up.toInt(),peso_up.toDouble(),sport_up,this)
+                if(nome_up != "" && cognome_up != "" && email_up != "" && LAF_up != 0.0 && sesso_up != "" && altezza_up != "" && peso_up != "")
+                    model.updateAuthUtenteOnDB(nome_up, cognome_up, email_up,LAF_up,agonistico_up,sesso_up,data_nascita_up,altezza_up.toInt(),peso_up.toDouble(),sport_up,this)
+                else
+                    Toast.makeText(this,"Per favore completa tutti i campi obbligatori",Toast.LENGTH_LONG).show()
+
             }
 
         }
