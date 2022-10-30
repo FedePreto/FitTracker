@@ -7,12 +7,12 @@ import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 
 object RetrofitEserciziInstance {
-    val api : ApiInterface by lazy {
+    val api_esercizi : ApiEserciziInterface by lazy {
         Retrofit.Builder()
             .addConverterFactory(MoshiConverterFactory
                                 .create(Moshi.Builder().add(KotlinJsonAdapterFactory()).build())
                                 )
             .baseUrl(APICredentials.BASE_URL_ESERCIZI)
-            .build().create(ApiInterface::class.java)
+            .build().create(ApiEserciziInterface::class.java)
         }
     }

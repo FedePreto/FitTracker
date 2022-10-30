@@ -1,8 +1,6 @@
 package com.example.fittracker.retrofit
 
-import com.example.fittracker.model.Json_Parsing.EserciziList
 import com.example.fittracker.model.Json_Parsing.Json_FoodList
-import com.example.fittracker.model.Json_Parsing.Json_Hint
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -14,10 +12,5 @@ interface ApiInterface {
                              @Query("app_key") keyApp : String,
                              @Query("ingr") ingredient : String,
                              @Query("upc") upc : String): Call<Json_FoodList>
-
-    @GET("/v1/caloriesburned")
-    fun getEsercizi( @Query("X-Api-Key") api_key : String,
-                    @Query("activity") activity : String): Call<EserciziList>
-
 
 }
