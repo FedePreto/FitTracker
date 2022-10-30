@@ -64,7 +64,7 @@ class ProfiloViewModel : ViewModel() {
         }
     }
 
-    fun calculateFabbisogno(data_nascita :String, sesso: String,peso_attuale: Double,altezza:Int,LAF:Double) : Int{
+    private fun calculateFabbisogno(data_nascita :String, sesso: String,peso_attuale: Double,altezza:Int,LAF:Double) : Int{
         val today = LocalDate.now()
         val birthday: LocalDate = LocalDate.parse(data_nascita)
         val period: Period = Period.between(birthday, today)
