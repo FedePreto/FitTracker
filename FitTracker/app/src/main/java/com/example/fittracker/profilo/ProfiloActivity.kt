@@ -175,8 +175,16 @@ class ProfiloActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener 
                 var sport_up = ""
                 sport_up = if(!agonistico_up) ""
                 else binding.sWSport.selectedItem.toString()
-                if(nome_up != "" && cognome_up != "" && email_up != "" && LAF_up != 0.0 && sesso_up != "" && altezza_up != "" && peso_up != "")
-                    model.updateAuthUtenteOnDB(nome_up, cognome_up, email_up,LAF_up,agonistico_up,sesso_up,data_nascita_up,altezza_up.toInt(),peso_up.toDouble(),sport_up,this)
+                if(nome_up != "" && cognome_up != "" && email_up != "" && LAF_up != 0.0 && sesso_up != "" && altezza_up != "" && peso_up != ""){
+                    if(altezza_up.toInt() in 130..300 && peso_up.toDouble() in 30.0..200.0){
+                        binding.eTAltezza.error = null
+                        binding.eTPeso.error = null
+                        model.updateAuthUtenteOnDB(nome_up, cognome_up, email_up,LAF_up,agonistico_up,sesso_up,data_nascita_up,altezza_up.toInt(),peso_up.toDouble(),sport_up,this)
+                    } else {
+                        if(peso_up.toDouble() !in 30.0..200.0)binding.eTPeso.error = "Il peso deve essere compreso tra 30Kg e 200Kg"
+                        if(altezza_up.toInt() !in 130..300)binding.eTAltezza.error = "L'altezza deve essere compresa tra 130cm e 300cm"
+                    }
+                }
                 else
                     Toast.makeText(this,"Per favore completa tutti i campi obbligatori",Toast.LENGTH_LONG).show()
 
