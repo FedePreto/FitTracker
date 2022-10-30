@@ -20,7 +20,8 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity
                 android:name=".ScannerActivity"
-                android:exported="false"/>
+                android:exported="false"
+                android:screenOrientation="portrait"/>
         <activity
                 android:name=".pasto.PastoActivity"
                 android:exported="false"/>
