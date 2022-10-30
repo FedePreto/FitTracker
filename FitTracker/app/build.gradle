@@ -124,7 +124,10 @@ dependencies {
     implementation 'com.google.android.material:material:1.7.0'
     //CAMERA
     //implementation 'com.google.android.gms:play-services-vision:19.0.0'
-    implementation 'com.journeyapps:zxing-android-embedded:4.3.0'
+    implementation('com.journeyapps:zxing-android-embedded:4.3.0') { transitive = false }
+    implementation 'com.google.zxing:core:3.4.1'
+
+    implementation 'me.dm7.barcodescanner:zxing:1.9.8'
 
 
 

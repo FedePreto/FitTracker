@@ -1,6 +1,7 @@
 package com.example.fittracker.aggiungi
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -8,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.SearchView
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -16,7 +18,7 @@ import com.example.fittracker.R
 import com.example.fittracker.databinding.FragmentRicercaBinding
 import com.example.fittracker.model.Json_Parsing.Prodotto
 import com.example.fittracker.prodotto.ProdottoActivity
-
+import com.example.fittracker.scanner.ScannerActivity
 
 
 class RicercaFragment : Fragment() {
@@ -26,6 +28,11 @@ class RicercaFragment : Fragment() {
 
     //Prova adapter
     private lateinit var newRecyclerView: RecyclerView
+
+    companion object{
+        const val RESULT = "RESULT"
+    }
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -101,9 +108,25 @@ class RicercaFragment : Fragment() {
             intent.putExtra("bottone",requireArguments().getString("bottone"))
             startActivity(intent)
             requireActivity().finish()
-
              */
+            val intent = Intent(requireContext().applicationContext,ScannerActivity::class.java)
+            startActivity(intent)
+
+            val result = intent.getStringExtra(RESULT)
+
+            if (result != null) {
+                if(result.contains("https://") || result.contains("http://")){
+                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(result))
+                    startActivity(intent)
+                } else {
+                      val codice = result.toString()
+                    Toast.makeText(requireContext(), codice, Toast.LENGTH_LONG).show()
+                }
+            }
         }
+
+
+
 
 
     }
