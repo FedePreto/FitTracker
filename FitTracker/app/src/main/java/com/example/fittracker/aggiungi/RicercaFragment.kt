@@ -68,6 +68,7 @@ class RicercaFragment : Fragment() {
             newRecyclerView.adapter = adapter
             adapter.setOnItemClickListener(object : MyAdapterRicerca.onItemClickListener {
                 override fun onItemClick(position: Int) {
+                    binding.searchBar1.clearFocus()
                     val intent = prepareIntent(position)
                     startActivity(intent)
                 }
