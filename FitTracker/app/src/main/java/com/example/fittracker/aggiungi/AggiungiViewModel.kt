@@ -11,9 +11,12 @@ import com.example.fittracker.databaseFB.DiarioDB
 import com.example.fittracker.databaseFB.PersonalizzatiDB
 import com.example.fittracker.databaseFB.PreferitiDB
 import com.example.fittracker.databaseFB.ProdottoDB
+import com.example.fittracker.model.Json_Parsing.EserciziList
+import com.example.fittracker.model.Json_Parsing.Esercizio
 import com.example.fittracker.model.Json_Parsing.Json_FoodList
 import com.example.fittracker.model.Json_Parsing.Prodotto
 import com.example.fittracker.model.Pasto
+import com.example.fittracker.retrofit.RetrofitEserciziInstance
 import com.example.fittracker.retrofit.RetrofitInstance
 import com.example.fittracker.utils.APICredentials
 import com.google.firebase.auth.FirebaseAuth
@@ -47,6 +50,12 @@ class AggiungiViewModel : ViewModel() {
     val personalizzatiLiveData: LiveData<List<Pasto>>
         get() = _personalizzatiLiveData
 
+    private var _eserciziLiveData = MutableLiveData<List<Esercizio>>()
+    val eserciziLiveData: LiveData<List<Esercizio>>
+        get() = _eserciziLiveData
+
+
+
 
     fun getFoodFromNameorUPC(ingr : String, upc : String) {
 
@@ -64,6 +73,26 @@ class AggiungiViewModel : ViewModel() {
                     }
                 }
 
+                override fun onFailure(call: Call<Json_FoodList>, t: Throwable) {
+                    Log.d("TAG", t.message.toString())
+                }
+            })
+
+    }
+
+    fun getEsercizi(name : String) {
+        RetrofitEserciziInstance.api.getEsercizi(APICredentials.API_KEY_ESERCIZI,name)
+            .enqueue(object : Callback<EserciziList> {
+                override fun onResponse(call: Call<EserciziList>, response: Response<EserciziList>) {
+                    if (response.body() != null) {
+                        var esercizi : ArrayList<Esercizio> = arrayListOf()
+                        for (i in 0..response.body()!! .size - 1)
+                            esercizi.add(response.body()!![i])
+                        _eserciziLiveData.value = esercizi
+                    } else {
+                        return
+                    }
+                }
                 override fun onFailure(call: Call<Json_FoodList>, t: Throwable) {
                     Log.d("TAG", t.message.toString())
                 }

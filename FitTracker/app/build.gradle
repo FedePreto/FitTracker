@@ -122,8 +122,9 @@ dependencies {
     implementation 'me.moallemi.tools:kotlin-date-range:1.0.0'
     //material
     implementation 'com.google.android.material:material:1.7.0'
-    //
-    implementation 'com.google.android.gms:play-services-vision:19.0.0'
+    //CAMERA
+    //implementation 'com.google.android.gms:play-services-vision:19.0.0'
+    implementation 'com.journeyapps:zxing-android-embedded:4.3.0'
 
 
 

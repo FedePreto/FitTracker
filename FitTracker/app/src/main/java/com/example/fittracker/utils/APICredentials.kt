@@ -13,5 +13,9 @@ class APICredentials {
         val API_ID: String = "a4e62224"
         @JvmStatic
         val API_KEY: String = "2b0adbda47d1293d35d373d9f2ffcee1"
+        @JvmStatic
+        val BASE_URL_ESERCIZI: String = "https://api.api-ninjas.com"
+        @JvmStatic
+        val API_KEY_ESERCIZI: String = "fdCw2Uz0PQ29LOxZAUbMGA==VQub6B3tOd8IjuxE"
     }
 }

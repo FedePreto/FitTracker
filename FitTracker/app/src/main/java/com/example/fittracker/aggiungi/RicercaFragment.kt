@@ -16,7 +16,7 @@ import com.example.fittracker.R
 import com.example.fittracker.databinding.FragmentRicercaBinding
 import com.example.fittracker.model.Json_Parsing.Prodotto
 import com.example.fittracker.prodotto.ProdottoActivity
-import com.example.fittracker.scanner.ScannerActivity
+
 
 
 class RicercaFragment : Fragment() {
@@ -48,13 +48,27 @@ class RicercaFragment : Fragment() {
         if(requireArguments().getString("upc") != null)
             model.getFoodFromNameorUPC("",requireArguments().getString("upc")!!)
 
+        if(requireArguments().getString("bottone") != null){
+            if(requireArguments().getString("bottone") == "ESERCIZIO"){
+                binding.btnScanner.visibility = View.GONE
+                binding.searchBar1.minimumWidth = 1100
+            }
+
+        }
+
+
 
         val searchBar = binding.searchBar1
         searchBar.queryHint = "Cerca il tuo prodotto"
         searchBar.onActionViewCollapsed()
         searchBar.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(query: String?): Boolean {
-                model.getFoodFromNameorUPC(query!!,"")
+                if(requireArguments().getString("bottone") != null) {
+                    if (requireArguments().getString("bottone") == "ESERCIZIO") {
+                        model.getEsercizi(query!!)
+                    }
+                }else
+                    model.getFoodFromNameorUPC(query!!,"")
                 return true
             }
 
@@ -82,11 +96,13 @@ class RicercaFragment : Fragment() {
 
 
         binding.btnScanner.setOnClickListener{
-            val intent = Intent(requireContext(),ScannerActivity::class.java)
+            /*val intent = Intent(requireContext(),ScannerActivity::class.java)
             Log.d("bottone",requireArguments().getString("bottone")!!)
             intent.putExtra("bottone",requireArguments().getString("bottone"))
             startActivity(intent)
             requireActivity().finish()
+
+             */
         }
 
 
