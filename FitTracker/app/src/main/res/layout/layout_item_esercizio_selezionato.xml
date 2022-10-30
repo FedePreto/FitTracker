@@ -17,25 +17,14 @@
             >
 
         <LinearLayout
-
+                android:gravity="center"
                 android:padding="5dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                >
-
-            <com.google.android.material.imageview.ShapeableImageView
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:id="@+id/immagine"
-                    android:scaleType="centerCrop"
-                    android:adjustViewBounds="true"
-                    app:shapeAppearanceOverlay="@style/RoundCorner"
-                    android:src="@drawable/a"
-                    >
-            </com.google.android.material.imageview.ShapeableImageView>
+        >
 
             <TextView
                     android:layout_gravity="center"
@@ -48,9 +37,8 @@
                     android:textStyle="bold"
                     android:textColor="@color/black"
                     android:id="@+id/tvNomeEsercizio"
-                    />
+            />
         </LinearLayout>
-
         <ImageView
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"

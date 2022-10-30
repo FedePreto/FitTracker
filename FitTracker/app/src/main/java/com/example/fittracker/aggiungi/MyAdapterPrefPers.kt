@@ -9,7 +9,6 @@ import com.bumptech.glide.Glide
 import com.example.fittracker.R
 import com.example.fittracker.model.Pasto
 import com.google.android.material.imageview.ShapeableImageView
-import org.w3c.dom.Text
 
 class MyAdapterPrefPers(private val preferitiList : ArrayList<Pasto>): RecyclerView.Adapter<MyAdapterPrefPers.MyViewHolder>() {
 
@@ -54,8 +53,8 @@ class MyAdapterPrefPers(private val preferitiList : ArrayList<Pasto>): RecyclerV
     class MyViewHolder(itemView : View, listener: onItemClickListener): RecyclerView.ViewHolder(itemView){
 
         val immagine : ShapeableImageView = itemView.findViewById(R.id.immagine)
-        val tvNomeProdotto : TextView = itemView.findViewById(R.id.tvNomeProdotto)
-        val tvCalorie : TextView = itemView.findViewById(R.id.tvCaloriePers)
+        val tvNomeProdotto : TextView = itemView.findViewById(R.id.tvNomeEsercizio)
+        val tvCalorie : TextView = itemView.findViewById(R.id.tvKcal_h)
         val tvCarboidrati : TextView = itemView.findViewById(R.id.tvCarboPers)
         val tvProteine : TextView = itemView.findViewById(R.id.tvProtPers)
         val tvGrassi : TextView = itemView.findViewById(R.id.tvGrassiPers)

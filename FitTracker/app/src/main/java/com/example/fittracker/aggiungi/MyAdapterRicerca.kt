@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.fittracker.R
 import com.example.fittracker.model.Json_Parsing.Prodotto
-import com.example.fittracker.model.Pasto
 import com.google.android.material.imageview.ShapeableImageView
 
 //ArrayList<Prodotto>
@@ -50,8 +49,8 @@ class MyAdapterRicerca(private val productList : ArrayList<Prodotto>): RecyclerV
     class MyViewHolder(itemView : View, listener: onItemClickListener): RecyclerView.ViewHolder(itemView){
 
         val productImage : ShapeableImageView = itemView.findViewById(R.id.imageProdotto)
-        val tvNomeProdotto : TextView = itemView.findViewById(R.id.tvNomeProdotto)
-        val tvCategoria : TextView = itemView.findViewById(R.id.tvCategoria)
+        val tvNomeProdotto : TextView = itemView.findViewById(R.id.tvNomeEsercizio)
+        val tvCategoria : TextView = itemView.findViewById(R.id.tvKcal_h_esercizio)
         val tvEtichetta : TextView = itemView.findViewById(R.id.tvEtichetta)
 
 
