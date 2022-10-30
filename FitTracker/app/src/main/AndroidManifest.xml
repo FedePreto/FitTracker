@@ -17,14 +17,17 @@
             android:supportsRtl="true"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity
-                android:name=".AggiungiEsercizioActivity"
-                android:exported="false"/>
-        <activity
-                android:name=".esercizio.EsercizioActivity"
-                android:exported="false"/>
+                android:name=".aggiungi_esercizio.AggiungiEsercizioActivity"
+                android:exported="false"
+                android:screenOrientation="portrait"/>
         <activity
                 android:name=".esercizio.AggiungiEsercizioActivity"
-                android:exported="false"/>
+                android:exported="false"
+                android:screenOrientation="portrait"/>
+        <activity
+                android:name=".esercizio.EsercizioActivity"
+                android:exported="false"
+                android:screenOrientation="portrait"/>
         <activity
                 android:name=".scanner.ScannerActivity"
                 android:exported="false"
@@ -35,14 +38,14 @@
         <activity
                 android:name=".prodotto.ProdottoActivity"
                 android:exported="false"
-                android:parentActivityName=".aggiungi.AggiungiActivity"
+                android:parentActivityName=".aggiungi_pasto.AggiungiActivity"
                 android:screenOrientation="portrait"/>
         <activity
                 android:name=".profilo.ProfiloActivity"
                 android:exported="false"
                 android:screenOrientation="portrait"/>
         <activity
-                android:name=".aggiungi.AggiungiActivity"
+                android:name=".aggiungi_pasto.AggiungiActivity"
                 android:exported="false"
                 android:parentActivityName=".home.HomeActivity"/>
         <activity

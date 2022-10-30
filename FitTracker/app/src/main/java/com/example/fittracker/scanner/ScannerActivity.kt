@@ -7,9 +7,8 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import com.example.fittracker.aggiungi.AggiungiActivity
+import com.example.fittracker.aggiungi_pasto.AggiungiActivity
 import com.google.zxing.Result
-import com.google.zxing.client.android.Intents.Scan.RESULT
 import me.dm7.barcodescanner.zxing.ZXingScannerView
 
 class ScannerActivity : AppCompatActivity(), ZXingScannerView.ResultHandler {

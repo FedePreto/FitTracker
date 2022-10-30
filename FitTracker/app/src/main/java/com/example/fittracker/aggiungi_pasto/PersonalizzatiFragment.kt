@@ -1,4 +1,4 @@
-package com.example.fittracker.aggiungi
+package com.example.fittracker.aggiungi_pasto
 
 import android.os.Bundle
 import android.util.Log

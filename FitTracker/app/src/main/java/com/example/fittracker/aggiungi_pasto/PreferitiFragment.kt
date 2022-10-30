@@ -1,4 +1,4 @@
-package com.example.fittracker.aggiungi
+package com.example.fittracker.aggiungi_pasto
 
 import android.annotation.SuppressLint
 import android.app.Dialog
@@ -19,8 +19,6 @@ import com.example.fittracker.databinding.FragmentPreferitiBinding
 import com.example.fittracker.model.Json_Parsing.Prodotto
 import com.example.fittracker.model.Pasto
 import kotlinx.android.synthetic.main.add_delete_layout.*
-import kotlinx.android.synthetic.main.add_delete_layout.view.*
-import kotlinx.android.synthetic.main.win_layout_dialog.*
 
 
 class PreferitiFragment : Fragment() {

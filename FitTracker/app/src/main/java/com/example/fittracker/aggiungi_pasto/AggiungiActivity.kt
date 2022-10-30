@@ -1,4 +1,4 @@
-package com.example.fittracker.aggiungi
+package com.example.fittracker.aggiungi_pasto
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity

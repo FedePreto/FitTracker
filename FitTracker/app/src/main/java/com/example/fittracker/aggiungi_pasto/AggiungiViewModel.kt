@@ -1,4 +1,4 @@
-package com.example.fittracker.aggiungi
+package com.example.fittracker.aggiungi_pasto
 
 import android.content.Context
 import android.util.Log
@@ -11,12 +11,10 @@ import com.example.fittracker.databaseFB.DiarioDB
 import com.example.fittracker.databaseFB.PersonalizzatiDB
 import com.example.fittracker.databaseFB.PreferitiDB
 import com.example.fittracker.databaseFB.ProdottoDB
-import com.example.fittracker.model.Json_Parsing.EserciziList
 import com.example.fittracker.model.Json_Parsing.Esercizio
 import com.example.fittracker.model.Json_Parsing.Json_FoodList
 import com.example.fittracker.model.Json_Parsing.Prodotto
 import com.example.fittracker.model.Pasto
-import com.example.fittracker.retrofit.RetrofitEserciziInstance
 import com.example.fittracker.retrofit.RetrofitInstance
 import com.example.fittracker.utils.APICredentials
 import com.google.firebase.auth.FirebaseAuth
@@ -57,7 +55,7 @@ class AggiungiViewModel : ViewModel() {
 
 
 
-    fun getFoodFromNameorUPC(ingr : String, upc : String) {
+    fun getFoodFromNameorUPC(ingr : String, upc : String, context: Context) {
 
         RetrofitInstance.api.getFoodFromNameOrUPC(APICredentials.API_ID,APICredentials.API_KEY,ingr,upc)
             .enqueue(object : Callback<Json_FoodList> {
@@ -69,6 +67,7 @@ class AggiungiViewModel : ViewModel() {
                             foods.add(hints[i].food!!)
                         _foodLiveData.value = foods
                     } else {
+                        Toast.makeText(context,"Spiacenti nessun risultato",Toast.LENGTH_LONG).show()
                         return
                     }
                 }

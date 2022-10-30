@@ -6,11 +6,10 @@ import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.example.fittracker.R
-import com.example.fittracker.aggiungi.PersonalizzatiFragment
-import com.example.fittracker.aggiungi.PreferitiFragment
-import com.example.fittracker.aggiungi.RicercaFragment
+import com.example.fittracker.aggiungi_pasto.PersonalizzatiFragment
+import com.example.fittracker.aggiungi_pasto.PreferitiFragment
+import com.example.fittracker.aggiungi_pasto.RicercaFragment
 import com.example.fittracker.databinding.ActivityAggiungiBinding
-import com.example.fittracker.databinding.ActivityAggiungiEsercizioBinding
 import com.example.fittracker.home.HomeActivity
 import nl.joery.animatedbottombar.AnimatedBottomBar
 
@@ -30,8 +29,7 @@ class AggiungiEsercizioActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_aggiungi)
 
-        if (intent.getStringExtra("bottone") != null)
-            binding.aggToolbar.title =  intent.getStringExtra("bottone")
+        binding.aggToolbar.title = "ESERCIZIO"
 
         var bottomNav = binding.bottomNavigation
         setContentView(binding.root)
@@ -55,36 +53,25 @@ class AggiungiEsercizioActivity : AppCompatActivity() {
     }
 
     private fun checkTabToReplace(index : Int){
+        val bundle = Bundle()
         when(index){
             0 -> {
-                val bundle = Bundle()
-                if (intent.getStringExtra("bottone") != null)
-                    bundle.putString("bottone",intent.getStringExtra("bottone"))
-                if (intent.getStringExtra("upc") != null)
-                    bundle.putString("upc",intent.getStringExtra("upc"))
+                bundle.putString("bottone","ESERCIZIO")
                 ricercaFragment.arguments = bundle
                 replaceFragment(ricercaFragment)
             }
             1 -> {
-                val bundle = Bundle()
-                if (intent.getStringExtra("bottone") != null)
-                    bundle.putString("bottone",intent.getStringExtra("bottone"))
+                bundle.putString("bottone","ESERCIZIO")
                 personalizzatiFragment.arguments = bundle
                 replaceFragment(personalizzatiFragment)
             }
             2 -> {
-                val bundle = Bundle()
-                if (intent.getStringExtra("bottone") != null)
-                    bundle.putString("bottone",intent.getStringExtra("bottone"))
+                bundle.putString("bottone","ESERCIZIO")
                 preferitiFragment.arguments = bundle
                 replaceFragment(preferitiFragment)
             }
             else -> {
-                val bundle = Bundle()
-                if (intent.getStringExtra("bottone") != null)
-                    bundle.putString("bottone",intent.getStringExtra("bottone"))
-                if (intent.getStringExtra("upc") != null)
-                    bundle.putString("upc",intent.getStringExtra("upc"))
+                bundle.putString("bottone","ESERCIZIO")
                 ricercaFragment.arguments = bundle
                 replaceFragment(ricercaFragment)
             }

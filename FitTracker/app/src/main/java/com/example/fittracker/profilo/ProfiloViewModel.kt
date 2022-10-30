@@ -55,7 +55,7 @@ class ProfiloViewModel : ViewModel() {
                 peso_attuale, sport, contesto)
                 val fabbisogno = calculateFabbisogno(data_nascita,sesso,peso_attuale,altezza,LAF)
                 val diario = diarioDB.getUserDiario(auth.currentUser!!.email!!)!!
-            diarioDB.setDiario(auth.currentUser!!.email!!, LocalDate.now().toString(),fabbisogno,diario.grassiTot,
+            diarioDB.setDiario(auth.currentUser!!.email!!, LocalDate.now().toString(),fabbisogno.toInt(),diario.grassiTot,
                 diario.proteineTot,diario.carboidratiTot,diario.chiloCalorieEsercizio,diario.chiloCalorieColazione,
                 diario.chiloCaloriePranzo,diario.chiloCalorieCena,diario.chiloCalorieSpuntino,diario.acqua)
                 _diarioUpdated.value = true
@@ -64,14 +64,14 @@ class ProfiloViewModel : ViewModel() {
         }
     }
 
-    private fun calculateFabbisogno(data_nascita :String, sesso: String,peso_attuale: Double,altezza:Int,LAF:Double) : Int{
+    private fun calculateFabbisogno(data_nascita :String, sesso: String,peso_attuale: Double,altezza:Int,LAF:Double) : Double{
         val today = LocalDate.now()
         val birthday: LocalDate = LocalDate.parse(data_nascita)
         val period: Period = Period.between(birthday, today)
         if(sesso == "Uomo")
-            return ((66 + (13.7 * peso_attuale) + (5 * altezza) - (6.8 * period.years)) * LAF).toInt()
+            return ((66 + (13.7 * peso_attuale) + (5 * altezza) - (6.8 * period.years)) * LAF)
         else
-            return ((65 + (9.6 * peso_attuale) + (1.8 * altezza) - (4.7 * period.years)) * LAF).toInt()
+            return ((65 + (9.6 * peso_attuale) + (1.8 * altezza) - (4.7 * period.years)) * LAF)
 
 
     }

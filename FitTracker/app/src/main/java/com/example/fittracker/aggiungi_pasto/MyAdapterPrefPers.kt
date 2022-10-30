@@ -1,4 +1,4 @@
-package com.example.fittracker.aggiungi
+package com.example.fittracker.aggiungi_pasto
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,11 +7,10 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.fittracker.R
-import com.example.fittracker.model.Json_Parsing.Prodotto
+import com.example.fittracker.model.Pasto
 import com.google.android.material.imageview.ShapeableImageView
 
-//ArrayList<Prodotto>
-class MyAdapterRicerca(private val productList : ArrayList<Prodotto>): RecyclerView.Adapter<MyAdapterRicerca.MyViewHolder>() {
+class MyAdapterPrefPers(private val preferitiList : ArrayList<Pasto>): RecyclerView.Adapter<MyAdapterPrefPers.MyViewHolder>() {
 
     private  lateinit var mListener: onItemClickListener //Interfaccia che serve per associare un clickListener agli elementi della recycler view
     interface onItemClickListener{
@@ -22,25 +21,30 @@ class MyAdapterRicerca(private val productList : ArrayList<Prodotto>): RecyclerV
         mListener = listener
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        val itemView =LayoutInflater.from(parent.context).inflate(R.layout.layout_item_prodotto,parent,false)
+
+        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.layout_item_prodotto_pref_pers,parent,false)
+
         return MyViewHolder(itemView, mListener)
     }
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
 
-            val currentItem = productList[position]
-            Glide.with(holder.itemView)
+        val currentItem = preferitiList[position]
+        Glide.with(holder.itemView)
                 .load(currentItem.image)
                 .placeholder(R.drawable.no_image)
-                .into(holder.productImage)
-            holder.tvNomeProdotto.text = currentItem.label
-            holder.tvCategoria.text = currentItem.category
-            holder.tvEtichetta.text = currentItem.categoryLabel
+                .into(holder.immagine)
+
+        holder.tvNomeProdotto.text = currentItem.nome
+        holder.tvCalorie.text = currentItem.calorie.toString()
+        holder.tvCarboidrati.text = currentItem.carboidrati.toString()
+        holder.tvProteine.text = currentItem.proteine.toString()
+        holder.tvGrassi.text = currentItem.grassi.toString()
 
 
     }
 
     override fun getItemCount(): Int {
-        return productList.size
+        return preferitiList.size
 
     }
 
@@ -48,11 +52,12 @@ class MyAdapterRicerca(private val productList : ArrayList<Prodotto>): RecyclerV
 
     class MyViewHolder(itemView : View, listener: onItemClickListener): RecyclerView.ViewHolder(itemView){
 
-        val productImage : ShapeableImageView = itemView.findViewById(R.id.imageProdotto)
+        val immagine : ShapeableImageView = itemView.findViewById(R.id.immagine)
         val tvNomeProdotto : TextView = itemView.findViewById(R.id.tvNomeEsercizio)
-        val tvCategoria : TextView = itemView.findViewById(R.id.tvKcal_h_esercizio)
-        val tvEtichetta : TextView = itemView.findViewById(R.id.tvEtichetta)
-
+        val tvCalorie : TextView = itemView.findViewById(R.id.tvKcal_h)
+        val tvCarboidrati : TextView = itemView.findViewById(R.id.tvCarboPers)
+        val tvProteine : TextView = itemView.findViewById(R.id.tvProtPers)
+        val tvGrassi : TextView = itemView.findViewById(R.id.tvGrassiPers)
 
         init{
             itemView.setOnClickListener {

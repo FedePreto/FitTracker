@@ -1,7 +1,6 @@
-package com.example.fittracker.aggiungi
+package com.example.fittracker.aggiungi_pasto
 
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -9,7 +8,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.SearchView
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -44,22 +42,15 @@ class RicercaFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         if (requireArguments().getString("upc") != null)
-            model.getFoodFromNameorUPC("", requireArguments().getString("upc")!!)
+            model.getFoodFromNameorUPC("", requireArguments().getString("upc")!!,requireContext())
 
-        if (requireArguments().getString("bottone") != null) {
-            if (requireArguments().getString("bottone") == "ESERCIZIO") {
-                binding.btnScanner.visibility = View.GONE
-                binding.searchBar1.minimumWidth = 1100
-            }
-
-        }
 
         val searchBar = binding.searchBar1
         searchBar.queryHint = "Cerca il tuo prodotto"
         searchBar.onActionViewCollapsed()
         searchBar.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(query: String?): Boolean {
-                    model.getFoodFromNameorUPC(query!!,"")
+                    model.getFoodFromNameorUPC(query!!,"",requireContext())
                 return true
             }
 
