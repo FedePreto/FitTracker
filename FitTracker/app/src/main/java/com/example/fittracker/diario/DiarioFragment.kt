@@ -36,6 +36,7 @@ import kotlinx.android.synthetic.main.fragment_diario.*
 import kotlinx.android.synthetic.main.win_layout_dialog.*
 
 class DiarioFragment : Fragment() {
+
     private lateinit var binding: FragmentDiarioBinding
     private val model = DiarioViewModel()
 

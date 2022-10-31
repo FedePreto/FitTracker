@@ -20,6 +20,7 @@ import kotlinx.coroutines.launch
 
 
 class LoginActivity : AppCompatActivity() {
+
     private lateinit var binding: ActivityLoginBinding
     private val model = AuthViewModel()
     private lateinit var progressBar : ProgressBar

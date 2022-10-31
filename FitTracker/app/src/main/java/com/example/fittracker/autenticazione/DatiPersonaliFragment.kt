@@ -50,7 +50,7 @@ class DatiPersonaliFragment : Fragment() {
         val minima = LocalDate.of(oggi.year-15,oggi.monthValue,oggi.dayOfMonth)
 
         var date= LocalDate.now()
-        var data_selezionata = ""
+        var data_selezionata = date.toString()
         var year = oggi.year
         var month = oggi.monthValue-1
         var day = oggi.dayOfMonth
