@@ -104,7 +104,7 @@ class ProfiloActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener 
 
             //calendario
             val oggi = LocalDate.now()
-            val minima = LocalDate.of(oggi.year-15,oggi.monthValue-1,oggi.dayOfMonth)
+            val minima = LocalDate.of(oggi.year-15,oggi.monthValue,oggi.dayOfMonth)
             var date = LocalDate.parse(model.profilo.value!!.data_nascita)
             var data_selezionata = LocalDate.parse(model.profilo.value!!.data_nascita).toString()
             var year = date.year

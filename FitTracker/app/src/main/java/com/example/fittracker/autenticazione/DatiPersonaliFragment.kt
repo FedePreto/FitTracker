@@ -80,7 +80,9 @@ class DatiPersonaliFragment : Fragment() {
         }
 
         binding.btAvantiDati.setOnClickListener{
-            utente.data_nascita = data_selezionata
+            if (binding.tvDataNascita.text != "" )
+                utente.data_nascita = data_selezionata
+            else binding.tvDataNascita.error = "Seleziona una data corretta"
             utente.nome = binding.tEName.text.toString()
             utente.cognome = binding.tESurname.text.toString()
             if(utente.data_nascita != "" && utente.nome != "" && utente.cognome != ""){
