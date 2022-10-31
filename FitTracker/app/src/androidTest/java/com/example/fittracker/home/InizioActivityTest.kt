@@ -91,13 +91,6 @@ internal class InizioActivityTest{
         onView(withId(R.id.InputCorrectPassword)).perform(ViewActions.typeText("123456"))
         Espresso.closeSoftKeyboard()
         onView(withId(R.id.btnRegister)).perform(click())
-        Espresso.pressBack()
-        Espresso.pressBack()
-        Espresso.pressBack()
-        Espresso.pressBack()
-        Espresso.pressBack()
-        Espresso.pressBack()
-        Espresso.pressBack()
 
 
     }
