@@ -34,8 +34,8 @@ class SessoFragment : Fragment() {
         binding.imageView20.isVisible = utente.agonistico
         var listener = View.OnClickListener { v ->
             when(v.id){
-                R.id.rB_uomo -> utente.sesso = "uomo"
-                R.id.rB_donna -> utente.sesso = "donna"
+                R.id.rB_uomo -> utente.sesso = "Uomo"
+                R.id.rB_donna -> utente.sesso = "Donna"
             }
         }
 
