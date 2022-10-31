@@ -15,7 +15,6 @@ import com.example.fittracker.R
 import com.example.fittracker.databinding.FragmentStatisticheBinding
 import com.example.fittracker.model.Diario
 import kotlinx.android.synthetic.main.fragment_statistiche.*
-import org.checkerframework.checker.i18n.qual.LocalizableKey
 import java.time.LocalDate
 import java.util.*
 import kotlin.collections.ArrayList
