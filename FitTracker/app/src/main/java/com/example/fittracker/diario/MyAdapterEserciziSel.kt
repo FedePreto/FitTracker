@@ -25,7 +25,7 @@ class MyAdapterEserciziSel(private val selezionatiList : ArrayList<Esercizio>): 
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val itemView =
-            LayoutInflater.from(parent.context).inflate(R.layout.layout_item_esercizio_pref,parent,false)
+            LayoutInflater.from(parent.context).inflate(R.layout.layout_item_esercizio_selezionato,parent,false)
         return MyViewHolder(itemView, mListener)
     }
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
@@ -44,8 +44,8 @@ class MyAdapterEserciziSel(private val selezionatiList : ArrayList<Esercizio>): 
 
     class MyViewHolder(itemView : View, listener: onItemClickListener): RecyclerView.ViewHolder(itemView){
 
-        val immagine : ShapeableImageView = itemView.findViewById(R.id.immagine)
-        val tvNomeEsercizio : TextView = itemView.findViewById(R.id.tvNomeEsercizio)
+        val immagine : ShapeableImageView = itemView.findViewById(R.id.imageEs)
+        val tvNomeEsercizio : TextView = itemView.findViewById(R.id.tvNomeEsercizio2)
 
 
 
