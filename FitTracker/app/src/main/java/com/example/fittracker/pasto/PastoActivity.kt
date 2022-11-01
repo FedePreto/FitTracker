@@ -42,9 +42,9 @@ class PastoActivity : AppCompatActivity() {
         var flag = false
         binding.btnModifica.setOnClickListener {
             binding.eTQuantita.isEnabled = true
-            val quantita = binding.eTQuantita.text.toString().toDouble()
-            if(quantita != 0.0 && quantita.toString() != "" && quantita != pasto["quantità"]!!.toDouble())
-                model.updatePasto(pasto["tipologiaPasto"]!!,pasto["id"]!!,quantita,this)
+            val quantita = binding.eTQuantita.text.toString()
+            if(quantita.toDouble() != 0.0 && quantita!= "" && quantita != pasto["quantità"]!!)
+                model.updatePasto(pasto["tipologiaPasto"]!!,pasto["id"]!!,quantita.toDouble(),this)
             else {
                 if (flag)
                     Toast.makeText(this,"Inserisci una quantita diversa da $quantita\naltrimenti se desideri eliminare il prodotto clicca su elimina",
