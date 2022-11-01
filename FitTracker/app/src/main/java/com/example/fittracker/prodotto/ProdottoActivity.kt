@@ -34,7 +34,7 @@ class ProdottoActivity : AppCompatActivity() {
                     nutrients["grassi"]!!, quantita, this)
                 finish()
             }else{
-                Toast.makeText(this, "Per favore inserisci una quantita diversa da $quantita",Toast.LENGTH_LONG).show()
+                Toast.makeText(this, "Per favore inserisci una quantità diversa da $quantita",Toast.LENGTH_LONG).show()
             }
 
         }

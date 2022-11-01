@@ -9,7 +9,7 @@ import kotlinx.coroutines.tasks.await
 import kotlinx.coroutines.withContext
 
 class ProdottoDB : FirebaseDB(){
-    val prodotti_collection = db.collection("Pasti")
+    val prodotti_collection = db.collection("Utente").document(auth).collection("Pasti")
     var status = false
 
     suspend fun setPasto(
@@ -38,7 +38,7 @@ class ProdottoDB : FirebaseDB(){
         Log.d("prodotto", prodotto.toString())
         withContext(Dispatchers.IO) {
             prodotti_collection
-                .document(date+'_'+utente)
+                .document(date)
                 .collection(tipologiaPasto)
                 .document(foodId)
                 .set(prodotto)
@@ -51,7 +51,7 @@ class ProdottoDB : FirebaseDB(){
     suspend fun getProdotti(date : String, utente : String, tipologiaPasto: String): List<Pasto>?{
         try{
             return prodotti_collection
-                .document(date+'_'+utente)
+                .document(date)
                 .collection(tipologiaPasto).get().await().toObjects()
         }catch (e: Exception){
             return null
@@ -70,7 +70,7 @@ class ProdottoDB : FirebaseDB(){
         )
         withContext(Dispatchers.IO) {
             prodotti_collection
-                .document(date+'_'+utente)
+                .document(date)
                 .collection(tipologiaPasto)
                 .document(foodId)
                 .update(prodotto)
@@ -81,7 +81,7 @@ class ProdottoDB : FirebaseDB(){
     }
 
     suspend fun deleteProdotti(date : String, utente : String, tipologiaPasto: String, id : String) : Boolean{
-        prodotti_collection.document(date+'_'+utente)
+        prodotti_collection.document(date)
             .collection(tipologiaPasto).document(id).delete()
             .addOnSuccessListener(){status = true}
             .addOnFailureListener { status = false}

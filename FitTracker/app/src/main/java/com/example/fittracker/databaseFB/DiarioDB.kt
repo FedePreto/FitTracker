@@ -6,6 +6,7 @@ import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import com.example.fittracker.model.Diario
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.firestore.ktx.toObjects
 import kotlinx.coroutines.Dispatchers
@@ -19,7 +20,7 @@ import java.time.LocalDate
 import java.util.Date
 
 class DiarioDB : FirebaseDB() {
-    val diari_collection = db.collection("Diario")
+    val diari_collection = db.collection("Utente").document(auth).collection("Diario")
     var status = false
 
     suspend fun setDiario(
@@ -52,7 +53,7 @@ class DiarioDB : FirebaseDB() {
         )
         withContext(Dispatchers.IO) {
             diari_collection
-                .document(data+'_'+utente)
+                .document(data)
                 .set(diario)
                 .addOnSuccessListener { status = true }
                 .addOnFailureListener { status = false }
@@ -80,7 +81,7 @@ class DiarioDB : FirebaseDB() {
         return null
     }
 
-    suspend fun getStatistiche(inizio: String, fine: String, utente:String) : ArrayList<Diario>{
+    suspend fun getStatistiche(inizio: String, fine: String) : ArrayList<Diario>{
         val data_inizio = LocalDate.parse(inizio)
         val data_fine = LocalDate.parse(fine)
         val statistiche = ArrayList<Diario>()
@@ -88,7 +89,7 @@ class DiarioDB : FirebaseDB() {
         val range = LocalDateRange(data_inizio,data_fine)
         for(d in range){
             diario = diari_collection
-                .document(d.toString()+"_"+utente)
+                .document(d.toString())
                 .get().await().toObject<Diario>()
             if(diario != null)
                 statistiche.add(diario)

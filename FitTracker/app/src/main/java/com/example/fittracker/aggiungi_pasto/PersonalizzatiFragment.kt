@@ -158,7 +158,8 @@ class PersonalizzatiFragment : Fragment() {
             var proteine_salva = proteine.text.toString()
             var grassi_salva = grassi.text.toString()
             var titolo = titolo.text.toString().trim()
-            if(kcal_salva != "" && carbo_salva != "" && proteine_salva != "" && grassi_salva != "" && titolo != "") {
+            if(kcal_salva != "" && carbo_salva != "" && proteine_salva != "" && grassi_salva != "" && titolo != "" &&
+                kcal_salva.toDouble() != 0.0 && (carbo_salva.toDouble() != 0.0 || proteine_salva.toDouble() != 0.0 && grassi_salva.toDouble() != 0.0)) {
                 if(bottone == "clickItem"){
                     if (flag && valueAreChanged(position,kcal_salva,carbo_salva, proteine_salva,grassi_salva,titolo)){
                         model.updatePersonalizzatoOnDB(

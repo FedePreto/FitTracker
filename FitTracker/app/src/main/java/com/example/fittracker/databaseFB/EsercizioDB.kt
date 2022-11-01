@@ -10,7 +10,7 @@ import kotlinx.coroutines.withContext
 import java.util.*
 
 class EsercizioDB : FirebaseDB() {
-    val esercizi_collection = db.collection("Esercizi")
+    val esercizi_collection = db.collection("Utente").document(auth).collection("Esercizi")
     var status = false
 
     suspend fun setEsercizio(
@@ -27,7 +27,7 @@ class EsercizioDB : FirebaseDB() {
         )
         withContext(Dispatchers.IO) {
             esercizi_collection
-                .document(date+'_'+utente)
+                .document(date)
                 .collection("ESERCIZIO")
                 .document(nome.replace('/',','))
                 .set(esercizio)
@@ -37,10 +37,10 @@ class EsercizioDB : FirebaseDB() {
         return status
     }
 
-    suspend fun getEsercizi(date : String, utente : String): List<Esercizio>?{
+    suspend fun getEsercizi(date : String): List<Esercizio>?{
         try{
             return esercizi_collection
-                .document(date+'_'+utente)
+                .document(date)
                 .collection("ESERCIZIO").get().await().toObjects()
         }catch (e: Exception){
             return null
@@ -58,7 +58,7 @@ class EsercizioDB : FirebaseDB() {
         )
         withContext(Dispatchers.IO) {
             esercizi_collection
-                .document(date+'_'+utente)
+                .document(date)
                 .collection("ESERCIZIO")
                 .document(nome.replace('/',','))
                 .update(esercizio)
@@ -68,8 +68,8 @@ class EsercizioDB : FirebaseDB() {
         return status
     }
 
-    suspend fun deleteEsercizio(date : String, utente : String, nome : String) : Boolean{
-        esercizi_collection.document(date+'_'+utente)
+    suspend fun deleteEsercizio(date : String, nome : String) : Boolean{
+        esercizi_collection.document(date)
             .collection("ESERCIZIO").document(nome.replace('/',',')).delete()
             .addOnSuccessListener{status = true}
             .addOnFailureListener{ status = false}

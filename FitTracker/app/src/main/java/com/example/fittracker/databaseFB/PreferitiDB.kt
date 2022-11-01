@@ -9,7 +9,7 @@ import kotlinx.coroutines.withContext
 import java.util.*
 
 class PreferitiDB : FirebaseDB() {
-    val prodotti_collection = db.collection("Preferiti")
+    val prodotti_collection = db.collection("Utente").document(auth).collection("Preferiti")
     var status = false
 
     suspend fun setPastoPreferiti(

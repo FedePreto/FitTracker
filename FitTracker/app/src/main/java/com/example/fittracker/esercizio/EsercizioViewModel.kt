@@ -49,7 +49,7 @@ class EsercizioViewModel : ViewModel(){
     private fun setChiloCalorie() {
         viewModelScope.launch {
             val diario = diarioDB.getUserDiario(auth.currentUser!!.email!!)
-            val arrayEsercizi = esercizioDB.getEsercizi(LocalDate.now().toString(), auth.currentUser?.email!!)
+            val arrayEsercizi = esercizioDB.getEsercizi(LocalDate.now().toString())
             var calorie_esercizio = 0.0
             if (arrayEsercizi != null) {
                 if (arrayEsercizi.isNotEmpty()) {

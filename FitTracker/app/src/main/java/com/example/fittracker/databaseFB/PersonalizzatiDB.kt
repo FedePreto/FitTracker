@@ -9,7 +9,7 @@ import kotlinx.coroutines.withContext
 import java.util.*
 
 class PersonalizzatiDB : FirebaseDB() {
-    val personalizzati_collection = db.collection("Personalizzati")
+    val personalizzati_collection = db.collection("Utente").document(auth).collection("Personalizzati")
     var status = false
 
     suspend fun setPastoPersonalizzati(
