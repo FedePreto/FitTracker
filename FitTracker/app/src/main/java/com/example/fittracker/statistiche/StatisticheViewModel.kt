@@ -50,7 +50,7 @@ class StatisticheViewModel : ViewModel() {
 
     fun ottieniStatistihe(data_inizio: String, data_fine: String)  {
         viewModelScope.launch {
-            _statiticheLiveData.value = diarioDB.getStatistiche(data_inizio, data_fine, auth.currentUser!!.email.toString())
+            _statiticheLiveData.value = diarioDB.getStatistiche(data_inizio, data_fine)
             _kcalAssunte.value = 0
             _grCarboidrati.value = 0
             _grProteine.value = 0
