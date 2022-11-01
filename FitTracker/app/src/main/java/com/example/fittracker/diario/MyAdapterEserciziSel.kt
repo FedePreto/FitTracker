@@ -1,8 +1,10 @@
 package com.example.fittracker.diario
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -32,8 +34,6 @@ class MyAdapterEserciziSel(private val selezionatiList : ArrayList<Esercizio>): 
             .load("https://cdn.vectorstock.com/i/preview-1x/38/32/square-barbell-icon-vector-5293832.webp")
             .into(holder.immagine)
         holder.tvNomeEsercizio.text = currentItem.nome
-        holder.tvKcalEsercizio.text = currentItem.calorieOra.toString()
-        holder.tvDurataMin.text = currentItem.durata.toString()
 
     }
 
@@ -44,10 +44,8 @@ class MyAdapterEserciziSel(private val selezionatiList : ArrayList<Esercizio>): 
 
     class MyViewHolder(itemView : View, listener: onItemClickListener): RecyclerView.ViewHolder(itemView){
 
-        val immagine : ShapeableImageView = itemView.findViewById(R.id.imageView45)
+        val immagine : ShapeableImageView = itemView.findViewById(R.id.immagine)
         val tvNomeEsercizio : TextView = itemView.findViewById(R.id.tvNomeEsercizio)
-        val tvKcalEsercizio : TextView = itemView.findViewById(R.id.tvKcal_h)
-        val tvDurataMin : TextView = itemView.findViewById(R.id.tvDurata_min)
 
 
 

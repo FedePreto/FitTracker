@@ -16,18 +16,21 @@
                 app:layout_constraintEnd_toEndOf="parent" android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp" app:layout_constraintTop_toTopOf="parent"
                 android:layout_marginTop="50dp"/>
+
         <LinearLayout
                 android:orientation="vertical"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="0dp"
-                app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tV_esercizio"
-                app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintVertical_bias="0.0"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintVertical_bias="0.0"
                 android:layout_marginTop="50dp">
 
             <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
                     android:layout_marginBottom="20dp"
                     tools:srcCompat="@tools:sample/avatars"
                     android:id="@+id/imageView51"/>
@@ -40,22 +43,27 @@
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
+
                 <TextView
                         android:text="KCal/h:"
                         android:gravity="center"
                         android:textStyle="bold"
                         android:textSize="18sp"
                         android:layout_width="150dp"
-                        android:layout_height="wrap_content" android:id="@+id/textView17"
-                />
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textView17"
+                        />
+
                 <TextView
                         android:text="0"
                         android:gravity="center"
                         android:textSize="18sp"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" android:id="@+id/tV_kcal_h"
-                />
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tV_kcal_h"
+                        />
             </LinearLayout>
+
             <LinearLayout
 
                     android:padding="5dp"
@@ -68,23 +76,28 @@
                     android:layout_marginLeft="50dp"
                     android:layout_marginRight="50dp"
                     android:layout_height="wrap_content">
+
                 <TextView
                         android:text="Durata: "
                         android:gravity="center"
                         android:textStyle="bold"
                         android:textSize="18sp"
                         android:layout_width="150dp"
-                        android:layout_height="match_parent" android:id="@+id/terreiew17"
-                />
+                        android:layout_height="match_parent"
+                        android:id="@+id/terreiew17"
+                        />
+
                 <EditText
                         android:text="0"
                         android:gravity="center"
                         android:inputType="numberDecimal"
                         android:textSize="18sp"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" android:id="@+id/eT_durata"
-                />
+                        android:layout_height="wrap_content"
+                        android:id="@+id/eT_durata"
+                        />
             </LinearLayout>
+
             <LinearLayout
                     android:padding="5dp"
                     android:layout_marginLeft="20dp"
@@ -106,7 +119,7 @@
                         android:layout_width="120dp"
                         android:layout_height="80dp"
                         android:id="@+id/btn_elimina"
-                />
+                        />
 
                 <Button
                         android:text="Modifica"
@@ -117,7 +130,7 @@
                         android:layout_width="120dp"
                         android:layout_height="80dp"
                         android:id="@+id/btn_modifica"
-                />
+                        />
             </LinearLayout>
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>

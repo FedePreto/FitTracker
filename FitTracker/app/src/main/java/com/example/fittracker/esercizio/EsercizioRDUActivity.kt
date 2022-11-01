@@ -62,7 +62,7 @@ class EsercizioRDUActivity : AppCompatActivity() {
         esercizio.put("id", bundle.getString("id")!!)
         esercizio.put("kcal_h", bundle.getString("kcal_h")!!)
         esercizio.put("nome", bundle.getString("nome")!!)
-        esercizio.put("durata", bundle.getString("durata")!!)
+        esercizio.put("durata", bundle.getInt("durata")!!.toString())
     }
 
     private fun setLayout() {
