@@ -10,6 +10,7 @@ import com.bumptech.glide.Glide
 import com.example.fittracker.R
 import com.example.fittracker.databinding.ActivityEsercizioBinding
 import com.example.fittracker.home.HomeActivity
+import kotlinx.android.synthetic.main.add_delete_layout_esercizi.*
 
 class EsercizioRDUActivity : AppCompatActivity() {
     private lateinit var binding: ActivityEsercizioBinding
@@ -33,20 +34,20 @@ class EsercizioRDUActivity : AppCompatActivity() {
         model.diarioChanged.observe(this, observerDelete)
 
         binding.btnElimina.setOnClickListener {
-            model.deleteEsercizio(esercizio["id"]!!, this)
+            model.deleteEsercizio(esercizio["nome"]!!, this)
         }
 
         var flag = false
         binding.btnModifica.setOnClickListener {
-            binding.eTQuantita.isEnabled = true
-            val quantita = binding.eTQuantita.text.toString().toDouble()
-            if (quantita != 0.0 && quantita.toString() != "" && quantita != pasto["quantità"]!!.toDouble())
-                model.updatePasto(pasto["tipologiaPasto"]!!, pasto["id"]!!, quantita, this)
+            binding.eTDurata.isEnabled = true
+            val durata = binding.eTDurata.text.toString()
+            if (durata != "0" && durata != "" && durata != esercizio["durata"]!!)
+                model.updateEsercizio(esercizio["nome"]!!, durata.toInt(), this)
             else {
                 if (flag)
                     Toast.makeText(
                         this,
-                        "Inserisci una quantita diversa da $quantita\naltrimenti se desideri eliminare il prodotto clicca su elimina",
+                        "Inserisci una durata diversa da $durata\naltrimenti se desideri eliminare l\'esercizio clicca su elimina",
                         Toast.LENGTH_LONG
                     ).show()
                 flag = true
@@ -58,29 +59,20 @@ class EsercizioRDUActivity : AppCompatActivity() {
 
     private fun getExtra() {
         val bundle = intent.extras!!
-        pasto.put("tipologiaPasto", bundle.getString("tipologiaPasto")!!)
-        pasto.put("id", bundle.getString("id")!!)
-        pasto.put("kcal_pasto", bundle.getString("kcal_pasto")!!)
-        pasto.put("carboidrati", bundle.getString("carboidrati")!!)
-        pasto.put("proteine", bundle.getString("proteine")!!)
-        pasto.put("grassi", bundle.getString("grassi")!!)
-        pasto.put("prodotto", bundle.getString("prodotto")!!)
-        pasto.put("image", bundle.getString("image")!!)
-        pasto.put("quantità", bundle.getString("quantità")!!)
+        esercizio.put("id", bundle.getString("id")!!)
+        esercizio.put("kcal_h", bundle.getString("kcal_h")!!)
+        esercizio.put("nome", bundle.getString("nome")!!)
+        esercizio.put("durata", bundle.getString("durata")!!)
     }
 
     private fun setLayout() {
         Glide.with(this)
-            .load(pasto.get("image"))
-            .placeholder((R.drawable.no_image))
-            .into(binding.imageView21)
+            .load("https://cdn.vectorstock.com/i/preview-1x/38/32/square-barbell-icon-vector-5293832.webp")
+            .into(binding.imageView51)
 
-        binding.tVProdotto.text = pasto["prodotto"].toString()
-        binding.tVKcal.text = pasto["kcal_pasto"].toString()
-        binding.tVCarboidrati.text = pasto["carboidrati"].toString()
-        binding.tVProteine.text = pasto["proteine"].toString()
-        binding.tVGrassi.text = pasto["grassi"].toString()
-        binding.eTQuantita.setText(pasto["quantità"].toString())
+        binding.tVEsercizio.text = esercizio["nome"].toString()
+        binding.tVKcalH.text = esercizio["kcal_h"].toString()
+        binding.eTDurata.setText(esercizio["durata"].toString())
     }
 
     override fun onBackPressed() {

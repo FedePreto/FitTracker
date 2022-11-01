@@ -28,7 +28,9 @@ import com.example.fittracker.R
 import com.example.fittracker.aggiungi_pasto.AggiungiActivity
 import com.example.fittracker.aggiungi_esercizio.AggiungiEsercizioActivity
 import com.example.fittracker.databinding.FragmentDiarioBinding
+import com.example.fittracker.esercizio.EsercizioRDUActivity
 import com.example.fittracker.model.Diario
+import com.example.fittracker.model.Json_Parsing.Esercizio
 import com.example.fittracker.model.Pasto
 import com.example.fittracker.pasto.PastoActivity
 import com.mikhaellopez.circularprogressbar.CircularProgressBar
@@ -275,7 +277,7 @@ class DiarioFragment : Fragment() {
         }
         binding.esercizio.setOnLongClickListener{
             vibrate()
-            openScelti("ESERCIZIO")
+            openSceltiEsercizio()
             true
         }
     }
@@ -308,6 +310,36 @@ class DiarioFragment : Fragment() {
         }
     }
 
+    private fun openSceltiEsercizio(){
+        val builder= AlertDialog.Builder(requireContext())
+        builder.create()
+        val inflater = layoutInflater
+        val dialogLayout = inflater.inflate(R.layout.del_mod_selezionati_layout, null)
+        model.getEsercizioSelezionati()
+        val rVSelezionati = dialogLayout.findViewById<RecyclerView>(R.id.recyclerViewSelezionati)
+        rVSelezionati.layoutManager=LinearLayoutManager(requireContext())
+        rVSelezionati.setHasFixedSize(true)
+        val eserciziSelezionatiObserver = Observer<List<Esercizio>>{
+            val adapter = MyAdapterEserciziSel(model.esercizioSelezionati.value!! as ArrayList<Esercizio>)
+            rVSelezionati.adapter = adapter
+            adapter.setOnItemClickListener(object : MyAdapterEserciziSel.onItemClickListener{
+                override fun onItemClick(position: Int) {
+                    val intent = prepareIntentEsercizio(position)
+                    startActivity(intent)
+                    requireActivity().finish()
+                }
+            })
+        }
+        model.esercizioSelezionati.observe(viewLifecycleOwner, eserciziSelezionatiObserver)
+        with(builder){
+            setTitle("ESERCIZI")
+            setView(dialogLayout)
+            show()
+        }
+    }
+
+
+
     private fun setDiario(){
         model.setDiarioOnDB(model.diario.value!!.grassiTot, model.diario.value!!.proteineTot,
             model.diario.value!!.carboidratiTot, model.diario.value!!.chiloCalorieEsercizio,
@@ -330,6 +362,16 @@ class DiarioFragment : Fragment() {
         intent.putExtra("prodotto", model.selezionati.value!![position].nome)
         intent.putExtra("quantità", model.selezionati.value!![position].quantita.toString())
         return intent
+    }
+
+    private fun prepareIntentEsercizio(position : Int) : Intent{
+        var intent = Intent(requireContext(), EsercizioRDUActivity::class.java)
+        intent.putExtra("id",model.esercizioSelezionati.value!![position].id)
+        intent.putExtra("kcal_h", model.esercizioSelezionati.value!![position].calorieOra.toString())
+        intent.putExtra("nome", model.esercizioSelezionati.value!![position].nome)
+        intent.putExtra("durata",  model.esercizioSelezionati.value!![position].durata)
+        return intent
+
     }
 
     private fun vibrate(){

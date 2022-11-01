@@ -12,7 +12,7 @@ import com.example.fittracker.model.Pasto
 import com.google.android.material.imageview.ShapeableImageView
 
 class MyAdapterEserciziSel(private val selezionatiList : ArrayList<Esercizio>): RecyclerView.Adapter<MyAdapterEserciziSel.MyViewHolder>() {
-/*
+
     private  lateinit var mListener: onItemClickListener //Interfaccia che serve per associare un clickListener agli elementi della recycler view
     interface onItemClickListener{
         fun onItemClick(position : Int)
@@ -29,10 +29,11 @@ class MyAdapterEserciziSel(private val selezionatiList : ArrayList<Esercizio>): 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val currentItem = selezionatiList[position]
         Glide.with(holder.itemView)
-            .load(currentItem.image)
-            .placeholder(R.drawable.no_image)
+            .load("https://cdn.vectorstock.com/i/preview-1x/38/32/square-barbell-icon-vector-5293832.webp")
             .into(holder.immagine)
-        holder.tvNomeProdotto.text = currentItem.nome
+        holder.tvNomeEsercizio.text = currentItem.nome
+        holder.tvKcalEsercizio.text = currentItem.calorieOra.toString()
+        holder.tvDurataMin.text = currentItem.durata.toString()
 
     }
 
@@ -43,8 +44,12 @@ class MyAdapterEserciziSel(private val selezionatiList : ArrayList<Esercizio>): 
 
     class MyViewHolder(itemView : View, listener: onItemClickListener): RecyclerView.ViewHolder(itemView){
 
-        val immagine : ShapeableImageView = itemView.findViewById(R.id.immagine)
-        val tvNomeProdotto : TextView = itemView.findViewById(R.id.tvNomeEsercizio)
+        val immagine : ShapeableImageView = itemView.findViewById(R.id.imageView45)
+        val tvNomeEsercizio : TextView = itemView.findViewById(R.id.tvNomeEsercizio)
+        val tvKcalEsercizio : TextView = itemView.findViewById(R.id.tvKcal_h)
+        val tvDurataMin : TextView = itemView.findViewById(R.id.tvDurata_min)
+
+
 
         init{
             itemView.setOnClickListener {
@@ -54,7 +59,5 @@ class MyAdapterEserciziSel(private val selezionatiList : ArrayList<Esercizio>): 
 
 
     }
-
- */
 }
 
