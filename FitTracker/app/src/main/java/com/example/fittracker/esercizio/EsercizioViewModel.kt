@@ -3,6 +3,8 @@ package com.example.fittracker.esercizio
 import android.content.Context
 import android.util.Log
 import android.widget.Toast
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.fittracker.databaseFB.DiarioDB
@@ -20,6 +22,12 @@ class EsercizioViewModel : ViewModel(){
     private val preferitiDB = PreferitiDB()
     private val diarioDB = DiarioDB()
     private val auth = FirebaseAuth.getInstance()
+
+    private var _diarioChanged = MutableLiveData<Boolean>()
+    val diarioChanged : LiveData<Boolean>
+        get() = _diarioChanged
+
+
     private var hashMapCalorie = HashMap<String, Int>()
     private var hashMapMacro = HashMap<String, Int>()
 
@@ -45,6 +53,27 @@ class EsercizioViewModel : ViewModel(){
                 Toast.makeText(context, "Aggiunta esercizip ai Preferiti fallita", Toast.LENGTH_LONG).show()
         }
     }
+    fun deleteEsercizio(nome : String, context : Context){
+        viewModelScope.launch {
+            if(esercizioDB.deleteEsercizio(LocalDate.now().toString(), nome)){
+                Toast.makeText(context,"Esercizio eliminato con successo",Toast.LENGTH_LONG).show()
+                setChiloCalorie()
+            }
+            else
+                Toast.makeText(context,"ATTENZIONE, eliminazione esercizio fallita",Toast.LENGTH_LONG).show()
+        }
+    }
+
+    fun updateEsercizio(nome: String, durata:Int, context: Context){
+        viewModelScope.launch {
+            if(esercizioDB.updateEsercizio(auth.currentUser!!.email!!,LocalDate.now().toString(), nome, durata)){
+                Toast.makeText(context,"Esercizio modificato con successo",Toast.LENGTH_LONG).show()
+                setChiloCalorie()
+            }
+            else
+                Toast.makeText(context,"ATTENZIONE, eliminazione esercizio fallita",Toast.LENGTH_LONG).show()
+        }
+    }
 
     private fun setChiloCalorie() {
         viewModelScope.launch {
@@ -63,6 +92,8 @@ class EsercizioViewModel : ViewModel(){
                 diario.grassiTot,  diario.proteineTot,  diario.carboidratiTot, calorie_esercizio.toInt(),
                 diario.chiloCalorieColazione, diario.chiloCaloriePranzo, diario.chiloCalorieCena,diario.chiloCalorieSpuntino
                 , diario.acqua)
+            _diarioChanged.value = true
         }
     }
+
 }

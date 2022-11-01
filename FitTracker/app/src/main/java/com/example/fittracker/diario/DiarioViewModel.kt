@@ -7,11 +7,9 @@ import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.fittracker.databaseFB.DiarioDB
-import com.example.fittracker.databaseFB.DietaDB
-import com.example.fittracker.databaseFB.ProdottoDB
-import com.example.fittracker.databaseFB.UtenteDB
+import com.example.fittracker.databaseFB.*
 import com.example.fittracker.model.Diario
+import com.example.fittracker.model.Json_Parsing.Esercizio
 import com.example.fittracker.model.Pasto
 import com.example.fittracker.model.Utente
 import com.google.firebase.auth.FirebaseAuth
@@ -27,6 +25,7 @@ class DiarioViewModel : ViewModel() {
     private val utenteDB = UtenteDB()
     private val dietaDB = DietaDB()
     private val prodottoDB = ProdottoDB()
+    private val esercizioDB = EsercizioDB()
     private val auth = FirebaseAuth.getInstance()
 
     private var _carboidratiMax = MutableLiveData<Int>()
@@ -64,6 +63,10 @@ class DiarioViewModel : ViewModel() {
     private var _selezionati = MutableLiveData<List<Pasto>>()
     val selezionati : LiveData<List<Pasto>>
         get() = _selezionati
+
+    private var _eserciziSelezionati = MutableLiveData<List<Esercizio>>()
+    val esercizioSelezionati : LiveData<List<Esercizio>>
+        get() = _eserciziSelezionati
 
     private var _diarioSettato = MutableLiveData<Boolean>()
     val diarioSettato : LiveData<Boolean>
@@ -124,6 +127,11 @@ class DiarioViewModel : ViewModel() {
     fun getItemSelezionati(pasto: String){
         viewModelScope.launch {
             _selezionati.value = prodottoDB.getProdotti(LocalDate.now().toString(),auth.currentUser!!.email.toString(),pasto)
+        }
+    }
+    fun getEsercizioSelezionati(){
+        viewModelScope.launch {
+            _eserciziSelezionati.value = esercizioDB.getEsercizi(LocalDate.now().toString())
         }
     }
 
