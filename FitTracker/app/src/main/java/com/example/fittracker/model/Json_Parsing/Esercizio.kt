@@ -5,8 +5,9 @@ import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
 data class Esercizio(
-    @field:Json(name = "calories_per_hour")val calorie_ora: Int,
-    @field:Json(name = "duration_minutes")val durata_minuti: Int,
-    @field:Json(name = "name")val nome: String,
-    @field:Json(name = "total_calories")val calorie_totali: Int
+    val id : String = "",
+    @field:Json(name = "calories_per_hour")val calorieOra: Int = 0,
+    @field:Json(name = "duration_minutes")val durata: Int = 0,
+    @field:Json(name = "name")val nome: String = "",
+    @field:Json(name = "total_calories")val calorieTot: Int = 0
 )

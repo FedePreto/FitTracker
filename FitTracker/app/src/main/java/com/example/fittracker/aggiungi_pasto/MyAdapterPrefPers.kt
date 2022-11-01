@@ -53,8 +53,8 @@ class MyAdapterPrefPers(private val preferitiList : ArrayList<Pasto>): RecyclerV
     class MyViewHolder(itemView : View, listener: onItemClickListener): RecyclerView.ViewHolder(itemView){
 
         val immagine : ShapeableImageView = itemView.findViewById(R.id.immagine)
-        val tvNomeProdotto : TextView = itemView.findViewById(R.id.tvNomeEsercizio)
-        val tvCalorie : TextView = itemView.findViewById(R.id.tvKcal_h)
+        val tvNomeProdotto : TextView = itemView.findViewById(R.id.tvNomeProdotto)
+        val tvCalorie : TextView = itemView.findViewById(R.id.calorie)
         val tvCarboidrati : TextView = itemView.findViewById(R.id.tvCarboPers)
         val tvProteine : TextView = itemView.findViewById(R.id.tvProtPers)
         val tvGrassi : TextView = itemView.findViewById(R.id.tvGrassiPers)

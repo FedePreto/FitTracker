@@ -1,5 +1,6 @@
 package com.example.fittracker.databaseFB
 
+import com.example.fittracker.model.Json_Parsing.Esercizio
 import com.example.fittracker.model.Pasto
 import com.google.firebase.firestore.ktx.toObjects
 import kotlinx.coroutines.Dispatchers
@@ -40,6 +41,28 @@ class PersonalizzatiDB : FirebaseDB() {
         }.await()
         return status
     }
+    suspend fun setEsercizioPersonalizzati(
+        utente : String,
+        nome/*label*/ : String,
+        calorieOra : Double,
+    ): Boolean {
+        val id = UUID.randomUUID().toString()
+        val esercizio = hashMapOf<String, Any>(
+            "id" to id,
+            "nome" to nome,
+            "calorieOra" to calorieOra,
+        )
+        withContext(Dispatchers.IO) {
+            personalizzati_collection
+                .document(utente)
+                .collection("ESERCIZIO")
+                .document(id)
+                .set(esercizio)
+                .addOnSuccessListener { status = true }
+                .addOnFailureListener { status = false }
+        }.await()
+        return status
+    }
 
     suspend fun getPastiPersonalizzati(utente: String, tipologiaPasto: String): List<Pasto> {
         return personalizzati_collection
@@ -48,10 +71,28 @@ class PersonalizzatiDB : FirebaseDB() {
 
     }
 
+    suspend fun getEserciziPersonalizzati(utente: String): List<Esercizio> {
+        return personalizzati_collection
+            .document(utente)
+            .collection("ESERCIZIO").get().await().toObjects()
+
+    }
+
     suspend fun deletePersonalizzato(utente: String,id:String,tipologiaPasto: String): Boolean{
         withContext(Dispatchers.IO) {
             personalizzati_collection
                 .document(utente).collection(tipologiaPasto)
+                .document(id).delete()
+                .addOnSuccessListener {status = true }
+                .addOnFailureListener {status = false }
+        }.await()
+        return status
+    }
+
+    suspend fun deleteEsercizioPersonalizzato(utente: String,id:String): Boolean{
+        withContext(Dispatchers.IO) {
+            personalizzati_collection
+                .document(utente).collection("ESERCIZIO")
                 .document(id).delete()
                 .addOnSuccessListener {status = true }
                 .addOnFailureListener {status = false }
@@ -83,6 +124,29 @@ class PersonalizzatiDB : FirebaseDB() {
                 .collection(tipologiaPasto)
                 .document(id)
                 .set(prodotto)
+                .addOnSuccessListener { status = true }
+                .addOnFailureListener { status = false }
+        }.await()
+        return status
+    }
+
+    suspend fun updateEsercizioPersonalizzato(
+        id : String,
+        utente : String,
+        nome/*label*/ : String,
+        calorieOra : Double,
+    ): Boolean {
+        val esercizio = hashMapOf<String, Any>(
+            "id" to id,
+            "nome" to nome,
+            "calorieOra" to calorieOra,
+        )
+        withContext(Dispatchers.IO) {
+            personalizzati_collection
+                .document(utente)
+                .collection("ESERCIZIO")
+                .document(id)
+                .set(esercizio)
                 .addOnSuccessListener { status = true }
                 .addOnFailureListener { status = false }
         }.await()

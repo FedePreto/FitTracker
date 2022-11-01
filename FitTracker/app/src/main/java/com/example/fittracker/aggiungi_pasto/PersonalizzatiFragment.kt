@@ -120,7 +120,7 @@ class PersonalizzatiFragment : Fragment() {
             layout_info.visibility = View.GONE
             btnElimina.visibility = View.VISIBLE
             btnAggiungiDiario.visibility = View.VISIBLE
-            hideLayout(arrayOf(titolo,kcal,carbo,grassi,proteine),position)
+            setText(arrayOf(titolo,kcal,carbo,grassi,proteine),position)
 
         }else{
             btnAggiungiLista.text = "AGGIUNGI\nALLA LISTA"
@@ -138,6 +138,7 @@ class PersonalizzatiFragment : Fragment() {
                     model.personalizzatiLiveData.value!![position].calorie,model.personalizzatiLiveData.value!![position].proteine,
                     model.personalizzatiLiveData.value!![position].carboidrati,model.personalizzatiLiveData.value!![position].grassi,
                     quantita,requireContext())
+                dialogLayout.visibility = View.GONE
             }else {
                 if (flag_2)
                     Toast.makeText(requireContext(),"Per favore inserisci una quantità diversa da $quantita se desideri aggiungere il prodotto al Diario",Toast.LENGTH_LONG).show()
@@ -159,12 +160,14 @@ class PersonalizzatiFragment : Fragment() {
             var titolo = titolo.text.toString().trim()
             if(kcal_salva != "" && carbo_salva != "" && proteine_salva != "" && grassi_salva != "" && titolo != "") {
                 if(bottone == "clickItem"){
-                    if (flag){
+                    if (flag && valueAreChanged(position,kcal_salva,carbo_salva, proteine_salva,grassi_salva,titolo)){
                         model.updatePersonalizzatoOnDB(
                             id,requireArguments().getString("bottone")!!, titolo, kcal_salva.toDouble(),
                             proteine_salva.toDouble(), carbo_salva.toDouble(), grassi_salva.toDouble(), requireContext())
                         flag=false
+                        dialogLayout.visibility = View.GONE
                     }else{
+                        Toast.makeText(requireContext(),"Cambia i valori prima di salvare",Toast.LENGTH_LONG).show()
                         flag=true
                     }
                 }else {
@@ -172,22 +175,21 @@ class PersonalizzatiFragment : Fragment() {
                         requireArguments().getString("bottone")!!, titolo, kcal_salva.toDouble(),
                         proteine_salva.toDouble(), carbo_salva.toDouble(), grassi_salva.toDouble(), requireContext()
                     )
+                    dialogLayout.visibility = View.GONE
                 }
                 model.getPersonalizzati(requireArguments().getString("bottone")!!)
             }
             else
-                Toast.makeText(requireContext(),"Per favore completa tutti i campi prima di salvare",Toast.LENGTH_LONG).show()
-
+                Toast.makeText(requireContext(),"Per favore completa tutti i campi o modifica i valori prima di salvare",Toast.LENGTH_LONG).show()
         }
 
-
-
-        builder.setNegativeButton("Annulla"){ dialog, which ->
+        builder.setNegativeButton("Esci"){ dialog, which ->
             dialog.dismiss()
         }
 
         btnElimina.setOnClickListener {
             model.deletePersonalizzato(id, requireArguments().getString("bottone")!!,requireContext())
+            dialogLayout.visibility = View.GONE
         }
 
 
@@ -198,9 +200,16 @@ class PersonalizzatiFragment : Fragment() {
 
     }
 
+    private fun valueAreChanged(position: Int, kcalSalva: String, carboSalva: String, proteineSalva: String, grassiSalva: String, titolo: String): Boolean {
+        return (kcalSalva.toDouble() != model.personalizzatiLiveData.value!![position].calorie
+                || carboSalva.toDouble() != model.personalizzatiLiveData.value!![position].carboidrati
+                || proteineSalva.toDouble() != model.personalizzatiLiveData.value!![position].proteine
+                || grassiSalva.toDouble() != model.personalizzatiLiveData.value!![position].grassi)
+
+    }
 
 
-    private fun hideLayout(edit : Array<EditText>,position : Int){
+    private fun setText(edit : Array<EditText>,position : Int){
         edit[0].setText(model.personalizzatiLiveData.value!![position].nome)
         edit[1].setText(model.personalizzatiLiveData.value!![position].calorie.toString())
         edit[2].setText(model.personalizzatiLiveData.value!![position].carboidrati.toString())

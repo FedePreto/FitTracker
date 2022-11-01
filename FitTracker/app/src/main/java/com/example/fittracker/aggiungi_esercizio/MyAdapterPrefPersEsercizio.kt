@@ -1,17 +1,17 @@
-package com.example.fittracker.aggiungi_pasto
+package com.example.fittracker.aggiungi_esercizio
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.fittracker.R
-import com.example.fittracker.model.Json_Parsing.Prodotto
+import com.example.fittracker.model.Json_Parsing.Esercizio
 import com.google.android.material.imageview.ShapeableImageView
 
-//ArrayList<Prodotto>
-class MyAdapterRicerca(private val productList : ArrayList<Prodotto>): RecyclerView.Adapter<MyAdapterRicerca.MyViewHolder>() {
+class MyAdapterPrefPersEsercizio(private val preferitiList : ArrayList<Esercizio>): RecyclerView.Adapter<MyAdapterPrefPersEsercizio.MyViewHolder>() {
 
     private  lateinit var mListener: onItemClickListener //Interfaccia che serve per associare un clickListener agli elementi della recycler view
     interface onItemClickListener{
@@ -22,36 +22,31 @@ class MyAdapterRicerca(private val productList : ArrayList<Prodotto>): RecyclerV
         mListener = listener
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        val itemView =LayoutInflater.from(parent.context).inflate(R.layout.layout_item_prodotto,parent,false)
+
+        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.layout_item_esercizio,parent,false)
+
         return MyViewHolder(itemView, mListener)
     }
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-
-            val currentItem = productList[position]
-            Glide.with(holder.itemView)
-                .load(currentItem.image)
-                .placeholder(R.drawable.no_image)
-                .into(holder.productImage)
-            holder.tvNomeProdotto.text = currentItem.label
-            holder.tvCategoria.text = currentItem.category
-            holder.tvEtichetta.text = currentItem.categoryLabel
-
-
+        val currentItem = preferitiList[position]
+        Glide.with(holder.itemView)
+            .load("https://cdn.vectorstock.com/i/preview-1x/38/32/square-barbell-icon-vector-5293832.webp")
+            .into(holder.image)
+        holder.tvNomeEsercizio.text = currentItem.nome
+        holder.tvCalorie.text = currentItem.calorieOra.toString()
     }
 
     override fun getItemCount(): Int {
-        return productList.size
+        return preferitiList.size
 
     }
 
 
 
     class MyViewHolder(itemView : View, listener: onItemClickListener): RecyclerView.ViewHolder(itemView){
-
-        val productImage : ShapeableImageView = itemView.findViewById(R.id.imageProdotto)
-        val tvNomeProdotto : TextView = itemView.findViewById(R.id.tvNomeEsercizio)
-        val tvCategoria : TextView = itemView.findViewById(R.id.tvCategoria)
-        val tvEtichetta : TextView = itemView.findViewById(R.id.tvEtichetta)
+        val image : ImageView = itemView.findViewById(R.id.imageViewEsercizio)
+        val tvNomeEsercizio : TextView = itemView.findViewById(R.id.tvNomeEsercizio)
+        val tvCalorie : TextView = itemView.findViewById(R.id.tvKcal_h_esercizio)
 
 
         init{

@@ -48,9 +48,7 @@ class AggiungiViewModel : ViewModel() {
     val personalizzatiLiveData: LiveData<List<Pasto>>
         get() = _personalizzatiLiveData
 
-    private var _eserciziLiveData = MutableLiveData<List<Esercizio>>()
-    val eserciziLiveData: LiveData<List<Esercizio>>
-        get() = _eserciziLiveData
+
 
 
 
@@ -60,7 +58,7 @@ class AggiungiViewModel : ViewModel() {
         RetrofitInstance.api.getFoodFromNameOrUPC(APICredentials.API_ID,APICredentials.API_KEY,ingr,upc)
             .enqueue(object : Callback<Json_FoodList> {
                 override fun onResponse(call: Call<Json_FoodList>, response: Response<Json_FoodList>) {
-                    if (response.body() != null) {
+                    if (response.body() != null && response.body()!!.hints!!.isNotEmpty()) {
                         var hints = response.body()!!.hints!!
                         var foods : ArrayList<Prodotto> = arrayListOf()
                         for (i in 0..hints.size - 1)

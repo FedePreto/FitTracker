@@ -1,4 +1,4 @@
-package com.example.fittracker.aggiungi_pasto
+package com.example.fittracker.aggiungi_esercizio
 
 import android.annotation.SuppressLint
 import android.app.Dialog
@@ -13,15 +13,18 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.example.fittracker.R
 import com.example.fittracker.databinding.FragmentPreferitiBinding
+import com.example.fittracker.model.Json_Parsing.Esercizio
 import com.example.fittracker.model.Json_Parsing.Prodotto
 import com.example.fittracker.model.Pasto
 import kotlinx.android.synthetic.main.add_delete_layout.*
+import kotlinx.android.synthetic.main.add_delete_layout.btnAddDiario
+import kotlinx.android.synthetic.main.add_delete_layout.btnAnnulla
+import kotlinx.android.synthetic.main.add_delete_layout.btnElimina
+import kotlinx.android.synthetic.main.add_delete_layout_esercizi.*
 
-
-class PreferitiFragment : Fragment() {
+class PreferitiEserciziFragment : Fragment() {
 
     lateinit private var binding: FragmentPreferitiBinding
 
@@ -30,7 +33,7 @@ class PreferitiFragment : Fragment() {
     private lateinit var recyclerViewPreferiti: RecyclerView
     private lateinit var preferitiList: ArrayList<Prodotto>
 
-    private val model = AggiungiViewModel()
+    private val model = AggiungiEserciziViewModel()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,22 +49,22 @@ class PreferitiFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        model.getPreferiti(requireArguments().getString("bottone")!!)
+        model.getEserciziPreferiti()
         recyclerViewPreferiti = binding.gridPreferiti
         recyclerViewPreferiti.layoutManager = LinearLayoutManager(requireContext())
         recyclerViewPreferiti.setHasFixedSize(true)
 
 
-        val preferitiObserver = Observer<List<Pasto>>{
-            val adapter = MyAdapterPrefPers(model.preferitiLiveData.value!! as ArrayList<Pasto>)
+        val eserciziPreferitiObserver = Observer<List<Esercizio>>{
+            val adapter = MyAdapterPrefPersEsercizio(model.preferitiLiveData.value!! as ArrayList<Esercizio>)
             recyclerViewPreferiti.adapter = adapter
-            adapter.setOnItemClickListener(object : MyAdapterPrefPers.onItemClickListener {
+            adapter.setOnItemClickListener(object : MyAdapterPrefPersEsercizio.onItemClickListener {
                 override fun onItemClick(position: Int) {
                     openUpdateDeleteDialog(position)
                 }
             })
         }
-        model.preferitiLiveData.observe(viewLifecycleOwner,preferitiObserver)
+        model.preferitiLiveData.observe(viewLifecycleOwner,eserciziPreferitiObserver)
 
 
     }
@@ -70,39 +73,30 @@ class PreferitiFragment : Fragment() {
     @SuppressLint("ResourceAsColor")
     private fun openUpdateDeleteDialog(position: Int){
         var dialog = Dialog(requireContext())
-        dialog.setContentView(R.layout.add_delete_layout)
+        dialog.setContentView(R.layout.add_delete_layout_esercizi)
         dialog.window?.setBackgroundDrawable(ColorDrawable(R.color.transparent))
-        Glide.with(requireContext())
-            .load(model.preferitiLiveData.value!![position].image)
-            .placeholder(R.drawable.no_image)
-            .into(dialog.ProductImage)
-        dialog.Product.text = model.preferitiLiveData.value!![position].nome
-        dialog.tvMessaggio.text = "Scegli cosa vuoi fare! "
+        dialog.esercizioNome.text = model.preferitiLiveData.value!![position].nome
+        dialog.textViewMessaggioEsercizio.text = "Scegli cosa vuoi fare! "
 
 
         var flag = false
         dialog.btnAddDiario.setOnClickListener {
-            dialog.layout_quantita.visibility = View.VISIBLE
-            val quantita = dialog.editTextQuantita.text.toString().toDouble()
-            if(quantita != 0.0 && quantita.toString() != "") {
-                model.setPastoOnDB(requireArguments().getString("bottone")!!,model.preferitiLiveData.value!![position].id,
-                    model.preferitiLiveData.value!![position].image,model.preferitiLiveData.value!![position].nome,
-                    model.preferitiLiveData.value!![position].calorie,model.preferitiLiveData.value!![position].proteine,
-                    model.preferitiLiveData.value!![position].carboidrati,model.preferitiLiveData.value!![position].grassi,
-                    quantita,requireContext())
+            dialog.layout_durata.visibility = View.VISIBLE
+            val durata = dialog.editTextDurata.text.toString()
+            if(durata != "0" && durata != "") {
+                model.setEsercizioOnDB(model.preferitiLiveData.value!![position].nome,model.preferitiLiveData.value!![position].calorieOra, durata.toInt(),requireContext())
                 dialog.dismiss()
             }
             else {
                 if (flag)
-                    Toast.makeText(requireContext(),"Per favore inserisci una quantità diversa da $quantita se desideri aggiungere il prodotto al Diario",Toast.LENGTH_LONG).show()
+                    Toast.makeText(requireContext(),"Per favore inserisci una durata diversa da $durata se desideri aggiungere l\'esercizio al Diario",
+                        Toast.LENGTH_LONG).show()
                 flag = true
             }
         }
 
         dialog.btnElimina.setOnClickListener {
-            model.deletePreferiti(model.preferitiLiveData.value!![position].id,
-                requireArguments().getString("bottone")!!,
-                requireContext() )
+            model.deleteEserciziPreferiti(model.preferitiLiveData.value!![position].nome, requireContext() )
             dialog.dismiss()
         }
 

@@ -1,10 +1,12 @@
 package com.example.fittracker.databaseFB
 
+import com.example.fittracker.model.Json_Parsing.Esercizio
 import com.example.fittracker.model.Pasto
 import com.google.firebase.firestore.ktx.toObjects
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.tasks.await
 import kotlinx.coroutines.withContext
+import java.util.*
 
 class PreferitiDB : FirebaseDB() {
     val prodotti_collection = db.collection("Preferiti")
@@ -42,20 +44,57 @@ class PreferitiDB : FirebaseDB() {
         return status
     }
 
-    suspend fun getPastiPreferiti(utente: String, tipologiaPasto: String): List<Pasto> {
+    suspend fun setEsercizioPreferiti(
+        utente : String,
+        nome/*label*/ : String,
+        calorie_ora: Int,
+    ): Boolean {
+        val esercizio = hashMapOf<String, Any>(
+            "nome" to nome,
+            "calorieOra" to calorie_ora
+        )
+        withContext(Dispatchers.IO) {
+            prodotti_collection
+                .document(utente)
+                .collection("ESERCIZIO")
+                .document(nome.replace('/',','))
+                .set(esercizio)
+                .addOnSuccessListener { status = true }
+                .addOnFailureListener { status = false }
+        }.await()
+        return status
+    }
+
+    suspend fun getPastiPreferiti(utente: String, tipologia: String): List<Pasto> {
         return prodotti_collection
             .document(utente)
-            .collection(tipologiaPasto).get().await().toObjects()
+            .collection(tipologia).get().await().toObjects()
+
+    }
+    suspend fun getEserciziPreferiti(utente: String): List<Esercizio> {
+        return prodotti_collection
+            .document(utente)
+            .collection("ESERCIZIO").get().await().toObjects()
 
     }
 
-    suspend fun deletePreferiti(utente: String,id:String,tipologiaPasto: String): Boolean{
+    suspend fun deletePreferiti(utente: String,id:String,tipologia: String): Boolean{
         withContext(Dispatchers.IO) {
             prodotti_collection
-            .document(utente).collection(tipologiaPasto)
+            .document(utente).collection(tipologia)
             .document(id).delete()
             .addOnSuccessListener {status = true }
             .addOnFailureListener {status = false }
+        }.await()
+        return status
+    }
+    suspend fun deleteEserciziPreferiti(utente: String,nome:String): Boolean{
+        withContext(Dispatchers.IO) {
+            prodotti_collection
+                .document(utente).collection("ESERCIZIO")
+                .document(nome.replace("/",",")).delete()
+                .addOnSuccessListener {status = true }
+                .addOnFailureListener {status = false }
         }.await()
         return status
     }

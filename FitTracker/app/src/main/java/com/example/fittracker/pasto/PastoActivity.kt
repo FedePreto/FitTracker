@@ -27,6 +27,7 @@ class PastoActivity : AppCompatActivity() {
 
         getExtra()
         setLayout()
+        binding.eTQuantita.isEnabled = false
 
         val observerDelete = Observer<Boolean>{
             startActivity(Intent(this,HomeActivity::class.java))
@@ -40,7 +41,7 @@ class PastoActivity : AppCompatActivity() {
 
         var flag = false
         binding.btnModifica.setOnClickListener {
-            binding.layoutQuantita.visibility = View.VISIBLE
+            binding.eTQuantita.isEnabled = true
             val quantita = binding.eTQuantita.text.toString().toDouble()
             if(quantita != 0.0 && quantita.toString() != "" && quantita != pasto["quantità"]!!.toDouble())
                 model.updatePasto(pasto["tipologiaPasto"]!!,pasto["id"]!!,quantita,this)

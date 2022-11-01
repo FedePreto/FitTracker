@@ -3,6 +3,7 @@ package com.example.fittracker.prodotto
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import com.bumptech.glide.Glide
 import com.example.fittracker.R
@@ -26,10 +27,16 @@ class ProdottoActivity : AppCompatActivity() {
         setLayout()
 
         binding.btnAddDiary.setOnClickListener {
-            model.setPastoOnDB(prodotto["tipologiaPasto"]!!, prodotto["foodId"]!!, prodotto["image"]!!,
-                            prodotto["label"]!!, nutrients["calorie"]!!, nutrients["proteine"]!!, nutrients["carboidrati"]!!,
-                            nutrients["grassi"]!!, binding.etQuantita.text.toString().toDouble(), this)
-            finish()
+            val quantita = binding.etQuantita.text.toString().toDouble()
+            if(quantita != 0.0 && quantita.toString() != ""){
+                model.setPastoOnDB(prodotto["tipologiaPasto"]!!, prodotto["foodId"]!!, prodotto["image"]!!,
+                    prodotto["label"]!!, nutrients["calorie"]!!, nutrients["proteine"]!!, nutrients["carboidrati"]!!,
+                    nutrients["grassi"]!!, quantita, this)
+                finish()
+            }else{
+                Toast.makeText(this, "Per favore inserisci una quantita diversa da $quantita",Toast.LENGTH_LONG).show()
+            }
+
         }
 
         binding.btnAddPreferiti.setOnClickListener {

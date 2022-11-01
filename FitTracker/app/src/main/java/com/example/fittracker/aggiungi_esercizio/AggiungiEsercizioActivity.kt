@@ -16,9 +16,9 @@ import nl.joery.animatedbottombar.AnimatedBottomBar
 class AggiungiEsercizioActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityAggiungiBinding
-    val ricercaFragment = RicercaFragment()
-    val personalizzatiFragment = PersonalizzatiFragment()
-    val preferitiFragment = PreferitiFragment ()
+    val ricercaFragment = RicercaEserciziFragment()
+    val personalizzatiFragment = PersonalizzatiEsercizioFragment()
+    val preferitiFragment = PreferitiEserciziFragment ()
 
 
 
@@ -55,26 +55,13 @@ class AggiungiEsercizioActivity : AppCompatActivity() {
     private fun checkTabToReplace(index : Int){
         val bundle = Bundle()
         when(index){
-            0 -> {
-                bundle.putString("bottone","ESERCIZIO")
-                ricercaFragment.arguments = bundle
-                replaceFragment(ricercaFragment)
-            }
-            1 -> {
-                bundle.putString("bottone","ESERCIZIO")
-                personalizzatiFragment.arguments = bundle
-                replaceFragment(personalizzatiFragment)
-            }
-            2 -> {
-                bundle.putString("bottone","ESERCIZIO")
-                preferitiFragment.arguments = bundle
-                replaceFragment(preferitiFragment)
-            }
-            else -> {
-                bundle.putString("bottone","ESERCIZIO")
-                ricercaFragment.arguments = bundle
-                replaceFragment(ricercaFragment)
-            }
+            0 -> replaceFragment(ricercaFragment)
+
+            1 -> replaceFragment(personalizzatiFragment)
+
+            2 -> replaceFragment(preferitiFragment)
+
+            else -> replaceFragment(ricercaFragment)
         }
     }
 
