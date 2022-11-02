@@ -74,28 +74,7 @@ class AggiungiViewModel : ViewModel() {
                     Log.d("TAG", t.message.toString())
                 }
             })
-
     }
-
-    /*fun getEsercizi(name : String) {
-        RetrofitEserciziInstance.api.getEsercizi(APICredentials.API_KEY_ESERCIZI,name)
-            .enqueue(object : Callback<EserciziList> {
-                override fun onResponse(call: Call<EserciziList>, response: Response<EserciziList>) {
-                    if (response.body() != null) {
-                        var esercizi : ArrayList<Esercizio> = arrayListOf()
-                        for (i in 0..response.body()!! .size - 1)
-                            esercizi.add(response.body()!![i])
-                        _eserciziLiveData.value = esercizi
-                    } else {
-                        return
-                    }
-                }
-                override fun onFailure(call: Call<Json_FoodList>, t: Throwable) {
-                    Log.d("TAG", t.message.toString())
-                }
-            })
-
-    }*/
 
     fun getPreferiti(tipologiaPasto : String){
         viewModelScope.launch {

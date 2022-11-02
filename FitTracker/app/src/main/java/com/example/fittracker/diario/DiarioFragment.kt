@@ -80,19 +80,16 @@ class DiarioFragment : Fragment() {
 
         val diarioObserver = Observer<Diario> {
             if (model.diario.value == null && contatore == 0) {
-                Toast.makeText(context, "Non è ancora stato creato un diario", Toast.LENGTH_LONG).show()
                 model.setDiarioOnDB()
                 model.getUserDiarioDB()
             }else{
                 if(contatore < 1) {
-                    Log.e("Logger","Il contatore viene incrementato di uno")
                     checkFullGlasses()
                     model.setAssunte()
                     model.setRimanenti()
                     model.setMacro()
                     contatore += 1
                 }else {
-                    Log.e("Logger", "contatore viene azzerato")
                     contatore = 0
                 }
             }

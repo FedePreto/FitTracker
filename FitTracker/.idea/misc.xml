@@ -10,7 +10,11 @@
         <entry key="..\:/Users/Msi/OneDrive/Documenti/GitHub/Progetto_Programmazione_Mobile/FitTracker/app/src/main/res/drawable/animazione_4.xml" value="0.171" />
         <entry key="..\:/Users/Msi/OneDrive/Documenti/GitHub/Progetto_Programmazione_Mobile/FitTracker/app/src/main/res/drawable/animazione_5.xml" value="0.171" />
         <entry key="..\:/Users/Msi/OneDrive/Documenti/GitHub/Progetto_Programmazione_Mobile/FitTracker/app/src/main/res/drawable/animazione_card_selezionata.xml" value="0.1425" />
+        <entry key="..\:/Users/Msi/OneDrive/Documenti/GitHub/Progetto_Programmazione_Mobile/FitTracker/app/src/main/res/drawable/bg_card.xml" value="0.12" />
         <entry key="..\:/Users/Msi/OneDrive/Documenti/GitHub/Progetto_Programmazione_Mobile/FitTracker/app/src/main/res/drawable/bg_card_selezionata.xml" value="0.1425" />
+        <entry key="..\:/Users/Msi/OneDrive/Documenti/GitHub/Progetto_Programmazione_Mobile/FitTracker/app/src/main/res/drawable/btn_bg_2.xml" value="0.12" />
+        <entry key="..\:/Users/Msi/OneDrive/Documenti/GitHub/Progetto_Programmazione_Mobile/FitTracker/app/src/main/res/drawable/btn_bg_3.xml" value="0.12" />
+        <entry key="..\:/Users/Msi/OneDrive/Documenti/GitHub/Progetto_Programmazione_Mobile/FitTracker/app/src/main/res/drawable/btn_bg_4.xml" value="0.12" />
         <entry key="..\:/Users/Msi/OneDrive/Documenti/GitHub/Progetto_Programmazione_Mobile/FitTracker/app/src/main/res/drawable/btn_congr_ok.xml" value="0.171" />
         <entry key="..\:/Users/Msi/OneDrive/Documenti/GitHub/Progetto_Programmazione_Mobile/FitTracker/app/src/main/res/drawable/filling_animation.xml" value="0.1135" />
         <entry key="..\:/Users/Msi/OneDrive/Documenti/GitHub/Progetto_Programmazione_Mobile/FitTracker/app/src/main/res/drawable/progress_bg.xml" value="0.1135" />
@@ -18,7 +22,7 @@
         <entry key="..\:/Users/Msi/OneDrive/Documenti/GitHub/Progetto_Programmazione_Mobile/FitTracker/app/src/main/res/layout/activity_aggiungi.xml" value="0.264" />
         <entry key="..\:/Users/Msi/OneDrive/Documenti/GitHub/Progetto_Programmazione_Mobile/FitTracker/app/src/main/res/layout/activity_aggiungi_esercizio.xml" value="0.1390625" />
         <entry key="..\:/Users/Msi/OneDrive/Documenti/GitHub/Progetto_Programmazione_Mobile/FitTracker/app/src/main/res/layout/activity_conosciamoci.xml" value="0.16197916666666667" />
-        <entry key="..\:/Users/Msi/OneDrive/Documenti/GitHub/Progetto_Programmazione_Mobile/FitTracker/app/src/main/res/layout/activity_esercizio.xml" value="0.1" />
+        <entry key="..\:/Users/Msi/OneDrive/Documenti/GitHub/Progetto_Programmazione_Mobile/FitTracker/app/src/main/res/layout/activity_esercizio.xml" value="0.16" />
         <entry key="..\:/Users/Msi/OneDrive/Documenti/GitHub/Progetto_Programmazione_Mobile/FitTracker/app/src/main/res/layout/activity_esercizio_add_pref.xml" value="0.20260416666666667" />
         <entry key="..\:/Users/Msi/OneDrive/Documenti/GitHub/Progetto_Programmazione_Mobile/FitTracker/app/src/main/res/layout/activity_home.xml" value="0.264" />
         <entry key="..\:/Users/Msi/OneDrive/Documenti/GitHub/Progetto_Programmazione_Mobile/FitTracker/app/src/main/res/layout/activity_inizio.xml" value="0.4" />
@@ -36,6 +40,7 @@
         <entry key="..\:/Users/Msi/OneDrive/Documenti/GitHub/Progetto_Programmazione_Mobile/FitTracker/app/src/main/res/layout/calorie_semplici_layout.xml" value="0.19655797101449277" />
         <entry key="..\:/Users/Msi/OneDrive/Documenti/GitHub/Progetto_Programmazione_Mobile/FitTracker/app/src/main/res/layout/del_mod_selezionati_layout.xml" value="0.16197916666666667" />
         <entry key="..\:/Users/Msi/OneDrive/Documenti/GitHub/Progetto_Programmazione_Mobile/FitTracker/app/src/main/res/layout/delete_layout.xml" value="0.4" />
+        <entry key="..\:/Users/Msi/OneDrive/Documenti/GitHub/Progetto_Programmazione_Mobile/FitTracker/app/src/main/res/layout/descrizione_dieta_layout.xml" value="0.1625" />
         <entry key="..\:/Users/Msi/OneDrive/Documenti/GitHub/Progetto_Programmazione_Mobile/FitTracker/app/src/main/res/layout/dieta_layout.xml" value="0.15885416666666666" />
         <entry key="..\:/Users/Msi/OneDrive/Documenti/GitHub/Progetto_Programmazione_Mobile/FitTracker/app/src/main/res/layout/fragment_altezza.xml" value="0.15260416666666668" />
         <entry key="..\:/Users/Msi/OneDrive/Documenti/GitHub/Progetto_Programmazione_Mobile/FitTracker/app/src/main/res/layout/fragment_dati_personali.xml" value="0.2359375" />

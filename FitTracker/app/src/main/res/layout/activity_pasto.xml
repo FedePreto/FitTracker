@@ -4,19 +4,26 @@
 <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/soft_green"
         tools:context=".pasto.PastoActivity">
 
     <ImageView
-            android:layout_width="210dp"
-            android:layout_height="178dp" tools:srcCompat="@tools:sample/avatars" android:id="@+id/imageView21"
+            android:layout_width="170dp"
+            android:background="@drawable/bg_card"
+            android:layout_height="170dp" tools:srcCompat="@tools:sample/avatars" android:id="@+id/imageView21"
             app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginTop="30dp"
+            android:padding="20dp"
             android:layout_marginStart="20dp" android:layout_marginEnd="20dp"/>
     <TextView
             android:text="Pasto"
             android:textSize="25sp"
+            android:paddingRight="10dp"
+            android:paddingLeft="10dp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:id="@+id/tV_prodotto"
+            android:layout_height="wrap_content"
+            android:id="@+id/tV_prodotto"
+            android:background="@drawable/bg_card"
             android:layout_marginTop="10dp"
             app:layout_constraintTop_toBottomOf="@+id/imageView21" app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginStart="20dp"
@@ -30,6 +37,7 @@
             app:layout_constraintTop_toBottomOf="@+id/tV_prodotto"
             android:layout_marginTop="30dp" app:layout_constraintBottom_toBottomOf="parent">
         <LinearLayout
+                android:background="@drawable/bg_card"
                 android:padding="5dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginLeft="50dp"
@@ -39,7 +47,7 @@
                 android:layout_height="wrap_content">
             <TextView
                     android:text="KCal:"
-                    android:gravity="right"
+                    android:gravity="center"
                     android:textStyle="bold"
                     android:textSize="18sp"
                     android:layout_width="150dp"
@@ -55,6 +63,7 @@
         </LinearLayout>
         <LinearLayout
                 android:padding="5dp"
+                android:background="@drawable/bg_card"
                 android:orientation="horizontal"
                 android:layout_marginLeft="50dp"
                 android:gravity="center"
@@ -63,7 +72,7 @@
                 android:layout_height="wrap_content">
             <TextView
                     android:text="Carboidrati (gr):"
-                    android:gravity="right"
+                    android:gravity="center"
                     android:textStyle="bold"
                     android:textSize="18sp"
                     android:layout_width="150dp"
@@ -79,6 +88,7 @@
         </LinearLayout>
         <LinearLayout
                 android:padding="5dp"
+                android:background="@drawable/bg_card"
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_marginLeft="50dp"
@@ -87,7 +97,7 @@
                 android:layout_height="wrap_content">
             <TextView
                     android:text="Proteine (gr):"
-                    android:gravity="right"
+                    android:gravity="center"
                     android:textStyle="bold"
                     android:textSize="18sp"
                     android:layout_width="150dp"
@@ -103,6 +113,7 @@
         </LinearLayout>
         <LinearLayout
                 android:padding="5dp"
+                android:background="@drawable/bg_card"
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_marginLeft="50dp"
@@ -110,7 +121,7 @@
                 android:layout_height="wrap_content">
             <TextView
                     android:text="Grassi (gr):"
-                    android:gravity="right"
+                    android:gravity="center"
                     android:textStyle="bold"
                     android:textSize="18sp"
                     android:layout_width="150dp"
@@ -126,6 +137,7 @@
         </LinearLayout>
         <LinearLayout
                 android:padding="5dp"
+                android:background="@drawable/bg_card"
                 android:id="@+id/layoutQuantita"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="20dp"
@@ -136,6 +148,7 @@
                 android:layout_height="wrap_content">
             <TextView
                     android:text="Quantità:"
+                    android:paddingTop="8dp"
                     android:gravity="center"
                     android:textStyle="bold"
                     android:textSize="18sp"
@@ -163,23 +176,23 @@
 
             <Button
                     android:layout_marginLeft="20dp"
-                    android:background="@drawable/animazione_4"
+                    android:background="@drawable/animazione_1"
                     android:layout_marginRight="5dp"
                     android:text="Elimina"
                     android:textSize="18sp"
                     android:layout_width="120dp"
-                    android:layout_height="80dp"
+                    android:layout_height="60dp"
                     android:id="@+id/btn_elimina"
                     />
 
             <Button
                     android:text="Modifica"
-                    android:background="@drawable/animazione_4"
+                    android:background="@drawable/animazione_1"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="5dp"
                     android:textSize="18sp"
                     android:layout_width="120dp"
-                    android:layout_height="80dp"
+                    android:layout_height="60dp"
                     android:id="@+id/btn_modifica"
                     />
         </LinearLayout>

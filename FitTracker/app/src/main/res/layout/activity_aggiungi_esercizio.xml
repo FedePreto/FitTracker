@@ -4,10 +4,16 @@
 <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/soft_green"
         tools:context=".esercizio.AggiungiEsercizioActivity">
 
     <TextView
             android:text="Esercizio"
+            android:paddingRight="10dp"
+            android:paddingLeft="10dp"
+            android:background="@drawable/bg_card"
+            android:layout_gravity="center"
+            android:gravity="center"
             android:textColor="@color/black"
             android:textSize="28sp"
             android:textStyle="bold"
@@ -30,14 +36,14 @@
 
                 android:textSize="18sp"
                 android:text="Aggiungi \nal diario"
-                android:background="@drawable/animazione_5"
+                android:background="@drawable/animazione_1"
                 android:layout_marginRight="20dp"
                 android:layout_width="150dp"
                 android:layout_height="match_parent" android:id="@+id/btn_aggiungi_diario"
         />
         <Button
                 android:text="Aggiungi \n ai preferiti"
-                android:background="@drawable/animazione_5"
+                android:background="@drawable/animazione_1"
                 android:textStyle="bold"
                 android:textSize="18sp"
                 android:layout_width="150dp"
@@ -47,6 +53,8 @@
     <LinearLayout
             android:gravity="center"
             android:orientation="vertical"
+            android:paddingTop="20dp"
+            android:background="@drawable/bg_card"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
@@ -78,7 +86,7 @@
             <TextView
                     android:text="Kcal/h:"
                     android:gravity="center"
-                    android:textColor="@color/green_primary"
+                    android:textColor="@color/gray"
                     android:textSize="25sp"
                     android:layout_width="140dp"
                     android:textStyle="bold"
@@ -101,12 +109,13 @@
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:paddingBottom="20dp"
                 android:id="@+id/linearLayout17"
         >
             <TextView
                     android:text="Durata:"
                     android:gravity="center"
-                    android:textColor="@color/green_primary"
+                    android:textColor="@color/gray"
                     android:textSize="25sp"
                     android:textStyle="bold"
                     android:layout_width="140dp"

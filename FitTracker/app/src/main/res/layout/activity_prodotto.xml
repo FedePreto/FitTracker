@@ -7,6 +7,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             tools:context=".prodotto.ProdottoActivity"
+            android:background="@color/soft_green"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -18,6 +19,7 @@
 
             <LinearLayout
                     android:orientation="vertical"
+                    android:gravity="center"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
@@ -27,7 +29,9 @@
                     >
 
                 <ImageView
-                        android:layout_width="match_parent"
+                        android:layout_width="200dp"
+                        android:padding="20dp"
+                        android:background="@drawable/bg_card"
                         android:layout_height="200dp"
                         tools:srcCompat="@tools:sample/avatars"
                         android:id="@+id/imageProdotto"
@@ -35,7 +39,11 @@
 
                 <TextView
                         android:text="@string/noInfo"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:gravity="center"
                         android:layout_width="match_parent"
+                        android:background="@drawable/bg_card"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="10dp"
@@ -46,6 +54,10 @@
 
                 <TextView
                         android:text="INFO NUTRIZIONALI PER 100gr DI PRODOTTO"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:gravity="center"
+                        android:background="@drawable/bg_card"
                         android:textColor="@color/black"
                         android:layout_marginBottom="5dp"
                         android:layout_width="match_parent"
@@ -54,12 +66,15 @@
 
                 <TableLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:background="@drawable/bg_card">
 
                     <TableRow
-                            android:layout_width="match_parent"
+                            android:layout_width="wrap_content"
                             android:layout_height="match_parent"
-                            android:layout_marginBottom="5dp">
+                            android:layout_marginBottom="5dp"
+                            >
 
                         <TextView
                                 android:text="Calorie [Kcal] : "
@@ -71,18 +86,18 @@
 
                         <TextView
                                 android:text="@string/noInfo"
-                                android:layout_width="wrap_content"
+                                android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:layout_marginRight="15dp"
                                 android:paddingRight="70dp"
                                 android:id="@+id/tvCalorie"/>
 
                     </TableRow>
 
                     <TableRow
-                            android:layout_width="match_parent"
+                            android:layout_width="wrap_content"
                             android:layout_height="match_parent"
-                            android:layout_marginBottom="5dp">
+                            android:layout_marginBottom="5dp"
+                            >
 
                         <TextView
                                 android:text="Carboidrati [gr] : "
@@ -103,9 +118,10 @@
                     </TableRow>
 
                     <TableRow
-                            android:layout_width="match_parent"
+                            android:layout_width="wrap_content"
                             android:layout_height="match_parent"
-                            android:layout_marginBottom="5dp">
+                            android:layout_marginBottom="5dp"
+                            >
 
                         <TextView
                                 android:text="Grassi [gr] : "
@@ -124,8 +140,9 @@
                     </TableRow>
 
                     <TableRow
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent">
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            >
 
                         <TextView
                                 android:text="Proteine [gr] : "
@@ -148,21 +165,29 @@
 
                 <TextView
                         android:text="ULTERIORI INFORMAZIONI SUL PRODOTTO"
+                        android:gravity="center"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:background="@drawable/bg_card"
                         android:textColor="@color/black"
                         android:layout_marginTop="20dp"
-                        android:layout_marginBottom="15dp"
+                        android:layout_marginBottom="5dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/textView52"/>
 
                 <TableLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:background="@drawable/bg_card"
+                        android:gravity="center">>
 
                     <TableRow
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_marginBottom="10dp">
+                            android:layout_marginBottom="10dp"
+                            >
 
                         <TextView
                                 android:text="Brand : "
@@ -183,7 +208,8 @@
                     <TableRow
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_marginBottom="10dp">
+                            android:layout_marginBottom="10dp"
+                            >
 
                         <TextView
                                 android:text="Categoria : "
@@ -224,8 +250,8 @@
                     </TableRow>
                     <TableRow
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_marginBottom="10dp">
+                            android:layout_height="wrap_content"
+                            >
 
                         <TextView
                                 android:text="Quantità : "
@@ -254,6 +280,7 @@
                         android:orientation="horizontal"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:layout_marginTop="10dp"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
                         android:layout_marginBottom="10dp"
@@ -261,7 +288,7 @@
 
                     <Button
                             android:text="AGGIUNGI \nAL DIARIO"
-                            android:background="@drawable/animazione_5"
+                            android:background="@drawable/animazione_1"
                             android:gravity="center"
                             android:layout_width="wrap_content"
                             android:layout_marginRight="10dp"
@@ -271,7 +298,7 @@
 
                     <Button
                             android:text="AGGIUNGI \nAI PREFERITI"
-                            android:background="@drawable/animazione_5"
+                            android:background="@drawable/animazione_1"
                             android:layout_width="wrap_content"
                             android:layout_marginLeft="10dp"
                             android:layout_height="wrap_content"

@@ -84,7 +84,7 @@ class PreferitiEserciziFragment : Fragment() {
             dialog.layout_durata.visibility = View.VISIBLE
             val durata = dialog.editTextDurata.text.toString()
             if(durata != "0" && durata != "") {
-                model.setEsercizioOnDB(model.preferitiLiveData.value!![position].nome,model.preferitiLiveData.value!![position].calorieOra, durata.toInt(),requireContext())
+                model.setEsercizioOnDB(model.preferitiLiveData.value!![position].nome,model.preferitiLiveData.value!![position].calorieOra, durata.toDouble().toInt(),requireContext())
                 dialog.dismiss()
             }
             else {
