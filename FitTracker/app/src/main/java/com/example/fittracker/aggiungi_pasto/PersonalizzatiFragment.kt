@@ -128,6 +128,7 @@ class PersonalizzatiFragment : Fragment() {
             btnAggiungiDiario.visibility = View.GONE
         }
         var flag_2 = false
+        var flag=false
         btnAggiungiDiario.setOnClickListener {
             layout_quantita.visibility = View.VISIBLE
             layout_info.visibility = View.GONE
@@ -144,12 +145,13 @@ class PersonalizzatiFragment : Fragment() {
                     Toast.makeText(requireContext(),"Per favore inserisci una quantità diversa da $quantita se desideri aggiungere il prodotto al Diario",Toast.LENGTH_LONG).show()
                 flag_2 = true
             }
+            flag=false
 
         }
 
 
 
-        var flag=false
+
         btnAggiungiLista.setOnClickListener {
             layout_info.visibility = View.VISIBLE
             layout_quantita.visibility = View.GONE
@@ -182,6 +184,7 @@ class PersonalizzatiFragment : Fragment() {
             }
             else
                 Toast.makeText(requireContext(),"Per favore completa tutti i campi o modifica i valori prima di salvare",Toast.LENGTH_LONG).show()
+            flag_2 = false
         }
 
         builder.setNegativeButton("Esci"){ dialog, which ->
@@ -191,6 +194,8 @@ class PersonalizzatiFragment : Fragment() {
         btnElimina.setOnClickListener {
             model.deletePersonalizzato(id, requireArguments().getString("bottone")!!,requireContext())
             dialogLayout.visibility = View.GONE
+            flag=false
+            flag_2=false
         }
 
 

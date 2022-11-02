@@ -27,7 +27,7 @@ class UtenteDB : FirebaseDB() {
         peso_attuale: Double,
         sport : String?,
         contesto: Context,
-        dieta : String = "Mediterranea" ): Boolean {
+        dieta : String = "Climatica" ): Boolean {
         val utente = hashMapOf<String, Any>(
             "nome" to nome,
             "cognome" to cognome,

@@ -27,10 +27,6 @@ class EsercizioViewModel : ViewModel(){
     val diarioChanged : LiveData<Boolean>
         get() = _diarioChanged
 
-
-    private var hashMapCalorie = HashMap<String, Int>()
-    private var hashMapMacro = HashMap<String, Int>()
-
     fun setEsercizioOnDB(nome: String/*label*/, calorieOra: Int, durata: Int, context: Context) {
         viewModelScope.launch {
             if (esercizioDB.setEsercizio(auth.currentUser?.email!!, LocalDate.now().toString(), nome/*label*/,calorieOra, durata)) {

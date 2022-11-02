@@ -338,6 +338,7 @@ class DiarioFragment : Fragment() {
 
 
     private fun setDiario(){
+        model.getUserDiarioDB()
         model.setDiarioOnDB(model.diario.value!!.grassiTot, model.diario.value!!.proteineTot,
             model.diario.value!!.carboidratiTot, model.diario.value!!.chiloCalorieEsercizio,
             model.diario.value!!.chiloCalorieColazione, model.diario.value!!.chiloCaloriePranzo,

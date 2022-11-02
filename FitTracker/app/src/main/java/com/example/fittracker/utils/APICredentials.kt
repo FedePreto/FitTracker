@@ -1,7 +1,5 @@
 package com.example.fittracker.utils
 
-import java.util.Objects
-
 
 //Utilizzo questa classe per cambiare facilmente ID , CHIAVE e URL base nel csao ci fosse bisogno
 //Uso il companion object per poter accedere in maniera statica alle variabili

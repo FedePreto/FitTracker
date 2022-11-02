@@ -55,9 +55,6 @@ class StatisticheFragment : Fragment() {
                 val data_inizio = "2022-10-01"
                 val data_fine = LocalDate.now().toString()
                 model.ottieniStatistihe(data_inizio,data_fine)
-                Log.d("filtra", "$data_inizio $data_fine")
-
-
             }else{
                 val data_inizio = binding.tVDataiInizio.text.toString()
                 val data_fine = binding.tVDataFine.text.toString()
@@ -74,7 +71,6 @@ class StatisticheFragment : Fragment() {
             binding.tVDataiInizio.error = null
             binding.tVDataFine.error = null
         }
-
 
         val getObserver = Observer<Boolean> {
             binding.progress.visibility = View.GONE

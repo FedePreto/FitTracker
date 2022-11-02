@@ -26,9 +26,7 @@ class PreferitiFragment : Fragment() {
     lateinit private var binding: FragmentPreferitiBinding
 
 
-    //Prova adapter
     private lateinit var recyclerViewPreferiti: RecyclerView
-    private lateinit var preferitiList: ArrayList<Prodotto>
 
     private val model = AggiungiViewModel()
 

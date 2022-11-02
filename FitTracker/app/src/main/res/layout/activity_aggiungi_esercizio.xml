@@ -86,9 +86,9 @@
 
             <TextView
                     android:text="Kcal/h:"
-                    android:gravity="center"
+                    android:gravity="right"
                     android:textColor="@color/gray"
-                    android:textSize="25sp"
+                    android:textSize="20sp"
                     android:layout_width="140dp"
                     android:textStyle="bold"
                     android:layout_height="wrap_content"
@@ -114,12 +114,12 @@
                 android:id="@+id/linearLayout17"
         >
             <TextView
-                    android:text="Durata:"
-                    android:gravity="center"
+                    android:text="Durata [min]"
+                    android:gravity="right"
                     android:textColor="@color/gray"
-                    android:textSize="25sp"
+                    android:textSize="20sp"
                     android:textStyle="bold"
-                    android:layout_width="140dp"
+                    android:layout_width="200dp"
                     android:layout_height="wrap_content" android:id="@+id/textView31"
             />
             <EditText
