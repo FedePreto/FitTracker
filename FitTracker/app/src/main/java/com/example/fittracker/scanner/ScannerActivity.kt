@@ -50,6 +50,8 @@ class ScannerActivity : AppCompatActivity(), ZXingScannerView.ResultHandler {
         finish()
     }
 
+
+    // Richiesta dei permessi
     private fun setPermission() {
         val permission = ContextCompat.checkSelfPermission(this, android.Manifest.permission.CAMERA)
 
